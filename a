@@ -1,7 +1,7 @@
 
 
 
-git checkout -b 44.-Tapping-into-Widget-Properties
+git checkout -b 46.-Adding-Material-Icons-with-the-Icon-Widget
 git add .
-git commit -m "44.-Tapping-into-Widget-Properties"
-git push -u origin 44.-Tapping-into-Widget-Properties
+git commit -m "46.-Adding-Material-Icons-with-the-Icon-Widget"
+git push -u origin 46.-Adding-Material-Icons-with-the-Icon-Widget
