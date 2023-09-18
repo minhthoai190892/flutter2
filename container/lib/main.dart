@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -34,16 +36,28 @@ class MyApp extends StatelessWidget {
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.start,
             // verticalDirection:  VerticalDirection.down,
-            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              testContainer('Text Container 1', 100.0, 100.0, Colors.blue),
-              testContainer('Text Container 2', 100.0, 300.0, Colors.red),
-              testContainer('Text Container 3', 100.0, 100.0, Colors.green),
-              const SizedBox(
-                height: 10.0,
+              const CircleAvatar(
+                backgroundImage: AssetImage('images/android.jpg'),
+                radius: 50.0,
               ),
-              testContainer(
-                  'Text Container 4', 100.0, double.infinity, Colors.yellow),
+              const Text(
+                'Android',
+                style: TextStyle(
+                  fontSize: 40.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Fuggles',
+                ),
+              ),
+              Text(
+                'FLUTTER DEVELOPER',
+                style: TextStyle(
+                    fontFamily: 'DancingScript',
+                    color: Colors.teal[100],
+                    fontSize: 20.0,
+                    letterSpacing: 2.5),
+              ),
             ],
           ),
         ),
