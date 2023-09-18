@@ -34,8 +34,9 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.blueGrey,
         body: SafeArea(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             // verticalDirection:  VerticalDirection.down,
+
             children: [
               const CircleAvatar(
                 backgroundImage: AssetImage('images/android.jpg'),
@@ -58,56 +59,46 @@ class MyApp extends StatelessWidget {
                     fontSize: 20.0,
                     letterSpacing: 2.5),
               ),
-              Container(
+              SizedBox(
+                height: 20.0,
+                width: 150.0,
+                child: Divider(color: Colors.teal.shade100),
+              ),
+              Card(
                 color: Colors.white,
                 margin: const EdgeInsets.symmetric(
                     vertical: 10.0, horizontal: 25.0),
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  // ignore: prefer_const_literals_to_create_immutables
-                  children: [
-                    Icon(
-                      Icons.phone,
-                      color: Colors.teal.shade600,
-                    ),
-                    const SizedBox(
-                      width: 10.0,
-                    ),
-                    Text(
-                      '+44 132 456 789',
-                      style: TextStyle(
-                          color: Colors.teal.shade900,
-                          fontFamily: 'DancingScript',
-                          fontSize: 20.0),
-                    )
-                  ],
+                child: ListTile(
+                  leading: Icon(
+                    Icons.phone,
+                    color: Colors.teal.shade600,
+                  ),
+                  title: Text(
+                    '+44 132 456 789',
+                    style: TextStyle(
+                        color: Colors.teal.shade900,
+                        fontFamily: 'DancingScript',
+                        fontSize: 20.0),
+                  ),
                 ),
               ),
-              Container(
-                color: Colors.white,
-                margin: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 25.0),
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  // ignore: prefer_const_literals_to_create_immutables
-                  children: [
-                    Icon(
+              Card(
+                  color: Colors.white,
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 25.0),
+                  child: ListTile(
+                    leading: Icon(
                       Icons.email,
                       color: Colors.teal.shade600,
                     ),
-                    const SizedBox(
-                      width: 10.0,
-                    ),
-                    Text(
+                    title: Text(
                       'email@gmail.com',
                       style: TextStyle(
                           color: Colors.teal.shade900,
                           fontFamily: 'DancingScript',
                           fontSize: 20.0),
-                    )
-                  ],
-                ),
-              ),
+                    ),
+                  )),
             ],
           ),
         ),
