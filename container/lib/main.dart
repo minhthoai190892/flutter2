@@ -31,16 +31,32 @@ class MyApp extends StatelessWidget {
         ),
         backgroundColor: Colors.blueGrey,
         body: SafeArea(
-          child: Container(
-            height: 100,
-            width: 100,
-            margin: const EdgeInsets.symmetric(),
-            padding: EdgeInsets.symmetric(),
-            color: Colors.white,
-            child: const Text("Test Container"),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            // verticalDirection:  VerticalDirection.down,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              testContainer('Text Container 1', 100.0, 100.0, Colors.blue),
+              testContainer('Text Container 2', 100.0, 300.0, Colors.red),
+              testContainer('Text Container 3', 100.0, 100.0, Colors.green),
+              const SizedBox(
+                height: 10.0,
+              ),
+              testContainer(
+                  'Text Container 4', 100.0, double.infinity, Colors.yellow),
+            ],
           ),
         ),
       ),
+    );
+  }
+
+  Container testContainer(content, height, width, color) {
+    return Container(
+      height: height,
+      width: width,
+      color: color,
+      child: Text(content),
     );
   }
 }
