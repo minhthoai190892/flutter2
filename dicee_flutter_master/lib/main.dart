@@ -24,16 +24,20 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Dice(),
+      home: DicePage(),
     );
   }
 }
 
-class Dice extends StatelessWidget {
-  const Dice({
-    Key? key,
-  }) : super(key: key);
+class DicePage extends StatefulWidget {
+  const DicePage({super.key});
 
+  @override
+  State<DicePage> createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  var leftDiceNumber = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,10 +52,13 @@ class Dice extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  child: Image.asset('images/dice1.png'),
                   onPressed: () {
-                    print('left');
+                    setState(() {
+                      //=> cập nhật lại trạng thái
+                      leftDiceNumber++;
+                    });
                   },
+                  child: Image.asset('images/dice$leftDiceNumber.png'),
                 ),
               ),
               Expanded(
@@ -61,7 +68,7 @@ class Dice extends StatelessWidget {
                     onPressed: () {
                       print('right');
                     },
-                    child: Image.asset('images/dice1.png')),
+                    child: Image.asset('images/dice2.png')),
               ),
             ],
           ),
