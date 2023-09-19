@@ -1,7 +1,8 @@
 
 
 
-git checkout -b 58.-Stateful-vs.-Stateless-Widgets---Whats-the-Difference
+
+git checkout -b Section-7-Dicee---Building-Apps-with-State
 git add .
-git commit -m "58.-Stateful-vs.-Stateless-Widgets---Whats-the-Difference"
-git push -u origin 58.-Stateful-vs.-Stateless-Widgets---Whats-the-Difference
+git commit -m "Section-7-Dicee---Building-Apps-with-State"
+git push -u origin Section-7-Dicee---Building-Apps-with-State
