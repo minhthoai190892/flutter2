@@ -2,7 +2,7 @@
 
 
 
-git checkout -b Section-7-Dicee---Building-Apps-with-State
+git checkout -b Section-8-Boss-Level-Challenge-1---Magic-8-Ball
 git add .
-git commit -m "Section-7-Dicee---Building-Apps-with-State"
-git push -u origin Section-7-Dicee---Building-Apps-with-State
+git commit -m "Section-8-Boss-Level-Challenge-1---Magic-8-Ball"
+git push -u origin Section-8-Boss-Level-Challenge-1---Magic-8-Ball
