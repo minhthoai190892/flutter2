@@ -46,10 +46,22 @@ class Dice extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                child: Image.asset('images/dice1.png'),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                  child: Image.asset('images/dice1.png'),
+                  onPressed: () {
+                    print('left');
+                  },
+                ),
               ),
               Expanded(
-                child: Image.asset('images/dice1.png'),
+                child: ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    onPressed: () {
+                      print('right');
+                    },
+                    child: Image.asset('images/dice1.png')),
               ),
             ],
           ),
