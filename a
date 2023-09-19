@@ -1,7 +1,7 @@
 
 
 
-git checkout -b 51.-Using-the-Expanded-Widget-to-Create-Flexible-Layouts
+git checkout -b 52.-How-to-Use-Intention-Actions
 git add .
-git commit -m "51.-Using-the-Expanded-Widget-to-Create-Flexible-Layouts"
-git push -u origin 51.-Using-the-Expanded-Widget-to-Create-Flexible-Layouts
+git commit -m "52.-How-to-Use-Intention-Actions"
+git push -u origin 52.-How-to-Use-Intention-Actions
