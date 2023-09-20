@@ -2,7 +2,7 @@
 
 
 
-git checkout -b Section-8-Boss-Level-Challenge-1---Magic-8-Ball
+git checkout -b 76.-How-to-Play-Sound-Across-Platforms
 git add .
-git commit -m "Section-8-Boss-Level-Challenge-1---Magic-8-Ball"
-git push -u origin Section-8-Boss-Level-Challenge-1---Magic-8-Ball
+git commit -m "76.-How-to-Play-Sound-Across-Platforms"
+git push -u origin 76.-How-to-Play-Sound-Across-Platforms
