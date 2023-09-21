@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:audioplayers/audioplayers.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,30 +34,62 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: MyHomePage(title: "Xylophone"),
     );
   }
 }
 
+// ignore: must_be_immutable
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+  String title;
+  MyHomePage({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey[900],
-        title: const Text('XyloPhone', style: TextStyle(color: Colors.white)),
+        title: Text(title, style: const TextStyle(color: Colors.white)),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () async {
-            final player = AudioPlayer();
-            await player.play(AssetSource('note7.wav'));
-          },
-          child: const Text('Click me'),
+      body: SafeArea(
+        child: Column(
+          children: [
+            ElevatedButtonPlayer(number: 1, color: Colors.red),
+            ElevatedButtonPlayer(number: 2, color: Colors.yellow),
+            ElevatedButtonPlayer(number: 3, color: Colors.blue),
+            ElevatedButtonPlayer(number: 4, color: Colors.orange),
+            ElevatedButtonPlayer(number: 5, color: Colors.teal),
+            ElevatedButtonPlayer(number: 6, color: Colors.pink),
+            ElevatedButtonPlayer(number: 7, color: Colors.purple),
+          ],
         ),
       ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class ElevatedButtonPlayer extends StatelessWidget {
+  int number;
+  Color color;
+  ElevatedButtonPlayer({
+    Key? key,
+    required this.number,
+    required this.color,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () async {
+        final player = AudioPlayer();
+        await player.play(AssetSource('note$number.wav'));
+      },
+      style: ElevatedButton.styleFrom(backgroundColor: color),
+      child: Text('note $number'),
     );
   }
 }
