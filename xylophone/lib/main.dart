@@ -56,14 +56,21 @@ class MyHomePage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ElevatedButtonPlayer(number: 1, color: Colors.red),
-            ElevatedButtonPlayer(number: 2, color: Colors.yellow),
-            ElevatedButtonPlayer(number: 3, color: Colors.blue),
-            ElevatedButtonPlayer(number: 4, color: Colors.orange),
-            ElevatedButtonPlayer(number: 5, color: Colors.teal),
-            ElevatedButtonPlayer(number: 6, color: Colors.pink),
-            ElevatedButtonPlayer(number: 7, color: Colors.purple),
+            Expanded(child: ElevatedButtonPlayer(number: 1, color: Colors.red)),
+            Expanded(
+                child: ElevatedButtonPlayer(number: 2, color: Colors.yellow)),
+            Expanded(
+                child: ElevatedButtonPlayer(number: 3, color: Colors.blue)),
+            Expanded(
+                child: ElevatedButtonPlayer(number: 4, color: Colors.orange)),
+            Expanded(
+                child: ElevatedButtonPlayer(number: 5, color: Colors.teal)),
+            Expanded(
+                child: ElevatedButtonPlayer(number: 6, color: Colors.pink)),
+            Expanded(
+                child: ElevatedButtonPlayer(number: 7, color: Colors.purple)),
           ],
         ),
       ),
@@ -88,8 +95,13 @@ class ElevatedButtonPlayer extends StatelessWidget {
         final player = AudioPlayer();
         await player.play(AssetSource('note$number.wav'));
       },
-      style: ElevatedButton.styleFrom(backgroundColor: color),
-      child: Text('note $number'),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: color,
+      ),
+      child: Text(
+        'note $number',
+        style: const TextStyle(color: Colors.white),
+      ),
     );
   }
 }
