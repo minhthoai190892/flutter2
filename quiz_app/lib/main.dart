@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/question.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,11 +32,17 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = [];
-  List<String> question = [
-    'Anh/chị hãy xác định nội dung nào sau đây không thuộc lĩnh vực phát triển thẩm mỹ cho trẻ mẫu giáo?',
-    'Anh/chị hãy xác định nội dung giáo dục nào sau đây không thuộc lĩnh vực phát triển thẩm mỹ cho trẻ nhà trẻ 24 – 36 tháng tuổi',
+
+  List<Question> questionBank = [
+    Question(
+        questionText:
+            'Anh/chị hãy xác định nội dung nào sau đây không thuộc lĩnh vực phát triển thẩm mỹ cho trẻ mẫu giáo?',
+        questionAnswer: true),
+    Question(
+        questionText:
+            'Anh/chị hãy xác định nội dung giáo dục nào sau đây không thuộc lĩnh vực phát triển thẩm mỹ cho trẻ nhà trẻ 24 – 36 tháng tuổi',
+        questionAnswer: true),
   ];
-  List<bool> answers = [true, false];
   //theo dõi vị trí của câu hỏi
   int questionNumber = 0;
   @override
@@ -57,7 +64,7 @@ class _QuizPageState extends State<QuizPage> {
                 padding: const EdgeInsets.all(10.0),
                 child: Center(
                   child: Text(
-                    question[questionNumber],
+                    questionBank[questionNumber].questionText,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 25.0,
@@ -74,7 +81,8 @@ class _QuizPageState extends State<QuizPage> {
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.green),
                   onPressed: () {
-                    bool correctAnswer = answers[questionNumber];
+                    bool correctAnswer =
+                        questionBank[questionNumber].questionAnswer;
                     if (correctAnswer == true) {
                       print('user got it right');
                     } else {
@@ -103,13 +111,15 @@ class _QuizPageState extends State<QuizPage> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   onPressed: () {
-                    bool correctAnswer = answers[questionNumber];
+                    bool correctAnswer =
+                        questionBank[questionNumber].questionAnswer;
                     if (correctAnswer == false) {
                       print('user got it right');
                     } else {
                       print('user got it wrong');
                     }
                     setState(() {
+                      questionNumber++;
                       scoreKeeper.add(
                         const Icon(
                           Icons.check,
