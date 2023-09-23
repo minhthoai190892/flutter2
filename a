@@ -2,7 +2,7 @@
 
 
 
-git checkout -b 94.-Creating-a-Question-Class
+git checkout -b Section-11-Boss-Level-Challenge-2---Destini
 git add .
-git commit -m "94.-Creating-a-Question-Class"
-git push -u origin 94.-Creating-a-Question-Class
+git commit -m "Section-11-Boss-Level-Challenge-2---Destini"
+git push -u origin Section-11-Boss-Level-Challenge-2---Destini

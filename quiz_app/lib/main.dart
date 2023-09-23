@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/question.dart';
+import 'package:quiz_app/quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,19 +34,42 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = [];
+  QuizBrain quizBrain = QuizBrain();
+  void checkAnswer(bool userPickedAnswer) {
+    bool correctAnswer = quizBrain.getQuestionAnswer();
 
-  List<Question> questionBank = [
-    Question(
-        questionText:
-            'Anh/chị hãy xác định nội dung nào sau đây không thuộc lĩnh vực phát triển thẩm mỹ cho trẻ mẫu giáo?',
-        questionAnswer: true),
-    Question(
-        questionText:
-            'Anh/chị hãy xác định nội dung giáo dục nào sau đây không thuộc lĩnh vực phát triển thẩm mỹ cho trẻ nhà trẻ 24 – 36 tháng tuổi',
-        questionAnswer: true),
-  ];
-  //theo dõi vị trí của câu hỏi
-  int questionNumber = 0;
+    setState(
+      () {
+        if (quizBrain.isFinished() == true) {
+          Alert(
+            context: context,
+            title: 'Finished',
+            desc: 'You\'ve reached the end of the quiz.',
+          ).show();
+          quizBrain.reset();
+          scoreKeeper = [];
+        } else {
+          if (userPickedAnswer == correctAnswer) {
+            scoreKeeper.add(
+              const Icon(
+                Icons.check,
+                color: Colors.green,
+              ),
+            );
+          } else {
+            scoreKeeper.add(
+              const Icon(
+                Icons.close,
+                color: Colors.red,
+              ),
+            );
+          }
+          quizBrain.nextQuestion();
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +89,7 @@ class _QuizPageState extends State<QuizPage> {
                 padding: const EdgeInsets.all(10.0),
                 child: Center(
                   child: Text(
-                    questionBank[questionNumber].questionText,
+                    quizBrain.getQuestion(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 25.0,
@@ -81,22 +106,7 @@ class _QuizPageState extends State<QuizPage> {
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.green),
                   onPressed: () {
-                    bool correctAnswer =
-                        questionBank[questionNumber].questionAnswer;
-                    if (correctAnswer == true) {
-                      print('user got it right');
-                    } else {
-                      print('user got it wrong');
-                    }
-                    setState(() {
-                      questionNumber++;
-                      scoreKeeper.add(
-                        const Icon(
-                          Icons.check,
-                          color: Colors.green,
-                        ),
-                      );
-                    });
+                    checkAnswer(true);
                   },
                   child: const Text(
                     'True',
@@ -111,22 +121,7 @@ class _QuizPageState extends State<QuizPage> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   onPressed: () {
-                    bool correctAnswer =
-                        questionBank[questionNumber].questionAnswer;
-                    if (correctAnswer == false) {
-                      print('user got it right');
-                    } else {
-                      print('user got it wrong');
-                    }
-                    setState(() {
-                      questionNumber++;
-                      scoreKeeper.add(
-                        const Icon(
-                          Icons.check,
-                          color: Colors.red,
-                        ),
-                      );
-                    });
+                    checkAnswer(false);
                   },
                   child: const Text(
                     'False',
