@@ -12,6 +12,10 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+const bottomContainerHeight = 80.0;
+const activeColor = Color(0xFF1D1E33);
+const bottomContainerColor = Color(0xFFEB1555);
+
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
@@ -30,41 +34,51 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Expanded(
+            const Expanded(
               child: Row(
                 children: [
                   Expanded(
-                    child: CardContainer(),
+                    child: CardContainer(
+                      color: activeColor,
+                    ),
                   ),
                   Expanded(
-                    child: CardContainer(),
+                    child: CardContainer(
+                      color: activeColor,
+                    ),
                   ),
                 ],
               ),
             ),
-            Expanded(
-              child: CardContainer(),
+            const Expanded(
+              child: CardContainer(
+                color: activeColor,
+              ),
             ),
-            Expanded(
+            const Expanded(
               child: Row(
                 children: [
                   Expanded(
                     child: CardContainer(
                       icon: Icon(Icons.access_time_rounded),
+                      color: activeColor,
                     ),
                   ),
                   Expanded(
-                    child: CardContainer(),
+                    child: CardContainer(
+                      color: activeColor,
+                    ),
                   ),
                 ],
               ),
             ),
+            Container(
+              color: bottomContainerColor,
+              margin: const EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              height: bottomContainerHeight,
+            )
           ],
-        ),
-        // backgroundColor: Colors.blueGrey,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: const Icon(Icons.add),
         ),
       ),
     );
@@ -72,10 +86,12 @@ class _MyAppState extends State<MyApp> {
 }
 
 class CardContainer extends StatelessWidget {
-  Icon? icon;
-  CardContainer({
+  final Icon? icon;
+  final Color? color;
+  const CardContainer({
     Key? key,
     this.icon,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -86,11 +102,9 @@ class CardContainer extends StatelessWidget {
       margin: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        color: const Color(0xFF1D1E33),
+        color: color,
       ),
-      child:  Center(
-        child: icon
-      ),
+      child: Center(child: icon),
     );
   }
 }
