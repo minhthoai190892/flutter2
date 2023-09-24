@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:bmi_calculator/cart_content.dart';
+import 'package:bmi_calculator/card_content.dart';
 import 'package:bmi_calculator/icon_content.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -17,10 +17,33 @@ class MyApp extends StatefulWidget {
 }
 
 const bottomContainerHeight = 80.0;
-const activeColor = Color(0xFF1D1E33);
+const activeCardColor = Color(0xFF1D1E33);
 const bottomContainerColor = Color(0xFFEB1555);
+const inactiveCardColor = Color(0xFF111328);
 
 class _MyAppState extends State<MyApp> {
+  Color maleCardColor = inactiveCardColor;
+  Color femaleCardColor = inactiveCardColor;
+// 1 = male, 2 = female
+  void updateColor(int gender) {
+    // male card pressed
+    if (gender == 1) {
+      if (maleCardColor == inactiveCardColor) {
+        maleCardColor = activeCardColor;
+        femaleCardColor = inactiveCardColor;
+      } else {
+        maleCardColor = inactiveCardColor;
+      }
+    } else {
+      if (femaleCardColor == inactiveCardColor) {
+        femaleCardColor = activeCardColor;
+        maleCardColor = inactiveCardColor;
+      } else {
+        femaleCardColor = inactiveCardColor;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,21 +61,35 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            const Expanded(
+            Expanded(
               child: Row(
                 children: [
                   Expanded(
-                    child: CardContainer(
-                      color: activeColor,
-                      childWidget: IconContent(
-                          icon: FontAwesomeIcons.mars, label: 'Male'),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          updateColor(1);
+                        });
+                      },
+                      child: CardContainer(
+                        color: maleCardColor,
+                        childWidget: const IconContent(
+                            icon: FontAwesomeIcons.mars, label: 'Male'),
+                      ),
                     ),
                   ),
                   Expanded(
-                    child: CardContainer(
-                      color: activeColor,
-                      childWidget: IconContent(
-                          icon: FontAwesomeIcons.venus, label: 'Female'),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          updateColor(2);
+                        });
+                      },
+                      child: CardContainer(
+                        color: femaleCardColor,
+                        childWidget: const IconContent(
+                            icon: FontAwesomeIcons.venus, label: 'Female'),
+                      ),
                     ),
                   ),
                 ],
@@ -60,7 +97,7 @@ class _MyAppState extends State<MyApp> {
             ),
             const Expanded(
               child: CardContainer(
-                color: activeColor,
+                color: activeCardColor,
               ),
             ),
             const Expanded(
@@ -69,12 +106,12 @@ class _MyAppState extends State<MyApp> {
                   Expanded(
                     child: CardContainer(
                       icon: Icon(Icons.access_time_rounded),
-                      color: activeColor,
+                      color: activeCardColor,
                     ),
                   ),
                   Expanded(
                     child: CardContainer(
-                      color: activeColor,
+                      color: activeCardColor,
                     ),
                   ),
                 ],
