@@ -1,4 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bmi_calculator/cart_content.dart';
+import 'package:bmi_calculator/icon_content.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,11 +44,15 @@ class _MyAppState extends State<MyApp> {
                   Expanded(
                     child: CardContainer(
                       color: activeColor,
+                      childWidget: IconContent(
+                          icon: FontAwesomeIcons.mars, label: 'Male'),
                     ),
                   ),
                   Expanded(
                     child: CardContainer(
                       color: activeColor,
+                      childWidget: IconContent(
+                          icon: FontAwesomeIcons.venus, label: 'Female'),
                     ),
                   ),
                 ],
@@ -81,30 +89,6 @@ class _MyAppState extends State<MyApp> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class CardContainer extends StatelessWidget {
-  final Icon? icon;
-  final Color? color;
-  const CardContainer({
-    Key? key,
-    this.icon,
-    this.color,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      // width: 170.0,
-      // height: 200.0,
-      margin: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: color,
-      ),
-      child: Center(child: icon),
     );
   }
 }
