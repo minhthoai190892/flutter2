@@ -68,51 +68,44 @@ class _MyAppState extends State<MyApp> {
               child: Row(
                 children: [
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
+                    child: CardContainer(
+                      onPress: () {
                         setState(() {
                           selectedGender = Gender.male;
-                          print(selectedGender);
                         });
                       },
-                      child: CardContainer(
-                        color: selectedGender == Gender.male
-                            ? activeCardColor
-                            : inactiveCardColor,
-                        childWidget: const IconContent(
-                            icon: FontAwesomeIcons.mars, label: 'Male'),
-                      ),
+                      color: selectedGender == Gender.male
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      childWidget: const IconContent(
+                          icon: FontAwesomeIcons.mars, label: 'Male'),
                     ),
                   ),
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedGender = Gender.female;
-                          print(selectedGender);
-                        });
+                    child: CardContainer(
+                      onPress: () {
+                        selectedGender = Gender.female;
                       },
-                      child: CardContainer(
-                        color: selectedGender == Gender.female
-                            ? activeCardColor
-                            : inactiveCardColor,
-                        childWidget: const IconContent(
-                            icon: FontAwesomeIcons.venus, label: 'Female'),
-                      ),
+                      color: selectedGender == Gender.female
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      childWidget: const IconContent(
+                          icon: FontAwesomeIcons.venus, label: 'Female'),
                     ),
                   ),
                 ],
               ),
             ),
-            const Expanded(
+            Expanded(
               child: CardContainer(
+                onPress: () {},
                 color: activeCardColor,
               ),
             ),
-            const Expanded(
+            Expanded(
               child: Row(
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: CardContainer(
                       icon: Icon(Icons.access_time_rounded),
                       color: activeCardColor,
@@ -120,6 +113,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   Expanded(
                     child: CardContainer(
+                      onPress: () {},
                       color: activeCardColor,
                     ),
                   ),
