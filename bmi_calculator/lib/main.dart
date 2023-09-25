@@ -118,18 +118,27 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ],
                     ),
-                    Slider(
-                      min: 120.0,
-                      max: 220.0,
-                      activeColor: const Color(0xFFEB1555),
-                      inactiveColor: const Color(0xFF8D8E98),
-                      value: height.toDouble(),
-                      onChanged: (newValue) {
-                        setState(() {
-                          height = newValue.round();
-                        });
-                        print(newValue);
-                      },
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        activeTrackColor: Colors.white,
+                        inactiveTrackColor: const Color(0xFF8D8E98),
+                        overlayColor: const Color(0X29EB1555),
+                        thumbColor: const Color(0XFFEB1555),
+                        thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 15.0),
+                        overlayShape:
+                            const RoundSliderOverlayShape(overlayRadius: 30.0),
+                      ),
+                      child: Slider(
+                        min: 120.0,
+                        max: 220.0,
+                        value: height.toDouble(),
+                        onChanged: (newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        },
+                      ),
                     )
                   ],
                 ),
