@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bmi_calculator/card_content.dart';
+import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/icon_content.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -15,11 +16,6 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
-
-const bottomContainerHeight = 80.0;
-const bottomContainerColor = Color(0xFFEB1555);
-const activeCardColor = Color(0xFF1D1E33);
-const inactiveCardColor = Color(0xFF111328);
 
 enum Gender { male, female }
 
@@ -46,7 +42,7 @@ class _MyAppState extends State<MyApp> {
 //     }
 //   }
   Gender selectedGender = Gender.male;
-
+  int height = 180;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -63,6 +59,7 @@ class _MyAppState extends State<MyApp> {
           // backgroundColor: const Color(0xFF0A0E21),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
               child: Row(
@@ -75,8 +72,8 @@ class _MyAppState extends State<MyApp> {
                         });
                       },
                       color: selectedGender == Gender.male
-                          ? activeCardColor
-                          : inactiveCardColor,
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
                       childWidget: const IconContent(
                           icon: FontAwesomeIcons.mars, label: 'Male'),
                     ),
@@ -87,8 +84,8 @@ class _MyAppState extends State<MyApp> {
                         selectedGender = Gender.female;
                       },
                       color: selectedGender == Gender.female
-                          ? activeCardColor
-                          : inactiveCardColor,
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
                       childWidget: const IconContent(
                           icon: FontAwesomeIcons.venus, label: 'Female'),
                     ),
@@ -98,8 +95,44 @@ class _MyAppState extends State<MyApp> {
             ),
             Expanded(
               child: CardContainer(
-                onPress: () {},
-                color: activeCardColor,
+                color: kActiveCardColor,
+                childWidget: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'HEIGHT',
+                      style: kLabelStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(
+                          height.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        const Text(
+                          'cm',
+                          style: kLabelStyle,
+                        ),
+                      ],
+                    ),
+                    Slider(
+                      min: 120.0,
+                      max: 220.0,
+                      activeColor: const Color(0xFFEB1555),
+                      inactiveColor: const Color(0xFF8D8E98),
+                      value: height.toDouble(),
+                      onChanged: (newValue) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                        print(newValue);
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -108,23 +141,23 @@ class _MyAppState extends State<MyApp> {
                   const Expanded(
                     child: CardContainer(
                       icon: Icon(Icons.access_time_rounded),
-                      color: activeCardColor,
+                      color: kActiveCardColor,
                     ),
                   ),
                   Expanded(
                     child: CardContainer(
                       onPress: () {},
-                      color: activeCardColor,
+                      color: kActiveCardColor,
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              color: bottomContainerColor,
+              color: kBottomContainerColor,
               margin: const EdgeInsets.only(top: 10.0),
               width: double.infinity,
-              height: bottomContainerHeight,
+              height: kBottomContainerHeight,
             )
           ],
         ),
