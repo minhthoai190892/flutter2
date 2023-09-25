@@ -43,6 +43,8 @@ class _MyAppState extends State<MyApp> {
 //   }
   Gender selectedGender = Gender.male;
   int height = 180;
+  int weight = 10;
+  int age = 10;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -147,16 +149,90 @@ class _MyAppState extends State<MyApp> {
             Expanded(
               child: Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: CardContainer(
-                      icon: Icon(Icons.access_time_rounded),
                       color: kActiveCardColor,
+                      childWidget: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'WEIGHT',
+                            style: kLabelStyle,
+                          ),
+                          Text(
+                            weight.toString(),
+                            style: kNumberTextStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RoundIconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    weight--;
+                                  });
+                                },
+                                icon: const Icon(
+                                  Icons.remove,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
+                              RoundIconButton(
+                                icon: const Icon(Icons.add),
+                                onPressed: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Expanded(
                     child: CardContainer(
-                      onPress: () {},
                       color: kActiveCardColor,
+                      childWidget: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'AGE',
+                            style: kLabelStyle,
+                          ),
+                          Text(
+                            age.toString(),
+                            style: kNumberTextStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              DesignRoundIconButton(
+                                icon: Icons.remove,
+                                onPressed: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                },
+                              ),
+                              const SizedBox(
+                                width: 10.5,
+                              ),
+                              DesignRoundIconButton(
+                                icon: Icons.add,
+                                onPressed: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -170,6 +246,54 @@ class _MyAppState extends State<MyApp> {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  const RoundIconButton({
+    Key? key,
+    required this.icon,
+    required this.onPressed,
+  }) : super(key: key);
+  final Icon icon;
+  final Function() onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+        backgroundColor: const Color(0xFF4C4F5E),
+        onPressed: onPressed,
+        child: icon);
+  }
+}
+
+class DesignRoundIconButton extends StatelessWidget {
+  const DesignRoundIconButton({
+    Key? key,
+    required this.icon,
+    required this.onPressed,
+  }) : super(key: key);
+  final IconData icon;
+  final Function() onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      onPressed: onPressed,
+      elevation: 0.0,
+      constraints: const BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      // hinh dang cua nut
+      // shape: RoundedRectangleBorder(
+      //   borderRadius: BorderRadius.circular(10.0),
+      // ),
+      shape: const CircleBorder(),
+      fillColor: const Color(0xFF4C4F5E),
+      child: Icon(
+        icon,
+        color: Colors.white,
       ),
     );
   }
