@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bmi_calculator/calculator_brain.dart';
 import 'package:bmi_calculator/components/card_content.dart';
 import 'package:bmi_calculator/components/constants.dart';
 import 'package:bmi_calculator/components/design_round_icon_button.dart';
@@ -11,12 +12,8 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const MyApp(),
-        '/result': (context) => const ResultPage(),
-      },
+    const MaterialApp(
+      home: MyApp(),
     ),
   );
 }
@@ -54,8 +51,8 @@ class _MyAppState extends State<MyApp> {
 //   }
   Gender selectedGender = Gender.female;
   int height = 180;
-  int weight = 10;
-  int age = 10;
+  int weight = 60;
+  int age = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -249,11 +246,23 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
           BottomButton(
-              title: 'CALCULATE',
-              onTap: () {
-                // Navigator.pushNamed(context, '/result');
-                Navigator.of(context).pushNamed('/result');
-              }),
+            title: 'CALCULATE',
+            onTap: () {
+              CalculatorBrain calculatorBrain =
+                  CalculatorBrain(height: height, weight: weight);
+              // Navigator.pushNamed(context, '/result');
+              // Navigator.of(context).pushNamed('/result');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(
+                      bmiResult: calculatorBrain.calculateBMI(),
+                      resultText: calculatorBrain.getResult(),
+                      interpretation: calculatorBrain.getInterpretation()),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

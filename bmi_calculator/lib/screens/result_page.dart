@@ -1,12 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bmi_calculator/components/card_content.dart';
 import 'package:bmi_calculator/components/constants.dart';
 import 'package:bmi_calculator/main.dart';
-import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ResultPage extends StatelessWidget {
-  const ResultPage({super.key});
+import 'package:flutter/material.dart';
 
+class ResultPage extends StatelessWidget {
+  const ResultPage({
+    Key? key,
+    required this.bmiResult,
+    required this.resultText,
+    required this.interpretation,
+  }) : super(key: key);
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,7 +43,7 @@ class ResultPage extends StatelessWidget {
                 ),
               ),
             ),
-            const Expanded(
+            Expanded(
               flex: 5,
               child: CardContainer(
                 color: kActiveCardColor,
@@ -43,15 +52,15 @@ class ResultPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'data',
+                      resultText,
                       style: kResultTextStyle,
                     ),
                     Text(
-                      '18.5',
+                      bmiResult,
                       style: kBMITextStyle,
                     ),
                     Text(
-                      'Your BMI result is quite low, you should eat more!',
+                      interpretation,
                       textAlign: TextAlign.center,
                       style: kBodyTextStyle,
                     )

@@ -1,8 +1,7 @@
 
 
 
-
-git checkout -b 135.-Designing-the-Result-Page
+git checkout -b Section-12-BMI-Calculator---Building-Flutter-UI-for-Intermediates
 git add .
-git commit -m "135.-Designing-the-Result-Page"
-git push -u origin 135.-Designing-the-Result-Page
+git commit -m "Section-12-BMI-Calculator---Building-Flutter-UI-for-Intermediates"
+git push -u origin Section-12-BMI-Calculator---Building-Flutter-UI-for-Intermediates
