@@ -1,12 +1,10 @@
 // ignore_for_file: avoid_print, prefer_interpolation_to_compose_strings
 
-import 'dart:convert';
-
+import 'package:climate/screens/location_screen.dart';
 import 'package:climate/services/location.dart';
 import 'package:climate/services/network.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 const apiKey = 'e21c0a31b1307e9263b6baee3c15eb88';
 
@@ -18,11 +16,10 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  double? latitude = 0;
-  double? longitude = 0;
+  double? latitude;
+  double? longitude;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getLocationData();
   }
@@ -36,8 +33,15 @@ class _LoadingScreenState extends State<LoadingScreen> {
         url:
             'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey');
     var weatherData = await networkHelper.getData();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const LocationScreen(),
+      ),
+    );
     print(latitude);
     print(longitude);
+    print(weatherData);
   }
 
   // var temperature = jsonDecode(data)['main']['temp'];
@@ -50,19 +54,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blueAccent,
-      width: 200.0,
-      height: 200.0,
-      child: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // _currentPosition = await _determinePosition();
-            // print(_currentPosition?.latitude);
-            getLocationData();
-          },
-          child: const Text('Get Location'),
-        ),
+    return const Center(
+      child: SpinKitDoubleBounce(
+        color: Colors.white,
+        size: 100.0,
+        // duration: Duration(microseconds: 2000),
       ),
     );
   }
