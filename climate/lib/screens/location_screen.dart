@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, avoid_print
 
+import 'package:climate/services/weather.dart';
+import 'package:climate/utillities/constants.dart';
 import 'package:flutter/material.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -10,9 +12,11 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
+  WeatherModel weather = WeatherModel();
   int temperature = 0;
-  var condition;
-  var cityName;
+  String weatherIcon = '';
+  String weatherMessage = '';
+  String cityName = '';
   @override
   void initState() {
     // TODO: implement initState
@@ -21,14 +25,18 @@ class _LocationScreenState extends State<LocationScreen> {
     updateUI(widget.locationWeather);
   }
 
-  void updateUI(dynamic weather) {
-    double temp = weather['main']['temp'];
+  void updateUI(dynamic weatherData) {
+   setState(() {
+      double temp = weatherData['main']['temp'];
     temperature = temp.toInt();
     print(temperature);
-    condition = weather['weather'][0]['id'];
-    print(condition);
-    cityName = weather['name'];
+    var condition = weatherData['weather'][0]['id'];
+    print(weatherIcon);
+    cityName = weatherData['name'];
     print(cityName);
+    weatherIcon = weather.getWeatherIcon(condition);
+    weatherMessage = weather.getMessage(temperature);
+   });
   }
 
   @override
@@ -74,22 +82,21 @@ class _LocationScreenState extends State<LocationScreen> {
                   children: [
                     Text(
                       '$temperature°C',
-                      style:
-                          const TextStyle(fontSize: 100.0, color: Colors.white),
+                      style: kTempTextStyle,
                     ),
                     Text(
-                      'Sun',
-                      style: TextStyle(fontSize: 20.0),
+                      weatherIcon,
+                      style: kConditionTextStyle,
                     ),
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 15.0),
+              Padding(
+                padding: const EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "It's a icreem time in San Francisco",
+                  '$weatherMessage in $cityName',
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white),
+                  style: kMessageTextStyle,
                 ),
               ),
             ],
