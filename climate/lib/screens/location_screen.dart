@@ -1,13 +1,36 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print
+
 import 'package:flutter/material.dart';
 
 class LocationScreen extends StatefulWidget {
-  const LocationScreen({super.key});
-
+  const LocationScreen({super.key, this.locationWeather});
+  final locationWeather;
   @override
   State<LocationScreen> createState() => _LocationScreenState();
 }
 
 class _LocationScreenState extends State<LocationScreen> {
+  int temperature = 0;
+  var condition;
+  var cityName;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(widget.locationWeather);
+    updateUI(widget.locationWeather);
+  }
+
+  void updateUI(dynamic weather) {
+    double temp = weather['main']['temp'];
+    temperature = temp.toInt();
+    print(temperature);
+    condition = weather['weather'][0]['id'];
+    print(condition);
+    cityName = weather['name'];
+    print(cityName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,13 +68,14 @@ class _LocationScreenState extends State<LocationScreen> {
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 15.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
                 child: Row(
                   children: [
                     Text(
-                      '32*C',
-                      style: TextStyle(fontSize: 20.0),
+                      '$temperature°C',
+                      style:
+                          const TextStyle(fontSize: 100.0, color: Colors.white),
                     ),
                     Text(
                       'Sun',

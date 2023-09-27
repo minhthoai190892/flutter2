@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, prefer_interpolation_to_compose_strings
+// ignore_for_file: avoid_print, prefer_interpolation_to_compose_strings, use_build_context_synchronously
 
 import 'package:climate/screens/location_screen.dart';
 import 'package:climate/services/location.dart';
@@ -16,8 +16,8 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  double? latitude;
-  double? longitude;
+  // double? latitude;
+  // double? longitude;
   @override
   void initState() {
     super.initState();
@@ -27,30 +27,23 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void getLocationData() async {
     Location location = Location();
     await location.getLocation();
-    latitude = location.latitude;
-    longitude = location.longitude;
+    // latitude = location.latitude;
+    // longitude = location.longitude;
     NetworkHelper networkHelper = NetworkHelper(
         url:
-            'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey');
+            'https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
     var weatherData = await networkHelper.getData();
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const LocationScreen(),
+        builder: (context) =>  LocationScreen(locationWeather: weatherData),
       ),
     );
-    print(latitude);
-    print(longitude);
-    print(weatherData);
+    // print(latitude);
+    // print(longitude);
+
   }
 
-  // var temperature = jsonDecode(data)['main']['temp'];
-  // print(temperature);
-  // var condition = jsonDecode(data)['weather'][0]['id'];
-  // print(condition);
-  // var cityName = jsonDecode(data)['name'];
-  // print(cityName);
-  // print(data);
 
   @override
   Widget build(BuildContext context) {
