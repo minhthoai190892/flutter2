@@ -1,6 +1,7 @@
+// ignore_for_file: avoid_print, prefer_interpolation_to_compose_strings
+
 import 'dart:convert';
 
-import 'package:climate/services/album.dart';
 import 'package:climate/services/location.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -30,11 +31,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getData() async {
-    http.Response response = await http
-        .get(Uri.parse('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=e21c0a31b1307e9263b6baee3c15eb88'));
+    http.Response response = await http.get(Uri.parse(
+        'http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=e21c0a31b1307e9263b6baee3c15eb88'));
     if (response.statusCode == 200) {
       String data = response.body;
-      print(data);
+      var condition = jsonDecode(data)['weather'][0]['id'];
+      print(condition);
+      var temperature = jsonDecode(data)['main']['temp'];
+      print(temperature);
+      var cityName = jsonDecode(data)['name'];
+      print(cityName);
     } else {
       print(response.statusCode);
     }
