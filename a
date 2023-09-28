@@ -3,7 +3,7 @@
 
 
 
-git checkout -b 151.-Updating-the-Weather-with-the-WeatherModel
+git checkout -b 152.-Refactoring-the-Location-Methods
 git add .
-git commit -m "151.-Updating-the-Weather-with-the-WeatherModel"
-git push -u origin 151.-Updating-the-Weather-with-the-WeatherModel
+git commit -m "152.-Refactoring-the-Location-Methods"
+git push -u origin 152.-Refactoring-the-Location-Methods
