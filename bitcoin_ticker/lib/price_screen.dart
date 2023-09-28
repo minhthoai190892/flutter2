@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, avoid_print, sort_child_properties_last
 
 import 'package:bitcoin_ticker/coin_data.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +12,29 @@ class PriceScreen extends StatefulWidget {
 
 class _PriceScreenState extends State<PriceScreen> {
   String? selectCurrent = 'USD';
+  List<DropdownMenuItem<String>> getDropdownItems() {
+    List<DropdownMenuItem<String>> dropDownItems = [];
+    // for (var i = 0; i < currenciesList.length; i++) {
+    //   String currency = currenciesList[i];
+    //   var newItem = DropdownMenuItem(
+    //     child: Text(currency),
+    //     value: currency,
+    //   );
+    //   dropDownItems.add(newItem);
+    // }
+    for (String currency in currenciesList) {
+      var newItem = DropdownMenuItem(
+        child: Text(currency),
+        value: currency,
+      );
+      dropDownItems.add(newItem);
+    }
+    return dropDownItems;
+  }
+
   @override
   Widget build(BuildContext context) {
+    getDropdownItems();
     return Scaffold(
       appBar: AppBar(
         title: const Text('🤑 Coin Ticker'),
@@ -50,20 +71,7 @@ class _PriceScreenState extends State<PriceScreen> {
             color: Colors.lightBlue,
             child: DropdownButton<String>(
               value: selectCurrent,
-              items: const [
-                DropdownMenuItem(
-                  value: 'USD',
-                  child: Text('USD'),
-                ),
-                DropdownMenuItem(
-                  value: 'EUR',
-                  child: Text('EUR'),
-                ),
-                DropdownMenuItem(
-                  value: 'GPB',
-                  child: Text('GPB'),
-                ),
-              ],
+              items: getDropdownItems(),
               onChanged: (value) {
                 setState(() {
                   selectCurrent = value;
