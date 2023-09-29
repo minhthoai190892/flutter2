@@ -4,7 +4,7 @@
 
 
 
-git checkout -b 162.-Building-Platform-Specific-UI-iOS-And-Android
+git checkout -b bitcoin-ticker
 git add .
-git commit -m "162.-Building-Platform-Specific-UI-iOS-And-Android"
-git push -u origin 162.-Building-Platform-Specific-UI-iOS-And-Android
+git commit -m "bitcoin-ticker"
+git push -u origin bitcoin-ticker
