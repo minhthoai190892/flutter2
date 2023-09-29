@@ -4,7 +4,7 @@
 
 
 
-git checkout -b bitcoin-ticker
+git checkout -b 170.-Named-Routes-Challenge
 git add .
-git commit -m "bitcoin-ticker"
-git push -u origin bitcoin-ticker
+git commit -m "170.-Named-Routes-Challenge"
+git push -u origin 170.-Named-Routes-Challenge
