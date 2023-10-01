@@ -4,7 +4,7 @@
 
 
 
-git checkout -b firebase_authentication
+git checkout -b login_flutter_firebase
 git add .
-git commit -m "firebase_authentication"
-git push -u origin firebase_authentication
+git commit -m "login_flutter_firebase"
+git push -u origin login_flutter_firebase
