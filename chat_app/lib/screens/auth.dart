@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:chat_app/widgets/user_image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 final _firebase = FirebaseAuth.instance;
@@ -18,12 +21,15 @@ class _AuthScreenState extends State<AuthScreen> {
   var _isLogin = true; //true: đăng nhập - false: đăng ký
   var _enterEmail = '';
   var _enterPassword = '';
+  File? _selectedFile;
   void _submit() async {
     //
     final isValid = _formKey.currentState!.validate();
-    if (!isValid) {
+    if (!isValid || !_isLogin && _selectedFile == null) {
+      //show error message
       return;
     }
+
     _formKey.currentState!.save();
     try {
       if (_isLogin) {
@@ -35,7 +41,16 @@ class _AuthScreenState extends State<AuthScreen> {
         // create user
         var userCredentials = await _firebase.createUserWithEmailAndPassword(
             email: _enterEmail, password: _enterPassword);
-        print(userCredentials);
+        final storageRef = FirebaseStorage.instance
+            .ref()
+            .child('user_image')
+            .child('${userCredentials.user!.uid}.jpg');
+        //gọi hàm putFile của firebase storage
+        await storageRef.putFile(_selectedFile!);
+        //hàm tải hình ảnh từ firebase storage
+        final imageURL = await storageRef.getDownloadURL();
+        print(storageRef);
+        print(imageURL);
       }
     } on FirebaseAuthException catch (error) {
       if (error.code == 'email-already-in-use') {}
@@ -70,7 +85,12 @@ class _AuthScreenState extends State<AuthScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           //không đăng nhập
-                          if (!_isLogin) UserImagePicker(),
+                          if (!_isLogin)
+                            UserImagePicker(
+                              onPickImage: (pickedImage) {
+                                _selectedFile = pickedImage;
+                              },
+                            ),
 
                           TextFormField(
                             decoration: const InputDecoration(
