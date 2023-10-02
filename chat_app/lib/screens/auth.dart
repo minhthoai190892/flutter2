@@ -1,3 +1,4 @@
+import 'package:chat_app/widgets/user_image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   final _formKey = GlobalKey<FormState>();
-  var _isLogin = true;
+  var _isLogin = true; //true: đăng nhập - false: đăng ký
   var _enterEmail = '';
   var _enterPassword = '';
   void _submit() async {
@@ -68,6 +69,9 @@ class _AuthScreenState extends State<AuthScreen> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
+                          //không đăng nhập
+                          if (!_isLogin) UserImagePicker(),
+
                           TextFormField(
                             decoration: const InputDecoration(
                               labelText: 'Email Address',
