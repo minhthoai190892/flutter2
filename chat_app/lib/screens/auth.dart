@@ -24,6 +24,7 @@ class _AuthScreenState extends State<AuthScreen> {
   var _isLogin = true; //true: đăng nhập - false: đăng ký
   var _enterEmail = '';
   var _enterPassword = '';
+  var _enterUserName = '';
   var _isAuthenticating = false;
   File? _selectedFile;
   void _submit() async {
@@ -62,7 +63,7 @@ class _AuthScreenState extends State<AuthScreen> {
             .collection('users')
             .doc(userCredentials.user!.uid)
             .set({
-          'username': 'to be done...',
+          'username': _enterUserName,
           'email': _enterEmail,
           'image_url': imageURL
         });
@@ -136,19 +137,37 @@ class _AuthScreenState extends State<AuthScreen> {
                           ),
                           TextFormField(
                             decoration: const InputDecoration(
-                              labelText: 'Password',
+                              labelText: 'User Name',
                             ),
+                            enableSuggestions: false,
                             validator: (value) {
-                              if (value == null || value.trim().length < 6) {
-                                return 'Password must be at least 6 characters';
+                              if (value == null ||
+                                  value.trim().isEmpty ||
+                                  value.length < 4) {
+                                return 'Please enter a valid username (at least 4 characters).';
                               }
                               return null;
                             },
-                            obscureText: true,
                             onSaved: (newValue) {
-                              _enterPassword = newValue!;
+                              _enterUserName = newValue!;
                             },
                           ),
+                          if (!_isLogin)
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                labelText: 'Password',
+                              ),
+                              validator: (value) {
+                                if (value == null || value.trim().length < 6) {
+                                  return 'Password must be at least 6 characters';
+                                }
+                                return null;
+                              },
+                              obscureText: true,
+                              onSaved: (newValue) {
+                                _enterPassword = newValue!;
+                              },
+                            ),
                           const SizedBox(
                             height: 12,
                           ),
