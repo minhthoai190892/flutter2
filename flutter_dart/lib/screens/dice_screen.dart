@@ -7,6 +7,10 @@ class DiceScreen extends StatefulWidget {
   State<DiceScreen> createState() => _DiceScreenState();
 }
 
+void rollDice() {
+  
+}
+
 class _DiceScreenState extends State<DiceScreen> {
   @override
   Widget build(BuildContext context) {
@@ -16,9 +20,14 @@ class _DiceScreenState extends State<DiceScreen> {
       ),
       body: const SafeArea(
         child: Center(
-          child: Image(
-            width: 200,
-            image: AssetImage('assets/images/dice-1.png'),
+          child: Column(
+            children: [
+              Image(
+                width: 200,
+                image: AssetImage('assets/images/dice-1.png'),
+              ),
+              TextButton(onPressed: rollDice, child: Text('Roll Dice'))
+            ],
           ),
         ),
       ),
