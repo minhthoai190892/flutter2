@@ -30,25 +30,30 @@ class _QuestionScreenState extends State<QuestionScreen> {
             end: Alignment.bottomRight,
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              currentQuestion.text,
-              style: const TextStyle(color: Colors.white),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            ...currentQuestion.answers.map(
-              (answer) {
-                return AnswerButton(
-                  answerText: answer,
-                  onPressed: () {},
-                );
-              },
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(40.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                currentQuestion.text,
+                style: const TextStyle(color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              ...currentQuestion.answers.map(
+                (answer) {
+                  return AnswerButton(
+                    answerText: answer,
+                    onPressed: () {},
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
