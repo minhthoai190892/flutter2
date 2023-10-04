@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dart/descriptions/cham_hoi_descriptions.dart';
 import 'package:flutter_dart/descriptions/const_descriptions.dart';
+import 'package:flutter_dart/descriptions/stateful_widget_descriptions.dart';
+import 'package:flutter_dart/descriptions/stateless_widget_descriptions.dart';
 import 'package:flutter_dart/screens/dice_screen.dart';
+import 'package:flutter_dart/screens/quiz_screen.dart';
 import 'package:flutter_dart/widgets/card_widget.dart';
 import 'package:flutter_dart/widgets/drawer_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -111,6 +114,17 @@ class MyHomePage extends StatelessWidget {
                             ));
                       },
                     ),
+                    DrawerMenuItems(
+                      title: 'Qiz',
+                      iconData: FontAwesomeIcons.question,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const QuizScreen(),
+                            ));
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -131,14 +145,32 @@ class MyHomePage extends StatelessWidget {
                 children: [
                   CardWidget(
                     title: 'Const',
+                    fontSize: 25,
                     onTap: () {
                       ConstDescription.constDescription(context);
                     },
                   ),
                   CardWidget(
+                    fontSize: 25,
                     title: '?',
                     onTap: () {
                       QuestionMarkDescription.questionMarkDescription(context);
+                    },
+                  ),
+                  CardWidget(
+                    title: 'Stateless Widgets',
+                    fontSize: 18,
+                    onTap: () {
+                      StatelessWidgetDescription.statelessWidgetDescription(
+                          context);
+                    },
+                  ),
+                  CardWidget(
+                    title: 'Stateful Widgets',
+                    fontSize: 18,
+                    onTap: () {
+                      StatefulWidgetDescription.statefulWidgetDescription(
+                          context);
                     },
                   ),
                 ],
