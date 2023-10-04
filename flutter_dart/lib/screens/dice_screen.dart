@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class DiceScreen extends StatefulWidget {
@@ -7,26 +9,40 @@ class DiceScreen extends StatefulWidget {
   State<DiceScreen> createState() => _DiceScreenState();
 }
 
-void rollDice() {
-  
-}
-
 class _DiceScreenState extends State<DiceScreen> {
+  var rollDiceImage = 3;
+  void rollDice() {
+    var diceRollNumber = Random().nextInt(6) + 1;
+    setState(() {
+      rollDiceImage = diceRollNumber;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dice Screen'),
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image(
                 width: 200,
-                image: AssetImage('assets/images/dice-1.png'),
+                image: AssetImage('assets/images/dice-$rollDiceImage.png'),
               ),
-              TextButton(onPressed: rollDice, child: Text('Roll Dice'))
+              const SizedBox(
+                height: 20,
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                    foregroundColor: Colors.red,
+                    textStyle: const TextStyle(fontSize: 28)),
+                onPressed: rollDice,
+                child: const Text('Roll Dice'),
+              ),
             ],
           ),
         ),
