@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dart/screens/quiz_app/question_screen.dart';
 
 class QuizScreen extends StatelessWidget {
   const QuizScreen({super.key});
@@ -25,9 +26,12 @@ class QuizScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Image(
-                image: AssetImage('assets/images/quiz-logo.png'),
-                width: 300,
+              const Opacity(
+                opacity: 0.5,
+                child: Image(
+                  image: AssetImage('assets/images/quiz-logo.png'),
+                  width: 300,
+                ),
               ),
               const SizedBox(
                 height: 80,
@@ -44,7 +48,14 @@ class QuizScreen extends StatelessWidget {
                 style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.white,
                     side: const BorderSide(width: 0.0)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const QuestionScreen(),
+                    ),
+                  );
+                },
                 label: const Text('Start Quiz'),
               ),
             ],

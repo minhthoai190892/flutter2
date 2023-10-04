@@ -4,7 +4,7 @@ import 'package:flutter_dart/descriptions/const_descriptions.dart';
 import 'package:flutter_dart/descriptions/stateful_widget_descriptions.dart';
 import 'package:flutter_dart/descriptions/stateless_widget_descriptions.dart';
 import 'package:flutter_dart/screens/dice_screen.dart';
-import 'package:flutter_dart/screens/quiz_screen.dart';
+import 'package:flutter_dart/screens/quiz_app/quiz_screen.dart';
 import 'package:flutter_dart/widgets/card_widget.dart';
 import 'package:flutter_dart/widgets/drawer_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
