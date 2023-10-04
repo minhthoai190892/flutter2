@@ -10,28 +10,46 @@ class QuizScreen extends StatelessWidget {
         title: const Text('Quiz App'),
         backgroundColor: const Color.fromARGB(255, 92, 7, 107),
       ),
-      backgroundColor: const Color.fromARGB(255, 92, 7, 107),
-      body: Column(
-        children: [
-          const Image(
-            image: AssetImage('assets/images/quiz-logo.png'),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 108, 51, 207),
+              Color.fromARGB(255, 69, 20, 153),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-          const SizedBox(
-            height: 10,
+        ),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Image(
+                image: AssetImage('assets/images/quiz-logo.png'),
+                width: 300,
+              ),
+              const SizedBox(
+                height: 80,
+              ),
+              const Text(
+                'Learn Flutter the fun way!',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              OutlinedButton.icon(
+                icon: const Icon(Icons.arrow_right_alt),
+                style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    side: const BorderSide(width: 0.0)),
+                onPressed: () {},
+                label: const Text('Start Quiz'),
+              ),
+            ],
           ),
-          const Text(
-            'Learn Flutter the fun way!',
-            style: TextStyle(color: Colors.white, fontSize: 25),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 73, 5, 85),
-            ),
-            onPressed: () {},
-            child:
-                const Text('Start Quiz', style: TextStyle(color: Colors.white)),
-          ),
-        ],
+        ),
       ),
     );
   }
