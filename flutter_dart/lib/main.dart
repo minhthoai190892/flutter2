@@ -173,6 +173,22 @@ class MyHomePage extends StatelessWidget {
                           context);
                     },
                   ),
+                  CardWidget(
+                    title: 'map()',
+                    fontSize: 18,
+                    onTap: () {
+                      StatefulWidgetDescription.statefulWidgetDescription(
+                          context);
+                    },
+                  ),
+                  CardWidget(
+                    title: '...',
+                    fontSize: 18,
+                    onTap: () {
+                      StatefulWidgetDescription.statefulWidgetDescription(
+                          context);
+                    },
+                  ),
                 ],
               ),
             ),

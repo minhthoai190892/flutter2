@@ -8,6 +8,7 @@ final questions = [
         'Components',
         'Blocks',
         'Functions',
+        'Bloc',
       ]),
   QuizQuestion(text: 'How are Flutter UIs built?', answers: [
     'By combining widgets in code',

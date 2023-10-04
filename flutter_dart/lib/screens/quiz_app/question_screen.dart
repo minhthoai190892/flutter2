@@ -11,9 +11,13 @@ class QuestionScreen extends StatefulWidget {
 
 class _QuestionScreenState extends State<QuestionScreen> {
   final currentQuestion = questions[0]; //lấy câu hỏi đầu tiên trong danh sách
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Question Screen'),
+      ),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -36,21 +40,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
             const SizedBox(
               height: 30,
             ),
-            AnswerButton(
-              answerText: currentQuestion.answers[0],
-              onPressed: () {},
-            ),
-            AnswerButton(
-              answerText: currentQuestion.answers[1],
-              onPressed: () {},
-            ),
-            AnswerButton(
-              answerText: currentQuestion.answers[2],
-              onPressed: () {},
-            ),
-            AnswerButton(
-              answerText: currentQuestion.answers[3],
-              onPressed: () {},
+            ...currentQuestion.answers.map(
+              (answer) {
+                return AnswerButton(
+                  answerText: answer,
+                  onPressed: () {},
+                );
+              },
             ),
           ],
         ),
