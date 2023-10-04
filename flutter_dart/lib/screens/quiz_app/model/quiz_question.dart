@@ -6,4 +6,11 @@ class QuizQuestion {
     required this.text,
     required this.answers,
   });
+  List<String> getShuffledAnswer() {
+    //tạo một mảng mới với mảng đã có
+    final shuffledAnswer = List.of(answers);
+    // bắt đầu xáo trộn
+    shuffledAnswer.shuffle();
+    return shuffledAnswer;
+  }
 }

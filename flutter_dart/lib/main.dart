@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dart/descriptions/cham_hoi_descriptions.dart';
 import 'package:flutter_dart/descriptions/const_descriptions.dart';
+import 'package:flutter_dart/descriptions/dau_ba_cham_descriptions.dart';
+import 'package:flutter_dart/descriptions/map_descriptions.dart';
 import 'package:flutter_dart/descriptions/stateful_widget_descriptions.dart';
 import 'package:flutter_dart/descriptions/stateless_widget_descriptions.dart';
 import 'package:flutter_dart/screens/dice_screen.dart';
@@ -177,16 +179,14 @@ class MyHomePage extends StatelessWidget {
                     title: 'map()',
                     fontSize: 18,
                     onTap: () {
-                      StatefulWidgetDescription.statefulWidgetDescription(
-                          context);
+                      MapDescription.mapDescription(context);
                     },
                   ),
                   CardWidget(
                     title: '...',
                     fontSize: 18,
                     onTap: () {
-                      StatefulWidgetDescription.statefulWidgetDescription(
-                          context);
+                      DauBaChamDescription.dauBaChamDescription(context);
                     },
                   ),
                 ],

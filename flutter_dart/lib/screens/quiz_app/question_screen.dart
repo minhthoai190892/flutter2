@@ -10,10 +10,18 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
-  final currentQuestion = questions[0]; //lấy câu hỏi đầu tiên trong danh sách
+  var currentQuestionIndex = 0;
+  void answerQuestion() {
+    setState(() {
+      currentQuestionIndex++;
+      print(currentQuestionIndex);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    final currentQuestion = questions[
+        currentQuestionIndex]; //lấy đối tượng đầu tiên trong danh sách
     return Scaffold(
       appBar: AppBar(
         title: const Text('Question Screen'),
@@ -44,11 +52,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
               const SizedBox(
                 height: 30,
               ),
-              ...currentQuestion.answers.map(
+              ...currentQuestion.getShuffledAnswer().map(
                 (answer) {
                   return AnswerButton(
                     answerText: answer,
-                    onPressed: () {},
+                    onPressed: answerQuestion,
                   );
                 },
               ),
