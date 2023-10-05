@@ -1,8 +1,55 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_dart/screens/quiz_app/question_screen.dart';
+import 'package:flutter_dart/screens/quiz_app/data/questions.dart';
 
-class QuizScreen extends StatelessWidget {
-  const QuizScreen({super.key});
+import 'package:flutter_dart/screens/quiz_app/question_screen.dart';
+import 'package:flutter_dart/screens/quiz_app/result_screen.dart';
+
+class QuizScreen extends StatefulWidget {
+  const QuizScreen({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<QuizScreen> createState() => _QuizScreenState();
+}
+
+class _QuizScreenState extends State<QuizScreen> {
+  //tạo mảng mới để chứa kết quả
+  List<String> selectedAnswers = [];
+  void restarQuiz() { 
+    setState(() {
+      selectedAnswers = [];
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => QuestionScreen(onSelectAnswer: chooseAnswers),
+          ));
+    });
+  }
+
+  void chooseAnswers(String answer) {
+    selectedAnswers.add(answer);
+    if (selectedAnswers.length == questions.length) {
+      setState(() {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ResultScreen(
+                  chosenAnsers: selectedAnswers, onRestart: restarQuiz),
+            ));
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    for (var i = 0; i < selectedAnswers.length; i++) {
+      print(selectedAnswers[i]);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +96,13 @@ class QuizScreen extends StatelessWidget {
                     foregroundColor: Colors.white,
                     side: const BorderSide(width: 0.0)),
                 onPressed: () {
+                  //chuyển đến trang QuestionScreen
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const QuestionScreen(),
+                      builder: (context) => QuestionScreen(
+                        onSelectAnswer: chooseAnswers,
+                      ),
                     ),
                   );
                 },

@@ -1,9 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'package:flutter_dart/screens/quiz_app/data/questions.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key});
+  const QuestionScreen({
+    Key? key,
+    required this.onSelectAnswer,
+  }) : super(key: key);
+  final void Function(String answer) onSelectAnswer;
 
   @override
   State<QuestionScreen> createState() => _QuestionScreenState();
@@ -11,10 +17,10 @@ class QuestionScreen extends StatefulWidget {
 
 class _QuestionScreenState extends State<QuestionScreen> {
   var currentQuestionIndex = 0;
-  void answerQuestion() {
+  void answerQuestion(String selectedAnswer) {
+    widget.onSelectAnswer(selectedAnswer);
     setState(() {
       currentQuestionIndex++;
-      print(currentQuestionIndex);
     });
   }
 
@@ -46,7 +52,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
             children: [
               Text(
                 currentQuestion.text,
-                style: const TextStyle(color: Colors.white),
+                // style: const TextStyle(color: Colors.white),
+                style: GoogleFonts.lato(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
@@ -56,7 +66,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 (answer) {
                   return AnswerButton(
                     answerText: answer,
-                    onPressed: answerQuestion,
+                    onPressed: () {
+                      answerQuestion(answer);
+                    },
                   );
                 },
               ),
@@ -84,7 +96,10 @@ class AnswerButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
           backgroundColor: const Color.fromARGB(255, 33, 1, 95),
           foregroundColor: Colors.white),
-      child: Text(answerText),
+      child: Text(
+        answerText,
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
