@@ -25,11 +25,11 @@ class ExpenseItem extends StatelessWidget {
                 const Spacer(), //dùng để chiếm hết khoảng trống ở giữa 2 văn bản
                 Row(
                   children: [
-                    const Icon(Icons.alarm),
+                     Icon(categoryIcon[expense.category]),
                     const SizedBox(
                       width: 8,
                     ),
-                    Text(expense.date.toString())
+                    Text(expense.formatDate)
                   ],
                 )
               ],
