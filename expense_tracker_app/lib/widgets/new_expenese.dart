@@ -1,10 +1,14 @@
-import 'package:expense_tracker_app/model/expenese.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
+import 'package:expense_tracker_app/model/expenese.dart';
 
 class NewExpenese extends StatefulWidget {
-  const NewExpenese({super.key});
-
+  const NewExpenese({
+    Key? key,
+    required this.onAddExpenese,
+  }) : super(key: key);
+  final void Function(Expense expense) onAddExpenese;
   @override
   State<NewExpenese> createState() => _NewExpeneseState();
 }
@@ -27,6 +31,36 @@ class _NewExpeneseState extends State<NewExpenese> {
     setState(() {
       _selectedDate = pickedDate;
     });
+  }
+
+  void _submitExpenseData() {
+    final enterAmount = double.tryParse(_amountController.text);
+    final amountIsValid = enterAmount == null || enterAmount <= 0;
+    if (_titleController.text.trim().isEmpty ||
+        amountIsValid ||
+        _selectedDate == null) {
+      //error message
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Invalid input'),
+          content: const Text(
+              'Please enter a valid title, amount, date and catory was entered'),
+          actions: [
+            TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Okay'))
+          ],
+        ),
+      );
+      return;
+    }
+    widget.onAddExpenese(Expense(
+      title: _titleController.text,
+      amount: enterAmount,
+      date: _selectedDate!,
+      category: _selectedCategory,
+    ));
   }
 
   @override
@@ -111,10 +145,7 @@ class _NewExpeneseState extends State<NewExpenese> {
                 child: const Text('Cancel'),
               ),
               ElevatedButton(
-                  onPressed: () {
-                    print(_titleController);
-                    print(_amountController);
-                  },
+                  onPressed: _submitExpenseData,
                   child: const Text('Save expense'))
             ],
           )

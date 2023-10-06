@@ -11,4 +11,9 @@ final expensesData = [
       amount: 20.99,
       date: DateTime.now(),
       category: Category.leisure),
+  Expense(
+      title: 'Work',
+      amount: 20.99,
+      date: DateTime.now(),
+      category: Category.work),
 ];

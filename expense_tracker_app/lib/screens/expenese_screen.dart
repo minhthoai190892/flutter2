@@ -1,4 +1,5 @@
 import 'package:expense_tracker_app/data/expenese_data.dart';
+import 'package:expense_tracker_app/model/expenese.dart';
 import 'package:expense_tracker_app/widgets/expenese_list/expenese_list.dart';
 import 'package:expense_tracker_app/widgets/new_expenese.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +12,18 @@ class Expenses extends StatefulWidget {
 }
 
 class _ExpensesState extends State<Expenses> {
-  var data = expensesData;
+  final _registeredExpense = expensesData;
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
       context: context,
-      builder: (context) => const NewExpenese(),
+      builder: (context) => NewExpenese(onAddExpenese: _addExpense),
     );
+  }
+
+  void _addExpense(Expense expense) {
+    setState(() {
+      _registeredExpense.add(expense);
+    });
   }
 
   @override
@@ -35,7 +42,7 @@ class _ExpensesState extends State<Expenses> {
         child: Column(
           children: [
             const Text('The Chart'),
-            Expanded(child: ExpensesList(expenses: expensesData)),
+            Expanded(child: ExpensesList(expenses: _registeredExpense)),
           ],
         ),
       ),
