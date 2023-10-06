@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dart/descriptions/cham_hoi_descriptions.dart';
 import 'package:flutter_dart/descriptions/const_descriptions.dart';
+import 'package:flutter_dart/descriptions/dau_ba_cham_descriptions.dart';
+import 'package:flutter_dart/descriptions/map_descriptions.dart';
+import 'package:flutter_dart/descriptions/stateful_widget_descriptions.dart';
+import 'package:flutter_dart/descriptions/stateless_widget_descriptions.dart';
 import 'package:flutter_dart/screens/dice_screen.dart';
+import 'package:flutter_dart/screens/quiz_app/quiz_screen.dart';
 import 'package:flutter_dart/widgets/card_widget.dart';
 import 'package:flutter_dart/widgets/drawer_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,21 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
+       
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -111,6 +102,17 @@ class MyHomePage extends StatelessWidget {
                             ));
                       },
                     ),
+                    DrawerMenuItems(
+                      title: 'Qiz',
+                      iconData: FontAwesomeIcons.question,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const QuizScreen(),
+                            ));
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -131,14 +133,46 @@ class MyHomePage extends StatelessWidget {
                 children: [
                   CardWidget(
                     title: 'Const',
+                    fontSize: 25,
                     onTap: () {
                       ConstDescription.constDescription(context);
                     },
                   ),
                   CardWidget(
+                    fontSize: 25,
                     title: '?',
                     onTap: () {
                       QuestionMarkDescription.questionMarkDescription(context);
+                    },
+                  ),
+                  CardWidget(
+                    title: 'Stateless Widgets',
+                    fontSize: 18,
+                    onTap: () {
+                      StatelessWidgetDescription.statelessWidgetDescription(
+                          context);
+                    },
+                  ),
+                  CardWidget(
+                    title: 'Stateful Widgets',
+                    fontSize: 18,
+                    onTap: () {
+                      StatefulWidgetDescription.statefulWidgetDescription(
+                          context);
+                    },
+                  ),
+                  CardWidget(
+                    title: 'map()',
+                    fontSize: 18,
+                    onTap: () {
+                      MapDescription.mapDescription(context);
+                    },
+                  ),
+                  CardWidget(
+                    title: '...',
+                    fontSize: 18,
+                    onTap: () {
+                      DauBaChamDescription.dauBaChamDescription(context);
                     },
                   ),
                 ],

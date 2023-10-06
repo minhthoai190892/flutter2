@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
-
 class CardWidget extends StatelessWidget {
   const CardWidget({
     super.key,
     required this.title,
     required this.onTap,
+    this.fontSize,
   });
+  final double? fontSize;
   final String title;
   final Function() onTap;
   @override
   Widget build(BuildContext context) {
-    List<Color> a = [Colors.red, Colors.blue];
+    List<Color> a = [
+      const Color.fromARGB(255, 121, 101, 99),
+      const Color.fromARGB(255, 62, 84, 102)
+    ];
     return Card(
       child: InkWell(
         onTap: onTap,
@@ -31,10 +35,10 @@ class CardWidget extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
-                  fontSize: 25,
+                  fontSize: fontSize,
                 ),
               ),
             ],
