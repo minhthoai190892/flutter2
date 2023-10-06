@@ -10,10 +10,10 @@ class NewExpenese extends StatefulWidget {
 }
 
 class _NewExpeneseState extends State<NewExpenese> {
-  
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime? _selectedDate;
+  Category _selectedCategory = Category.food;
   void _presentDataPicker() async {
     final now = DateTime.now();
     final firstDate = DateTime(now.year - 1, now.month, now.day);
@@ -67,7 +67,9 @@ class _NewExpeneseState extends State<NewExpenese> {
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                   Text(_selectedDate==null?"No date selected": format.format(_selectedDate!)),
+                  Text(_selectedDate == null
+                      ? "No date selected"
+                      : format.format(_selectedDate!)),
                   IconButton(
                       onPressed: _presentDataPicker,
                       icon: const Icon(Icons.calendar_month))
@@ -75,8 +77,33 @@ class _NewExpeneseState extends State<NewExpenese> {
               ))
             ],
           ),
+          const SizedBox(
+            height: 10,
+          ),
           Row(
             children: [
+              DropdownButton(
+                value: _selectedCategory,
+                items: Category.values
+                    .map(
+                      (category) => DropdownMenuItem(
+                        value: category,
+                        child: Text(
+                          category.name.toUpperCase(),
+                        ),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (value) {
+                  if (value == null) {
+                    return;
+                  }
+                  setState(() {
+                    _selectedCategory = value;
+                  });
+                },
+              ),
+              const Spacer(),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
