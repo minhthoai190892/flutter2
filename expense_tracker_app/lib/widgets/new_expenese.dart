@@ -55,12 +55,14 @@ class _NewExpeneseState extends State<NewExpenese> {
       );
       return;
     }
+    //save expense information
     widget.onAddExpenese(Expense(
       title: _titleController.text,
       amount: enterAmount,
       date: _selectedDate!,
       category: _selectedCategory,
     ));
+    Navigator.pop(context);
   }
 
   @override
@@ -74,7 +76,7 @@ class _NewExpeneseState extends State<NewExpenese> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
       child: Column(
         children: [
           TextField(
