@@ -1,12 +1,21 @@
 import 'package:expense_tracker_app/screens/expenese_screen.dart';
 import 'package:expense_tracker_app/screens/test.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 var kColorScheme =
     ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 168, 46, 199));
 var kDarkColorScheme =
     ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 5, 99, 125));
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((value) => {
+        // runApp(
+        //   const MyApp(),
+        // ),
+      });
   runApp(const MyApp());
 }
 
