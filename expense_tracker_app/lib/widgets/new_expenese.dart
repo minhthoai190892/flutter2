@@ -125,6 +125,7 @@ class _NewExpeneseState extends State<NewExpenese> {
                 children: [
                   DropdownButton(
                     value: _selectedCategory,
+                    //map category
                     items: Category.values
                         .map(
                           (category) => DropdownMenuItem(
