@@ -1,5 +1,6 @@
 import 'package:expense_tracker_app/data/expenese_data.dart';
 import 'package:expense_tracker_app/model/expenese.dart';
+import 'package:expense_tracker_app/widgets/chart/chart.dart';
 import 'package:expense_tracker_app/widgets/expenese_list/expenese_list.dart';
 import 'package:expense_tracker_app/widgets/new_expenese.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class _ExpensesState extends State<Expenses> {
   final _registeredExpense = expensesData;
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
+      useSafeArea: true,
       context: context,
       builder: (context) => NewExpenese(onAddExpenese: _addExpense),
       //đặt chiều cao của bottom sheet
@@ -52,6 +54,8 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    print(MediaQuery.of(context).size.height);
     Widget mainConten = const Center(
       child: Text('No expense found. Start adding some!'),
     );
@@ -69,16 +73,23 @@ class _ExpensesState extends State<Expenses> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const Text('The Chart'),
-            Expanded(
-              child: mainConten,
+      body: width < 600
+          ? Column(
+              children: [
+                Chart(expenses: _registeredExpense),
+                Expanded(
+                  child: mainConten,
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(child: Chart(expenses: _registeredExpense)),
+                Expanded(
+                  child: mainConten,
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
     );
   }
 }

@@ -15,8 +15,12 @@ class ExpenseItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(expense.title),
+            Text(
+              expense.title,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             Row(
               children: [
                 Text(
@@ -25,7 +29,7 @@ class ExpenseItem extends StatelessWidget {
                 const Spacer(), //dùng để chiếm hết khoảng trống ở giữa 2 văn bản
                 Row(
                   children: [
-                     Icon(categoryIcon[expense.category]),
+                    Icon(categoryIcons[expense.category]),
                     const SizedBox(
                       width: 8,
                     ),

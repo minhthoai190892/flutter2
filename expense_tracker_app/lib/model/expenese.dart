@@ -10,7 +10,7 @@ final format = DateFormat.yMd();
 
 enum Category { food, travel, leisure, work }
 
-const categoryIcon = {
+const categoryIcons = {
   Category.food: Icons.restaurant,
   Category.travel: Icons.local_florist,
   Category.leisure: Icons.movie,
@@ -31,5 +31,27 @@ class Expense {
   }) : id = uuid.v4(); //=>tính năng danh sách khởi tạo
   String get formatDate {
     return format.format(date);
+  }
+}
+
+class ExpenseBucket {
+  final Category category;
+  final List<Expense> expenses;
+  ExpenseBucket({
+    required this.category,
+    required this.expenses,
+  });
+  //hàm lọc category
+  ExpenseBucket.forCategory(List<Expense> allExpenses, this.category)
+      : expenses = allExpenses
+            .where((expense) => expense.category == category)
+            .toList();
+
+  double get totalExpenses {
+    double sum = 0;
+    for (var expense in expenses) {
+      sum += expense.amount;
+    }
+    return sum;
   }
 }
