@@ -8,7 +8,6 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pick your category'),
@@ -21,8 +20,8 @@ class CategoriesScreen extends StatelessWidget {
             crossAxisSpacing: 20, //khoảng cách
             mainAxisSpacing: 20, //khoảng cách
           ),
+          // children:availableCategories.map((category) => CategoryGridItem(category: category)).toList()
           children: [
-
             for (final category in availableCategories)
               CategoryGridItem(category: category),
           ],
