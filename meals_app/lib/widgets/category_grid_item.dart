@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print
 import 'package:flutter/material.dart';
 
 import 'package:meals_app/model/category.dart';
@@ -13,6 +13,7 @@ class CategoryGridItem extends StatelessWidget {
   final void Function() onSelectCategory;
   @override
   Widget build(BuildContext context) {
+    print('CategoryGridItem');
     return InkWell(
       onTap: onSelectCategory,
       splashColor: Theme.of(context).primaryColor,

@@ -4,3 +4,4 @@ main
             MealsScreen
                 MealItem
                     MealItemTrait
+                    MealDetailScreen

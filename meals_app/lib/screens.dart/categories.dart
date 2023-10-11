@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:meals_app/data/dummy_data.dart';
 import 'package:meals_app/model/category.dart';
@@ -22,6 +24,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('CategoriesScreen');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pick your category'),
