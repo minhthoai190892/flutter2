@@ -5,6 +5,7 @@ import 'package:meals_app/data/dummy_data.dart';
 import 'package:meals_app/model/category.dart';
 
 import 'package:meals_app/screens.dart/meals.dart';
+import 'package:meals_app/screens.dart/tabs.dart';
 import 'package:meals_app/widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -25,30 +26,23 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('CategoriesScreen');
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pick your category'),
+    return GridView(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, // số cột
+        childAspectRatio: 3 / 2, //tỷ lệ khung hình từ trên xuống
+        crossAxisSpacing: 20, //khoảng cách
+        mainAxisSpacing: 20, //khoảng cách
       ),
-      body: SafeArea(
-        child: GridView(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // số cột
-            childAspectRatio: 3 / 2, //tỷ lệ khung hình từ trên xuống
-            crossAxisSpacing: 20, //khoảng cách
-            mainAxisSpacing: 20, //khoảng cách
+      // children:availableCategories.map((category) => CategoryGridItem(category: category)).toList()
+      children: [
+        for (final category in availableCategories)
+          CategoryGridItem(
+            category: category,
+            onSelectCategory: () {
+              _selectCategory(context, category);
+            },
           ),
-          // children:availableCategories.map((category) => CategoryGridItem(category: category)).toList()
-          children: [
-            for (final category in availableCategories)
-              CategoryGridItem(
-                category: category,
-                onSelectCategory: () {
-                  _selectCategory(context, category);
-                },
-              ),
-          ],
-        ),
-      ),
+      ],
     );
   }
 }
