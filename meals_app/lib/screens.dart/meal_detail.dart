@@ -1,19 +1,20 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:meals_app/main.dart';
 import 'package:meals_app/model/meal.dart';
+import 'package:meals_app/providers/favorites_provider.dart';
 
-class MealDetailScreen extends StatelessWidget {
+class MealDetailScreen extends ConsumerWidget {
   const MealDetailScreen({
     Key? key,
     required this.meal,
-    required this.onToggleFavorite,
   }) : super(key: key);
   final Meal meal;
-  final void Function(Meal meal) onToggleFavorite;
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     print('MealDetailScreen');
     final kTextLabelLarge = Theme.of(context).textTheme.labelLarge!.copyWith(
         color: Theme.of(context).colorScheme.primary,
@@ -26,9 +27,21 @@ class MealDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(meal.title),
-        actions: [IconButton(onPressed: () {
-          onToggleFavorite(meal);
-        }, icon: const Icon(Icons.star))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                final wasAdded = ref  
+                    .read(favoriteMealsProvider.notifier)
+                    .toggleMealFavoriteStatus(meal);
+                ScaffoldMessenger.of(context).clearSnackBars();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(wasAdded?'Meal added a favorite':'Meal removed.'),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.star))
+        ],
       ),
       body: SafeArea(
           child: SingleChildScrollView(
