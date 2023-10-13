@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:meals_app/main.dart';
 import 'package:meals_app/model/meal.dart';
 import 'package:meals_app/providers/favorites_provider.dart';
 
@@ -24,23 +23,28 @@ class MealDetailScreen extends ConsumerWidget {
         .textTheme
         .bodyMedium!
         .copyWith(color: Theme.of(context).colorScheme.onBackground);
+    final favoriteMeals = ref.watch(favoriteMealsProvider);
+    final isFavorite = favoriteMeals.contains(meal);
+
+
     return Scaffold(
       appBar: AppBar(
         title: Text(meal.title),
         actions: [
           IconButton(
               onPressed: () {
-                final wasAdded = ref  
+                final wasAdded = ref
                     .read(favoriteMealsProvider.notifier)
                     .toggleMealFavoriteStatus(meal);
                 ScaffoldMessenger.of(context).clearSnackBars();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(wasAdded?'Meal added a favorite':'Meal removed.'),
+                    content: Text(
+                        wasAdded ? 'Meal added a favorite' : 'Meal removed.'),
                   ),
                 );
               },
-              icon: const Icon(Icons.star))
+              icon:  Icon(isFavorite? Icons.star:Icons.star_border))
         ],
       ),
       body: SafeArea(
