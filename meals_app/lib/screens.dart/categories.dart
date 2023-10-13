@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: avoid_print
 
+
+
 import 'package:flutter/material.dart';
 
 import 'package:meals_app/data/dummy_data.dart';
@@ -34,8 +36,12 @@ class _CategoriesScreenState extends State<CategoriesScreen>
       ),
       lowerBound: 0,
       upperBound: 1,
+
     );
+    //bắt đầu hoạt ảnh
+    _animationController.forward();
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -61,23 +67,30 @@ class _CategoriesScreenState extends State<CategoriesScreen>
   @override
   Widget build(BuildContext context) {
     print('CategoriesScreen');
-    return GridView(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, // số cột
-        childAspectRatio: 3 / 2, //tỷ lệ khung hình từ trên xuống
-        crossAxisSpacing: 20, //khoảng cách
-        mainAxisSpacing: 20, //khoảng cách
+    return AnimatedBuilder(
+      animation: _animationController,
+      child: GridView(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, // số cột
+          childAspectRatio: 3 / 2, //tỷ lệ khung hình từ trên xuống
+          crossAxisSpacing: 20, //khoảng cách
+          mainAxisSpacing: 20, //khoảng cách
+        ),
+        // children:availableCategories.map((category) => CategoryGridItem(category: category)).toList()
+        children: [
+          for (final category in availableCategories)
+            CategoryGridItem(
+              category: category,
+              onSelectCategory: () {
+                _selectCategory(context, category);
+              },
+            ),
+        ],
       ),
-      // children:availableCategories.map((category) => CategoryGridItem(category: category)).toList()
-      children: [
-        for (final category in availableCategories)
-          CategoryGridItem(
-            category: category,
-            onSelectCategory: () {
-              _selectCategory(context, category);
-            },
-          ),
-      ],
+      builder: (context, child) => Padding(
+        padding: EdgeInsets.only(top:100- _animationController.value*100  ),
+        child: child,
+      ),
     );
   }
 }
