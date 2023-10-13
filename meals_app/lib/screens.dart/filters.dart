@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:meals_app/screens.dart/tabs.dart';
-import 'package:meals_app/widgets/main_drawer.dart';
 
 enum Filter {
   glutenFree,
