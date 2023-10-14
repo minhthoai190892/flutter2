@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: avoid_print
 
-
-
 import 'package:flutter/material.dart';
 
 import 'package:meals_app/data/dummy_data.dart';
@@ -36,7 +34,6 @@ class _CategoriesScreenState extends State<CategoriesScreen>
       ),
       lowerBound: 0,
       upperBound: 1,
-
     );
     //bắt đầu hoạt ảnh
     _animationController.forward();
@@ -87,8 +84,12 @@ class _CategoriesScreenState extends State<CategoriesScreen>
             ),
         ],
       ),
-      builder: (context, child) => Padding(
-        padding: EdgeInsets.only(top:100- _animationController.value*100  ),
+      builder: (context, child) => SlideTransition(
+        position: Tween(
+          begin: const Offset(0, 0.3),
+          end: const Offset(0, 0),
+        ).animate(CurvedAnimation(
+            parent: _animationController, curve: Curves.easeIn)),
         child: child,
       ),
     );
