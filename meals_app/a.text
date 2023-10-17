@@ -1,0 +1,7 @@
+main
+    CategoriesScreen
+        CategoryGridItem (hiển thị danh sách category)
+            MealsScreen
+                MealItem
+                    MealItemTrait
+                    MealDetailScreen
