@@ -21,14 +21,13 @@ class _NewItemState extends State<NewItem> {
     var selectCategory = categories[Categories.carbs]!;
     final keyForm = GlobalKey<FormState>();
 
-    void saveItem() {
+    void saveItem() async {
       if (keyForm.currentState!.validate()) {
         //lưu các giá trị người dùng nhập
         keyForm.currentState!.save();
-        final url = Uri.https(
-            'flutter-prep-6f6b9-default-rtdb.firebaseio.com',
+        final url = Uri.https('flutter-prep-6f6b9-default-rtdb.firebaseio.com',
             'shopping-list.json');
-        http.post(
+        final response = await http.post(
           url,
           headers: {
             // kiểu dữ liệu định dạng cho firebase
@@ -44,6 +43,12 @@ class _NewItemState extends State<NewItem> {
             },
           ),
         );
+        print(response.body);
+        print(response.statusCode);
+        if (!context.mounted) {
+          return;
+        }
+        Navigator.pop(context);
         // //Trả về dữ liệu trang đã gọi
         // Navigator.pop(
         //   context,
