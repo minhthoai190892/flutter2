@@ -14,53 +14,58 @@ class NewItem extends StatefulWidget {
 }
 
 class _NewItemState extends State<NewItem> {
+  var enterName = '';
+  var enterQuantity = 1;
+  var selectCategory = categories[Categories.carbs]!;
+  final keyForm = GlobalKey<FormState>();
+  //chưa gửi dữ liệu
+  var _isSending = false;
+  void saveItem() async {
+    if (keyForm.currentState!.validate()) {
+      //lưu các giá trị người dùng nhập
+      keyForm.currentState!.save();
+      setState(() {
+        //nhấn gửi dữ liệu
+        _isSending = true;
+      });
+      final url = Uri.https('flutter-prep-6f6b9-default-rtdb.firebaseio.com',
+          'shopping-list.json');
+      final response = await http.post(
+        url,
+        headers: {
+          // kiểu dữ liệu định dạng cho firebase
+          'Content-Type': 'application/json',
+        },
+        //encode: chuyển đổi dữ liệu thành văn bản có dạng json
+        body: json.encode(
+          {
+            //id sẽ được firebase tự tạo là duy nhất
+            'name': enterName,
+            'quantity': enterQuantity,
+            'category': selectCategory.title
+          },
+        ),
+      );
+      final Map<String, dynamic> resData = json.decode(response.body);
+      if (!context.mounted) {
+        return;
+      }
+      // Navigator.pop(context);
+      //Trả về dữ liệu trang đã gọi
+      Navigator.pop(
+        context,
+        GroceryItem(
+            id: resData['name'],
+            name: enterName,
+            quantity: enterQuantity,
+            category: selectCategory),
+      );
+      print("key>>>>>>> " + resData['name']);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    var enterName = '';
-    var enterQuantity = 1;
-    var selectCategory = categories[Categories.carbs]!;
-    final keyForm = GlobalKey<FormState>();
-
-    void saveItem() async {
-      if (keyForm.currentState!.validate()) {
-        //lưu các giá trị người dùng nhập
-        keyForm.currentState!.save();
-        final url = Uri.https('flutter-prep-6f6b9-default-rtdb.firebaseio.com',
-            'shopping-list.json');
-        final response = await http.post(
-          url,
-          headers: {
-            // kiểu dữ liệu định dạng cho firebase
-            'Content-Type': 'application/json',
-          },
-          //encode: chuyển đổi dữ liệu thành văn bản có dạng json
-          body: json.encode(
-            {
-              //id sẽ được firebase tự tạo là duy nhất
-              'name': enterName,
-              'quantity': enterQuantity,
-              'category': selectCategory.title
-            },
-          ),
-        );
-        print(response.body);
-        print(response.statusCode);
-        if (!context.mounted) {
-          return;
-        }
-        Navigator.pop(context);
-        // //Trả về dữ liệu trang đã gọi
-        // Navigator.pop(
-        //   context,
-        //   GroceryItem(
-        //       id: DateTime.now().toString(),
-        //       name: _enterName,
-        //       quantity: _enterQuantity,
-        //       category: _selectCategory),
-        // );
-      }
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add new item'),
@@ -154,14 +159,22 @@ class _NewItemState extends State<NewItem> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                    onPressed: () {
-                      keyForm.currentState!.reset();
-                    },
+                    onPressed: _isSending
+                        ? null
+                        : () {
+                            keyForm.currentState!.reset();
+                          },
                     child: const Text('Reset'),
                   ),
                   ElevatedButton(
-                    onPressed: saveItem,
-                    child: const Text('Add Item'),
+                    onPressed: _isSending ? null : saveItem,
+                    child: _isSending
+                        ? const SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: CircularProgressIndicator(),
+                          )
+                        : const Text('Add Item'),
                   ),
                 ],
               )

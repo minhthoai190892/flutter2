@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:shopping_list_app/data/categories.dart';
-import 'package:shopping_list_app/data/dummy_items.dart';
 import 'package:shopping_list_app/model/grocery_item.dart';
 import 'package:shopping_list_app/widgets/new_item.dart';
 import 'package:http/http.dart' as http;
@@ -16,9 +15,9 @@ class GroceryList extends StatefulWidget {
 
 class _GroceryListState extends State<GroceryList> {
   List<GroceryItem> _groceryItems = [];
+  var _isLoading = true;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _loadItems();
   }
@@ -28,35 +27,41 @@ class _GroceryListState extends State<GroceryList> {
         'flutter-prep-6f6b9-default-rtdb.firebaseio.com', 'shopping-list.json');
     final response = await http.get(url);
     final Map<String, dynamic> listData = json.decode(response.body);
-    final List<GroceryItem> _loadItems = [];
+    final List<GroceryItem> loadItems = [];
     for (var item in listData.entries) {
       final category = categories.entries
           .firstWhere(
               (catItem) => catItem.value.title == item.value['category'])
           .value;
-      _loadItems.add(
+      loadItems.add(
         GroceryItem(
             id: item.key,
             name: item.value['name'],
             quantity: item.value['quantity'],
             category: category),
       );
-
     }
 
     setState(() {
-      _groceryItems = _loadItems;
+      _groceryItems = loadItems;
+      _isLoading = false;
     });
   }
 
   void _addItem() async {
-    await Navigator.push<GroceryItem>(
+    final newItem = await Navigator.push<GroceryItem>(
       context,
       MaterialPageRoute(
         builder: (context) => const NewItem(),
       ),
     );
-    _loadItems();
+    // _loadItems();
+    if (newItem == null) {
+      return;
+    }
+    setState(() {
+      _groceryItems.add(newItem);
+    });
   }
 
   void _removeItem(GroceryItem item) {
@@ -88,6 +93,11 @@ class _GroceryListState extends State<GroceryList> {
     Widget content = const Center(
       child: Text('No items added yet.'),
     );
+    if (_isLoading) {
+      content = const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
     if (_groceryItems.isNotEmpty) {
       //not null
       content = ListView.builder(
