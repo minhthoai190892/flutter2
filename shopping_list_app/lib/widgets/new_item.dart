@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shopping_list_app/data/categories.dart';
 import 'package:shopping_list_app/model/category.dart';
 import 'package:shopping_list_app/model/grocery_item.dart';
+import 'package:http/http.dart' as http;
 
 class NewItem extends StatefulWidget {
   const NewItem({super.key});
@@ -13,22 +16,43 @@ class NewItem extends StatefulWidget {
 class _NewItemState extends State<NewItem> {
   @override
   Widget build(BuildContext context) {
+    var enterName = '';
+    var enterQuantity = 1;
+    var selectCategory = categories[Categories.carbs]!;
     final keyForm = GlobalKey<FormState>();
-    var _enterName = '';
-    var _enterQuantity = 1;
-    var _selectCategory = categories[Categories.carbs]!;
+
     void saveItem() {
       if (keyForm.currentState!.validate()) {
         //lưu các giá trị người dùng nhập
         keyForm.currentState!.save();
-        //Trả về dữ liệu trang đã gọi
-        Navigator.pop(
-            context,
-            GroceryItem(
-                id: DateTime.now().toString(),
-                name: _enterName,
-                quantity: _enterQuantity,
-                category: _selectCategory));
+        final url = Uri.https(
+            'flutter-prep-6f6b9-default-rtdb.firebaseio.com',
+            'shopping-list.json');
+        http.post(
+          url,
+          headers: {
+            // kiểu dữ liệu định dạng cho firebase
+            'Content-Type': 'application/json',
+          },
+          //encode: chuyển đổi dữ liệu thành văn bản có dạng json
+          body: json.encode(
+            {
+              //id sẽ được firebase tự tạo là duy nhất
+              'name': enterName,
+              'quantity': enterQuantity,
+              'category': selectCategory.title
+            },
+          ),
+        );
+        // //Trả về dữ liệu trang đã gọi
+        // Navigator.pop(
+        //   context,
+        //   GroceryItem(
+        //       id: DateTime.now().toString(),
+        //       name: _enterName,
+        //       quantity: _enterQuantity,
+        //       category: _selectCategory),
+        // );
       }
     }
 
@@ -57,7 +81,7 @@ class _NewItemState extends State<NewItem> {
                   return null;
                 },
                 onSaved: (newValue) {
-                  _enterName = newValue!;
+                  enterName = newValue!;
                 },
               ),
               Row(
@@ -68,7 +92,7 @@ class _NewItemState extends State<NewItem> {
                       decoration: const InputDecoration(
                         labelText: 'Quantity',
                       ),
-                      initialValue: _enterQuantity.toString(),
+                      initialValue: enterQuantity.toString(),
                       keyboardType: TextInputType.number,
                       validator: (value) {
                         if (value == null ||
@@ -80,7 +104,7 @@ class _NewItemState extends State<NewItem> {
                         return null;
                       },
                       onSaved: (newValue) {
-                        _enterQuantity = int.tryParse(newValue!)!;
+                        enterQuantity = int.tryParse(newValue!)!;
                       },
                     ),
                   ),
@@ -89,8 +113,8 @@ class _NewItemState extends State<NewItem> {
                   ),
                   Expanded(
                     child: DropdownButtonFormField(
-                      value: _selectCategory,
-                            //hiện giá trị mặc định cho dropdown
+                      value: selectCategory,
+                      //hiện giá trị mặc định cho dropdown
                       items: [
                         for (var category in categories.entries)
                           DropdownMenuItem(
@@ -112,7 +136,7 @@ class _NewItemState extends State<NewItem> {
                           ),
                       ],
                       onChanged: (value) {
-                        _selectCategory = value!;
+                        selectCategory = value!;
                       },
                     ),
                   ),
