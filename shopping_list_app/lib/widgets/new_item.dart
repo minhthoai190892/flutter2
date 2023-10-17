@@ -19,6 +19,7 @@ class _NewItemState extends State<NewItem> {
     var _selectCategory = categories[Categories.carbs]!;
     void saveItem() {
       if (keyForm.currentState!.validate()) {
+        //lưu các giá trị người dùng nhập
         keyForm.currentState!.save();
         //Trả về dữ liệu trang đã gọi
         Navigator.pop(
@@ -89,9 +90,11 @@ class _NewItemState extends State<NewItem> {
                   Expanded(
                     child: DropdownButtonFormField(
                       value: _selectCategory,
+                            //hiện giá trị mặc định cho dropdown
                       items: [
                         for (var category in categories.entries)
                           DropdownMenuItem(
+                            //giá trị người dùng chọn trong menu và được onChang nhận
                             value: category.value,
                             child: Row(
                               children: [
