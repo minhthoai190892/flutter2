@@ -1,13 +1,18 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:favorite_places/model/place.dart';
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
+import 'package:location/location.dart';
+
+import 'package:favorite_places/model/place.dart';
 
 class LocationInput extends StatefulWidget {
-  const LocationInput({super.key});
-
+  const LocationInput({
+    Key? key,
+    required this.onSelectLocation,
+  }) : super(key: key);
+  final void Function(PlaceLocation location) onSelectLocation;
   @override
   State<LocationInput> createState() => _LocationInputState();
 }
@@ -66,6 +71,7 @@ class _LocationInputState extends State<LocationInput> {
           PlaceLocation(latitude: lat, longitude: lng, address: address);
       _isGettingLocation = false;
     });
+    widget.onSelectLocation(_pickedLocation!);
   }
 
 // https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyDLcwxUggpPZo8lcbH0TB4Crq5SJjtj4ag

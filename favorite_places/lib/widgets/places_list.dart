@@ -31,6 +31,13 @@ class PlacesList extends StatelessWidget {
             radius: 26,
             backgroundImage: FileImage(places[index].image),
           ),
+          subtitle: Text(
+            places[index].location.address,
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall!
+                .copyWith(color: Theme.of(context).colorScheme.onBackground),
+          ),
           onTap: () {
             Navigator.push(
               context,
