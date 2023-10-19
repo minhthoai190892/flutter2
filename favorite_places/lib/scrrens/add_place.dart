@@ -1,5 +1,7 @@
-import 'package:favorite_places/model/providers/user_places.dart';
-import 'package:favorite_places/model/widgets/image_input.dart';
+import 'dart:io';
+
+import 'package:favorite_places/providers/user_places.dart';
+import 'package:favorite_places/widgets/image_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,6 +14,7 @@ class AddPlaceScreen extends ConsumerStatefulWidget {
 
 class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _titleController = TextEditingController();
+  File? _selectedImage;
   @override
   void dispose() {
     // TODO: implement dispose
@@ -26,7 +29,9 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
       return;
     }
     // try cập vào riverpod
-    ref.read(userPlacesProvider.notifier).addPlace(enteredTitle);
+    ref
+        .read(userPlacesProvider.notifier)
+        .addPlace(enteredTitle, _selectedImage!);
     // quay lại trang trước
     Navigator.pop(context);
   }
@@ -53,7 +58,12 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
             const SizedBox(
               height: 10,
             ),
-            const ImageInput(),
+            ImageInput(
+              onPickImage: (image) {
+                _selectedImage = image;
+                print("Add_place:"+_selectedImage.toString());
+              },
+            ),
             const SizedBox(
               height: 16,
             ),

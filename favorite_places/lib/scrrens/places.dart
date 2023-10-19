@@ -1,6 +1,6 @@
-import 'package:favorite_places/model/providers/user_places.dart';
-import 'package:favorite_places/model/scrrens/add_place.dart';
-import 'package:favorite_places/model/widgets/places_list.dart';
+import 'package:favorite_places/providers/user_places.dart';
+import 'package:favorite_places/scrrens/add_place.dart';
+import 'package:favorite_places/widgets/places_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

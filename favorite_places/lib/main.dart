@@ -1,4 +1,4 @@
-import 'package:favorite_places/model/scrrens/places.dart';
+import 'package:favorite_places/scrrens/places.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:favorite_places/model/scrrens/places_detail.dart';
+import 'package:favorite_places/scrrens/places_detail.dart';
 import 'package:flutter/material.dart';
 
-import '../place.dart';
+import '../model/place.dart';
 
 class PlacesList extends StatelessWidget {
   const PlacesList({
