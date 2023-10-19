@@ -27,7 +27,10 @@ class PlacesScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body:  PlacesList(places: userPlace),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: PlacesList(places: userPlace),
+      ),
     );
   }
 }
