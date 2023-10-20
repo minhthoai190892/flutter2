@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:favorite_places/scrrens/map.dart';
 import 'package:flutter/material.dart';
 
 import 'package:favorite_places/model/place.dart';
@@ -37,7 +38,20 @@ class PlacesDetailScreen extends StatelessWidget {
               left: 0,
               child: Column(
                 children: [
-                   CircleAvatar(radius: 70,backgroundImage: NetworkImage(locationImage),),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MapScrren(
+                                location: place.location, isSelecting: false),
+                          ));
+                    },
+                    child: CircleAvatar(
+                      radius: 70,
+                      backgroundImage: NetworkImage(locationImage),
+                    ),
+                  ),
                   Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 24, vertical: 16),
