@@ -21,7 +21,21 @@ Column appOnboardingPage({
         margin: const EdgeInsets.only(top: 15),
         padding: const EdgeInsets.only(left: 30, right: 30),
         child: text16Normal(text: subTitle),
-      )
+      ),
+      _nextButton(),
     ],
+  );
+}
+
+Widget _nextButton() {
+  return Container(
+    margin: const EdgeInsets.only(
+      top: 100,
+      left: 25,
+      right: 25,
+    ),
+    width: 325,
+    height: 50,
+    color: Colors.blue,
   );
 }
