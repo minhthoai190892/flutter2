@@ -1,13 +1,31 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'widgets.dart';
 
-class Welcome extends StatelessWidget {
-  Welcome({super.key});
+// river pod
+final indexProvider = StateProvider((ref) => 0);
+
+class Welcome extends ConsumerStatefulWidget {
+  const Welcome({super.key});
+
+  @override
+  ConsumerState<Welcome> createState() => _WelcomeState();
+}
+
+class _WelcomeState extends ConsumerState<Welcome> {
   final PageController _controller = PageController();
+
+  int dotsIndex = 0;
+
 // Todo: Thêm PageView
   @override
   Widget build(BuildContext context) {
+    // xem trạng thái của
+    final index = ref.watch(indexProvider);
     return Container(
       color: Colors.white,
       child: SafeArea(
@@ -15,8 +33,16 @@ class Welcome extends StatelessWidget {
           body: Container(
             margin: const EdgeInsets.only(top: 30),
             child: Stack(
+              alignment: Alignment.topCenter,
               children: [
+                // showing our three welcome page
                 PageView(
+                  onPageChanged: (value) {
+                    // setState(() {
+                    //   dotsIndex = value;
+                    // });
+                    ref.read(indexProvider.notifier).state = value;
+                  },
                   controller: _controller,
                   // scrollDirection: Axis.vertical,
                   children: [
@@ -48,14 +74,21 @@ class Welcome extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Positioned(
-                  bottom: 0,
-                  left: 20,
-                  child: Text('widget one'),
-                ),
-                const Positioned(
-                  left: 200,
-                  child: Text('widget one'),
+                //  for showing dots
+                Positioned(
+                  bottom: 50,
+                  child: DotsIndicator(
+                    position: index, // vị trí của từng page
+                    dotsCount: 3, //số lượng
+                    decorator: DotsDecorator(
+                      size: const Size.square(9.0),
+                      activeSize: const Size(18.0, 8.0),
+                      activeShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            5), // Thay đổi hình dạng của dots
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

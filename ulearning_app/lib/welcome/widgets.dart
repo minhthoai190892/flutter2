@@ -12,6 +12,7 @@ Column appOnboardingPage(
   String title = '',
   String subTitle = '',
   index = 0,
+ 
 }) {
   return Column(
     children: [
