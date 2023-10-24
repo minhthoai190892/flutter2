@@ -1,18 +1,18 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:ulearning_app/common/utils/app_colors.dart';
-import 'package:ulearning_app/common/utils/app_shadow.dart';
+import 'package:ulearning_app/common/widgets/app_shadow.dart';
+import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 
-import '../common/widgets/text_widgets.dart';
+import '../../common/widgets/text_widgets.dart';
 
 Column appOnboardingPage(
-  PageController controller, {
+  PageController controller,
+  BuildContext context, {
   String imagePath = 'assets/images/reading.png',
   String title = '',
   String subTitle = '',
   index = 0,
- 
 }) {
   return Column(
     children: [
@@ -29,12 +29,12 @@ Column appOnboardingPage(
         padding: const EdgeInsets.only(left: 30, right: 30),
         child: text16Normal(text: subTitle),
       ),
-      _nextButton(index, controller),
+      _nextButton(index, controller, context),
     ],
   );
 }
 
-Widget _nextButton(int index, PageController controller) {
+Widget _nextButton(int index, PageController controller, BuildContext context) {
   return GestureDetector(
     onTap: () {
       // chuyển trang khi click vào button
@@ -43,7 +43,12 @@ Widget _nextButton(int index, PageController controller) {
         controller.animateToPage(index,
             duration: const Duration(milliseconds: 300), curve: Curves.linear);
       } else {
-        index = 0;
+        // Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) => SignIn(),
+        //     ));
+        Navigator.pushNamed(context, '/signIn');
       }
     },
     child: Container(
@@ -55,7 +60,9 @@ Widget _nextButton(int index, PageController controller) {
       ),
       width: 325,
       height: 50,
-      child: Center(child: text16Normal(text: 'Next', color: Colors.white)),
+      child: Center(
+          child: text16Normal(
+              text: index < 3 ? 'Next' : 'Get started', color: Colors.white)),
     ),
   );
 }

@@ -3,11 +3,11 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'notifier/welcome_notifier.dart';
 import 'widgets.dart';
 
 // river pod
-final indexProvider = StateProvider((ref) => 0);
+// final indexProvider = StateProvider((ref) => 0);
 
 class Welcome extends ConsumerStatefulWidget {
   const Welcome({super.key});
@@ -19,13 +19,13 @@ class Welcome extends ConsumerStatefulWidget {
 class _WelcomeState extends ConsumerState<Welcome> {
   final PageController _controller = PageController();
 
-  int dotsIndex = 0;
+  // int dotsIndex = 0;
 
 // Todo: Thêm PageView
   @override
   Widget build(BuildContext context) {
     // xem trạng thái của
-    final index = ref.watch(indexProvider);
+    final index = ref.watch(indexDotProvider);
     return Container(
       color: Colors.white,
       child: SafeArea(
@@ -41,13 +41,13 @@ class _WelcomeState extends ConsumerState<Welcome> {
                     // setState(() {
                     //   dotsIndex = value;
                     // });
-                    ref.read(indexProvider.notifier).state = value;
+                    ref.read(indexDotProvider.notifier).changeIndex(value);
                   },
                   controller: _controller,
                   // scrollDirection: Axis.vertical,
                   children: [
                     // First Page
-                    appOnboardingPage(_controller,
+                    appOnboardingPage(_controller, context,
                         index: 1,
                         imagePath: 'assets/images/reading.png',
                         title: 'First see Learning',
@@ -57,6 +57,7 @@ class _WelcomeState extends ConsumerState<Welcome> {
                     // Second Page
                     appOnboardingPage(
                       _controller,
+                      context,
                       index: 2,
                       imagePath: 'assets/images/man.png',
                       title: 'Connect with Everyone',
@@ -66,6 +67,7 @@ class _WelcomeState extends ConsumerState<Welcome> {
                     // Third Page
                     appOnboardingPage(
                       _controller,
+                      context,
                       index: 3,
                       imagePath: 'assets/images/boy.png',
                       title: 'Always Facinated Learning',

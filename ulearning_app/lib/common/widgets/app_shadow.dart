@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 
 BoxDecoration appBoxShadow(
-    {Color color = AppColors.primaryElement,
+    {BoxBorder? border,
+    Color color = AppColors.primaryElement,
     double radius = 15,
-    double sR = 5,
-    double bR = 10}) {
+    double sR = 1,
+    double bR = 2}) {
   return BoxDecoration(
+    border: border,
     color: color,
     borderRadius: BorderRadius.circular(radius),
     boxShadow: [
@@ -17,5 +19,17 @@ BoxDecoration appBoxShadow(
         offset: const Offset(0, 1), // Điều chỉnh shadown
       ),
     ],
+  );
+}
+
+BoxDecoration appBoxDecorationTextField({
+  Color color = AppColors.primaryBackground,
+  double radius = 15,
+  Color borderColor = AppColors.primaryFourElementText,
+}) {
+  return BoxDecoration(
+    color: color,
+    borderRadius: BorderRadius.circular(radius),
+    border: Border.all(color: borderColor),
   );
 }
