@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/widgets/button_widgets.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
 
+import '../../common/widgets/app_bar.dart';
+import '../../common/widgets/app_textfield.dart';
 import 'widgets/sign_in_widgets.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
-
+  void handleRegister() {}
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: SafeArea(
           child: Scaffold(
-        appBar: buildAppBar(),
+        appBar: buildAppBar(text: 'Login'),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(
@@ -60,10 +61,18 @@ class SignIn extends StatelessWidget {
               ),
               // register
               Center(
-                  child: appButton(
-                      buttonName: 'Register',
-                      isLogin: false,
-                      context: context)),
+                child: appButton(
+                  buttonName: 'Register',
+                  isLogin: false,
+                  context: context,
+                  func: () => Navigator.pushNamed(context, '/signUp'),
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => const SignUp(),
+                  //     )),
+                ),
+              ),
             ],
           ),
         ),

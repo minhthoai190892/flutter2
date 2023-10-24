@@ -32,7 +32,7 @@ Text text14Normal(
     {String text = '', Color color = AppColors.primaryThreeElementText}) {
   return Text(
     text,
-    textAlign: TextAlign.center,
+    textAlign: TextAlign.start,
     style: TextStyle(
       color: color,
       fontSize: 14,
@@ -46,9 +46,9 @@ GestureDetector textUnderLine({String text = ''}) {
     onTap: () {
       print('object');
     },
-    child:  Text(
+    child: Text(
       text,
-      style: TextStyle(
+      style: const TextStyle(
         color: AppColors.primaryText,
         decoration: TextDecoration.underline,
         decorationColor: AppColors.primaryText,
