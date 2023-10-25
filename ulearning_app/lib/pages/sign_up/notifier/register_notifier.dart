@@ -16,6 +16,14 @@ class RegisterNotifier extends _$RegisterNotifier {
   onUserEmailChange(String email) {
     state = state.copyWith(email: email);
   }
+
+  onUserPasswordChange(String password) {
+    state = state.copyWith(password: password);
+  }
+
+  onUserRePasswordChange(String rePassword) {
+    state = state.copyWith(rePassword: rePassword);
+  }
 }
 // terminal
 // flutter pub run build_runner watch --delete-conflicting-outputs

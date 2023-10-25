@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ulearning_app/common/widgets/button_widgets.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
 
@@ -55,7 +56,22 @@ class SignIn extends StatelessWidget {
                 height: 100,
               ),
               // login
-              Center(child: appButton(buttonName: 'Login', isLogin: true)),
+              Center(
+                child: appButton(
+                  buttonName: 'Login',
+                  isLogin: true,
+                  func: () {
+                    Fluttertoast.showToast(
+                        msg: "This is Center Short Toast",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.red,
+                        textColor: Colors.white,
+                        fontSize: 16.0);
+                  },
+                ),
+              ),
               const SizedBox(
                 height: 20,
               ),

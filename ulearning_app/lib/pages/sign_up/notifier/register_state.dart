@@ -18,4 +18,10 @@ class RegisterState {
         password: password??this.password,
         rePassword: rePassword??this.rePassword);
   }
+  
+
+  @override
+  String toString() {
+    return 'RegisterState(userName: $userName, email: $email, password: $password, rePassword: $rePassword)';
+  }
 }
