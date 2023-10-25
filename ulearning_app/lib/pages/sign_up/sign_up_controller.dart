@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/common/widgets/popup_message.dart';
 import 'package:ulearning_app/pages/sign_up/notifier/register_notifier.dart';
 
@@ -43,6 +44,10 @@ class SignUpController {
       return;
     }
     var context = Navigator.of(ref.context);
+    // show the loading icon
+    ref.read(appLoaderProvider.notifier).setLoaderValue(true);
+    //  chờ thực hiện sau 2s
+
     try {
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
@@ -59,5 +64,7 @@ class SignUpController {
     } catch (e) {
       print(e.toString());
     }
+    //show the register page
+    ref.watch(appLoaderProvider.notifier).setLoaderValue(false);
   }
 }
