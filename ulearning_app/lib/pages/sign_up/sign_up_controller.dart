@@ -43,6 +43,12 @@ class SignUpController {
       toastInfo('Your password  is empty');
       return;
     }
+    // if ((state.password.length < 6 || state.rePassword.length < 6) ||
+    //     password.isEmpty ||
+    //     rePassword.isEmpty) {
+    //   toastInfo('Password should be at least 6 characters');
+    //   return;
+    // }
     var context = Navigator.of(ref.context);
     // show the loading icon
     ref.read(appLoaderProvider.notifier).setLoaderValue(true);
@@ -58,8 +64,19 @@ class SignUpController {
         // get server photo url
         // set user photo url
         toastInfo(
-            'Asn email has been to verify your account. Please open that email and confirm your identity.');
+            'Asn email has been sent to verify your account. Please open that email and confirm your identity.');
         context.pop();
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        toastInfo('This password is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        toastInfo('This email address has already been registered.');
+      } else if (e.code == 'invalid-email') {
+        toastInfo('Thrown if the email address is not valid.');
+      }else if(e.code == 'user-not-found'){
+        toastInfo('User not found.');
+
       }
     } catch (e) {
       print(e.toString());

@@ -1,11 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/utils/app_style.dart';
+import 'package:ulearning_app/firebase_options.dart';
 import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 import 'package:ulearning_app/pages/sign_up/sign_up.dart';
 import 'package:ulearning_app/pages/welcome/welcome.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -73,7 +79,7 @@ class MyHomePage extends ConsumerWidget {
         children: [
           FloatingActionButton(
             heroTag: 'one',
-            onPressed: () =>ref.read(appCount.notifier).state++,
+            onPressed: () => ref.read(appCount.notifier).state++,
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
