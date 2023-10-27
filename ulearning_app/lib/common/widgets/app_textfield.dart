@@ -10,6 +10,7 @@ Widget appTextFiield({
   String hintText = 'Type in your info',
   bool obscureText = true,
   void Function(String value)? func,
+  TextEditingController? controller,
 }) =>
     Container(
       padding: const EdgeInsets.only(left: 25, right: 25),
@@ -35,6 +36,7 @@ Widget appTextFiield({
                   width: 280,
                   height: 50,
                   child: TextField(
+                    controller: controller,
                     keyboardType: TextInputType.multiline,
                     decoration: InputDecoration(
                       hintText: hintText,
