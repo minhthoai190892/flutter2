@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/common/widgets/popup_message.dart';
-import 'package:ulearning_app/model/user.dart';
+import 'package:ulearning_app/global.dart';
+import 'package:ulearning_app/common/entity/user.dart';
 import 'package:ulearning_app/pages/sign_in/notifier/sign_in_notifier.dart';
 
 class SignInController {
@@ -80,10 +81,15 @@ class SignInController {
   }
 
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
-    // we need to take to sever
+    // we need to take to server
 
         // have local storage
-
+  try {
+    // try to remember user info
+    Global.storageService.setString('key', 'value');
+  } catch (e) {
+    
+  }
         // redirect to new page
   }
 }
