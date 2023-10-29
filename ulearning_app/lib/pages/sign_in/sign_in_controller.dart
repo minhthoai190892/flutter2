@@ -8,6 +8,7 @@ import 'package:ulearning_app/common/widgets/popup_message.dart';
 import 'package:ulearning_app/global.dart';
 import 'package:ulearning_app/common/entity/user.dart';
 import 'package:ulearning_app/pages/sign_in/notifier/sign_in_notifier.dart';
+import 'package:ulearning_app/common/utils/constants.dart';
 
 class SignInController {
   WidgetRef ref;
@@ -83,13 +84,17 @@ class SignInController {
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
     // we need to take to server
 
-        // have local storage
-  try {
-    // try to remember user info
-    Global.storageService.setString('key', 'value');
-  } catch (e) {
-    
-  }
-        // redirect to new page
+    // have local storage
+    try {
+      var navigator = Navigator.of(ref.context);
+      // try to remember user info
+      Global.storageService
+          .setString(AppConstants.STORAGE_USER_PROFILE_KEY, '123');
+      Global.storageService
+          .setString(AppConstants.STORAGE_USER_TOKEN_KEY, '123456');
+          // di chuyển đến route đã cho và xóa toàn bộ các route trước đó
+      navigator.pushNamedAndRemoveUntil('/application', (route) => false);
+    } catch (e) {}
+    // redirect to new page
   }
 }

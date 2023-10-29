@@ -4,14 +4,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/utils/app_style.dart';
 import 'package:ulearning_app/firebase_options.dart';
 import 'package:ulearning_app/global.dart';
+import 'package:ulearning_app/pages/application/application.dart';
 import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 import 'package:ulearning_app/pages/sign_up/sign_up.dart';
 import 'package:ulearning_app/pages/welcome/welcome.dart';
 
-void main() async {
+Future<void> main() async {
   Global().init();
   runApp(const ProviderScope(child: MyApp()));
 }
+
+var routesMap = {
+        '/': (context) => const Welcome(),
+        '/signIn': (context) => const SignIn(),
+        '/signUp': (context) => const SignUp(),
+        '/application': (context) => const Application(),
+      };
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -27,11 +35,7 @@ class MyApp extends StatelessWidget {
       // ),
       theme: AppTheme.appThemeData,
       initialRoute: '/',
-      routes: {
-        '/': (context) => const Welcome(),
-        '/signIn': (context) => const SignIn(),
-        '/signUp': (context) => const SignUp(),
-      },
+      routes: routesMap,
       // home: const Welcome(),
     );
   }
