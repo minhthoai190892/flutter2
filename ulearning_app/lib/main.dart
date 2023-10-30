@@ -9,18 +9,19 @@ import 'package:ulearning_app/pages/application/application.dart';
 import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 import 'package:ulearning_app/pages/sign_up/sign_up.dart';
 import 'package:ulearning_app/pages/welcome/welcome.dart';
+import 'package:ulearning_app/common/routes/routes.dart';
 
 Future<void> main() async {
-  Global().init();
+  await Global().init();
   runApp(const ProviderScope(child: MyApp()));
 }
 
-var routesMap = {
-  '/': (context) => const Welcome(),
-  '/signIn': (context) => const SignIn(),
-  '/signUp': (context) => const SignUp(),
-  '/application': (context) => const Application(),
-};
+// var routesMap = {
+//   '/': (context) => const Welcome(),
+//   '/signIn': (context) => const SignIn(),
+//   '/signUp': (context) => const SignUp(),
+//   '/application': (context) => const Application(),
+// };
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -29,18 +30,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 812),
+      designSize: const Size(375, 812),
       builder: (context, child) => MaterialApp(
         title: 'Clearning Flutter',
-        // theme: ThemeData(
-        //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        //   useMaterial3: true,
-        // ),
+
         theme: AppTheme.appThemeData,
         // initialRoute: '/',
-        routes: routesMap,
+        // routes: routesMap,
         // home: const Welcome(),
-        // onGenerateRoute: (settings) => Randome,
+        onGenerateRoute: (settings) => AppPages.generateRouteSettings(settings),
       ),
     );
   }
