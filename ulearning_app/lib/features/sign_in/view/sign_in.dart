@@ -2,16 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ulearning_app/common/global_loader/global_loader.dart';
+import 'package:ulearning_app/common/utils/image_res.dart';
 import 'package:ulearning_app/common/widgets/button_widgets.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/pages/sign_in/notifier/sign_in_notifier.dart';
-import 'package:ulearning_app/pages/sign_in/sign_in_controller.dart';
+import 'package:ulearning_app/features/sign_in/notifier/sign_in_notifier.dart';
+import 'package:ulearning_app/features/sign_in/controller/sign_in_controller.dart';
 
-import '../../common/utils/app_colors.dart';
-import '../../common/widgets/app_bar.dart';
-import '../../common/widgets/app_textfield.dart';
+import '../../../common/utils/app_colors.dart';
+import '../../../common/widgets/app_bar.dart';
+import '../../../common/widgets/app_textfield.dart';
 import 'widgets/sign_in_widgets.dart';
 
 class SignIn extends ConsumerStatefulWidget {
@@ -23,17 +23,18 @@ class SignIn extends ConsumerStatefulWidget {
 
 class _SignInState extends ConsumerState<SignIn> {
   late SignInController _signInController;
+
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _signInController = SignInController(ref);
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    _signInController = SignInController();
   }
 
   @override
   Widget build(BuildContext context) {
     final signInProvider = ref.watch(signInNotifierProvider);
-    
+    // print(signInProvider);
     final loader = ref.watch(appLoaderProvider);
     return Container(
       color: Colors.white,
@@ -59,7 +60,7 @@ class _SignInState extends ConsumerState<SignIn> {
                     appTextFiield(
                       controller: _signInController.emailController,
                       text: 'Email',
-                      iconName: 'assets/icons/user.png',
+                      iconName: ImageRes.user,
                       obscureText: false,
                       hintText: 'Enter your email address',
                       func: (value) => ref
@@ -73,7 +74,7 @@ class _SignInState extends ConsumerState<SignIn> {
                     appTextFiield(
                       controller: _signInController.passwordController,
                       text: 'Password',
-                      iconName: 'assets/icons/lock.png',
+                      iconName: ImageRes.lock,
                       obscureText: true,
                       hintText: 'Enter your password',
                       func: (value) => ref
@@ -95,7 +96,7 @@ class _SignInState extends ConsumerState<SignIn> {
                       child: appButton(
                         buttonName: 'Login',
                         isLogin: true,
-                        func: () => _signInController.handleSignIn(),
+                        func: () => _signInController.handleSignIn(ref),
                       ),
                     ),
                     const SizedBox(
@@ -107,7 +108,7 @@ class _SignInState extends ConsumerState<SignIn> {
                         buttonName: 'Register',
                         isLogin: false,
                         context: context,
-                        func: () => Navigator.pushNamed(context, '/signUp'),
+                        func: () => Navigator.pushNamed(context, '/register'),
                         // Navigator.push(
                         //     context,
                         //     MaterialPageRoute(

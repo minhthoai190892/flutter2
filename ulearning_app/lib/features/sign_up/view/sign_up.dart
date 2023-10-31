@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
+import 'package:ulearning_app/common/utils/image_res.dart';
 import 'package:ulearning_app/common/widgets/button_widgets.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/pages/sign_up/sign_up_controller.dart';
-import '../../common/widgets/app_bar.dart';
-import '../../common/widgets/app_textfield.dart';
-import 'notifier/register_notifier.dart';
+import 'package:ulearning_app/features/sign_up/controller/sign_up_controller.dart';
+import '../../../common/widgets/app_bar.dart';
+import '../../../common/widgets/app_textfield.dart';
+import '../notifier/register_notifier.dart';
 
 class SignUp extends ConsumerStatefulWidget {
   const SignUp({super.key});
@@ -56,7 +57,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                       // user name text box
                       appTextFiield(
                         text: 'User name',
-                        iconName: 'assets/icons/user.png',
+                        iconName: ImageRes.user,
                         obscureText: false,
                         hintText: 'Enter your user name',
                         func: (value) => ref
@@ -73,7 +74,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                               .read(registerNotifierProvider.notifier)
                               .onUserEmailChange(value),
                           text: 'Email',
-                          iconName: 'assets/icons/user.png',
+                          iconName: ImageRes.user,
                           obscureText: false,
                           hintText: 'Enter your email address'),
                       const SizedBox(
@@ -85,7 +86,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                               .read(registerNotifierProvider.notifier)
                               .onUserPasswordChange(value),
                           text: 'Password',
-                          iconName: 'assets/icons/lock.png',
+                          iconName: ImageRes.lock,
                           obscureText: true,
                           hintText: 'Enter your password'),
                       const SizedBox(
@@ -97,7 +98,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                               .read(registerNotifierProvider.notifier)
                               .onUserRePasswordChange(value),
                           text: 'Confirm Password',
-                          iconName: 'assets/icons/lock.png',
+                          iconName: ImageRes.lock,
                           obscureText: true,
                           hintText: 'Enter your confirm password'),
                       const SizedBox(

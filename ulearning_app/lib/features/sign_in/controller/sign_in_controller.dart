@@ -5,19 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/common/widgets/popup_message.dart';
+import 'package:ulearning_app/features/sign_in/notifier/sign_in_notifier.dart';
+import 'package:ulearning_app/features/sign_in/repo/sign_in_repo.dart';
 import 'package:ulearning_app/global.dart';
 import 'package:ulearning_app/common/entity/user.dart';
-import 'package:ulearning_app/pages/sign_in/notifier/sign_in_notifier.dart';
 import 'package:ulearning_app/common/utils/constants.dart';
+import 'package:ulearning_app/main.dart';
 
 class SignInController {
-  WidgetRef ref;
-  SignInController(
-    this.ref,
-  );
+  SignInController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  Future<void> handleSignIn() async {
+  Future<void> handleSignIn(WidgetRef ref) async {
     var state = ref.read(signInNotifierProvider);
     String email = state.email;
     String password = state.password;
@@ -34,8 +33,8 @@ class SignInController {
     ref.read(appLoaderProvider.notifier).setLoaderValue(true);
     try {
       // Login với email vầ password
-      final credential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      final credential = await SignInRepo.firebaseSignIn(email, password);
+
       if (credential.user == null) {
         toastInfo('User not found');
         return;
@@ -86,15 +85,17 @@ class SignInController {
 
     // have local storage
     try {
-      var navigator = Navigator.of(ref.context);
+     
       // try to remember user info
       Global.storageService
           .setString(AppConstants.STORAGE_USER_PROFILE_KEY, '123');
       Global.storageService
           .setString(AppConstants.STORAGE_USER_TOKEN_KEY, '123456');
-          // di chuyển đến route đã cho và xóa toàn bộ các route trước đó
-      navigator.pushNamedAndRemoveUntil('/application', (route) => false);
-    } catch (e) {}
+      // di chuyển đến route đã cho và xóa toàn bộ các route trước đó
+      navKey.currentState?.pushNamedAndRemoveUntil('/application', (route) => false);
+    } catch (e) {
+      print(e.toString());
+    }
     // redirect to new page
   }
 }

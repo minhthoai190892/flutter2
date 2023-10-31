@@ -4,11 +4,13 @@
 import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/routes/app_route_name.dart';
 import 'package:ulearning_app/global.dart';
-import 'package:ulearning_app/pages/application/application.dart';
-import 'package:ulearning_app/pages/sign_in/sign_in.dart';
-import 'package:ulearning_app/pages/sign_up/sign_up.dart';
 
-import 'package:ulearning_app/pages/welcome/welcome.dart';
+
+
+import '../../features/application/application.dart';
+import '../../features/sign_in/view/sign_in.dart';
+import '../../features/sign_up/view/sign_up.dart';
+import '../../features/welcome/welcome.dart';
 
 class AppPages {
   static List<RouteEntity> routes() {
@@ -31,13 +33,19 @@ class AppPages {
         //Throws a [StateError] if this is empty. Otherwise returns the first element in the iteration order, equivalent to this.elementAt(0).
         if (result.first.path == AppRoutesNames.WELCOME && deviceFirstTime) {
           print('on welcom route: ${result.first.path}');
-          return MaterialPageRoute(
-              builder: (_) => const SignIn(), settings: settings);
+          bool isLoggedIn = Global.storageService.isLoggedIn();
+          print('isLoggedIn: $isLoggedIn');
+          if (!isLoggedIn) {
+            return MaterialPageRoute(
+                builder: (_) => const Application(), settings: settings);
+          } else {
+            return MaterialPageRoute(
+                builder: (_) => const SignIn(), settings: settings);
+          }
         } else {
-          print('App ran frist time');
           return MaterialPageRoute(
             settings: settings,
-            builder: (_) => result.first.page,//=> welcomePage()
+            builder: (_) => result.first.page, //=> welcomePage()
           );
         }
       }

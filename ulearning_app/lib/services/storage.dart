@@ -17,8 +17,15 @@ class StorageService {
   Future<bool> setBool(String key, bool value) async {
     return await _pref.setBool(key, value);
   }
+
   /// xem thiết bị có được cài đặt lần đầu tiên hay không
   bool getDeviceFirstOpen() {
     return _pref.getBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_KEY) ?? false;
+  }
+
+  bool isLoggedIn() {
+    return _pref.getString(AppConstants.STORAGE_USER_PROFILE_KEY) != null
+        ? true
+        : false;
   }
 }

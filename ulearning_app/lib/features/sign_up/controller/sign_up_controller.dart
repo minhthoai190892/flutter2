@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/common/widgets/popup_message.dart';
-import 'package:ulearning_app/pages/sign_up/notifier/register_notifier.dart';
+import 'package:ulearning_app/features/sign_up/notifier/register_notifier.dart';
+import 'package:ulearning_app/features/sign_up/repo/sign_up_repo.dart';
+import 'package:ulearning_app/features/sign_up/view/sign_up.dart';
 
 class SignUpController {
   late WidgetRef ref;
@@ -55,8 +57,7 @@ class SignUpController {
     //  chờ thực hiện sau 2s
 
     try {
-      final credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+      final credential = await SignUpRepo.firebaseSignUp(email, password);
       print(credential);
       if (credential.user != null) {
         await credential.user?.sendEmailVerification();
@@ -74,9 +75,8 @@ class SignUpController {
         toastInfo('This email address has already been registered.');
       } else if (e.code == 'invalid-email') {
         toastInfo('Thrown if the email address is not valid.');
-      }else if(e.code == 'user-not-found'){
+      } else if (e.code == 'user-not-found') {
         toastInfo('User not found.');
-
       }
     } catch (e) {
       print(e.toString());
