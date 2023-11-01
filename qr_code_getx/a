@@ -1,0 +1,10 @@
+project getx
+get init
+get create page name_page
+
+
+
+git checkout -b qr-code-02-Firebase-Authentication
+git add .
+git commit -m "qr-code-02-Firebase-Authentication"
+git push -u origin qr-code-02-Firebase-Authentication

@@ -8,8 +8,8 @@ class LoginView extends GetView<LoginController> {
   const LoginView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailC = TextEditingController();
-    final TextEditingController passC = TextEditingController();
+    final TextEditingController emailC = TextEditingController(text: 'admin@gmai.com');
+    final TextEditingController passC = TextEditingController(text: '1234567');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
