@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: use_build_context_synchronously
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/add_product_controller.dart';
@@ -74,7 +75,7 @@ class AddProductView extends GetView<AddProductController> {
                   controller.isLoading(false);
                   Get.snackbar(hasil['error'] == true ? 'Error' : 'Success',
                       hasil['message']);
-                  Get.back();
+                  Navigator.pop(context);
                 } else {
                   Get.snackbar('Error', 'Add product failed');
                 }
