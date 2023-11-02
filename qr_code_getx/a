@@ -4,7 +4,8 @@ get create page name_page
 
 
 
-git checkout -b qr-code-03-Home-View
+
+git checkout -b qr-code-05-All-Products
 git add .
-git commit -m "qr-code-03-Home-View"
-git push -u origin qr-code-03-Home-View
+git commit -m "qr-code-05-All-Products"
+git push -u origin qr-code-05-All-Products
