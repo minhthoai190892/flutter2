@@ -34,7 +34,7 @@ class AddProductView extends GetView<AddProductController> {
             height: 20,
           ),
           TextField(
-            controller: codeC,
+            controller: nameC,
             autofocus: false,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
@@ -47,7 +47,7 @@ class AddProductView extends GetView<AddProductController> {
             height: 20,
           ),
           TextField(
-            controller: codeC,
+            controller: qtyC,
             autofocus: false,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
@@ -62,10 +62,22 @@ class AddProductView extends GetView<AddProductController> {
           ElevatedButton(
             onPressed: () async {
               if (controller.isLoading.isFalse) {
-                controller.isLoading(true);
-                // Map<String, dynamic> hasil =
-                //     await authC.login(emailC.text, passC.text);
-                controller.isLoading(false);
+                if (codeC.text.isNotEmpty &&
+                    nameC.text.isNotEmpty &&
+                    qtyC.text.isNotEmpty) {
+                  controller.isLoading(true);
+                  Map<String, dynamic> hasil = await controller.addProduct({
+                    'code': codeC.text,
+                    'name': nameC.text,
+                    'qty': int.tryParse(qtyC.text) ?? 0,
+                  });
+                  controller.isLoading(false);
+                  Get.snackbar(hasil['error'] == true ? 'Error' : 'Success',
+                      hasil['message']);
+                  Get.back();
+                } else {
+                  Get.snackbar('Error', 'Add product failed');
+                }
               }
             },
             style: ElevatedButton.styleFrom(
