@@ -4,7 +4,7 @@ get create page name_page
 
 
 
-git checkout -b qr-code-02-Firebase-Authentication
+git checkout -b qr-code-03-Home-View
 git add .
-git commit -m "qr-code-02-Firebase-Authentication"
-git push -u origin qr-code-02-Firebase-Authentication
+git commit -m "qr-code-03-Home-View"
+git push -u origin qr-code-03-Home-View
