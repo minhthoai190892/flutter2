@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:open_file/open_file.dart';
 import 'package:qr_code_getx/app/controllers/auth_controller.dart';
 import 'package:qr_code_getx/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -44,13 +48,15 @@ class HomeView extends GetView<HomeController> {
             case 2:
               title = 'QR Code';
               icon = Icons.qr_code;
-              onTap = () => print('Open camera');
+              onTap = () {
+                
+              };
 
               break;
             case 3:
               title = 'Catalog';
               icon = Icons.document_scanner_outlined;
-              onTap = () => print('Open pdf');
+              onTap = () => controller.testPdf();
 
               break;
             default:
