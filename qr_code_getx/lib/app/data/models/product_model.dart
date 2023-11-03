@@ -47,5 +47,5 @@ class ProductModel {
         "name": name,
         "productId": productId,
         "qty": qty,
-      };    
+      };
 }

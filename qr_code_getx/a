@@ -2,7 +2,7 @@ project getx
 get init
 get create page name_page
 
-
+06-Detail-Product
 
 
 git checkout -b qr-code-05-All-Products
