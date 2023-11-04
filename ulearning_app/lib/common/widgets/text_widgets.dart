@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 
-Text text24Normal({String text = '', Color color = AppColors.primaryText}) {
+Text text24Normal({String text = '', Color color = AppColors.primaryText,FontWeight fontWeight=FontWeight.normal}) {
   return Text(
     text,
     textAlign: TextAlign.center,
     style: TextStyle(
       color: color,
       fontSize: 24,
-      fontWeight: FontWeight.normal,
+      fontWeight: fontWeight,
     ),
   );
 }

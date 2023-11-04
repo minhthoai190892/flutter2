@@ -9,3 +9,10 @@ CLI
     firebase logout
     firebase login
     flutterfire configure
+
+
+
+git checkout -b Riverpod 
+git add .
+git commit -m "Riverpod "
+git push -u origin Riverpod 
