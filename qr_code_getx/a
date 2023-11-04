@@ -2,10 +2,15 @@ project getx
 get init
 get create page name_page
 
+07-Export-PDF
 
 
-
-git checkout -b qr-code-05-All-Products
+git checkout -b qr-code-05-All-Products-01
 git add .
-git commit -m "qr-code-05-All-Products"
-git push -u origin qr-code-05-All-Products
+git commit -m "qr-code-05-All-Products-01"
+git push -u origin qr-code-05-All-Products-01
+
+
+
+sửa xem pdf
+ https://github.com/DavBfr/dart_pdf/wiki/Fonts-Management
