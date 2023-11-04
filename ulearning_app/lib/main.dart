@@ -12,12 +12,6 @@ Future<void> main() async {
 
 final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 
-// var routesMap = {
-//   '/': (context) => const Welcome(),
-//   '/signIn': (context) => const SignIn(),
-//   '/signUp': (context) => const SignUp(),
-//   '/application': (context) => const Application(),
-// };
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

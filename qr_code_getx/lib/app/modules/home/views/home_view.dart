@@ -1,14 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
-import 'package:open_file/open_file.dart';
-import 'package:qr_code_getx/app/controllers/auth_controller.dart';
-import 'package:qr_code_getx/app/routes/app_pages.dart';
 
+import '../../../controllers/auth_controller.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
-import 'package:pdf/widgets.dart' as pw;
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -48,8 +44,22 @@ class HomeView extends GetView<HomeController> {
             case 2:
               title = 'QR Code';
               icon = Icons.qr_code;
-              onTap = () {
-                
+              onTap = () async {
+                String barcode = await FlutterBarcodeScanner.scanBarcode(
+                  '#000000',
+                  'Cancel',
+                  true,
+                  ScanMode.QR,
+                );
+                Get.snackbar('BarCode', barcode);
+                // get data by product ID
+                Map<String, dynamic> hasil =
+                    await controller.getProductById(barcode);
+                if (hasil['error'] == false) {
+                  Get.toNamed(Routes.DETAIL_PRODUCT, arguments: hasil['data']);
+                } else {
+                  Get.snackbar('Error', hasil['message']);
+                }
               };
 
               break;

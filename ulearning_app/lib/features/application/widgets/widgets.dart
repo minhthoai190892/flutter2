@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/utils/image_res.dart';
 import 'package:ulearning_app/common/widgets/image_widgets.dart';
+import 'package:ulearning_app/features/home/view/home.dart';
 
 var bottomTabs = <BottomNavigationBarItem>[
   BottomNavigationBarItem(
@@ -22,16 +23,14 @@ var bottomTabs = <BottomNavigationBarItem>[
     label: 'Play',
     icon: bottomContainer(imagePath: ImageRes.play),
     activeIcon: bottomContainer(
-        color: AppColors.primaryElement,
-        imagePath: ImageRes.play),
+        color: AppColors.primaryElement, imagePath: ImageRes.play),
     backgroundColor: AppColors.primaryBackground,
   ),
   BottomNavigationBarItem(
     label: 'Message',
     icon: bottomContainer(imagePath: ImageRes.message),
     activeIcon: bottomContainer(
-        color: AppColors.primaryElement,
-        imagePath: ImageRes.message),
+        color: AppColors.primaryElement, imagePath: ImageRes.message),
     backgroundColor: AppColors.primaryBackground,
   ),
   BottomNavigationBarItem(
@@ -41,7 +40,6 @@ var bottomTabs = <BottomNavigationBarItem>[
         color: AppColors.primaryElement, imagePath: ImageRes.profile),
     backgroundColor: AppColors.primaryBackground,
   ),
-
 ];
 
 SizedBox bottomContainer({
@@ -59,9 +57,7 @@ SizedBox bottomContainer({
 
 Widget appScreens(int index) {
   List<Widget> screens = [
-    Center(
-      child: appImage(imagePath: ImageRes.home),
-    ),
+    const Home(),
     Center(
       child: appImage(imagePath: ImageRes.search),
     ),
@@ -74,7 +70,6 @@ Widget appScreens(int index) {
     Center(
       child: appImage(imagePath: ImageRes.profile),
     ),
-  
   ];
   return screens[index];
 }
