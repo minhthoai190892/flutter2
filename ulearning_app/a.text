@@ -12,7 +12,7 @@ CLI
 
 
 
-git checkout -b Riverpod 
+git checkout -b Riverpod jsonEncode 
 git add .
-git commit -m "Riverpod "
-git push -u origin Riverpod 
+git commit -m "Riverpod jsonEncode "
+git push -u origin Riverpod jsonEncode 

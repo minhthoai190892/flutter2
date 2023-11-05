@@ -23,19 +23,17 @@ class AppPages {
   }
 
   static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
-    print('click route is ... ${settings.name}');
     if (settings.name != null) {
       /// lộc giá trị
       var result = routes().where((element) => element.path == settings.name);
       if (result.isNotEmpty) {
         bool deviceFirstTime = Global.storageService.getDeviceFirstOpen();
-        print('deviceFirstTime:  $deviceFirstTime');
+
         //Throws a [StateError] if this is empty. Otherwise returns the first element in the iteration order, equivalent to this.elementAt(0).
         if (result.first.path == AppRoutesNames.WELCOME && deviceFirstTime) {
-          print('on welcom route: ${result.first.path}');
           bool isLoggedIn = Global.storageService.isLoggedIn();
-          print('isLoggedIn: $isLoggedIn');
-          if (!isLoggedIn) {
+
+          if (isLoggedIn) {
             return MaterialPageRoute(
                 builder: (_) => const Application(), settings: settings);
           } else {

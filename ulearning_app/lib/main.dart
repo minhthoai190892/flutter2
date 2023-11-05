@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,12 +8,18 @@ import 'package:ulearning_app/global.dart';
 import 'package:ulearning_app/common/routes/routes.dart';
 
 Future<void> main() async {
+  var item = {'name': 'thoai', 'age': 42};
+  var newItem = jsonEncode(item);
+  print(newItem[2]);
+
+
+  var test = 'name';
+  print(test[0]);
   await Global().init();
   runApp(const ProviderScope(child: MyApp()));
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
