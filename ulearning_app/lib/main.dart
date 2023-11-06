@@ -4,18 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_style.dart';
+import 'package:ulearning_app/common/utils/constants.dart';
 import 'package:ulearning_app/global.dart';
 import 'package:ulearning_app/common/routes/routes.dart';
 
 Future<void> main() async {
-  var item = {'name': 'thoai', 'age': 42};
-  var newItem = jsonEncode(item);
-  print(newItem[2]);
-
-
-  var test = 'name';
-  print(test[0]);
   await Global().init();
+  var item =
+      Global.storageService.getString(AppConstants.STORAGE_USER_PROFILE_KEY);
+  print(item);
+  var newItem = jsonDecode(item);
+  print(newItem['name']);
   runApp(const ProviderScope(child: MyApp()));
 }
 

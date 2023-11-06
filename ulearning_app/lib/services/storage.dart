@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ulearning_app/common/models/user.dart';
 import 'package:ulearning_app/common/utils/constants.dart';
 
 class StorageService {
@@ -31,5 +34,15 @@ class StorageService {
 
   String getString(String key) {
     return _pref.getString(key) ?? "";
+  }
+
+  /// hàm lấy profile  khi được chuyển đổi
+  UserProfile getUserProfile() {
+    // lưu vào bộ nhớ
+    var profile = _pref.getString(AppConstants.STORAGE_USER_PROFILE_KEY) ?? "";
+    //chuyển đổi dữ liệu từ String sang Map
+    var profileJson = jsonDecode(profile);
+    UserProfile userProfile = UserProfile.fromMap(profileJson);
+    return userProfile;
   }
 }
