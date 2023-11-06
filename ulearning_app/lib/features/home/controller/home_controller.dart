@@ -1,7 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'home_controller.g.dart';
 
-@riverpod
+//dùng để giữ nguyên trạng thái khi thay đổi qua các tab
+@Riverpod(keepAlive: true)
 class HomeScreenBannerDots extends _$HomeScreenBannerDots {
   @override
   int build() => 0;
