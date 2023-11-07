@@ -37,44 +37,49 @@ class HelloText extends StatelessWidget {
   }
 }
 
-Widget banner({required WidgetRef ref, required PageController controller}) {
-  return Column(
-    children: [
-      // banner
-      SizedBox(
-        width: 325.w,
-        height: 168.h,
-        child: PageView(
-          controller: controller,
-          // xem index của PageView
-          onPageChanged: (value) =>
-              ref.read(homeScreenBannerDotsProvider.notifier).setIndex(value),
-          children: [
-            bannerContainer(imagePath: ImageRes.banner1),
-            bannerContainer(imagePath: ImageRes.banner2),
-            bannerContainer(imagePath: ImageRes.banner3),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 5.h,
-      ),
-      // dots
-      DotsIndicator(
-        position:
-            ref.watch(homeScreenBannerDotsProvider), // vị trí của từng page
-        dotsCount: 3, //số lượng
-        decorator: DotsDecorator(
-          size: const Size.square(9.0),
-          activeSize: const Size(18.0, 8.0),
-          activeShape: RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(5), // Thay đổi hình dạng của dots
+class Banner extends StatelessWidget {
+  const Banner({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // banner
+        SizedBox(
+          width: 325.w,
+          height: 168.h,
+          child: PageView(
+            controller: controller,
+            // xem index của PageView
+            onPageChanged: (value) =>
+                ref.read(homeScreenBannerDotsProvider.notifier).setIndex(value),
+            children: [
+              bannerContainer(imagePath: ImageRes.banner1),
+              bannerContainer(imagePath: ImageRes.banner2),
+              bannerContainer(imagePath: ImageRes.banner3),
+            ],
           ),
         ),
-      )
-    ],
-  );
+        SizedBox(
+          height: 5.h,
+        ),
+        // dots
+        DotsIndicator(
+          position:
+              ref.watch(homeScreenBannerDotsProvider), // vị trí của từng page
+          dotsCount: 3, //số lượng
+          decorator: DotsDecorator(
+            size: const Size.square(9.0),
+            activeSize: const Size(18.0, 8.0),
+            activeShape: RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.circular(5), // Thay đổi hình dạng của dots
+            ),
+          ),
+        )
+      ],
+    );
+  }
 }
 
 Container bannerContainer({required String imagePath}) {

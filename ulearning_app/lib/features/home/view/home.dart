@@ -40,7 +40,7 @@ class _HomeState extends ConsumerState<Home> {
               SizedBox(height: 20.h),
               searchBar(),
               SizedBox(height: 15.h),
-              banner(ref: ref, controller: controller),
+              Banner(ref: ref, controller: controller),
             ],
           ),
         ),
