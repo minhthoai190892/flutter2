@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/common/utils/app_colors.dart';
-import 'package:ulearning_app/common/widgets/app_bar.dart';
-import 'package:ulearning_app/common/widgets/text_widgets.dart';
+import 'package:ulearning_app/features/home/controller/home_controller.dart';
 
-class Home extends StatelessWidget {
+import '../../../common/widgets/app_bar.dart';
+import '../../../common/widgets/search_widget.dart';
+import '../widgets/home_widgets.dart';
+
+class Home extends ConsumerStatefulWidget {
   const Home({super.key});
+
+  @override
+  ConsumerState<Home> createState() => _HomeState();
+}
+
+class _HomeState extends ConsumerState<Home> {
+  late PageController controller;
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    controller =
+        PageController(initialPage: ref.watch(homeScreenBannerDotsProvider));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +35,12 @@ class Home extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                child: text24Normal(
-                    text: 'Hello,',
-                    color: AppColors.primaryThreeElementText,
-                    fontWeight: FontWeight.bold),
-              ),
-              Container(
-                child: text24Normal(
-                    text: 'DBestech,', fontWeight: FontWeight.bold),
-              )
+              const HelloText(),
+              const UserName(),
+              SizedBox(height: 20.h),
+              searchBar(),
+              SizedBox(height: 15.h),
+              Banner(ref: ref, controller: controller),
             ],
           ),
         ),

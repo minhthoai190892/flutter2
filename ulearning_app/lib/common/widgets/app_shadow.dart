@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 
 BoxDecoration appBoxShadow(
-    {BoxBorder? border,
+    {BoxBorder? boxBorder,
     Color color = AppColors.primaryElement,
     double radius = 15,
     double sR = 1,
     double bR = 2}) {
   return BoxDecoration(
-    border: border,
+    border: boxBorder,
     color: color,
     borderRadius: BorderRadius.circular(radius),
     boxShadow: [

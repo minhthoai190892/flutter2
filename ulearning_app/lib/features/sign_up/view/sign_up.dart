@@ -8,6 +8,7 @@ import 'package:ulearning_app/common/utils/image_res.dart';
 import 'package:ulearning_app/common/widgets/button_widgets.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
 import 'package:ulearning_app/features/sign_up/controller/sign_up_controller.dart';
+
 import '../../../common/widgets/app_bar.dart';
 import '../../../common/widgets/app_textfield.dart';
 import '../notifier/register_notifier.dart';

@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print
 
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,7 +10,7 @@ import 'package:ulearning_app/common/widgets/popup_message.dart';
 import 'package:ulearning_app/features/sign_in/notifier/sign_in_notifier.dart';
 import 'package:ulearning_app/features/sign_in/repo/sign_in_repo.dart';
 import 'package:ulearning_app/global.dart';
-import 'package:ulearning_app/common/entity/user.dart';
+import 'package:ulearning_app/common/models/user.dart';
 import 'package:ulearning_app/common/utils/constants.dart';
 import 'package:ulearning_app/main.dart';
 
@@ -85,14 +87,19 @@ class SignInController {
 
     // have local storage
     try {
-     
       // try to remember user info
-      Global.storageService
-          .setString(AppConstants.STORAGE_USER_PROFILE_KEY, '123');
+      Global.storageService.setString(
+          AppConstants.STORAGE_USER_PROFILE_KEY,
+          jsonEncode({
+            'name': 'Thoai',
+            'email': 'minhthoai190892@gmail.com',
+            'age': 30
+          }));
       Global.storageService
           .setString(AppConstants.STORAGE_USER_TOKEN_KEY, '123456');
       // di chuyển đến route đã cho và xóa toàn bộ các route trước đó
-      navKey.currentState?.pushNamedAndRemoveUntil('/application', (route) => false);
+      navKey.currentState
+          ?.pushNamedAndRemoveUntil('/application', (route) => false);
     } catch (e) {
       print(e.toString());
     }

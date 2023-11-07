@@ -1,17 +1,24 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_style.dart';
+import 'package:ulearning_app/common/utils/constants.dart';
 import 'package:ulearning_app/global.dart';
 import 'package:ulearning_app/common/routes/routes.dart';
 
 Future<void> main() async {
   await Global().init();
+  var item =
+      Global.storageService.getString(AppConstants.STORAGE_USER_PROFILE_KEY);
+  print(item);
+  var newItem = jsonDecode(item);
+  print(newItem['name']);
   runApp(const ProviderScope(child: MyApp()));
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
