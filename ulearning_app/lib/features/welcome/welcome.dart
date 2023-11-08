@@ -3,6 +3,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ulearning_app/common/utils/image_res.dart';
 import 'notifier/welcome_notifier.dart';
 import 'widgets.dart';
 
@@ -47,27 +48,29 @@ class _WelcomeState extends ConsumerState<Welcome> {
                   // scrollDirection: Axis.vertical,
                   children: [
                     // First Page
-                    appOnboardingPage(_controller, context,
+                    AppOnboardingPage(
+                        controller: _controller,
+                        context: context,
                         index: 1,
-                        imagePath: 'assets/images/reading.png',
+                        imagePath: ImageRes.reading,
                         title: 'First see Learning',
                         subTitle:
                             'Forget abou the paper, now learning all in on place'),
 
                     // Second Page
-                    appOnboardingPage(
-                      _controller,
-                      context,
+                    AppOnboardingPage(
+                      controller: _controller,
+                      context: context,
                       index: 2,
-                      imagePath: 'assets/images/man.png',
+                      imagePath: ImageRes.man,
                       title: 'Connect with Everyone',
                       subTitle:
                           'Always keep in touch with your tutor and friends. Let\'s get connected.',
                     ),
                     // Third Page
-                    appOnboardingPage(
-                      _controller,
-                      context,
+                    AppOnboardingPage(
+                      controller: _controller,
+                      context: context,
                       index: 3,
                       imagePath: 'assets/images/boy.png',
                       title: 'Always Facinated Learning',

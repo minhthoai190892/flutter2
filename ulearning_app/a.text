@@ -12,7 +12,7 @@ CLI
 
 
 
-git checkout -b Riverpod-banner-not-changeWidgets-banner 
+git checkout -b Riverpod-Home-Choice
 git add .
-git commit -m "Riverpod-banner-not-changeWidgets-banner "
-git push -u origin Riverpod-banner-not-changeWidgets-banner 
+git commit -m "Riverpod-Home-Choice"
+git push -u origin Riverpod-Home-Choice

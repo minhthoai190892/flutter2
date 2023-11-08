@@ -1,38 +1,51 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+
 import 'package:ulearning_app/common/utils/constants.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/global.dart';
 
 import '../../common/widgets/text_widgets.dart';
 
-Column appOnboardingPage(
-  PageController controller,
-  BuildContext context, {
-  String imagePath = 'assets/images/reading.png',
-  String title = '',
-  String subTitle = '',
-  index = 0,
-}) {
-  return Column(
-    children: [
-      Image.asset(
-        imagePath,
-        fit: BoxFit.fitHeight,
-      ),
-      Container(
-        margin: const EdgeInsets.only(top: 15),
-        child: text24Normal(text: title),
-      ),
-      Container(
-        margin: const EdgeInsets.only(top: 15),
-        padding: const EdgeInsets.only(left: 30, right: 30),
-        child: text16Normal(text: subTitle),
-      ),
-      _nextButton(index, controller, context),
-    ],
-  );
+class AppOnboardingPage extends StatelessWidget {
+  const AppOnboardingPage({
+    Key? key,
+    required this.controller,
+    required this.context,
+    required this.imagePath,
+    required this.title,
+    required this.subTitle,
+    required this.index,
+  }) : super(key: key);
+  final PageController controller;
+  final BuildContext context;
+  final String imagePath;
+  final String title;
+  final String subTitle;
+  final int index;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Image.asset(
+          imagePath,
+          fit: BoxFit.fitHeight,
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 15),
+          child: Text24Normal(text: title),
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 15),
+          padding: const EdgeInsets.only(left: 30, right: 30),
+          child: Text16Normal(text: subTitle),
+        ),
+        _nextButton(index, controller, context),
+      ],
+    );
+  }
 }
 
 Widget _nextButton(int index, PageController controller, BuildContext context) {
@@ -62,7 +75,7 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
       width: 325,
       height: 50,
       child: Center(
-          child: text16Normal(
+          child: Text16Normal(
               text: index < 3 ? 'Next' : 'Get started', color: Colors.white)),
     ),
   );

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
 
 import '../utils/app_colors.dart';
-AppBar buildAppBar({String text=''}) => AppBar(
-      title: text16Normal(text: text, color: AppColors.primaryText),
+
+AppBar buildAppBar({String text = ''}) => AppBar(
+      title: Text16Normal(text: text, color: AppColors.primaryText),
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(10), // Chiều cao của AppBar
         child: Container(

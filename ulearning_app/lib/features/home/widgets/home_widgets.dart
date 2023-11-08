@@ -1,10 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:ulearning_app/common/utils/image_res.dart';
+import 'package:ulearning_app/common/widgets/image_widgets.dart';
 import 'package:ulearning_app/features/home/controller/home_controller.dart';
+
 import '../../../common/utils/app_colors.dart';
+import '../../../common/widgets/app_shadow.dart';
 import '../../../common/widgets/text_widgets.dart';
 import '../../../global.dart';
 
@@ -13,12 +18,9 @@ class UserName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('object1');
-    return Container(
-      child: text24Normal(
-          text: Global.storageService.getUserProfile().name!,
-          fontWeight: FontWeight.bold),
-    );
+    return Text24Normal(
+        text: Global.storageService.getUserProfile().name!,
+        fontWeight: FontWeight.bold);
   }
 }
 
@@ -27,19 +29,21 @@ class HelloText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('object2');
-    return Container(
-      child: text24Normal(
-          text: 'Hello,',
-          color: AppColors.primaryThreeElementText,
-          fontWeight: FontWeight.bold),
-    );
+    return const Text24Normal(
+        text: 'Hello,',
+        color: AppColors.primaryThreeElementText,
+        fontWeight: FontWeight.bold);
   }
 }
 
-class Banner extends StatelessWidget {
-  const Banner({super.key});
-
+class HomeBanner extends StatelessWidget {
+  const HomeBanner({
+    Key? key,
+    required this.controller,
+    required this.ref,
+  }) : super(key: key);
+  final PageController controller;
+  final WidgetRef ref;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -94,4 +98,46 @@ Container bannerContainer({required String imagePath}) {
       ),
     ),
   );
+}
+
+AppBar homeAppBar() {
+  return AppBar(
+    title: Container(
+      margin: EdgeInsets.only(left: 7.w, right: 7.w),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          appImage(imagePath: ImageRes.menu, width: 18.w, height: 12.h),
+          GestureDetector(
+            child: const AppBoxDecorationImage(),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+class HomeMenuBar extends StatelessWidget {
+  const HomeMenuBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 15.h),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          const Text16Normal(
+            text: 'Choice your course',
+            color: AppColors.primaryText,
+            fontWeight: FontWeight.bold,
+          ),
+          GestureDetector(
+            child: const Text10Normal(text: 'See all'),
+          ),
+        ],
+      ),
+    );
+  }
 }

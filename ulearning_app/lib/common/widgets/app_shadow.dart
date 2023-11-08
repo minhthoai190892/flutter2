@@ -1,6 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:ulearning_app/common/utils/app_colors.dart';
+
+import '../utils/image_res.dart';
 
 BoxDecoration appBoxShadow(
     {BoxBorder? boxBorder,
@@ -57,4 +61,30 @@ BoxDecoration appBoxDecorationTextField({
     borderRadius: BorderRadius.circular(radius),
     border: Border.all(color: borderColor),
   );
+}
+
+class AppBoxDecorationImage extends StatelessWidget {
+  const AppBoxDecorationImage({
+    Key? key,
+    this.width = 40,
+    this.height = 40,
+    this.imagePath = ImageRes.profile,
+  }) : super(key: key);
+  final double width;
+  final double height;
+  final String imagePath;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          image: AssetImage(imagePath),
+        ),
+        borderRadius: BorderRadius.circular(20.w),
+      ),
+    );
+  }
 }
