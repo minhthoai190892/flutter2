@@ -8,12 +8,14 @@ import '../utils/image_res.dart';
 
 BoxDecoration appBoxShadow(
     {BoxBorder? boxBorder,
+    BorderRadius? borderRadius,
     Color color = AppColors.primaryElement,
     double radius = 15,
     double sR = 1,
     double bR = 2}) {
   return BoxDecoration(
     border: boxBorder,
+    
     color: color,
     borderRadius: BorderRadius.circular(radius),
     boxShadow: [

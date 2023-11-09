@@ -2,6 +2,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ulearning_app/common/utils/app_colors.dart';
 
@@ -69,6 +70,29 @@ class Text10Normal extends StatelessWidget {
       style: TextStyle(
         color: color,
         fontSize: 10,
+        fontWeight: fontWeight,
+      ),
+    );
+  }
+}
+
+class Text11Normal extends StatelessWidget {
+  const Text11Normal(
+      {super.key,
+      this.text = '',
+      this.color = AppColors.primaryElementText,
+      this.fontWeight = FontWeight.normal});
+  final String text;
+  final Color color;
+  final FontWeight fontWeight;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: color,
+        fontSize: 11.sp,
         fontWeight: fontWeight,
       ),
     );

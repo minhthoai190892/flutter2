@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/common/widgets/image_widgets.dart';
 
 import '../../../common/widgets/search_widget.dart';
 import '../controller/home_controller.dart';
@@ -43,9 +44,30 @@ class _HomeState extends ConsumerState<Home> {
               SizedBox(height: 15.h),
               HomeBanner(controller: controller, ref: ref),
               const HomeMenuBar(),
+              const CourseItemGrid()
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CourseItemGrid extends StatelessWidget {
+  const CourseItemGrid({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: GridView.builder(
+        physics: const ScrollPhysics(),
+        shrinkWrap: true,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, crossAxisSpacing: 40, mainAxisSpacing: 40),
+        itemCount: 20,
+        itemBuilder: (context, index) => appImage(),
       ),
     );
   }
