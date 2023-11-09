@@ -2,7 +2,7 @@
 
 class AppConstants {
   /// bộ nhớ api
-  static const String SERVER_API_URL = 'ip address';
+  static const String SERVER_API_URL = 'http://10.0.2.2:8000/';
 
   /// bộ nhớ người dùng profile
   static const String STORAGE_USER_PROFILE_KEY = 'user_profile';

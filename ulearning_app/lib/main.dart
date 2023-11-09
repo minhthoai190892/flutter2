@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/services/http_util.dart';
 
 import 'common/routes/routes.dart';
 import 'common/utils/app_style.dart';
@@ -13,6 +14,8 @@ Future<void> main() async {
   // print(item.length);
   // var newItem = jsonDecode(item);
   // print(newItem);
+    HttpUtil().post('api/login');
+
   runApp(const ProviderScope(child: MyApp()));
 }
 

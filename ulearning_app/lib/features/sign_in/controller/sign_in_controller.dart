@@ -13,6 +13,7 @@ import 'package:ulearning_app/global.dart';
 import 'package:ulearning_app/common/models/user.dart';
 import 'package:ulearning_app/common/utils/constants.dart';
 import 'package:ulearning_app/main.dart';
+import 'package:ulearning_app/services/http_util.dart';
 
 class SignInController {
   SignInController();
@@ -84,7 +85,6 @@ class SignInController {
 
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
     // we need to take to server
-
     // have local storage
     try {
       // try to remember user info

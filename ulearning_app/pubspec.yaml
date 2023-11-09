@@ -5,7 +5,7 @@ description: A new Flutter project.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 #https://www.youtube.com/watch?v=_VShCq9b53Y&list=PL3nPgdhXQtHcOCxrusIBlOH8UbwCIP_Qk 8:02:51 / 8:36:37
 # https://www.youtube.com/watch?v=wCRy6bZIHEo&list=PL3nPgdhXQtHcOCxrusIBlOH8UbwCIP_Qk&index=2 7:45:24 / 9:44:35
-# https://www.youtube.com/watch?v=k2gxHESBUIw&list=PL3nPgdhXQtHcOCxrusIBlOH8UbwCIP_Qk&index=3  3:42:26 / 7:48:38
+# https://www.youtube.com/watch?v=k2gxHESBUIw&list=PL3nPgdhXQtHcOCxrusIBlOH8UbwCIP_Qk&index=3  6:19:25 / 7:48:38
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
 # followed by an optional build number separated by a +.
@@ -46,6 +46,8 @@ dependencies:
   firebase_core: ^2.20.0
   shared_preferences: ^2.2.2
   flutter_screenutil: ^5.9.0
+  dio: ^5.3.3
+  get: ^4.6.6
   # cloud_firestore: ^4.12.1
 
 dev_dependencies:
