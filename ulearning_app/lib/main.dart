@@ -14,10 +14,16 @@ Future<void> main() async {
   // print(item.length);
   // var newItem = jsonDecode(item);
   // print(newItem);
-    HttpUtil().post('api/login');
-
+  HttpUtil().post('api/login',queryParameters: {
+    'name' :"test",
+    'email' :"a@a.com",
+    'avatar' :"xyz",
+    'open_id':"uisiueihxxsasdqw",
+    'type':2
+  });
   runApp(const ProviderScope(child: MyApp()));
 }
+// shldjfhs
 
 final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 
