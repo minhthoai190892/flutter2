@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/features/home/controller/home_controller.dart';
+import 'package:ulearning_app/common/widgets/image_widgets.dart';
 
-import '../../../common/widgets/app_bar.dart';
 import '../../../common/widgets/search_widget.dart';
+import '../controller/home_controller.dart';
 import '../widgets/home_widgets.dart';
 
 class Home extends ConsumerStatefulWidget {
@@ -27,7 +27,8 @@ class _HomeState extends ConsumerState<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(text: 'Home'),
+      backgroundColor: Colors.white,
+      appBar: homeAppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 25.w),
         child: SingleChildScrollView(
@@ -35,15 +36,38 @@ class _HomeState extends ConsumerState<Home> {
             // mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 20.h),
               const HelloText(),
               const UserName(),
               SizedBox(height: 20.h),
               searchBar(),
               SizedBox(height: 15.h),
-              Banner(ref: ref, controller: controller),
+              HomeBanner(controller: controller, ref: ref),
+              const HomeMenuBar(),
+              const CourseItemGrid()
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CourseItemGrid extends StatelessWidget {
+  const CourseItemGrid({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: GridView.builder(
+        physics: const ScrollPhysics(),
+        shrinkWrap: true,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, crossAxisSpacing: 40, mainAxisSpacing: 40),
+        itemCount: 20,
+        itemBuilder: (context, index) => appImage(),
       ),
     );
   }

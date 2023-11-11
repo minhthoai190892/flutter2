@@ -25,7 +25,9 @@ class StorageService {
   bool getDeviceFirstOpen() {
     return _pref.getBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_KEY) ?? false;
   }
-
+  String getUserToken(){
+    return _pref.getString(AppConstants.STORAGE_USER_TOKEN_KEY)??"";
+  }
   bool isLoggedIn() {
     return _pref.getString(AppConstants.STORAGE_USER_PROFILE_KEY) != null
         ? true

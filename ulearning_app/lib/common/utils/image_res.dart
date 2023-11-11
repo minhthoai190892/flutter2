@@ -9,6 +9,7 @@ class ImageRes {
    */
   // ImageRes._();
   static const String _imageBase = 'assets/icons';
+  static const String _imageBaseImage = 'assets/images';
   static const String home = '$_imageBase/home.png';
   static const String search = '$_imageBase/search2.png';
   static const String play = '$_imageBase/play-circle1.png';
@@ -22,4 +23,8 @@ class ImageRes {
   static const String banner1 = '$_imageBase/Art.png';
   static const String banner2 = '$_imageBase/Image(1).png';
   static const String banner3 = '$_imageBase/Image(2).png';
+  static const String menu = '$_imageBase/menu.png';
+  static const String reading = '$_imageBaseImage/reading.png';
+  static const String man = '$_imageBaseImage/man.png';
+  static const String boy = '$_imageBaseImage/boy.png';
 }

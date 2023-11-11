@@ -1,22 +1,29 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/common/utils/app_style.dart';
-import 'package:ulearning_app/common/utils/constants.dart';
-import 'package:ulearning_app/global.dart';
-import 'package:ulearning_app/common/routes/routes.dart';
+import 'package:ulearning_app/services/http_util.dart';
+
+import 'common/routes/routes.dart';
+import 'common/utils/app_style.dart';
+import 'global.dart';
 
 Future<void> main() async {
   await Global().init();
-  var item =
-      Global.storageService.getString(AppConstants.STORAGE_USER_PROFILE_KEY);
-  print(item);
-  var newItem = jsonDecode(item);
-  print(newItem['name']);
+  // var item =
+  //     Global.storageService.getString(AppConstants.STORAGE_USER_PROFILE_KEY);
+  // print(item.length);
+  // var newItem = jsonDecode(item);
+  // print(newItem);
+  HttpUtil().post('api/login',queryParameters: {
+    'name' :"test",
+    'email' :"a@a.com",
+    'avatar' :"xyz",
+    'open_id':"uisiueihxxsasdqw",
+    'type':2
+  });
   runApp(const ProviderScope(child: MyApp()));
 }
+// shldjfhs
 
 final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 

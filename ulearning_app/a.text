@@ -2,6 +2,8 @@ fluttertoast
     1. flutter clean
     2. flutter pub get
     3. stop device
+firebase 
+    minhthoai190892@gmail.com
 CLI
     -- add pub --
     firebase_core
@@ -9,10 +11,35 @@ CLI
     firebase logout
     firebase login
     flutterfire configure
+laravel 4:09:11 / 7:48:38
+    -- create project --
+    composer create-project laravel/laravel project-name
+    -- new project --
+    php artisan serve
+    composer require encore/laravel-admin:1.*
+    php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
+    php artisan admin:install
+    -- check admin --
+    php artisan admin
+    -- fix error --
+    https://www.dbestech.com/tutorials/laravel-admin-panel-config-problems-and-solutions
+    --  ---
+    composer require laravel/sanctum
+    php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+    php artisan migrate
+    -- create a new controller --
+    php artisan make:controller Api\\UserController
 
 
 
-git checkout -b Riverpod-banner-not-changeWidgets-banner 
+
+
+
+
+
+
+
+git checkout -b Riverpod-Dio
 git add .
-git commit -m "Riverpod-banner-not-changeWidgets-banner "
-git push -u origin Riverpod-banner-not-changeWidgets-banner 
+git commit -m "Riverpod-Dio"
+git push -u origin Riverpod-Dio

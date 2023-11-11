@@ -40,7 +40,7 @@ class _SignUpState extends ConsumerState<SignUp> {
         child: Scaffold(
           appBar: buildAppBar(text: 'Sign Up'),
           backgroundColor: Colors.white,
-          body: loader==false
+          body: loader == false
               ? SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,8 +48,8 @@ class _SignUpState extends ConsumerState<SignUp> {
                       const SizedBox(
                         height: 30,
                       ),
-                      Center(
-                        child: text14Normal(
+                      const Center(
+                        child: Text14Normal(
                             text: 'Enter your details below & free sign up'),
                       ),
                       const SizedBox(
@@ -107,7 +107,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 25),
-                        child: text14Normal(
+                        child: const Text14Normal(
                             text:
                                 'By creating an account, you have to agree with\nout them & conditions'),
                       ),
