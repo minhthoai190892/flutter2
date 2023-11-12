@@ -12,7 +12,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  bool isTyping = true;
+  bool isTyping = false;
   late TextEditingController textEditingController;
   @override
   void initState() {
@@ -30,6 +30,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+      
         elevation: 2,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -39,9 +40,14 @@ class _ChatScreenState extends State<ChatScreen> {
           'ChatGPT',
           style: textWhite(),
         ),
-        actions: [IconButton(onPressed: () {
-          
-        }, icon: Icon(Icons.more_vert_rounded,color: Colors.white,))],
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.more_vert_rounded,
+                color: Colors.white,
+              ))
+        ],
       ),
       body: Center(
         child: Column(

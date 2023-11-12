@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/widgets/image_widgets.dart';
 
+import '../../../common/models/user.dart';
 import '../../../common/widgets/search_widget.dart';
+import '../../../global.dart';
 import '../controller/home_controller.dart';
 import '../widgets/home_widgets.dart';
 
@@ -26,9 +28,11 @@ class _HomeState extends ConsumerState<Home> {
 
   @override
   Widget build(BuildContext context) {
+    UserProfile getUserProfile = Global.storageService.getUserProfile();
+    print(getUserProfile);
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: homeAppBar(),
+      appBar: homeAppBar(ref),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 25.w),
         child: SingleChildScrollView(
