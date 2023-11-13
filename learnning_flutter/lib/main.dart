@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:learnning_flutter/screens/FloatingActionButton/floating_action_button.dart';
 import 'package:learnning_flutter/screens/flip_animation/flip_animation.dart';
 import 'package:learnning_flutter/screens/horizontalscrolling/horizontalscrolling.dart';
 import 'package:learnning_flutter/screens/wrap/wrap.dart';
@@ -47,6 +48,7 @@ class MyHomePage extends StatelessWidget {
           const NewScreen(text: 'FlipAnimation', screen: FlipAnimation()),
           const NewScreen(text: 'HorizontalScrolling', screen: HorizontalScrolling()),
           const NewScreen(text: 'Wrap', screen: WrapScreen()),
+          const NewScreen(text: 'FloatingActionButton', screen: FloatingActionButtonScreen()),
         ],
       )),
       body: const SafeArea(
