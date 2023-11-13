@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:learnning_flutter/screens/flip_animation/flip_animation.dart';
 import 'package:learnning_flutter/screens/horizontalscrolling/horizontalscrolling.dart';
+import 'package:learnning_flutter/screens/wrap/wrap.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +45,8 @@ class MyHomePage extends StatelessWidget {
           ),
           NewScreen(text: 'Page View', screen: PageView()),
           const NewScreen(text: 'FlipAnimation', screen: FlipAnimation()),
-          const NewScreen(text: 'HorizontalScrolling', screen: HorizontalScrolling())
+          const NewScreen(text: 'HorizontalScrolling', screen: HorizontalScrolling()),
+          const NewScreen(text: 'Wrap', screen: WrapScreen()),
         ],
       )),
       body: const SafeArea(
