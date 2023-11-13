@@ -1,5 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:learnning_flutter/screens/pageview/page_view_screen.dart';
+import 'package:learnning_flutter/screens/flip_animation/flip_animation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,16 +41,8 @@ class MyHomePage extends StatelessWidget {
           const DrawerHeader(
             child: Text('Drawer header'),
           ),
-          ListTile(
-            title: const Text('Page View'),
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const PageViewScreen(),
-                  ));
-            },
-          ),
+          NewWidget(text: 'Page View', screen: PageView()),
+          const NewWidget(text: 'FlipAnimation', screen: FlipAnimation()),
         ],
       )),
       body: const SafeArea(
@@ -57,6 +50,29 @@ class MyHomePage extends StatelessWidget {
           child: Text('data'),
         ),
       ),
+    );
+  }
+}
+
+class NewWidget extends StatelessWidget {
+  const NewWidget({
+    Key? key,
+    required this.text,
+    required this.screen,
+  }) : super(key: key);
+  final String text;
+  final Widget screen;
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(text),
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => screen,
+            ));
+      },
     );
   }
 }
