@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:learnning_flutter/screens/flip_animation/flip_animation.dart';
+import 'package:learnning_flutter/screens/horizontalscrolling/horizontalscrolling.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,8 +42,9 @@ class MyHomePage extends StatelessWidget {
           const DrawerHeader(
             child: Text('Drawer header'),
           ),
-          NewWidget(text: 'Page View', screen: PageView()),
-          const NewWidget(text: 'FlipAnimation', screen: FlipAnimation()),
+          NewScreen(text: 'Page View', screen: PageView()),
+          const NewScreen(text: 'FlipAnimation', screen: FlipAnimation()),
+          const NewScreen(text: 'HorizontalScrolling', screen: HorizontalScrolling())
         ],
       )),
       body: const SafeArea(
@@ -54,8 +56,8 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class NewWidget extends StatelessWidget {
-  const NewWidget({
+class NewScreen extends StatelessWidget {
+  const NewScreen({
     Key? key,
     required this.text,
     required this.screen,

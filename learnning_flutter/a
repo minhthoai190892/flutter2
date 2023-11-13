@@ -1,4 +1,4 @@
-git checkout -b learnning_flutter_FlipAnimation
+git checkout -b learnning_flutter_horizontalscrolling
 git add .
-git commit -m "learnning_flutter_FlipAnimation"
-git push -u origin learnning_flutter_FlipAnimation
+git commit -m "learnning_flutter_horizontalscrolling"
+git push -u origin learnning_flutter_horizontalscrolling
