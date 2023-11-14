@@ -5,6 +5,7 @@ import 'package:api_news_app/services/slider_data.dart';
 import 'package:api_news_app/widgets/category_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../services/data.dart';
 
@@ -46,7 +47,47 @@ class _HomeState extends State<Home> {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Flexible(
+            fit: FlexFit.tight,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: categories.length,
+              itemBuilder: (context, index) {
+                return CategoryTitle(
+                    categoryName: categories[index].categoryName.toString(),
+                    image: categories[index].image.toString());
+              },
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Breaking News!',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontFamily: 'Pacifico'),
+                ),
+                Text(
+                  'View all',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.blueAccent),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
           CarouselSlider.builder(
             itemCount: sliders.length,
             itemBuilder: (context, index, realIndex) {
@@ -91,20 +132,41 @@ class _HomeState extends State<Home> {
             ),
           ),
           const SizedBox(
+            height: 20,
+          ),
+          Center(
+            child: AnimatedSmoothIndicator(
+                activeIndex: activeIndex, count: sliders.length),
+          ),
+          const SizedBox(
             height: 30,
           ),
-          Flexible(
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              itemCount: categories.length,
-              itemBuilder: (context, index) {
-                return CategoryTitle(
-                    categoryName: categories[index].categoryName.toString(),
-                    image: categories[index].image.toString());
-              },
+          const Flexible(
+            flex: 4,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Trending News!',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  Text(
+                    'View all',
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.blueAccent),
+                  ),
+                ],
+              ),
             ),
           ),
+          const Text('data'),
         ],
       ),
     );
