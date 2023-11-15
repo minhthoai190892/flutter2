@@ -1,7 +1,10 @@
+import 'package:api_news_app/models/article_model.dart';
+import 'package:api_news_app/pages/article_view.dart';
 import 'package:api_news_app/pages/home.dart';
-import 'package:api_news_app/pages/ladding_page.dart';
-import 'package:api_news_app/pages/test.dart';
+import 'package:api_news_app/services/news.dart';
 import 'package:flutter/material.dart';
+
+import 'pages/ladding_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +37,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LandingPage(),
+      home: const Home(),
     );
   }
 }

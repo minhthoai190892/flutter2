@@ -1,4 +1,4 @@
-git checkout -b api_news_app_create_landing_page
+git checkout -b api_news_app_finis_api
 git add .
-git commit -m "api_news_app_create_landing_page"
-git push -u origin api_news_app_create_landing_page
+git commit -m "api_news_app_finis_api"
+git push -u origin api_news_app_finis_api
