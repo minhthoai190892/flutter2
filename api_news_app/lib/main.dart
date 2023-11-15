@@ -1,4 +1,6 @@
 import 'package:api_news_app/pages/home.dart';
+import 'package:api_news_app/pages/ladding_page.dart';
+import 'package:api_news_app/pages/test.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: const LandingPage(),
     );
   }
 }

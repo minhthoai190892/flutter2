@@ -6,4 +6,6 @@ class ImageManager {
   static String imageEntertaiment = '$imagePath/entertaiment.png';
   static String imageHealthcare = '$imagePath/healthcare.png';
   static String imageSports = '$imagePath/sports.png';
+  static String imageBuildding = '$imagePath/buildding.jpg';
+
 }
