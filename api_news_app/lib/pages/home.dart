@@ -1,4 +1,5 @@
 import 'package:api_news_app/models/article_model.dart';
+import 'package:api_news_app/pages/all_news.dart';
 import 'package:api_news_app/services/news.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -22,10 +23,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   // initial list
   List<CategoryModel> categories = [];
-  List<SliderModel> sliders = [];
   int activeIndex = 0;
+  List<SliderModel> sliders = [];
   List<ArticleModel> articles = [];
   bool isLoading = true;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -33,7 +35,7 @@ class _HomeState extends State<Home> {
     // get list of categories
     categories = getCategoryList();
     getNews();
-    sliders = getSliders();
+    getSliders();
   }
 
   getNews() async {
@@ -43,6 +45,13 @@ class _HomeState extends State<Home> {
     setState(() {
       isLoading = false;
     });
+  }
+
+  getSliders() async {
+    Sliders slider = Sliders();
+    await slider.getSlider();
+    sliders = slider.sliders;
+    print(sliders.length);
   }
 
   @override
@@ -88,24 +97,32 @@ class _HomeState extends State<Home> {
                   const SizedBox(
                     height: 30,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Trending News!',
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
-                        Text(
-                          'View all',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.blueAccent),
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const AllNews(news: 'Trending'),
+                              )),
+                          child: const Text(
+                            'View all',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.blueAccent),
+                          ),
                         ),
                       ],
                     ),
@@ -119,7 +136,7 @@ class _HomeState extends State<Home> {
                       itemCount: articles.length,
                       itemBuilder: (context, index) {
                         return BlogTitle(
-                          url: articles[index].url!,
+                            url: articles[index].url!,
                             imageUrl: articles[index].urlToImage!,
                             title: articles[index].title!,
                             description: articles[index].description!);
@@ -140,9 +157,9 @@ class _HomeState extends State<Home> {
           children: [
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 5),
-              child: Image.asset(
-                sliders[index].image.toString(),
-                fit: BoxFit.contain,
+              child: Image.network(
+                sliders[index].urlToImage!,
+                fit: BoxFit.cover,
                 height: 200,
                 width: MediaQuery.of(context).size.width,
               ),
@@ -154,9 +171,11 @@ class _HomeState extends State<Home> {
               width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(color: Colors.black26),
               child: Text(
-                sliders[index].name.toString(),
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                sliders[index].title!,
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
             )
           ],
@@ -166,7 +185,7 @@ class _HomeState extends State<Home> {
         height: 200,
         autoPlay: true,
         viewportFraction: 1,
-        // enlargeCenterPage: true,
+        enlargeCenterPage: true,
         enlargeStrategy: CenterPageEnlargeStrategy.height,
         onPageChanged: (index, reason) {
           setState(() {

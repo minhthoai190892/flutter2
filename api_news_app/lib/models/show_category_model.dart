@@ -5,12 +5,12 @@
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-SliderModel articleModelFromJson(String str) =>
-    SliderModel.fromJson(json.decode(str));
+ShowCategoryModel articleModelFromJson(String str) =>
+    ShowCategoryModel.fromJson(json.decode(str));
 
-String articleModelToJson(SliderModel data) => json.encode(data.toJson());
+String articleModelToJson(ShowCategoryModel data) => json.encode(data.toJson());
 
-class SliderModel {
+class ShowCategoryModel {
   final String? author;
   final String? title;
   final String? description;
@@ -19,7 +19,7 @@ class SliderModel {
  
   final String? content;
 
-SliderModel({
+  ShowCategoryModel({
     required this.author,
     required this.title,
     required this.description,
@@ -29,7 +29,7 @@ SliderModel({
     required this.content,
   });
 
-  SliderModel copyWith({
+  ShowCategoryModel copyWith({
     String? author,
     String? title,
     String? description,
@@ -38,7 +38,7 @@ SliderModel({
     DateTime? publishedAt,
     String? content,
   }) =>
-      SliderModel(
+      ShowCategoryModel(
         author: author ?? this.author,
         title: title ?? this.title,
         description: description ?? this.description,
@@ -48,7 +48,7 @@ SliderModel({
         content: content ?? this.content,
       );
 
-  factory SliderModel.fromJson(Map<String, dynamic> json) => SliderModel(
+  factory ShowCategoryModel.fromJson(Map<String, dynamic> json) => ShowCategoryModel(
         author: json["author"],
         title: json["title"],
         description: json["description"],

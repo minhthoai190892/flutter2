@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:api_news_app/pages/category_news.dart';
 import 'package:flutter/material.dart';
 
 class CategoryTitle extends StatelessWidget {
@@ -12,36 +13,45 @@ class CategoryTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 8),
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(6),
-            child: Image.asset(
-              image,
-              width: 120,
-              height: 60,
-              // fit: BoxFit.cover,
-            ),
-          ),
-          Container(
-            width: 120,
-            height: 60,
-            decoration: const BoxDecoration(
-                color: Colors.black26,
-                borderRadius: BorderRadius.all(Radius.circular(6))),
-            child: Center(
-              child: Text(
-                categoryName,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CategoryNews(name: categoryName),
+            ));
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8),
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: Image.asset(
+                image,
+                width: 120,
+                height: 60,
+                // fit: BoxFit.cover,
               ),
             ),
-          )
-        ],
+            Container(
+              width: 120,
+              height: 60,
+              decoration: const BoxDecoration(
+                  color: Colors.black26,
+                  borderRadius: BorderRadius.all(Radius.circular(6))),
+              child: Center(
+                child: Text(
+                  categoryName,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

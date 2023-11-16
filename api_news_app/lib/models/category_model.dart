@@ -6,5 +6,4 @@ class CategoryModel {
     this.categoryName,
     this.image,
   });
-
 }

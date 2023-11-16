@@ -1,3 +1,4 @@
+import 'package:api_news_app/pages/all_news.dart';
 import 'package:flutter/material.dart';
 
 class BreakingNewsWidget extends StatelessWidget {
@@ -7,12 +8,12 @@ class BreakingNewsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          const Text(
             'Breaking News!',
             style: TextStyle(
                 fontSize: 18,
@@ -20,12 +21,19 @@ class BreakingNewsWidget extends StatelessWidget {
                 color: Colors.black,
                 fontFamily: 'Pacifico'),
           ),
-          Text(
-            'View all',
-            style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.normal,
-                color: Colors.blueAccent),
+          GestureDetector(
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AllNews(news: 'Breaking'),
+                )),
+            child: const Text(
+              'View all',
+              style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.blueAccent),
+            ),
           ),
         ],
       ),
