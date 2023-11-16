@@ -83,26 +83,26 @@ class SignInController {
     ref.read(appLoaderProvider.notifier).setLoaderValue(false);
   }
 
-  void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
+  Future<void> asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
     // we need to take to server
-    // have local storage
-    try {
-      // try to remember user info
-      Global.storageService.setString(
-          AppConstants.STORAGE_USER_PROFILE_KEY,
-          jsonEncode({
-            'name': 'Thoai',
-            'email': 'minhthoai190892@gmail.com',
-            'age': 30
-          }));
-      Global.storageService
-          .setString(AppConstants.STORAGE_USER_TOKEN_KEY, '123456');
-      // di chuyển đến route đã cho và xóa toàn bộ các route trước đó
-      navKey.currentState
-          ?.pushNamedAndRemoveUntil('/application', (route) => false);
-    } catch (e) {
-      print(e.toString());
+    var result = await SignInRepo.login(param: loginRequestEntity);
+    if (result.code == 200) {
+      // have local storage
+      try {
+        // try to remember user info
+        Global.storageService.setString(
+            AppConstants.STORAGE_USER_PROFILE_KEY, jsonEncode(result.data));
+        Global.storageService.setString(
+            AppConstants.STORAGE_USER_TOKEN_KEY, result.data!.access_token!);
+        // di chuyển đến route đã cho và xóa toàn bộ các route trước đó
+        navKey.currentState
+            ?.pushNamedAndRemoveUntil('/application', (route) => false);
+      } catch (e) {
+        print(e.toString());
+      }
+      // redirect to new page
+    }else{
+      toastInfo('Login Error');
     }
-    // redirect to new page
   }
 }

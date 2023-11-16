@@ -44,12 +44,7 @@ class SignUpController {
       toastInfo('Your password  is empty');
       return;
     }
-    // if ((state.password.length < 6 || state.rePassword.length < 6) ||
-    //     password.isEmpty ||
-    //     rePassword.isEmpty) {
-    //   toastInfo('Password should be at least 6 characters');
-    //   return;
-    // }
+
     var context = Navigator.of(ref.context);
     // show the loading icon
     ref.read(appLoaderProvider.notifier).setLoaderValue(true);
@@ -61,6 +56,8 @@ class SignUpController {
       if (credential.user != null) {
         await credential.user?.sendEmailVerification();
         await credential.user?.updateDisplayName(name);
+        String photoUrl = "uploads/default.png";
+        await credential.user?.updatePhotoURL(photoUrl);
         // get server photo url
         // set user photo url
         toastInfo(

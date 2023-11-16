@@ -18,8 +18,8 @@ class UserName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text24Normal(
-        text: Global.storageService.getUserProfile().name!,
+    return const Text24Normal(
+        text: "Global.storageService.getUserProfile()",
         fontWeight: FontWeight.bold);
   }
 }
@@ -100,7 +100,9 @@ Container bannerContainer({required String imagePath}) {
   );
 }
 
-AppBar homeAppBar() {
+AppBar homeAppBar(WidgetRef ref) {
+  var profile = ref.watch(homeUserProfileProvider);
+  print(profile);
   return AppBar(
     title: Container(
       margin: EdgeInsets.only(left: 7.w, right: 7.w),

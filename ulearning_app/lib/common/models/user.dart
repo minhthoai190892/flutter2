@@ -58,15 +58,14 @@ class LoginRequestEntity {
 
   factory LoginRequestEntity.fromMap(Map<String, dynamic> map) {
     return LoginRequestEntity(
-      type: map['type'] != null ? map['type'] as int : null,
-      name: map['name'] != null ? map['name'] as String : null,
-      description:
-          map['description'] != null ? map['description'] as String : null,
-      email: map['email'] != null ? map['email'] as String : null,
-      phone: map['phone'] != null ? map['phone'] as String : null,
-      avatar: map['avatar'] != null ? map['avatar'] as String : null,
-      open_id: map['open_id'] != null ? map['open_id'] as String : null,
-      online: map['online'] != null ? map['online'] as int : null,
+      type: map['type'],
+      name: map['name'],
+      description: map['description'],
+      email: map['email'],
+      phone: map['phone'],
+      avatar: map['avatar'],
+      open_id: map['open_id'],
+      online: map['online'],
     );
   }
 
@@ -162,15 +161,13 @@ class UserProfile {
     //   return UserProfile();
     // }
     return UserProfile(
-      access_token:
-          map['access_token'] != null ? map['access_token'] as String : null,
-      token: map['token'] != null ? map['token'] as String : null,
-      name: map['name'] != null ? map['name'] as String : null,
-      description:
-          map['description'] != null ? map['description'] as String : null,
-      avatar: map['avatar'] != null ? map['avatar'] as String : null,
-      online: map['online'] != null ? map['online'] as int : null,
-      type: map['type'] != null ? map['type'] as int : null,
+      access_token: map['access_token'],
+      token: map['token'],
+      name: map['name'],
+      description: map['description'],
+      avatar: map['avatar'],
+      online: map['online'],
+      type: map['type'],
     );
   }
 
@@ -241,11 +238,9 @@ class UserLoginResponseEntity {
 
   factory UserLoginResponseEntity.fromMap(Map<String, dynamic> map) {
     return UserLoginResponseEntity(
-      code: map['code'] != null ? map['code'] as int : null,
-      msg: map['msg'] != null ? map['msg'] as String : null,
-      data: map['data'] != null
-          ? UserProfile.fromMap(map['data'] as Map<String, dynamic>)
-          : null,
+      code: map['code'],
+      msg: map['msg'],
+      data: UserProfile.fromMap(map['data']),
     );
   }
 
