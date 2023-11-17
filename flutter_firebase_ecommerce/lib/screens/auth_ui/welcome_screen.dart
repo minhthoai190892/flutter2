@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_ecommerce/controllers/google_sign_in_controller.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
-
+  WelcomeScreen({super.key});
+  final GoogleSignInController _googleSignInController =
+      Get.put(GoogleSignInController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,10 +43,12 @@ class WelcomeScreen extends StatelessWidget {
                     color: AppConstant.appMainColor,
                     borderRadius: BorderRadius.circular(20)),
                 child: TextButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      _googleSignInController.signInWithGoogle();
+                    },
                     icon: Image.asset('assets/images/google-icon.png'),
                     label: const Text(
-                      'Login with google',
+                      'Sig in with google',
                       style: TextStyle(color: AppConstant.appTextColor),
                     )),
               ),

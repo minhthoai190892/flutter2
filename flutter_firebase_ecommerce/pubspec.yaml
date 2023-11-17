@@ -37,6 +37,11 @@ dependencies:
   lottie: ^2.7.0
   get: ^4.6.6
   flutter_keyboard_visibility: ^5.4.1
+  firebase_core: ^2.22.0
+  google_sign_in: ^6.1.6
+  firebase_auth: ^4.14.0
+  cloud_firestore: ^4.13.1
+  flutter_easyloading: ^3.0.5
 
 dev_dependencies:
   flutter_test:

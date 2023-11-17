@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "214445341514",
+    "project_id": "easyshopping-362a3",
+    "storage_bucket": "easyshopping-362a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214445341514:android:c2ff9c8f6bbfc2f9bedfb3",
+        "android_client_info": {
+          "package_name": "com.example.flutter_firebase_ecommerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU2BcQXb6j9pJpKvBqHdMaKUKNX9l9B_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
