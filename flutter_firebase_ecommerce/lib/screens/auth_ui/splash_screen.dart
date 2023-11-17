@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_ecommerce/screens/user_panel/main_screen.dart';
-import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
+import 'package:flutter_firebase_ecommerce/screens/auth_ui/sign_screen.dart';
+import 'package:flutter_firebase_ecommerce/screens/auth_ui/sign_up_screen.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+
+import '../../utils/app_constant.dart';
+import 'welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,10 +19,10 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      Get.offAll(const MainScreen());
+      Get.offAll(const SignUpScreen());
     });
   }
 
@@ -31,29 +34,27 @@ class _SplashScreenState extends State<SplashScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Container(
-        child: Column(
-          children: [
-            Expanded(
-              child: SizedBox(
-                width: Get.width,
-                child: Lottie.asset('assets/images/splash-icon.json'),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 20),
+      body: Column(
+        children: [
+          Expanded(
+            child: SizedBox(
               width: Get.width,
-              alignment: Alignment.center,
-              child: Text(
-                AppConstant.appPoweredBy,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-            )
-          ],
-        ),
+              child: Lottie.asset('assets/images/splash-icon.json'),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(bottom: 20),
+            width: Get.width,
+            alignment: Alignment.center,
+            child: Text(
+              AppConstant.appPoweredBy,
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+          )
+        ],
       ),
     );
   }

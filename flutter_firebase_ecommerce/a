@@ -1,4 +1,6 @@
-git checkout -b flutter_firebase_ecommerce_splash
+git checkout -b flutter_firebase_ecommerce_Sign-in-And-Sign-up-screens
 git add .
-git commit -m "flutter_firebase_ecommerce_splash"
-git push -u origin flutter_firebase_ecommerce_splash
+git commit -m "flutter_firebase_ecommerce_Sign-in-And-Sign-up-screens"
+git push -u origin flutter_firebase_ecommerce_Sign-in-And-Sign-up-screens
+
+
