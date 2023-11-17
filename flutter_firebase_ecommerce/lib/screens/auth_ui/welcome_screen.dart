@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_ecommerce/controllers/google_sign_in_controller.dart';
+import 'package:flutter_firebase_ecommerce/screens/auth_ui/sign_screen.dart';
+import 'package:flutter_firebase_ecommerce/screens/auth_ui/sign_up_screen.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -64,13 +66,16 @@ class WelcomeScreen extends StatelessWidget {
                     color: AppConstant.appMainColor,
                     borderRadius: BorderRadius.circular(20)),
                 child: TextButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const SignInScreen());
+                    },
                     icon: const Icon(
                       Icons.email,
                       color: AppConstant.appTextColor,
+                      size: 40,
                     ),
                     label: const Text(
-                      'Login with google',
+                      'Sign in with email',
                       style: TextStyle(color: AppConstant.appTextColor),
                     )),
               ),

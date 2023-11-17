@@ -1,7 +1,18 @@
-git checkout -b flutter_firebase_ecommerce_Sign-in-with-google
+git checkout -b flutter_firebase_ecommerce_Create-user-with-email-And-password
 git add .
-git commit -m "flutter_firebase_ecommerce_Sign-in-with-google"
-git push -u origin flutter_firebase_ecommerce_Sign-in-with-google
+git commit -m "flutter_firebase_ecommerce_Create-user-with-email-And-password"
+git push -u origin flutter_firebase_ecommerce_Create-user-with-email-And-password
+
+    
+
+
+
+
+
+
+
+
+
 
 
 google sign in

@@ -1,4 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
+import 'package:flutter_firebase_ecommerce/controllers/sign_up_controller.dart';
+import 'package:get/get.dart';
 
 import '../utils/app_constant.dart';
 
@@ -10,12 +14,15 @@ class TextFormFieldWidget extends StatelessWidget {
     required this.prefixIcon,
     this.suffixIcon,
     this.obscureText = false,
+    this.controller,
   }) : super(key: key);
   final String hitText;
   final TextInputType keyboardType;
   final IconData prefixIcon;
   final IconData? suffixIcon;
   final bool obscureText;
+  final TextEditingController? controller;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,6 +30,7 @@ class TextFormFieldWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: TextFormField(
+          controller: controller,
           cursorColor: AppConstant.appSecondoryColor,
           keyboardType: keyboardType,
           obscureText: obscureText,
