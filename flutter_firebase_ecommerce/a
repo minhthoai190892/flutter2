@@ -1,0 +1,25 @@
+git checkout -b flutter_firebase_ecommerce_Create-user-with-email-And-password
+git add .
+git commit -m "flutter_firebase_ecommerce_Create-user-with-email-And-password"
+git push -u origin flutter_firebase_ecommerce_Create-user-with-email-And-password
+
+    
+
+
+
+
+
+
+
+
+
+
+
+google sign in
+    change version 8.3
+    gradle-wrapper.properties
+        distributionUrl=https\://services.gradle.org/distributions/gradle-8.3-all.zip
+    cd android
+    ./gradlew signingReport
+firebase 
+    minhthoai190892@gmail.com
