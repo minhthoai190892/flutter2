@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_firebase_ecommerce/screens/auth_ui/welcome_screen.dart';
@@ -22,7 +23,9 @@ class MainScreen extends StatelessWidget {
           GestureDetector(
             onTap: () {
               GoogleSignIn googleSignIn = GoogleSignIn();
+              FirebaseAuth _auth = FirebaseAuth.instance;
               googleSignIn.signOut();
+              _auth.signOut();
               Get.offAll(() => WelcomeScreen());
             },
             child: const Padding(
