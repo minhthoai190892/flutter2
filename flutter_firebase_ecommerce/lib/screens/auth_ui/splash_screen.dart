@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_ecommerce/screens/auth_ui/sign_screen.dart';
-import 'package:flutter_firebase_ecommerce/screens/auth_ui/sign_up_screen.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 

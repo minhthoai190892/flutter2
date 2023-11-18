@@ -1,7 +1,7 @@
-git checkout -b flutter_firebase_ecommerce_Login_with_email_password
+git checkout -b flutter_firebase_ecommerce_Forget_password
 git add .
-git commit -m "flutter_firebase_ecommerce_Login_with_email_password"
-git push -u origin flutter_firebase_ecommerce_Login_with_email_password
+git commit -m "flutter_firebase_ecommerce_Forget_password"
+git push -u origin flutter_firebase_ecommerce_Forget_password
 
     
 
