@@ -1,15 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_ecommerce/controllers/forget_password_controller.dart';
-import 'package:flutter_firebase_ecommerce/controllers/sign_in_controller.dart';
-import 'package:flutter_firebase_ecommerce/screens/auth_ui/sign_up_screen.dart';
-import 'package:flutter_firebase_ecommerce/screens/user_panel/main_screen.dart';
+import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-
-import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 
 import '../../widgets/text_form_field_widget.dart';
 

@@ -1,7 +1,7 @@
-git checkout -b flutter_firebase_ecommerce_Forget_password
+git checkout -b flutter_firebase_ecommerce_Fix_errors
 git add .
-git commit -m "flutter_firebase_ecommerce_Forget_password"
-git push -u origin flutter_firebase_ecommerce_Forget_password
+git commit -m "flutter_firebase_ecommerce_Fix_errors"
+git push -u origin flutter_firebase_ecommerce_Fix_errors
 
     
 
@@ -16,7 +16,7 @@ git push -u origin flutter_firebase_ecommerce_Forget_password
 
 
 google sign in
-    change version 8.3
+    change version [8.3]
     gradle-wrapper.properties
         distributionUrl=https\://services.gradle.org/distributions/gradle-8.3-all.zip
     cd android
