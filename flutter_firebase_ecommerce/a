@@ -1,7 +1,7 @@
-git checkout -b flutter_firebase_ecommerce_Fix_errors
+git checkout -b flutter_firebase_ecommerce_get_device_token
 git add .
-git commit -m "flutter_firebase_ecommerce_Fix_errors"
-git push -u origin flutter_firebase_ecommerce_Fix_errors
+git commit -m "flutter_firebase_ecommerce_get_device_token"
+git push -u origin flutter_firebase_ecommerce_get_device_token
 
     
 
