@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_firebase_ecommerce/screens/auth_ui/welcome_screen.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
+import 'package:flutter_firebase_ecommerce/widgets/custom_drawer_widget.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -19,24 +20,15 @@ class MainScreen extends StatelessWidget {
             statusBarColor: AppConstant.appSecondoryColor,
             statusBarIconBrightness: Brightness.light),
         backgroundColor: AppConstant.appMainColor,
-        title: Text(AppConstant.appMainName),
+        title: Text(
+          AppConstant.appMainName,
+          style: const TextStyle(color: AppConstant.appTextColor),
+        ),
         centerTitle: true,
-        actions: [
-          GestureDetector(
-            onTap: () {
-              GoogleSignIn googleSignIn = GoogleSignIn();
-              FirebaseAuth _auth = FirebaseAuth.instance;
-              googleSignIn.signOut();
-              _auth.signOut();
-              Get.offAll(() => WelcomeScreen());
-            },
-            child: const Padding(
-              padding: EdgeInsets.all(8),
-              child: Icon(Icons.logout),
-            ),
-          )
-        ],
+        iconTheme: const IconThemeData(color: AppConstant.appTextColor),
+   
       ),
+      drawer: const DrawerWidget(),
       body: const Center(
         child: Text('data'),
       ),

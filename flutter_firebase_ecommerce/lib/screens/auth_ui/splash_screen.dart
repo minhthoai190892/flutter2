@@ -38,6 +38,8 @@ class _SplashScreenState extends State<SplashScreen> {
       } else {
         Get.offAll(() => const MainScreen());
       }
+    }else{
+        Get.offAll(() =>  WelcomeScreen());
     }
   }
 
