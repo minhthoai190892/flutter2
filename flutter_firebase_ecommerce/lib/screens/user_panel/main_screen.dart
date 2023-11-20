@@ -6,7 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_firebase_ecommerce/screens/auth_ui/welcome_screen.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:flutter_firebase_ecommerce/widgets/banner_widget.dart';
+import 'package:flutter_firebase_ecommerce/widgets/category_widget.dart';
 import 'package:flutter_firebase_ecommerce/widgets/custom_drawer_widget.dart';
+import 'package:flutter_firebase_ecommerce/widgets/heading_widget.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -39,6 +41,19 @@ class MainScreen extends StatelessWidget {
                 ),
                 const Text('carousel'),
                 const BannerWidget(),
+                HeadingWidget(
+                  headingTitle: 'Category',
+                  headingSubTitle: 'Accroding to your budget',
+                  onTap: () {},
+                  buttonText: 'See more >',
+                ),
+                const CategoryWidget(),
+                HeadingWidget(
+                  headingTitle: 'Fashion Sale',
+                  headingSubTitle: 'Accroding to your budget',
+                  onTap: () {},
+                  buttonText: 'See more >',
+                ),
               ],
             ),
           )),

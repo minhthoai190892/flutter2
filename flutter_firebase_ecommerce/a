@@ -1,7 +1,7 @@
-git checkout -b flutter_firebase_ecommerce_carousel
+git checkout -b flutter_firebase_ecommerce_fetch-categories-from-firebase
 git add .
-git commit -m "flutter_firebase_ecommerce_carousel"
-git push -u origin flutter_firebase_ecommerce_carousel
+git commit -m "flutter_firebase_ecommerce_fetch-categories-from-firebase"
+git push -u origin flutter_firebase_ecommerce_fetch-categories-from-firebase
 
     
 
