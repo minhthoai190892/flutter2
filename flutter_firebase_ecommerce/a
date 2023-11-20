@@ -1,7 +1,7 @@
-git checkout -b flutter_firebase_ecommerce_custom-drawer
+git checkout -b flutter_firebase_ecommerce_carousel
 git add .
-git commit -m "flutter_firebase_ecommerce_custom-drawer"
-git push -u origin flutter_firebase_ecommerce_custom-drawer
+git commit -m "flutter_firebase_ecommerce_carousel"
+git push -u origin flutter_firebase_ecommerce_carousel
 
     
 

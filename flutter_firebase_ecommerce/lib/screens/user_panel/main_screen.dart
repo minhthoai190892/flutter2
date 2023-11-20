@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_firebase_ecommerce/screens/auth_ui/welcome_screen.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
+import 'package:flutter_firebase_ecommerce/widgets/banner_widget.dart';
 import 'package:flutter_firebase_ecommerce/widgets/custom_drawer_widget.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -26,12 +27,21 @@ class MainScreen extends StatelessWidget {
         ),
         centerTitle: true,
         iconTheme: const IconThemeData(color: AppConstant.appTextColor),
-   
       ),
       drawer: const DrawerWidget(),
-      body: const Center(
-        child: Text('data'),
-      ),
+      body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Container(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: Get.height / 90,
+                ),
+                const Text('carousel'),
+                const BannerWidget(),
+              ],
+            ),
+          )),
     );
   }
 }
