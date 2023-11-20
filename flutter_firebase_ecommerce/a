@@ -1,7 +1,7 @@
-git checkout -b flutter_firebase_ecommerce_manage-multiple-dashboard-in-flutter
+git checkout -b flutter_firebase_ecommerce_keep-user-logged-in-flutter-firebase
 git add .
-git commit -m "flutter_firebase_ecommerce_manage-multiple-dashboard-in-flutter"
-git push -u origin flutter_firebase_ecommerce_manage-multiple-dashboard-in-flutter
+git commit -m "flutter_firebase_ecommerce_keep-user-logged-in-flutter-firebase"
+git push -u origin flutter_firebase_ecommerce_keep-user-logged-in-flutter-firebase
 
     
 
