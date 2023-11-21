@@ -1,16 +1,16 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_firebase_ecommerce/screens/auth_ui/welcome_screen.dart';
+import 'package:flutter_firebase_ecommerce/screens/user_panel/all_category_screen.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:flutter_firebase_ecommerce/widgets/banner_widget.dart';
 import 'package:flutter_firebase_ecommerce/widgets/category_widget.dart';
 import 'package:flutter_firebase_ecommerce/widgets/custom_drawer_widget.dart';
 import 'package:flutter_firebase_ecommerce/widgets/heading_widget.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../widgets/flast_sale_widget.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -44,7 +44,7 @@ class MainScreen extends StatelessWidget {
                 HeadingWidget(
                   headingTitle: 'Category',
                   headingSubTitle: 'Accroding to your budget',
-                  onTap: () {},
+                  onTap: () =>Get.offAll(()=>AllCategoryScreen()),
                   buttonText: 'See more >',
                 ),
                 const CategoryWidget(),
@@ -54,6 +54,7 @@ class MainScreen extends StatelessWidget {
                   onTap: () {},
                   buttonText: 'See more >',
                 ),
+                const FlastSaleWidget(),
               ],
             ),
           )),
