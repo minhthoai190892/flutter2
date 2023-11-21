@@ -7,7 +7,7 @@ class GetDeviceTokenController extends GetxController {
   String? deviceToken;
   @override
   void onInit() {
-    // TODO: implement onInit
+
     super.onInit();
     getDeviceToken();
   }

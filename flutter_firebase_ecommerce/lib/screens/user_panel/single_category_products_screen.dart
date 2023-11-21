@@ -1,22 +1,29 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_ecommerce/screens/user_panel/single_category_products_screen.dart';
-import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
+import 'package:flutter_firebase_ecommerce/models/product_model.dart';
 import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 
+import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
+
 import '../../models/category_model.dart';
 
-class AllCategoryScreen extends StatefulWidget {
-  const AllCategoryScreen({super.key});
-
+class AllSingleCategoryProductsScreen extends StatefulWidget {
+  const AllSingleCategoryProductsScreen({
+    Key? key,
+    required this.categoryId,
+  }) : super(key: key);
+  final String categoryId;
   @override
-  State<AllCategoryScreen> createState() => _AllCategoryScreenState();
+  State<AllSingleCategoryProductsScreen> createState() =>
+      _AllSingleCategoryProductsScreenState();
 }
 
-class _AllCategoryScreenState extends State<AllCategoryScreen> {
+class _AllSingleCategoryProductsScreenState
+    extends State<AllSingleCategoryProductsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,13 +31,16 @@ class _AllCategoryScreenState extends State<AllCategoryScreen> {
         centerTitle: true,
         iconTheme: const IconThemeData(color: AppConstant.appTextColor),
         title: const Text(
-          'All Category',
+          'Products',
           style: AppConstant.textStyleWhite,
         ),
         backgroundColor: AppConstant.appMainColor,
       ),
       body: FutureBuilder(
-        future: FirebaseFirestore.instance.collection('categories').get(),
+        future: FirebaseFirestore.instance
+            .collection('products')
+            .where('categoryId', isEqualTo: widget.categoryId)
+            .get(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Center(child: Text('Error'));
@@ -45,7 +55,7 @@ class _AllCategoryScreenState extends State<AllCategoryScreen> {
           }
           if (snapshot.data!.docs.isEmpty) {
             return const Center(
-              child: Text('No category found!'),
+              child: Text('No products found!'),
             );
           }
           if (snapshot.data != null) {
@@ -60,37 +70,41 @@ class _AllCategoryScreenState extends State<AllCategoryScreen> {
                   childAspectRatio: 1.19),
               itemBuilder: (context, index) {
                 var data = snapshot.data!.docs[index];
-                CategoriesModel categoriesModel = CategoriesModel(
+                ProductModel productModel = ProductModel(
+                  productId: data['productId'],
                   categoryId: data['categoryId'],
-                  categoryImage: data['categoryImage'],
+                  productName: data['productName'],
                   categoryName: data['categoryName'],
+                  salePrice: data['salePrice'],
+                  fullPrice: data['fullPrice'],
+                  productImages: data['productImages'],
+                  deliveryTime: data['deliveryTime'],
+                  isSale: data['isSale'],
+                  productDescription: data['productDescription'],
                   createdAt: data['createdAt'],
                   updatedAt: data['updatedAt'],
                 );
-
                 return Row(
                   children: [
-                    GestureDetector(
-                      onTap: () =>
-                          Get.to(() =>  AllSingleCategoryProductsScreen(categoryId: categoriesModel.categoryId,)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: FillImageCard(
-                          borderRadius: 20.0,
-                          width: Get.width / 2.3,
-                          heightImage: Get.height / 10,
-                          imageProvider: CachedNetworkImageProvider(
-                              categoriesModel.categoryImage),
-                          title:
-                              Center(child: Text(categoriesModel.categoryName)),
-                        ),
+                    Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: FillImageCard(
+                        borderRadius: 20.0,
+                        width: Get.width / 2.3,
+                        heightImage: Get.height / 10,
+                        imageProvider: CachedNetworkImageProvider(
+                            productModel.productImages[0]),
+                        title: Center(
+                            child: Text(
+                          productModel.productName,
+                          overflow: TextOverflow.ellipsis,
+                        )),
                       ),
                     ),
                   ],
                 );
               },
             );
-
           }
           return Container();
         },

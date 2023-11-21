@@ -1,13 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_firebase_ecommerce/screens/auth_ui/welcome_screen.dart';
-import 'package:get/get.dart';
-
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -71,7 +67,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               title: 'Logout',
               leadingIcon: Icons.logout,
               onTap: () {
-                print('object');
+           
                 GoogleSignIn googleSignIn = GoogleSignIn();
                 FirebaseAuth auth = FirebaseAuth.instance;
                 googleSignIn.signOut();

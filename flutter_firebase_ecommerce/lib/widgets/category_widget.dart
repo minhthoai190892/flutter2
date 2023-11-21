@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_firebase_ecommerce/models/category_model.dart';
+import 'package:flutter_firebase_ecommerce/screens/user_panel/single_category_products_screen.dart';
 import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 
@@ -47,17 +48,21 @@ class CategoryWidget extends StatelessWidget {
                   );
                   return Row(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: FillImageCard(
-                          borderRadius: 20.0,
-                          width: Get.width / 4,
-                          heightImage: Get.height / 12,
-                          imageProvider: CachedNetworkImageProvider(
-                              categoriesModel.categoryImage),
-                          title:
-                              Center(child: Text(categoriesModel.categoryName)),
-                       
+                      GestureDetector(
+                        onTap: () => Get.to(() =>
+                            AllSingleCategoryProductsScreen(
+                                categoryId: categoriesModel.categoryId)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: FillImageCard(
+                            borderRadius: 20.0,
+                            width: Get.width / 4,
+                            heightImage: Get.height / 12,
+                            imageProvider: CachedNetworkImageProvider(
+                                categoriesModel.categoryImage),
+                            title: Center(
+                                child: Text(categoriesModel.categoryName)),
+                          ),
                         ),
                       ),
                     ],

@@ -44,7 +44,7 @@ class MainScreen extends StatelessWidget {
                 HeadingWidget(
                   headingTitle: 'Category',
                   headingSubTitle: 'Accroding to your budget',
-                  onTap: () =>Get.offAll(()=>AllCategoryScreen()),
+                  onTap: () => Get.to(() => const AllCategoryScreen()),
                   buttonText: 'See more >',
                 ),
                 const CategoryWidget(),

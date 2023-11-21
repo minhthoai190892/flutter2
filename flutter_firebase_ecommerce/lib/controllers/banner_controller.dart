@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
@@ -5,7 +7,7 @@ class BannerController extends GetxController {
   RxList<String> bannerUrls = RxList<String>([]);
   @override
   void onInit() {
-    // TODO: implement onInit
+
     super.onInit();
     fetchBannersUrls();
   }
