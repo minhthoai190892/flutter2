@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_firebase_ecommerce/screens/user_panel/all_category_screen.dart';
+import 'package:flutter_firebase_ecommerce/screens/user_panel/all_flash_sale_product_screen.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:flutter_firebase_ecommerce/widgets/banner_widget.dart';
 import 'package:flutter_firebase_ecommerce/widgets/category_widget.dart';
@@ -51,7 +52,7 @@ class MainScreen extends StatelessWidget {
                 HeadingWidget(
                   headingTitle: 'Fashion Sale',
                   headingSubTitle: 'Accroding to your budget',
-                  onTap: () {},
+                  onTap: () => Get.to(() =>  AllFlashSaleProductScrren()),
                   buttonText: 'See more >',
                 ),
                 const FlastSaleWidget(),
