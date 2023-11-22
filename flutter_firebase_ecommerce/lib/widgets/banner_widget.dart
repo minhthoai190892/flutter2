@@ -20,7 +20,8 @@ class _BannerWidgetState extends State<BannerWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Obx(() => CarouselSlider(
+      child: Obx(
+        () => CarouselSlider(
           items: bannerController.bannerUrls
               .map((imageUrls) => ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
@@ -43,7 +44,9 @@ class _BannerWidgetState extends State<BannerWidget> {
               autoPlay: true,
               scrollDirection: Axis.horizontal,
               aspectRatio: 2.5,
-              viewportFraction: 1))),
+              viewportFraction: 1),
+        ),
+      ),
     );
   }
 }

@@ -42,7 +42,7 @@ class MainScreen extends StatelessWidget {
                 SizedBox(
                   height: Get.height / 90,
                 ),
-                const Text('carousel'),
+             
                 const BannerWidget(),
                 HeadingWidget(
                   headingTitle: 'Category',
