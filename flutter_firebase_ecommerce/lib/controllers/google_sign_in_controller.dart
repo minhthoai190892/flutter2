@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_firebase_ecommerce/controllers/get_device_token_controller.dart';
 import 'package:flutter_firebase_ecommerce/models/user_model.dart';
 import 'package:flutter_firebase_ecommerce/screens/user_panel/main_screen.dart';
 import 'package:get/get.dart';
@@ -13,6 +14,9 @@ class GoogleSignInController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<void> signInWithGoogle() async {
+    // khi đăng nhập lấy token
+    final GetDeviceTokenController getDeviceTokenController =
+        Get.put(GetDeviceTokenController());
     try {
       final GoogleSignInAccount? googleSignInAccount =
           await googleSignIn.signIn();
@@ -34,7 +38,7 @@ class GoogleSignInController extends GetxController {
             email: user.email.toString(),
             phone: user.phoneNumber.toString(),
             userImg: user.photoURL.toString(),
-            userDeviceToken: '',
+            userDeviceToken: getDeviceTokenController.deviceToken.toString(),
             country: '',
             userAddress: '',
             street: '',

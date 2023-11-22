@@ -1,9 +1,19 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_firebase_ecommerce/screens/auth_ui/welcome_screen.dart';
+import 'package:flutter_firebase_ecommerce/screens/user_panel/all_category_screen.dart';
+import 'package:flutter_firebase_ecommerce/screens/user_panel/all_flash_sale_product_screen.dart';
+import 'package:flutter_firebase_ecommerce/screens/user_panel/all_products_screen.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
+import 'package:flutter_firebase_ecommerce/widgets/all_products_widget.dart';
+import 'package:flutter_firebase_ecommerce/widgets/banner_widget.dart';
+import 'package:flutter_firebase_ecommerce/widgets/category_widget.dart';
+import 'package:flutter_firebase_ecommerce/widgets/custom_drawer_widget.dart';
+import 'package:flutter_firebase_ecommerce/widgets/heading_widget.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../widgets/flast_sale_widget.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -16,25 +26,48 @@ class MainScreen extends StatelessWidget {
             statusBarColor: AppConstant.appSecondoryColor,
             statusBarIconBrightness: Brightness.light),
         backgroundColor: AppConstant.appMainColor,
-        title: Text(AppConstant.appMainName),
+        title: Text(
+          AppConstant.appMainName,
+          style: const TextStyle(color: AppConstant.appTextColor),
+        ),
         centerTitle: true,
-        actions: [
-          GestureDetector(
-            onTap: () {
-              GoogleSignIn googleSignIn = GoogleSignIn();
-              googleSignIn.signOut();
-              Get.offAll(() => WelcomeScreen());
-            },
-            child: const Padding(
-              padding: EdgeInsets.all(8),
-              child: Icon(Icons.logout),
+        iconTheme: const IconThemeData(color: AppConstant.appTextColor),
+      ),
+      drawer: const DrawerWidget(),
+      body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Container(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: Get.height / 90,
+                ),
+             
+                const BannerWidget(),
+                HeadingWidget(
+                  headingTitle: 'Category',
+                  headingSubTitle: 'Accroding to your budget',
+                  onTap: () => Get.to(() => const AllCategoryScreen()),
+                  buttonText: 'See more >',
+                ),
+                const CategoryWidget(),
+                HeadingWidget(
+                  headingTitle: 'Fashion Sale',
+                  headingSubTitle: 'Accroding to your budget',
+                  onTap: () => Get.to(() => const AllFlashSaleProductScrren()),
+                  buttonText: 'See more >',
+                ),
+                const FlastSaleWidget(),
+                HeadingWidget(
+                  headingTitle: 'All Products',
+                  headingSubTitle: 'Accroding to your budget',
+                  onTap: () => Get.to(() => const AllProductsScreen()),
+                  buttonText: 'See more >',
+                ),
+                const AllProductsWidget(),
+              ],
             ),
-          )
-        ],
-      ),
-      body: const Center(
-        child: Text('data'),
-      ),
+          )),
     );
   }
 }
