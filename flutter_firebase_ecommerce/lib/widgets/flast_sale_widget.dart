@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_firebase_ecommerce/screens/user_panel/product_detail_screen.dart';
 import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 
@@ -59,30 +60,33 @@ class FlastSaleWidget extends StatelessWidget {
                 
                   return Row(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: FillImageCard(
-                          borderRadius: 20.0,
-                          width: Get.width / 3.5,
-                          heightImage: Get.height / 12,
-                          imageProvider: CachedNetworkImageProvider(
-                              productModel.productImages[0]),
-                          title: Center(
-                            child: Text(
-                              productModel.productName,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          footer: Row(
-                            children: [
-                              Text('\$ ${productModel.salePrice}'),
-                              Text(
-                                '\$ ${productModel.fullPrice}',
-                                style: const TextStyle(
-                                    decoration: TextDecoration.lineThrough,
-                                    color: AppConstant.appSecondoryColor),
+                      GestureDetector(
+                        onTap: () => Get.to(ProductDetailsScreen(productModel: productModel)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: FillImageCard(
+                            borderRadius: 20.0,
+                            width: Get.width / 3.5,
+                            heightImage: Get.height / 12,
+                            imageProvider: CachedNetworkImageProvider(
+                                productModel.productImages[0]),
+                            title: Center(
+                              child: Text(
+                                productModel.productName,
+                                overflow: TextOverflow.ellipsis,
                               ),
-                            ],
+                            ),
+                            footer: Row(
+                              children: [
+                                Text('\$ ${productModel.salePrice}'),
+                                Text(
+                                  '\$ ${productModel.fullPrice}',
+                                  style: const TextStyle(
+                                      decoration: TextDecoration.lineThrough,
+                                      color: AppConstant.appSecondoryColor),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

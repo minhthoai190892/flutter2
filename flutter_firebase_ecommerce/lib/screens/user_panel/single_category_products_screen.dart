@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_ecommerce/models/product_model.dart';
+import 'package:flutter_firebase_ecommerce/screens/user_panel/product_detail_screen.dart';
 import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 
@@ -86,19 +87,23 @@ class _AllSingleCategoryProductsScreenState
                 );
                 return Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: FillImageCard(
-                        borderRadius: 20.0,
-                        width: Get.width / 2.3,
-                        heightImage: Get.height / 10,
-                        imageProvider: CachedNetworkImageProvider(
-                            productModel.productImages[0]),
-                        title: Center(
-                            child: Text(
-                          productModel.productName,
-                          overflow: TextOverflow.ellipsis,
-                        )),
+                    GestureDetector(
+                      onTap: () => Get.to(
+                          ProductDetailsScreen(productModel: productModel)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: FillImageCard(
+                          borderRadius: 20.0,
+                          width: Get.width / 2.3,
+                          heightImage: Get.height / 10,
+                          imageProvider: CachedNetworkImageProvider(
+                              productModel.productImages[0]),
+                          title: Center(
+                              child: Text(
+                            productModel.productName,
+                            overflow: TextOverflow.ellipsis,
+                          )),
+                        ),
                       ),
                     ),
                   ],

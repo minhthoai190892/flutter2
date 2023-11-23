@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_firebase_ecommerce/screens/user_panel/all_category_screen.dart';
 import 'package:flutter_firebase_ecommerce/screens/user_panel/all_flash_sale_product_screen.dart';
 import 'package:flutter_firebase_ecommerce/screens/user_panel/all_products_screen.dart';
+import 'package:flutter_firebase_ecommerce/screens/user_panel/cart_screen.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:flutter_firebase_ecommerce/widgets/all_products_widget.dart';
 import 'package:flutter_firebase_ecommerce/widgets/banner_widget.dart';
@@ -32,6 +33,13 @@ class MainScreen extends StatelessWidget {
         ),
         centerTitle: true,
         iconTheme: const IconThemeData(color: AppConstant.appTextColor),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.to(() => const CartScreen());
+              },
+              icon: const Icon(Icons.shopping_cart))
+        ],
       ),
       drawer: const DrawerWidget(),
       body: SingleChildScrollView(
@@ -42,7 +50,6 @@ class MainScreen extends StatelessWidget {
                 SizedBox(
                   height: Get.height / 90,
                 ),
-             
                 const BannerWidget(),
                 HeadingWidget(
                   headingTitle: 'Category',
