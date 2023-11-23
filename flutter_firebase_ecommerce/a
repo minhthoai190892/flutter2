@@ -1,7 +1,7 @@
-git checkout -b flutter_firebase_ecommerce_show-flash-sale-product-details
+git checkout -b flutter_firebase_ecommerce_make-cart-screen
 git add .
-git commit -m "flutter_firebase_ecommerce_show-flash-sale-product-details"
-git push -u origin flutter_firebase_ecommerce_show-flash-sale-product-details
+git commit -m "flutter_firebase_ecommerce_make-cart-screen"
+git push -u origin flutter_firebase_ecommerce_make-cart-screen
 
     
 
