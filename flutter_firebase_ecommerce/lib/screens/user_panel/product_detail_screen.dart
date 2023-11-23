@@ -90,7 +90,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         alignment: Alignment.topLeft,
-                        child: Text('PKR: ${widget.productModel.fullPrice}'),
+                        child: widget.productModel.isSale == true &&
+                                widget.productModel.salePrice != ''
+                            ? Text('PKR: ${widget.productModel.fullPrice}')
+                            : Text('PKR: ${widget.productModel.salePrice}'),
                       ),
                     ),
                     Padding(
@@ -142,17 +145,18 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   color: AppConstant.appMainColor,
                                   borderRadius: BorderRadius.circular(20)),
                               child: TextButton.icon(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.shopping_cart,
-                                    color: AppConstant.appTextColor,
-                                    size: 40,
-                                  ),
-                                  label: const Text(
-                                    'Add to cart',
-                                    style: TextStyle(
-                                        color: AppConstant.appTextColor),
-                                  )),
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.shopping_cart,
+                                  color: AppConstant.appTextColor,
+                                  size: 40,
+                                ),
+                                label: const Text(
+                                  'Add to cart',
+                                  style: TextStyle(
+                                      color: AppConstant.appTextColor),
+                                ),
+                              ),
                             ),
                           ),
                         ),
