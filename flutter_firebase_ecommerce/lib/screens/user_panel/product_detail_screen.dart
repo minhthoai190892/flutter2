@@ -222,7 +222,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         },
       );
       CartModel cartModel = CartModel(
-        productId: widget.productModel.categoryId,
+        productId: widget.productModel.productId,
         categoryId: widget.productModel.categoryId,
         productName: widget.productModel.productName,
         categoryName: widget.productModel.categoryName,
