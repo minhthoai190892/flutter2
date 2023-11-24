@@ -1,7 +1,7 @@
-git checkout -b flutter_firebase_ecommerce_add_to_cart
+git checkout -b flutter_firebase_ecommerce_fetch-cart-products-from-firebase
 git add .
-git commit -m "flutter_firebase_ecommerce_add_to_cart"
-git push -u origin flutter_firebase_ecommerce_add_to_cart
+git commit -m "flutter_firebase_ecommerce_fetch-cart-products-from-firebase"
+git push -u origin flutter_firebase_ecommerce_fetch-cart-products-from-firebase
 
     
 

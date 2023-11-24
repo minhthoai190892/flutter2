@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase_ecommerce/models/cart_model.dart';
 
 import 'package:flutter_firebase_ecommerce/models/product_model.dart';
+import 'package:flutter_firebase_ecommerce/screens/user_panel/cart_screen.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:get/get.dart';
 
@@ -35,6 +36,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         ),
         iconTheme: const IconThemeData(color: AppConstant.appTextColor),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.to(() => const CartScreen());
+              },
+              icon: const Icon(Icons.shopping_cart))
+        ],
       ),
       body: Container(
         child: Column(
@@ -194,8 +202,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       // sản phẩm đã tồn tại -> sẽ có số lượng sản phẩm
       int currentQuantity = snapshot['productQuantity'];
       int updatedQuantity = currentQuantity + quantiyIcrement;
-      double totalPrice =
-          double.parse(widget.productModel.fullPrice) * updatedQuantity;
+      double totalPrice = double.parse(widget.productModel.isSale
+              ? widget.productModel.salePrice
+              : widget.productModel.fullPrice) *
+          updatedQuantity;
       // cập nhật lại collection
       await documentReference.update({
         // thêm trường vào
@@ -225,7 +235,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         createdAt: DateTime.now(),
         updatedAt: DateTime.now(),
         productQuantity: 1,
-        productTotalPrice: double.parse(widget.productModel.fullPrice),
+        productTotalPrice: double.parse(widget.productModel.isSale
+            ? widget.productModel.salePrice
+            : widget.productModel.fullPrice),
       );
       await documentReference.set(cartModel.toMap());
       print('product added');
