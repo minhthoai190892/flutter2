@@ -1,8 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_ecommerce/models/cart_model.dart';
 
 import 'package:flutter_firebase_ecommerce/models/product_model.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
@@ -19,6 +22,8 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+  // get current user
+  User? use = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,7 +150,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   color: AppConstant.appMainColor,
                                   borderRadius: BorderRadius.circular(20)),
                               child: TextButton.icon(
-                                onPressed: () {},
+                                onPressed: () async {
+                                  await checkProductExistence(uId: use!.uid);
+                                },
                                 icon: const Icon(
                                   Icons.shopping_cart,
                                   color: AppConstant.appTextColor,
@@ -170,5 +177,58 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> checkProductExistence(
+      {required String uId, int quantiyIcrement = 1}) async {
+    // create collection
+    final DocumentReference documentReference = FirebaseFirestore.instance
+        .collection('cart')
+        .doc(uId)
+        .collection('cartOrders')
+        .doc(widget.productModel.productId.toString());
+    // chụp nhanh màng hình dữ liệu
+    DocumentSnapshot snapshot = await documentReference.get();
+    // kiểm tra dữ liệu nào đang tồn tại
+    if (snapshot.exists) {
+      // sản phẩm đã tồn tại -> sẽ có số lượng sản phẩm
+      int currentQuantity = snapshot['productQuantity'];
+      int updatedQuantity = currentQuantity + quantiyIcrement;
+      double totalPrice =
+          double.parse(widget.productModel.fullPrice) * updatedQuantity;
+      // cập nhật lại collection
+      await documentReference.update({
+        // thêm trường vào
+        'productQuantity': updatedQuantity,
+        'productTotalPrice': totalPrice
+      });
+      print('product existing');
+    } else {
+      // chưa có sản phẩm
+      await FirebaseFirestore.instance.collection('cart').doc(uId).set(
+        {
+          'uId': uId,
+          'createdAt': DateTime.now(),
+        },
+      );
+      CartModel cartModel = CartModel(
+        productId: widget.productModel.categoryId,
+        categoryId: widget.productModel.categoryId,
+        productName: widget.productModel.productName,
+        categoryName: widget.productModel.categoryName,
+        salePrice: widget.productModel.salePrice,
+        fullPrice: widget.productModel.fullPrice,
+        productImages: widget.productModel.productImages,
+        deliveryTime: widget.productModel.deliveryTime,
+        isSale: widget.productModel.isSale,
+        productDescription: widget.productModel.productDescription,
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+        productQuantity: 1,
+        productTotalPrice: double.parse(widget.productModel.fullPrice),
+      );
+      await documentReference.set(cartModel.toMap());
+      print('product added');
+    }
   }
 }
