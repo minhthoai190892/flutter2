@@ -19,6 +19,7 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   final User? currentUser = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +59,7 @@ class _CartScreenState extends State<CartScreen> {
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 var data = snapshot.data!.docs[index];
+
                 CartModel cartModel = CartModel(
                   productId: data['productId'],
                   categoryId: data['categoryId'],
@@ -74,7 +76,7 @@ class _CartScreenState extends State<CartScreen> {
                   productQuantity: data['productQuantity'],
                   productTotalPrice: data['productTotalPrice'],
                 );
-
+                int quantity = cartModel.productQuantity;
                 return SwipeActionCell(
                   key: ObjectKey(cartModel.productId),
                   trailingActions: [
@@ -130,6 +132,10 @@ class _CartScreenState extends State<CartScreen> {
                                 },
                                 icon: const Icon(Icons.remove)),
                           ),
+                          SizedBox(
+                            width: Get.width / 20,
+                          ),
+                          Text('$quantity'),
                           SizedBox(
                             width: Get.width / 20,
                           ),
