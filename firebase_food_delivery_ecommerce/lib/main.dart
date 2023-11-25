@@ -1,4 +1,5 @@
 import 'package:firebase_food_delivery_ecommerce/pages/home.dart';
+import 'package:firebase_food_delivery_ecommerce/widgets/bottom_nav.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: const BottomNav(),
     );
   }
 }
