@@ -41,7 +41,9 @@ class _BottomNavState extends State<BottomNav> {
         color: Colors.black,
         animationDuration: const Duration(milliseconds: 500),
         onTap: (value) {
-          currentTabIndex = value;
+          setState(() {
+            currentTabIndex = value;
+          });
         },
         items: const [
           IconTabNavigation(iconData: Icons.home_outlined),
