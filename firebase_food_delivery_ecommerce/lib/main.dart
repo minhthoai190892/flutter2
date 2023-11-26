@@ -1,4 +1,5 @@
 import 'package:firebase_food_delivery_ecommerce/pages/home.dart';
+import 'package:firebase_food_delivery_ecommerce/pages/login.dart';
 import 'package:firebase_food_delivery_ecommerce/widgets/bottom_nav.dart';
 import 'package:flutter/material.dart';
 
@@ -15,11 +16,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        appBarTheme: const AppBarTheme(color: Colors.red),
+        // appBarTheme: const AppBarTheme(color: Colors.red),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const BottomNav(),
+      home: const LogIn(),
     );
   }
 }
