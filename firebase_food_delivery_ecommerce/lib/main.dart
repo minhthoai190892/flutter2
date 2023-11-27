@@ -1,5 +1,6 @@
 import 'package:firebase_food_delivery_ecommerce/pages/home.dart';
 import 'package:firebase_food_delivery_ecommerce/pages/login.dart';
+import 'package:firebase_food_delivery_ecommerce/pages/signup.dart';
 import 'package:firebase_food_delivery_ecommerce/widgets/bottom_nav.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LogIn(),
+      home: const SignUp(),
     );
   }
 }

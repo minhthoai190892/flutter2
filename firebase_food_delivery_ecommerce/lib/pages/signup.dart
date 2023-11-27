@@ -1,16 +1,16 @@
 import 'package:firebase_food_delivery_ecommerce/constants/image_manager.dart';
-import 'package:firebase_food_delivery_ecommerce/pages/signup.dart';
+import 'package:firebase_food_delivery_ecommerce/pages/login.dart';
 import 'package:firebase_food_delivery_ecommerce/widgets/app_widget.dart';
 import 'package:flutter/material.dart';
 
-class LogIn extends StatefulWidget {
-  const LogIn({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<LogIn> createState() => _LogInState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LogInState extends State<LogIn> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -53,7 +53,7 @@ class _LogInState extends State<LogIn> {
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       width: width,
-                      height: height / 2.5,
+                      height: height / 1.8,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
@@ -61,9 +61,18 @@ class _LogInState extends State<LogIn> {
                       child: Column(
                         children: [
                           Text(
-                            'Login',
+                            'Sign Up',
                             textAlign: TextAlign.center,
                             style: AppWidget.semiBoldTextFeildStyle(),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          TextField(
+                            decoration: InputDecoration(
+                                hintText: 'Name',
+                                helperStyle: AppWidget.semiBoldTextFeildStyle(),
+                                prefixIcon: const Icon(Icons.person)),
                           ),
                           const SizedBox(
                             height: 30,
@@ -86,17 +95,7 @@ class _LogInState extends State<LogIn> {
                                     const Icon(Icons.password_outlined)),
                           ),
                           const SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              'Forgot Password?',
-                              style: AppWidget.semiBoldTextFeildStyle(),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
+                            height: 80,
                           ),
                           Material(
                             elevation: 5,
@@ -109,7 +108,7 @@ class _LogInState extends State<LogIn> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: const Text(
-                                'LOGIN',
+                                'Sign Up',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -121,24 +120,24 @@ class _LogInState extends State<LogIn> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: height / 5,
+                  const SizedBox(
+                    height: 80,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Dont't have an account?",
+                        "Already have an account?",
                         style: AppWidget.semiBoldTextFeildStyle(),
                       ),
                       GestureDetector(
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SignUp(),
+                              builder: (context) => const LogIn(),
                             )),
                         child: Text(
-                          ' Sign up',
+                          ' Login',
                           style: AppWidget.semiBoldTextFeildStyle(),
                         ),
                       )

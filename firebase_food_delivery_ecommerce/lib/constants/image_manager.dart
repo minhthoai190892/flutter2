@@ -5,4 +5,5 @@ class ImageManager {
   static const String pizzaImage = '$_imagePath/pizza.png';
   static const String saladImage = '$_imagePath/salad.png';
   static const String saladImage2 = '$_imagePath/salad2.webp';
+  static const String logo = '$_imagePath/logo.png';
 }
