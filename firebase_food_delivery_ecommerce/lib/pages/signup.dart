@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_food_delivery_ecommerce/constants/image_manager.dart';
 import 'package:firebase_food_delivery_ecommerce/pages/login.dart';
 import 'package:firebase_food_delivery_ecommerce/widgets/app_widget.dart';
-import 'package:firebase_food_delivery_ecommerce/widgets/bottom_nav.dart';
+import 'package:firebase_food_delivery_ecommerce/pages/bottom_nav.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {

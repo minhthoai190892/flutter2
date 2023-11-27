@@ -1,5 +1,5 @@
 
-git checkout -b firebase_food_delivery_ecommerce_signup_and_login
+git checkout -b firebase_food_delivery_ecommerce_forgot_password
 git add .
-git commit -m "firebase_food_delivery_ecommerce_signup_and_login"
-git push -u origin firebase_food_delivery_ecommerce_signup_and_login
+git commit -m "firebase_food_delivery_ecommerce_forgot_password"
+git push -u origin firebase_food_delivery_ecommerce_forgot_password
