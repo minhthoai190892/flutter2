@@ -1,5 +1,5 @@
 
-git checkout -b firebase_food_delivery_ecommerce_login_signup1
+git checkout -b firebase_food_delivery_ecommerce_signup_and_login
 git add .
-git commit -m "firebase_food_delivery_ecommerce_login_signup1"
-git push -u origin firebase_food_delivery_ecommerce_login_signup1
+git commit -m "firebase_food_delivery_ecommerce_signup_and_login"
+git push -u origin firebase_food_delivery_ecommerce_signup_and_login
