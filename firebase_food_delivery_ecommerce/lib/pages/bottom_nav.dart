@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_food_delivery_ecommerce/pages/home.dart';
 import 'package:firebase_food_delivery_ecommerce/pages/order.dart';
 import 'package:firebase_food_delivery_ecommerce/pages/profile.dart';
-import 'package:firebase_food_delivery_ecommerce/pages/wellet.dart';
+import 'package:firebase_food_delivery_ecommerce/pages/wallet.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -27,7 +27,7 @@ class _BottomNavState extends State<BottomNav> {
     profile = const Profile();
     order = const Order();
     wallet = const Wallet();
-    pages = [home, profile, order, wallet];
+    pages = [home, wallet, order, profile];
     // TODO: implement initState
     super.initState();
   }
@@ -47,8 +47,8 @@ class _BottomNavState extends State<BottomNav> {
         },
         items: const [
           IconTabNavigation(iconData: Icons.home_outlined),
-          IconTabNavigation(iconData: Icons.shopping_bag_outlined),
           IconTabNavigation(iconData: Icons.wallet_outlined),
+          IconTabNavigation(iconData: Icons.shopping_bag_outlined),
           IconTabNavigation(iconData: Icons.person_2_outlined),
         ],
       ),

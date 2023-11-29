@@ -37,6 +37,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^6.1.0
   curved_navigation_bar: ^1.0.3
+  lottie: ^2.7.0
+  firebase_core: ^2.23.0
+  firebase_auth: ^4.14.1
+  flutter_stripe: ^9.5.0+1
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:

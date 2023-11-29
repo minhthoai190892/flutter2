@@ -2,47 +2,63 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_food_delivery_ecommerce/constants/image_manager.dart';
-import 'package:firebase_food_delivery_ecommerce/pages/bottom_nav.dart';
-import 'package:firebase_food_delivery_ecommerce/pages/forgot_password.dart';
-import 'package:firebase_food_delivery_ecommerce/pages/signup.dart';
+import 'package:firebase_food_delivery_ecommerce/pages/login.dart';
 import 'package:firebase_food_delivery_ecommerce/widgets/app_widget.dart';
+import 'package:firebase_food_delivery_ecommerce/pages/bottom_nav.dart';
 import 'package:flutter/material.dart';
 
-class LogIn extends StatefulWidget {
-  const LogIn({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<LogIn> createState() => _LogInState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LogInState extends State<LogIn> {
-  final _formKey = GlobalKey<FormState>();
+class _SignUpState extends State<SignUp> {
   String email = '';
   String password = '';
+  String name = '';
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  userLogin() async {
+  TextEditingController nameController = TextEditingController();
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+  }
+
+  final _formKey = GlobalKey<FormState>();
+  registration() async {
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          backgroundColor: Colors.orangeAccent,
+          content: Text(
+            'Registered successfully',
+            style: TextStyle(fontSize: 20),
+          )));
       Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => const BottomNav(),
           ));
     } on FirebaseException catch (e) {
-      if (e.code == 'user-not-found') {
+      if (e.code == 'weak-password') {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             backgroundColor: Colors.orangeAccent,
             content: Text(
-              'user-not-found',
+              'Password Provided is too weak  ',
               style: TextStyle(fontSize: 18),
             )));
-      } else if (e.code == 'wrong-password') {
+      } else if (e.code == 'email-already-in-use') {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             backgroundColor: Colors.orangeAccent,
             content: Text(
-              'wrong-password',
+              'Password Provided is too weak  ',
               style: TextStyle(fontSize: 18),
             )));
       }
@@ -92,7 +108,7 @@ class _LogInState extends State<LogIn> {
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       width: width,
-                      height: height / 2.5,
+                      height: height / 1.8,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
@@ -102,9 +118,26 @@ class _LogInState extends State<LogIn> {
                         child: Column(
                           children: [
                             Text(
-                              'Login',
+                              'Sign Up',
                               textAlign: TextAlign.center,
                               style: AppWidget.semiBoldTextFeildStyle(),
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            TextFormField(
+                              controller: nameController,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Enter Name...  ';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                  hintText: 'Name',
+                                  helperStyle:
+                                      AppWidget.semiBoldTextFeildStyle(),
+                                  prefixIcon: const Icon(Icons.person)),
                             ),
                             const SizedBox(
                               height: 30,
@@ -128,13 +161,13 @@ class _LogInState extends State<LogIn> {
                             ),
                             TextFormField(
                               controller: passwordController,
-                              obscureText: true,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Please Enter Password...  ';
                                 }
                                 return null;
                               },
+                              obscureText: true,
                               decoration: InputDecoration(
                                   hintText: 'Password',
                                   helperStyle:
@@ -143,35 +176,18 @@ class _LogInState extends State<LogIn> {
                                       const Icon(Icons.password_outlined)),
                             ),
                             const SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              alignment: Alignment.topRight,
-                              child: GestureDetector(
-                                onTap: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ForgotPassword(),
-                                    )),
-                                child: Text(
-                                  'Forgot Password?',
-                                  style: AppWidget.semiBoldTextFeildStyle(),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 20,
+                              height: 80,
                             ),
                             GestureDetector(
-                              onTap: () {
+                              onTap: () async {
                                 if (_formKey.currentState!.validate()) {
                                   setState(() {
                                     email = emailController.text;
+                                    name = nameController.text;
                                     password = passwordController.text;
                                   });
                                 }
-                                userLogin();
+                                registration();
                               },
                               child: Material(
                                 elevation: 5,
@@ -184,7 +200,7 @@ class _LogInState extends State<LogIn> {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: const Text(
-                                    'LOGIN',
+                                    'Sign Up',
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -198,24 +214,24 @@ class _LogInState extends State<LogIn> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: height / 5,
+                  const SizedBox(
+                    height: 80,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Dont't have an account?",
+                        "Already have an account?",
                         style: AppWidget.semiBoldTextFeildStyle(),
                       ),
                       GestureDetector(
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SignUp(),
+                              builder: (context) => const LogIn(),
                             )),
                         child: Text(
-                          ' Sign up',
+                          ' Login',
                           style: AppWidget.semiBoldTextFeildStyle(),
                         ),
                       )
