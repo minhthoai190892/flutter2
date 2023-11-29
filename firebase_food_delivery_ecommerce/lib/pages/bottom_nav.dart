@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_food_delivery_ecommerce/pages/home.dart';
 import 'package:firebase_food_delivery_ecommerce/pages/order.dart';
 import 'package:firebase_food_delivery_ecommerce/pages/profile.dart';
-import 'package:firebase_food_delivery_ecommerce/pages/wellet.dart';
+import 'package:firebase_food_delivery_ecommerce/pages/wallet.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});

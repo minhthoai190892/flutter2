@@ -40,6 +40,8 @@ dependencies:
   lottie: ^2.7.0
   firebase_core: ^2.23.0
   firebase_auth: ^4.14.1
+  flutter_stripe: ^9.5.0+1
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
