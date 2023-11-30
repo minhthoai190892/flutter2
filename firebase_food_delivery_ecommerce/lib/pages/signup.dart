@@ -3,6 +3,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_food_delivery_ecommerce/constants/image_manager.dart';
 import 'package:firebase_food_delivery_ecommerce/pages/login.dart';
+import 'package:firebase_food_delivery_ecommerce/service/database.dart';
+import 'package:firebase_food_delivery_ecommerce/service/shared_preferences.dart';
 import 'package:firebase_food_delivery_ecommerce/widgets/app_widget.dart';
 import 'package:firebase_food_delivery_ecommerce/pages/bottom_nav.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +43,18 @@ class _SignUpState extends State<SignUp> {
             'Registered successfully',
             style: TextStyle(fontSize: 20),
           )));
+      String id = userCredential.user!.uid;
+      Map<String, dynamic> addUserInfo = {
+        'name': nameController.text,
+        'email': emailController.text,
+        'wallet': '0',
+        'id': id,
+      };
+      await DatabaseMethod().addUserDetail(addUserInfo);
+      await SharedPreferencesHelper().saveUserId(id);
+      await SharedPreferencesHelper().saveUserName(nameController.text);
+      await SharedPreferencesHelper().saveUserEmail(emailController.text);
+      await SharedPreferencesHelper().saveUserWallet('0');
       Navigator.push(
           context,
           MaterialPageRoute(
