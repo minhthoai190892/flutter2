@@ -1,13 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_food_delivery_ecommerce/admin/admin_login.dart';
-import 'package:firebase_food_delivery_ecommerce/constants/app_constrants.dart';
-import 'package:firebase_food_delivery_ecommerce/pages/wallet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 import 'admin/add_food.dart';
+import 'constants/app_constrants.dart';
 import 'firebase_options.dart';
-import 'pages/onboard.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
