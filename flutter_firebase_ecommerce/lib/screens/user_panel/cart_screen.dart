@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_ecommerce/controllers/cart_price_controller.dart';
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,8 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   final User? currentUser = FirebaseAuth.instance.currentUser;
-
+  final ProductPriceController productPriceController =
+      Get.put(ProductPriceController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,6 +79,8 @@ class _CartScreenState extends State<CartScreen> {
                   productTotalPrice: data['productTotalPrice'],
                 );
                 int quantity = cartModel.productQuantity;
+                // calculate the total price
+                productPriceController.fetchProductPrice();
                 return SwipeActionCell(
                   key: ObjectKey(cartModel.productId),
                   trailingActions: [
@@ -175,11 +179,10 @@ class _CartScreenState extends State<CartScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Sub Total: '),
-            const Text(
-              "PKR: 12.0",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            Obx(() => Text(
+                  "PKR: ${productPriceController.totalPrice.value.toStringAsFixed(1)}",
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                )),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Material(

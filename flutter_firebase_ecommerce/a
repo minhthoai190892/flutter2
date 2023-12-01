@@ -1,10 +1,9 @@
-git checkout -b flutter_firebase_ecommerce_increase-and-decrease-product-quality1
+git checkout -b flutter_firebase_ecommerce_calculate-cart-products-price
 git add .
-git commit -m "flutter_firebase_ecommerce_increase-and-decrease-product-quality1"
-git push -u origin flutter_firebase_ecommerce_increase-and-decrease-product-quality1
+git commit -m "flutter_firebase_ecommerce_calculate-cart-products-price"
+git push -u origin flutter_firebase_ecommerce_calculate-cart-products-price
 
     
-
 
 
 
