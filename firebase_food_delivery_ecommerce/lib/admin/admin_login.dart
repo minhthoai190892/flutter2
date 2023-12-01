@@ -15,7 +15,7 @@ class _AdminLoginState extends State<AdminLogin> {
   TextEditingController userPasswordController = TextEditingController();
   loginAdmin() {
     FirebaseFirestore.instance.collection('admin').get().then((snapshot) {
-      snapshot.docs.forEach((result) {
+      for (var result in snapshot.docs) {
         if (result.data()['userName'] != userNameController.text.trim()) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -44,7 +44,7 @@ class _AdminLoginState extends State<AdminLogin> {
                 builder: (context) => HomeAdmin(),
               ));
         }
-      });
+      }
     });
   }
 
