@@ -1,25 +1,26 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_ecommerce/controllers/cart_price_controller.dart';
-import 'package:flutter_firebase_ecommerce/screens/user_panel/checkout_screen.dart';
-import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 
+import 'package:flutter_firebase_ecommerce/controllers/cart_price_controller.dart';
+import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
+
 import '../../models/cart_model.dart';
 
-class CartScreen extends StatefulWidget {
-  const CartScreen({super.key});
+class CheckOutScreen extends StatefulWidget {
+  const CheckOutScreen({super.key});
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
+  State<CheckOutScreen> createState() => _CheckOutScreenState();
 }
 
-class _CartScreenState extends State<CartScreen> {
+class _CheckOutScreenState extends State<CheckOutScreen> {
   final User? currentUser = FirebaseAuth.instance.currentUser;
   final ProductPriceController productPriceController =
       Get.put(ProductPriceController());
@@ -28,7 +29,7 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: AppConstant.appTextColor),
-        title: const Text('Cart Screen'),
+        title: const Text('CheckOut Screen'),
         backgroundColor: AppConstant.appMainColor,
         centerTitle: true,
       ),
@@ -114,56 +115,6 @@ class _CartScreenState extends State<CartScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(cartModel.productTotalPrice.toString()),
-                          SizedBox(
-                            width: Get.width / 20,
-                          ),
-                          CircleAvatar(
-                            child: IconButton(
-                                onPressed: () async {
-                                  if (cartModel.productQuantity > 1) {
-                                    await FirebaseFirestore.instance
-                                        .collection('cart')
-                                        .doc(currentUser!.uid)
-                                        .collection('cartOrders')
-                                        .doc(cartModel.productId)
-                                        .update({
-                                      'productQuantity':
-                                          cartModel.productQuantity - 1,
-                                      'productTotalPrice':
-                                          (double.parse(cartModel.fullPrice) *
-                                              (cartModel.productQuantity - 1))
-                                    });
-                                  }
-                                },
-                                icon: const Icon(Icons.remove)),
-                          ),
-                          SizedBox(
-                            width: Get.width / 20,
-                          ),
-                          Text('$quantity'),
-                          SizedBox(
-                            width: Get.width / 20,
-                          ),
-                          CircleAvatar(
-                            child: IconButton(
-                                onPressed: () async {
-                                  if (cartModel.productQuantity > 0) {
-                                    await FirebaseFirestore.instance
-                                        .collection('cart')
-                                        .doc(currentUser!.uid)
-                                        .collection('cartOrders')
-                                        .doc(cartModel.productId)
-                                        .update({
-                                      'productQuantity':
-                                          cartModel.productQuantity + 1,
-                                      'productTotalPrice':
-                                          double.parse(cartModel.fullPrice) *
-                                              (cartModel.productQuantity + 1)
-                                    });
-                                  }
-                                },
-                                icon: const Icon(Icons.add)),
-                          ),
                         ],
                       ),
                     ),
@@ -195,10 +146,10 @@ class _CartScreenState extends State<CartScreen> {
                       borderRadius: BorderRadius.circular(20)),
                   child: TextButton(
                     onPressed: () {
-                      Get.to(() => const CheckOutScreen());
+                      showCustomBottomSheet();
                     },
                     child: const Text(
-                      'Checkout',
+                      'Confirm Order',
                       style: TextStyle(color: AppConstant.appTextColor),
                     ),
                   ),
@@ -206,6 +157,70 @@ class _CartScreenState extends State<CartScreen> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  void showCustomBottomSheet() {
+    Get.bottomSheet(
+      Container(
+        height: Get.height * 0.8,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(20),
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const CheckOutFormField(
+                  label: 'Name', keyboardType: TextInputType.text),
+              const CheckOutFormField(
+                  label: 'Phone', keyboardType: TextInputType.phone),
+              const CheckOutFormField(
+                  label: 'Address', keyboardType: TextInputType.text),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppConstant.appMainColor,
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    'Place Order',
+                    style: TextStyle(color: Colors.white),
+                  ))
+            ],
+          ),
+        ),
+      ),
+  
+    );
+  }
+}
+
+class CheckOutFormField extends StatelessWidget {
+  const CheckOutFormField({
+    Key? key,
+    required this.label,
+    required this.keyboardType,
+  }) : super(key: key);
+  final String label;
+  final TextInputType keyboardType;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      child: SizedBox(
+        height: 50,
+        child: TextFormField(
+          keyboardType: keyboardType,
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+            label: Text(label),
+            hintStyle: const TextStyle(fontSize: 12),
+          ),
         ),
       ),
     );

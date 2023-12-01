@@ -1,7 +1,7 @@
-git checkout -b flutter_firebase_ecommerce_calculate-cart-products-price
+git checkout -b flutter_firebase_ecommerce_ui_checkout
 git add .
-git commit -m "flutter_firebase_ecommerce_calculate-cart-products-price"
-git push -u origin flutter_firebase_ecommerce_calculate-cart-products-price
+git commit -m "flutter_firebase_ecommerce_ui_checkout"
+git push -u origin flutter_firebase_ecommerce_ui_checkout
 
     
 
