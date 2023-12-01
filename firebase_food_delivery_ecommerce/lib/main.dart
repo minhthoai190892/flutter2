@@ -5,6 +5,7 @@ import 'package:firebase_food_delivery_ecommerce/pages/wallet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
+import 'admin/add_food.dart';
 import 'firebase_options.dart';
 import 'pages/onboard.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AdminLogin(),
+      home:  AddFood(),
     );
   }
 }

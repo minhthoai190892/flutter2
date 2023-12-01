@@ -1,5 +1,5 @@
 
-git checkout -b firebase_food_delivery_ecommerce_admin_home
+git checkout -b firebase_food_delivery_ecommerce_ui_add_item
 git add .
-git commit -m "firebase_food_delivery_ecommerce_admin_home"
-git push -u origin firebase_food_delivery_ecommerce_admin_home
+git commit -m "firebase_food_delivery_ecommerce_ui_add_item"
+git push -u origin firebase_food_delivery_ecommerce_ui_add_item
