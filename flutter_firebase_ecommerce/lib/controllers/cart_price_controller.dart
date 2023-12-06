@@ -7,7 +7,6 @@ class ProductPriceController extends GetxController {
   User? user = FirebaseAuth.instance.currentUser;
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     fetchProductPrice();
   }

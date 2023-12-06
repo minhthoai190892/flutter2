@@ -10,7 +10,6 @@ import 'package:image_card/image_card.dart';
 
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 
-import '../../models/category_model.dart';
 
 class AllSingleCategoryProductsScreen extends StatefulWidget {
   const AllSingleCategoryProductsScreen({

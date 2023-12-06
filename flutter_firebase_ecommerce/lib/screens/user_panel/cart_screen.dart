@@ -1,16 +1,16 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_ecommerce/controllers/cart_price_controller.dart';
-import 'package:flutter_firebase_ecommerce/screens/user_panel/checkout_screen.dart';
-import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:get/get.dart';
-import 'package:image_card/image_card.dart';
 
+import '../../controllers/cart_price_controller.dart';
 import '../../models/cart_model.dart';
+import '../../utils/app_constant.dart';
+import 'checkout_screen.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});

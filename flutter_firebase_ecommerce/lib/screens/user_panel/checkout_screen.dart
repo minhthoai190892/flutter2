@@ -1,15 +1,14 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:cached_network_image/cached_network_image.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print, use_build_context_synchronously
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_ecommerce/controllers/cart_price_controller.dart';
+import 'package:flutter_firebase_ecommerce/controllers/get_customer_device_token.dart';
+import 'package:flutter_firebase_ecommerce/services/place_order_service.dart';
+import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:get/get.dart';
-import 'package:image_card/image_card.dart';
-
-import 'package:flutter_firebase_ecommerce/controllers/cart_price_controller.dart';
-import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 
 import '../../models/cart_model.dart';
 
@@ -24,6 +23,9 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
   final User? currentUser = FirebaseAuth.instance.currentUser;
   final ProductPriceController productPriceController =
       Get.put(ProductPriceController());
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +82,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   productQuantity: data['productQuantity'],
                   productTotalPrice: data['productTotalPrice'],
                 );
-                int quantity = cartModel.productQuantity;
+
                 // calculate the total price
                 productPriceController.fetchProductPrice();
                 return SwipeActionCell(
@@ -175,27 +177,51 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const CheckOutFormField(
-                  label: 'Name', keyboardType: TextInputType.text),
-              const CheckOutFormField(
-                  label: 'Phone', keyboardType: TextInputType.phone),
-              const CheckOutFormField(
-                  label: 'Address', keyboardType: TextInputType.text),
+              CheckOutFormField(
+                  controller: nameController,
+                  label: 'Name',
+                  keyboardType: TextInputType.text),
+              CheckOutFormField(
+                  controller: phoneController,
+                  label: 'Phone',
+                  keyboardType: TextInputType.phone),
+              CheckOutFormField(
+                  controller: addressController,
+                  label: 'Address',
+                  keyboardType: TextInputType.text),
               ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppConstant.appMainColor,
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  ),
-                  onPressed: () {},
-                  child: const Text(
-                    'Place Order',
-                    style: TextStyle(color: Colors.white),
-                  ))
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppConstant.appMainColor,
+                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                ),
+                onPressed: () async {
+                  if (nameController.text != "" &&
+                      phoneController.text != '' &&
+                      addressController.text != '') {
+                    final String name = nameController.text.trim();
+                    final String phone = phoneController.text.trim();
+                    final String address = addressController.text.trim();
+                    // get token
+                    String customerToken = await getCustomerDeviceToken();
+                    placeOrder(
+                        context: context,
+                        customerName: name,
+                        customerPhone: phone,
+                        customerAddres: address,
+                        customerDeviceToken: customerToken);
+                  } else {
+                    print('please fill all details');
+                  }
+                },
+                child: const Text(
+                  'Place Order',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ],
           ),
         ),
       ),
-  
     );
   }
 }
@@ -205,9 +231,11 @@ class CheckOutFormField extends StatelessWidget {
     Key? key,
     required this.label,
     required this.keyboardType,
+    required this.controller,
   }) : super(key: key);
   final String label;
   final TextInputType keyboardType;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -215,6 +243,7 @@ class CheckOutFormField extends StatelessWidget {
       child: SizedBox(
         height: 50,
         child: TextFormField(
+          controller: controller,
           keyboardType: keyboardType,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(horizontal: 10),

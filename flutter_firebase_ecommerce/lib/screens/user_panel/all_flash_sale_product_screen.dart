@@ -4,12 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_ecommerce/models/product_model.dart';
+import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
-
-import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
-
-import '../../models/category_model.dart';
 
 class AllFlashSaleProductScrren extends StatefulWidget {
   const AllFlashSaleProductScrren({

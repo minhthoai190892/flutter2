@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 
 import '../models/product_model.dart';
-import '../utils/app_constant.dart';
+
 
 class AllProductsWidget extends StatelessWidget {
   const AllProductsWidget({super.key});
