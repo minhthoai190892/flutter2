@@ -195,10 +195,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                 ),
                 onPressed: () async {
-                  if (nameController.text != "" &&
-                      phoneController.text != '' &&
-                      addressController.text != '') {
-                    final String name = nameController.text.trim();
+                  final String name = nameController.text.trim();
                     final String phone = phoneController.text.trim();
                     final String address = addressController.text.trim();
                     // get token
@@ -207,11 +204,8 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         context: context,
                         customerName: name,
                         customerPhone: phone,
-                        customerAddres: address,
+                        customerAddress: address,
                         customerDeviceToken: customerToken);
-                  } else {
-                    print('please fill all details');
-                  }
                 },
                 child: const Text(
                   'Place Order',
