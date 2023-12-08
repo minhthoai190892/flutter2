@@ -1,7 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 
 class HeadingWidget extends StatelessWidget {
@@ -51,11 +49,11 @@ class HeadingWidget extends StatelessWidget {
                   border: Border.all(
                       color: AppConstant.appSecondoryColor, width: 1.5),
                 ),
-                child:  Padding(
-                  padding: EdgeInsets.all(8.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
                     buttonText,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 12,
                         color: AppConstant.appSecondoryColor),

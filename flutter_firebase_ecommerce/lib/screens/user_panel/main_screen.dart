@@ -44,36 +44,34 @@ class MainScreen extends StatelessWidget {
       drawer: const DrawerWidget(),
       body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          child: Container(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: Get.height / 90,
-                ),
-                const BannerWidget(),
-                HeadingWidget(
-                  headingTitle: 'Category',
-                  headingSubTitle: 'Accroding to your budget',
-                  onTap: () => Get.to(() => const AllCategoryScreen()),
-                  buttonText: 'See more >',
-                ),
-                const CategoryWidget(),
-                HeadingWidget(
-                  headingTitle: 'Fashion Sale',
-                  headingSubTitle: 'Accroding to your budget',
-                  onTap: () => Get.to(() => const AllFlashSaleProductScrren()),
-                  buttonText: 'See more >',
-                ),
-                const FlastSaleWidget(),
-                HeadingWidget(
-                  headingTitle: 'All Products',
-                  headingSubTitle: 'Accroding to your budget',
-                  onTap: () => Get.to(() => const AllProductsScreen()),
-                  buttonText: 'See more >',
-                ),
-                const AllProductsWidget(),
-              ],
-            ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: Get.height / 90,
+              ),
+              const BannerWidget(),
+              HeadingWidget(
+                headingTitle: 'Category',
+                headingSubTitle: 'Accroding to your budget',
+                onTap: () => Get.to(() => const AllCategoryScreen()),
+                buttonText: 'See more >',
+              ),
+              const CategoryWidget(),
+              HeadingWidget(
+                headingTitle: 'Fashion Sale',
+                headingSubTitle: 'Accroding to your budget',
+                onTap: () => Get.to(() => const AllFlashSaleProductScrren()),
+                buttonText: 'See more >',
+              ),
+              const FlastSaleWidget(),
+              HeadingWidget(
+                headingTitle: 'All Products',
+                headingSubTitle: 'Accroding to your budget',
+                onTap: () => Get.to(() => const AllProductsScreen()),
+                buttonText: 'See more >',
+              ),
+              const AllProductsWidget(),
+            ],
           )),
     );
   }

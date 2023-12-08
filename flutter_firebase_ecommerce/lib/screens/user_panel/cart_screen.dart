@@ -1,14 +1,16 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_ecommerce/utils/app_constant.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:get/get.dart';
-import 'package:image_card/image_card.dart';
 
+import '../../controllers/cart_price_controller.dart';
 import '../../models/cart_model.dart';
+import '../../utils/app_constant.dart';
+import 'checkout_screen.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -19,7 +21,8 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   final User? currentUser = FirebaseAuth.instance.currentUser;
-
+  final ProductPriceController productPriceController =
+      Get.put(ProductPriceController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,6 +80,8 @@ class _CartScreenState extends State<CartScreen> {
                   productTotalPrice: data['productTotalPrice'],
                 );
                 int quantity = cartModel.productQuantity;
+                // calculate the total price
+                productPriceController.fetchProductPrice();
                 return SwipeActionCell(
                   key: ObjectKey(cartModel.productId),
                   trailingActions: [
@@ -175,11 +180,10 @@ class _CartScreenState extends State<CartScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Sub Total: '),
-            const Text(
-              "PKR: 12.0",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            Obx(() => Text(
+                  "PKR: ${productPriceController.totalPrice.value.toStringAsFixed(1)}",
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                )),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Material(
@@ -190,7 +194,9 @@ class _CartScreenState extends State<CartScreen> {
                       color: AppConstant.appMainColor,
                       borderRadius: BorderRadius.circular(20)),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const CheckOutScreen());
+                    },
                     child: const Text(
                       'Checkout',
                       style: TextStyle(color: AppConstant.appTextColor),

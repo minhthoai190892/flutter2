@@ -71,8 +71,9 @@ class _AllCategoryScreenState extends State<AllCategoryScreen> {
                 return Row(
                   children: [
                     GestureDetector(
-                      onTap: () =>
-                          Get.to(() =>  AllSingleCategoryProductsScreen(categoryId: categoriesModel.categoryId,)),
+                      onTap: () => Get.to(() => AllSingleCategoryProductsScreen(
+                            categoryId: categoriesModel.categoryId,
+                          )),
                       child: Padding(
                         padding: const EdgeInsets.all(5),
                         child: FillImageCard(
@@ -90,7 +91,6 @@ class _AllCategoryScreenState extends State<AllCategoryScreen> {
                 );
               },
             );
-
           }
           return Container();
         },
