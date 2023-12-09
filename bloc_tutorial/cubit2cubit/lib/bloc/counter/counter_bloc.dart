@@ -4,20 +4,20 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:cubit2cubit/cubit/color/color_cubit.dart';
+import 'package:cubit2cubit/bloc/color/color_bloc.dart';
 import 'package:flutter/material.dart';
 
+part 'counter_event.dart';
 part 'counter_state.dart';
 
-class CounterCubit extends Cubit<CounterState> {
+class CounterBloc extends Bloc<CounterEvent, CounterState> {
   int increment = 1;
-  final ColorCubit colorCubit;
-  late final StreamSubscription streamSub;
-
-  CounterCubit(
-    this.colorCubit,
+  final ColorBloc colorBloc;
+  late final StreamSubscription colorStreamSubscription;
+  CounterBloc(
+    this.colorBloc,
   ) : super(CounterState.initial()) {
-    streamSub = colorCubit.stream.listen((ColorState colorState) {
+    colorStreamSubscription = colorBloc.stream.listen((colorState) {
       if (colorState.color == Colors.red) {
         increment = 1;
       } else if (colorState.color == Colors.green) {
@@ -25,19 +25,19 @@ class CounterCubit extends Cubit<CounterState> {
       } else if (colorState.color == Colors.blue) {
         increment = 100;
       } else if (colorState.color == Colors.black) {
-        emit(state.copyWith(counter: state.counter - 100));
         increment = -100;
+        add(ChangeCounterEvent());
       }
     });
-  }
-  void changeCounter() {
-    emit(state.copyWith(counter: state.counter + increment));
+    on<ChangeCounterEvent>((event, emit) {
+      emit(state.copyWith(counter: state.counter + increment));
+    });
   }
 
   @override
   Future<void> close() {
     // TODO: implement close
-    streamSub.cancel();
+    colorStreamSubscription.cancel();
     return super.close();
   }
 }

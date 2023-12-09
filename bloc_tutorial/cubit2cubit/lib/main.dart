@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:cubit2cubit/bloc/color/color_bloc.dart';
+import 'package:cubit2cubit/bloc/counter/counter_bloc.dart';
 import 'package:cubit2cubit/cubit/color/color_cubit.dart';
 import 'package:cubit2cubit/cubit/counter/counter_cubit.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +24,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ColorCubit()),
         BlocProvider(
           create: (context) => CounterCubit(context.read<ColorCubit>()),
+        ),
+        BlocProvider(create: (context) => ColorBloc()),
+        BlocProvider(
+          create: (context) => CounterBloc(context.read<ColorBloc>()),
         )
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
@@ -67,7 +73,7 @@ class MyHomePage extends StatelessWidget {
                   test ? const Icon(Icons.dark_mode) : const Icon(Icons.sunny))
         ],
       ),
-      backgroundColor: context.watch<ColorCubit>().state.color,
+      backgroundColor: context.watch<ColorBloc>().state.color,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -78,12 +84,12 @@ class MyHomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 24.0),
               ),
               onPressed: () {
-                context.read<ColorCubit>().changeColor();
+                context.read<ColorBloc>().add(ChangeColorEvent());
               },
             ),
             const SizedBox(height: 20.0),
             Text(
-              '${context.watch<CounterCubit>().state.counter}',
+              '${context.watch<CounterBloc>().state.counter}',
               style: const TextStyle(
                 fontSize: 52.0,
                 fontWeight: FontWeight.bold,
@@ -97,7 +103,7 @@ class MyHomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 24.0),
               ),
               onPressed: () {
-                context.read<CounterCubit>().changeCounter();
+                context.read<CounterBloc>().add(ChangeCounterEvent());
               },
             ),
           ],
