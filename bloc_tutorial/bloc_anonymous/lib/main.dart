@@ -13,14 +13,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CounterCubit _counterCubit = CounterCubit();
     return MaterialApp(
       title: 'Anonymous Route',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BlocProvider<CounterCubit>(
-          create: (context) => CounterCubit(), child: const MyHomePage()),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => BlocProvider.value(
+            value:_counterCubit, child: const MyHomePage()),
+        '/counter': (context) => BlocProvider.value(
+            value: _counterCubit, child: const ShowMeCounter())
+      },
+      // home: BlocProvider<CounterCubit>(
+      //     create: (context) => CounterCubit(), child: const MyHomePage()),
     );
   }
 }
@@ -37,14 +45,15 @@ class MyHomePage extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) {
-                    return BlocProvider.value(
-                        value: context.read<CounterCubit>(),
-                        child: const ShowMeCounter());
-                  }),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (_) {
+                //     return BlocProvider.value(
+                //         value: context.read<CounterCubit>(),
+                //         child: const ShowMeCounter());
+                //   }),
+                // );
+                Navigator.pushNamed(context, '/counter');
               },
               child: const Text(
                 'Show Me Counter',
