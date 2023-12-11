@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_cubit/cubits/active_todo_count/active_todo_count_cubit.dart';
+import 'package:todo_cubit/pages/widgets/create_todo_widget.dart';
+import 'package:todo_cubit/pages/widgets/search_and_filter_todo.dart';
+
+import 'widgets/todo_header_widget.dart';
 
 class TodosPage extends StatelessWidget {
   const TodosPage({Key? key}) : super(key: key);
@@ -15,43 +17,14 @@ class TodosPage extends StatelessWidget {
             child: Column(
               children: [
                 TodoHeader(),
+                CreateTodoWidget(),
+                SizedBox(height: 20,),
+                SearchAndFilterTodo(),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-}
-
-class TodoHeader extends StatelessWidget {
-  const TodoHeader({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Text(
-          'Todo',
-          style: TextStyle(fontSize: 40),
-        ),
-        // nghe todoListCubit thông qua StreamSubscription
-        BlocBuilder<ActiveTodoCountCubit, ActiveTodoCountState>(
-          builder: (context, state) {
-            return Text(
-              '${state.activeTodoCount} items left',
-              style: const TextStyle(fontSize: 20, color: Colors.redAccent),
-            );
-          },
-        ),
-        // Text(
-        //   '${context.watch<ActiveTodoCountCubit>().state.activeTodoCount} items left',
-        //   style: const TextStyle(fontSize: 20, color: Colors.redAccent),
-        // ),
-      ],
     );
   }
 }
