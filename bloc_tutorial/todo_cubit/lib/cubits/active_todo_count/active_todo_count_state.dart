@@ -3,24 +3,17 @@
 part of 'active_todo_count_cubit.dart';
 
 class ActiveTodoCountState extends Equatable {
-  final int count;
+  final int activeTodoCount;
   const ActiveTodoCountState(
-    this.count,
+    this.activeTodoCount,
   );
   factory ActiveTodoCountState.initial() {
     return const ActiveTodoCountState(0);
   }
-  ActiveTodoCountState copyWith({
-    int? activeTodoCount,
-  }) {
-    return ActiveTodoCountState(
-      activeTodoCount ?? count,
-    );
-  }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'count': count,
+      'count': activeTodoCount,
     };
   }
 
@@ -38,5 +31,13 @@ class ActiveTodoCountState extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object> get props => [count];
+  List<Object> get props => [activeTodoCount];
+
+  ActiveTodoCountState copyWith({
+    int? activeTodoCount,
+  }) {
+    return ActiveTodoCountState(
+      activeTodoCount ?? this.activeTodoCount,
+    );
+  }
 }
