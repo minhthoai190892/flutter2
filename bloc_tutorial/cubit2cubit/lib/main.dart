@@ -1,5 +1,9 @@
 import 'dart:math';
 
+import 'package:cubit2cubit/bloc/color/color_bloc.dart';
+import 'package:cubit2cubit/bloc/counter/counter_bloc.dart';
+import 'package:cubit2cubit/cubit/color/color_cubit.dart';
+import 'package:cubit2cubit/cubit/counter/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +21,14 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ThemeBloc()),
+        BlocProvider(create: (context) => ColorCubit()),
+        BlocProvider(
+          create: (context) => CounterCubit(context.read<ColorCubit>()),
+        ),
+        BlocProvider(create: (context) => ColorBloc()),
+        BlocProvider(
+          create: (context) => CounterBloc(context.read<ColorBloc>()),
+        )
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) {
@@ -39,8 +51,29 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late bool test = context.read<ThemeBloc>().state.appTheme == AppTheme.light;
     return Scaffold(
-      // backgroundColor: Colors.red,
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                var themeChange =
+                    context.read<ThemeBloc>().state.appTheme == AppTheme.light
+                        ? false
+                        : true;
+                if (themeChange) {
+                  test = false;
+                } else {
+                  test = true;
+                }
+                BlocProvider.of<ThemeBloc>(context)
+                    .add(ChangeThemeEvent(isLight: themeChange));
+              },
+              icon:
+                  test ? const Icon(Icons.dark_mode) : const Icon(Icons.sunny))
+        ],
+      ),
+      backgroundColor: context.watch<ColorBloc>().state.color,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,12 +83,14 @@ class MyHomePage extends StatelessWidget {
                 'Change Color',
                 style: TextStyle(fontSize: 24.0),
               ),
-              onPressed: () {},
+              onPressed: () {
+                context.read<ColorBloc>().add(ChangeColorEvent());
+              },
             ),
             const SizedBox(height: 20.0),
-            const Text(
-              '0',
-              style: TextStyle(
+            Text(
+              '${context.watch<CounterBloc>().state.counter}',
+              style: const TextStyle(
                 fontSize: 52.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -68,13 +103,7 @@ class MyHomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 24.0),
               ),
               onPressed: () {
-                var theme =
-                    context.read<ThemeBloc>().state.appTheme == AppTheme.light
-                        ? false
-                        : true;
-                print(theme);
-                BlocProvider.of<ThemeBloc>(context)
-                    .add(ChangeThemeEvent(isLight: theme));
+                context.read<CounterBloc>().add(ChangeCounterEvent());
               },
             ),
           ],
