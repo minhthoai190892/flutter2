@@ -13,6 +13,7 @@ class TodoListState extends Equatable {
         id: '1',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, hic?',
+            completed: true,
       ),
       Todo(
         id: '2',

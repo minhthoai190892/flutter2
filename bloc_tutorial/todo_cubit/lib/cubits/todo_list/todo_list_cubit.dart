@@ -11,6 +11,7 @@ class TodoListCubit extends Cubit<TodoListState> {
     final newTodo = Todo(description: description);
     final newTodos = [...state.todos, newTodo];
     emit(state.copyWith(todos: newTodos));
+    print(state);
   }
 
   void editTodo(String id, String description) {
@@ -38,6 +39,5 @@ class TodoListCubit extends Cubit<TodoListState> {
   void removeTodo(Todo todo) {
     final newTodos = state.todos.where((t) => t.id == todo.id).toList();
     emit(state.copyWith(todos: newTodos));
-    
   }
 }

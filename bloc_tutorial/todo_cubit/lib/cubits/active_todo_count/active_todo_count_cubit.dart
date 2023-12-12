@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -13,10 +13,12 @@ part 'active_todo_count_state.dart';
 class ActiveTodoCountCubit extends Cubit<ActiveTodoCountState> {
   // cần số lượng trong todolistcubit
   final TodoListCubit todoListCubit;
+  final int initialActiveTodoCount;
   late final StreamSubscription todoListSubscription;
   ActiveTodoCountCubit({
     required this.todoListCubit,
-  }) : super(ActiveTodoCountState.initial()) {
+    required this.initialActiveTodoCount,
+  }) : super(ActiveTodoCountState(initialActiveTodoCount)) {
     todoListSubscription =
         todoListCubit.stream.listen((TodoListState todoListState) {
       print('todoListState: $todoListState');
@@ -30,7 +32,7 @@ class ActiveTodoCountCubit extends Cubit<ActiveTodoCountState> {
   @override
   Future<void> close() {
     todoListSubscription.cancel();
-    // TODO: implement close
+
     return super.close();
   }
 }
