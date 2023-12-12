@@ -8,7 +8,7 @@ class FilteredTodoState extends Equatable {
     this.filteredTodos,
   );
   factory FilteredTodoState.initial() {
-    return FilteredTodoState(const []);
+    return const FilteredTodoState([]);
   }
   FilteredTodoState copyWith({
     List<Todo>? filteredTodos,
