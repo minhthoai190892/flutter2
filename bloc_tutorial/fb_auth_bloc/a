@@ -1,4 +1,4 @@
-git checkout -b firebase_auth_bloc_auth
+git checkout -b firebase_auth_profile
 git add .
-git commit -m "firebase_auth_bloc_auth"
-git push -u origin firebase_auth_bloc_auth
+git commit -m "firebase_auth_profile"
+git push -u origin firebase_auth_profile

@@ -20,13 +20,14 @@ class AuthRepository {
       final UserCredential userCredential = await firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
       final signedInUser = userCredential.user!;
-      await usersRef.doc(signedInUser.uid).set({
+    await usersRef.doc(signedInUser.uid).set({
         'name': name,
         'email': email,
         'profileImage': 'https://picsum.photos/300',
         'point': 0,
-        'rank': 'bronze'
+        'rank': 'bronze',
       });
+      print('signedInUser $signedInUser');
     } on FirebaseAuthException catch (e) {
       throw CustomError(code: e.code, message: e.message!, plugin: e.plugin);
     } catch (e) {
