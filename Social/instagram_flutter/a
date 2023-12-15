@@ -1,8 +1,12 @@
-git checkout -b social__instagram_layout
+git checkout -b social__instagram_login_screen
 git add .
-git commit -m "social__instagram_layout"
-git push -u origin social__instagram_layout
+git commit -m "social__instagram_login_screen"
+git push -u origin social__instagram_login_screen
 
 
 chạy bằng chrome
 flutter run -d chrome
+
+
+note
+ Cloud Firestore -> start in test mode
