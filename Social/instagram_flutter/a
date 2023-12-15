@@ -1,0 +1,8 @@
+git checkout -b social__instagram_layout
+git add .
+git commit -m "social__instagram_layout"
+git push -u origin social__instagram_layout
+
+
+chạy bằng chrome
+flutter run -d chrome
