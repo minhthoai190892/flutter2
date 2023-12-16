@@ -6,22 +6,24 @@ import 'package:instagram_flutter/utils/colors.dart';
 
 import '../widgets/widgets.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  final TextEditingController _bioController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
-
+    _bioController.dispose();
+    _usernameController.dispose();
     super.dispose();
   }
 
@@ -45,12 +47,33 @@ class _LoginScreenState extends State<LoginScreen> {
               color: primaryColor,
               height: 64,
             ),
-      
+            Stack(
+              children: [
+                const CircleAvatar(
+                  radius: 64,
+                  backgroundImage: NetworkImage(
+                      // scale: 50.0,
+                      'https://images.unsplash.com/photo-1611162618758-2a29a995354b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGluc3RhZ3JhbSUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D'),
+                ),
+                Positioned(
+                    bottom: -10,
+                    left: 80,
+                    child: IconButton(
+                        onPressed: () {}, icon: const Icon(Icons.add_a_photo))),
+              ],
+            ),
             const SizedBox(
               height: 64,
             ),
             // text file input for email
-            
+            TextFileInput(
+              controller: _usernameController,
+              hintText: 'Enter your user name',
+              keyboardType: TextInputType.text,
+            ),
+            const SizedBox(
+              height: 24,
+            ),
             // text file input for email
             TextFileInput(
               controller: _emailController,
@@ -65,7 +88,15 @@ class _LoginScreenState extends State<LoginScreen> {
               keyboardType: TextInputType.text,
               obscureText: true,
             ),
-         
+            const SizedBox(
+              height: 24,
+            ),
+            // text file input for email
+            TextFileInput(
+              controller: _bioController,
+              hintText: 'Enter your Bio',
+              keyboardType: TextInputType.text,
+            ),
             const SizedBox(height: 64),
             // button login
             InkWell(

@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'firebase_options.dart';
 import 'screens/screens.dart';
 import 'utils/utils.dart';
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
       // home: const ReponsiveLayout(
       //     webScreenLayout: WebScreenLayout(),
       //     mobileScreenLayout: MobileScreenLayout()),
-      home: const LoginScreen(),
+      home: const SignupScreen(),
     );
   }
 }
