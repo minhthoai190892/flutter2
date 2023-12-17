@@ -1,8 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, deprecated_member_use
+// ignore_for_file: public_member_api_docs, sort_constructors_first, deprecated_member_use, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram_flutter/resources/resources.dart';
 
 import 'package:instagram_flutter/utils/colors.dart';
+import 'package:instagram_flutter/utils/util.dart';
 
 import '../widgets/widgets.dart';
 
@@ -16,13 +18,29 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  bool isLoading = false;
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
 
     super.dispose();
+  }
+
+  void loginUser() async {
+    setState(() {
+      isLoading = true;
+    });
+    String res = await AuthMethod().loginUser(
+        email: _emailController.text, password: _passwordController.text);
+    if (res == 'success') {
+      showSnackBar(content: res, context: context);
+    } else {
+      showSnackBar(content: res, context: context);
+    }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -45,12 +63,12 @@ class _LoginScreenState extends State<LoginScreen> {
               color: primaryColor,
               height: 64,
             ),
-      
+
             const SizedBox(
               height: 64,
             ),
             // text file input for email
-            
+
             // text file input for email
             TextFileInput(
               controller: _emailController,
@@ -65,11 +83,11 @@ class _LoginScreenState extends State<LoginScreen> {
               keyboardType: TextInputType.text,
               obscureText: true,
             ),
-         
+
             const SizedBox(height: 64),
             // button login
             InkWell(
-              onTap: () {},
+              onTap: loginUser,
               child: Container(
                 width: double.infinity,
                 alignment: Alignment.center,
@@ -78,7 +96,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: blueColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(4)))),
-                child: const Text('Log in'),
+                child: isLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: primaryColor,
+                        ),
+                      )
+                    : const Text('Log in'),
               ),
             ),
             // forgot password

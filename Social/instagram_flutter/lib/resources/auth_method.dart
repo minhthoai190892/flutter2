@@ -40,9 +40,27 @@ class AuthMethod {
           'bio': bio,
           'followers': [],
           'following': [],
-          'photo':photoUrl,
+          'photo': photoUrl,
         });
         res = 'success';
+      }
+    } catch (error) {
+      res = error.toString();
+    }
+    return res;
+  }
+
+  // login user
+  Future<String> loginUser(
+      {required String email, required String password}) async {
+    String res = 'Some error occurred';
+    try {
+      if (email.isNotEmpty || password.isNotEmpty) {
+        await _auth.signInWithEmailAndPassword(
+            email: email, password: password);
+        res = 'success';
+      } else {
+        res = 'Please enter all the information';
       }
     } catch (error) {
       res = error.toString();

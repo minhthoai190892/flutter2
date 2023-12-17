@@ -4,8 +4,6 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-
-import 'package:instagram_flutter/utils/colors.dart';
 import 'package:instagram_flutter/utils/utils.dart';
 
 import '../resources/resources.dart';
@@ -41,7 +39,7 @@ class _SignupScreenState extends State<SignupScreen> {
     });
   }
 
-  void signup() async {
+  void _signupUser() async {
     setState(() {
       isLoading = true;
     });
@@ -137,7 +135,7 @@ class _SignupScreenState extends State<SignupScreen> {
             const SizedBox(height: 64),
             // button login
             InkWell(
-              onTap: signup,
+              onTap: _signupUser,
               child: Container(
                 width: double.infinity,
                 alignment: Alignment.center,
