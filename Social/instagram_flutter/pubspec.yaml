@@ -44,6 +44,7 @@ dependencies:
   # lưu ảnh
   cloud_firestore: ^4.13.6
   flutter_svg: ^2.0.9
+  image_picker: ^1.0.5
 
 dev_dependencies:
   flutter_test:

@@ -1,9 +1,14 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, deprecated_member_use
+// ignore_for_file: public_member_api_docs, sort_constructors_first, deprecated_member_use, use_build_context_synchronously
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:instagram_flutter/utils/colors.dart';
+import 'package:instagram_flutter/utils/utils.dart';
 
+import '../resources/resources.dart';
 import '../widgets/widgets.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -18,6 +23,8 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
+  Uint8List? _image;
+  bool isLoading = false;
   @override
   void dispose() {
     _emailController.dispose();
@@ -25,6 +32,31 @@ class _SignupScreenState extends State<SignupScreen> {
     _bioController.dispose();
     _usernameController.dispose();
     super.dispose();
+  }
+
+  selectImage() async {
+    Uint8List im = await pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = im;
+    });
+  }
+
+  void signup() async {
+    setState(() {
+      isLoading = true;
+    });
+    String res = await AuthMethod().signUpUser(
+        email: _emailController.text,
+        password: _passwordController.text,
+        username: _usernameController.text,
+        bio: _bioController.text,
+        file: _image!);
+    setState(() {
+      isLoading = false;
+    });
+    if (res != 'success') {
+      showSnackBar(content: res, context: context);
+    }
   }
 
   @override
@@ -49,17 +81,22 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             Stack(
               children: [
-                const CircleAvatar(
-                  radius: 64,
-                  backgroundImage: NetworkImage(
-                      // scale: 50.0,
-                      'https://images.unsplash.com/photo-1611162618758-2a29a995354b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGluc3RhZ3JhbSUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D'),
-                ),
+                _image != null
+                    ? CircleAvatar(
+                        radius: 64, backgroundImage: MemoryImage(_image!))
+                    : const CircleAvatar(
+                        radius: 64,
+                        backgroundImage:
+                            AssetImage('assets/images/user-default.png'),
+                      ),
                 Positioned(
-                    bottom: -10,
-                    left: 80,
-                    child: IconButton(
-                        onPressed: () {}, icon: const Icon(Icons.add_a_photo))),
+                  bottom: -10,
+                  left: 80,
+                  child: IconButton(
+                    onPressed: selectImage, //người dùng chọn hình ảnh
+                    icon: const Icon(Icons.add_a_photo),
+                  ),
+                ),
               ],
             ),
             const SizedBox(
@@ -100,7 +137,7 @@ class _SignupScreenState extends State<SignupScreen> {
             const SizedBox(height: 64),
             // button login
             InkWell(
-              onTap: () {},
+              onTap: signup,
               child: Container(
                 width: double.infinity,
                 alignment: Alignment.center,
@@ -109,7 +146,11 @@ class _SignupScreenState extends State<SignupScreen> {
                     color: blueColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(4)))),
-                child: const Text('Log in'),
+                child: isLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(color: primaryColor,),
+                      )
+                    : const Text('Sign up'),
               ),
             ),
             // forgot password

@@ -1,7 +1,7 @@
-git checkout -b social__instagram_signup_screen
+git checkout -b social__instagram_signup_auth
 git add .
-git commit -m "social__instagram_signup_screen"
-git push -u origin social__instagram_signup_screen
+git commit -m "social__instagram_signup_auth"
+git push -u origin social__instagram_signup_auth
 
 
 chạy bằng chrome
