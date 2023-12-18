@@ -1,7 +1,7 @@
-git checkout -b social__instagram_ User-Data-State-Management
+git checkout -b social__instagram_User-Data-State-Management
 git add .
-git commit -m "social__instagram_ User-Data-State-Management"
-git push -u origin social__instagram_ User-Data-State-Management
+git commit -m "social__instagram_User-Data-State-Management"
+git push -u origin social__instagram_User-Data-State-Management
 
 
 chạy bằng chrome
