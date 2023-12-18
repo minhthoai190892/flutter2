@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 class User {
@@ -62,6 +63,18 @@ class User {
       bio: map['bio'] as String,
       followers: (map['followers'] as List),
       following: (map['following'] as List),
+    );
+  }
+  static User fromSnap(DocumentSnapshot snap) {
+    var snapshot = snap.data() as Map<String, dynamic>;
+    return User(
+      email: snapshot['email'],
+      uid: snapshot['uid'],
+      photoUrl: snapshot['photoUrl'],
+      username: snapshot['username'],
+      bio: snapshot['bio'],
+      followers: snapshot['followers'],
+      following: snapshot['following'],
     );
   }
 
