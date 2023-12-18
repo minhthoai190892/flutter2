@@ -2,10 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_flutter/resources/resources.dart';
+import 'package:instagram_flutter/screens/screens.dart';
 
 import 'package:instagram_flutter/utils/colors.dart';
 import 'package:instagram_flutter/utils/util.dart';
 
+import '../responsive/responsives.dart';
 import '../widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -35,6 +37,11 @@ class _LoginScreenState extends State<LoginScreen> {
         email: _emailController.text, password: _passwordController.text);
     if (res == 'success') {
       showSnackBar(content: res, context: context);
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => const ReponsiveLayout(
+            webScreenLayout: WebScreenLayout(),
+            mobileScreenLayout: MobileScreenLayout()),
+      ));
     } else {
       showSnackBar(content: res, context: context);
     }
@@ -119,7 +126,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: const Text('Don\'t have an account?'),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignupScreen(),
+                        ));
+                  },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: const Text(

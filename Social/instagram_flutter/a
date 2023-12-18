@@ -1,7 +1,7 @@
-git checkout -b social__instagram_login_auth
+git checkout -b social__instagram_Persisting_Auth_State
 git add .
-git commit -m "social__instagram_login_auth"
-git push -u origin social__instagram_login_auth
+git commit -m "social__instagram_Persisting_Auth_State"
+git push -u origin social__instagram_Persisting_Auth_State
 
 
 chạy bằng chrome
@@ -10,3 +10,9 @@ flutter run -d chrome
 
 note
  Cloud Firestore -> start in test mode
+
+
+
+
+
+ 

@@ -4,9 +4,11 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:instagram_flutter/screens/screens.dart';
 import 'package:instagram_flutter/utils/utils.dart';
 
 import '../resources/resources.dart';
+import '../responsive/responsives.dart';
 import '../widgets/widgets.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -54,6 +56,12 @@ class _SignupScreenState extends State<SignupScreen> {
     });
     if (res != 'success') {
       showSnackBar(content: res, context: context);
+    }else{
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => const ReponsiveLayout(
+            webScreenLayout: WebScreenLayout(),
+            mobileScreenLayout: MobileScreenLayout()),
+      ));
     }
   }
 
@@ -146,7 +154,9 @@ class _SignupScreenState extends State<SignupScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(4)))),
                 child: isLoading
                     ? const Center(
-                        child: CircularProgressIndicator(color: primaryColor,),
+                        child: CircularProgressIndicator(
+                          color: primaryColor,
+                        ),
                       )
                     : const Text('Sign up'),
               ),
@@ -162,14 +172,20 @@ class _SignupScreenState extends State<SignupScreen> {
               children: [
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: const Text('Don\'t have an account?'),
+                  child: const Text('I have readly an account'),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ));
+                  },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: const Text(
-                      'Sign up',
+                      'Login',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
