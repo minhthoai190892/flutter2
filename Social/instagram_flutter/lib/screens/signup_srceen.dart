@@ -51,18 +51,20 @@ class _SignupScreenState extends State<SignupScreen> {
         username: _usernameController.text,
         bio: _bioController.text,
         file: _image!);
-    setState(() {
-      isLoading = false;
-    });
-    if (res != 'success') {
+
+    if (res == 'success') {
       showSnackBar(content: res, context: context);
-    }else{
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => const ReponsiveLayout(
             webScreenLayout: WebScreenLayout(),
             mobileScreenLayout: MobileScreenLayout()),
       ));
+    } else {
+      showSnackBar(content: res, context: context);
     }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override

@@ -1,7 +1,7 @@
-git checkout -b social__instagram_Persisting_Auth_State
+git checkout -b social__instagram_Model_User
 git add .
-git commit -m "social__instagram_Persisting_Auth_State"
-git push -u origin social__instagram_Persisting_Auth_State
+git commit -m "social__instagram_Model_User"
+git push -u origin social__instagram_Model_User
 
 
 chạy bằng chrome
