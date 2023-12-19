@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_flutter/utils/colors.dart';
+import 'package:instagram_flutter/utils/utils.dart';
 
 class MobileScreenLayout extends StatefulWidget {
   const MobileScreenLayout({super.key});
@@ -45,23 +46,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
         onPageChanged: (value) {
           onPageChanged(value);
         },
-        children: const [
-          Center(
-            child: Text('Home'),
-          ),
-          Center(
-            child: Text('search'),
-          ),
-          Center(
-            child: Text('add'),
-          ),
-          Center(
-            child: Text('favorite'),
-          ),
-          Center(
-            child: Text('person'),
-          ),
-        ],
+        children: homeScreenItems
       ),
       bottomNavigationBar: CupertinoTabBar(
         backgroundColor: mobileBackgroundColor,
