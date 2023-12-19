@@ -65,6 +65,7 @@ class User {
       following: (map['following'] as List),
     );
   }
+  
   static User fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
     return User(

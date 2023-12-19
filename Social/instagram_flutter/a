@@ -1,7 +1,7 @@
-git checkout -b social__instagram_post_screen__choose_image
+git checkout -b social__instagram_post_screen__Storing-Post-Data-in-Firebase
 git add .
-git commit -m "social__instagram_post_screen__choose_image"
-git push -u origin social__instagram_post_screen__choose_image
+git commit -m "social__instagram_post_screen__Storing-Post-Data-in-Firebase"
+git push -u origin social__instagram_post_screen__Storing-Post-Data-in-Firebase
 
 
 chạy bằng chrome
