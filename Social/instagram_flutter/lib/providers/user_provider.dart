@@ -6,7 +6,7 @@ class UserProvider with ChangeNotifier {
   User? _user;
   final AuthMethod _authMethod = AuthMethod();
   // getter
-  User? get getUser => _user!;
+  User get getUser => _user!;
 
   /// Làm mới user
   Future<void> refreshUser() async {

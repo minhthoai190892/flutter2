@@ -1,7 +1,7 @@
-git checkout -b social__instagram_post_screen
+git checkout -b social__instagram_post_screen__choose_image
 git add .
-git commit -m "social__instagram_post_screen"
-git push -u origin social__instagram_post_screen
+git commit -m "social__instagram_post_screen__choose_image"
+git push -u origin social__instagram_post_screen__choose_image
 
 
 chạy bằng chrome
