@@ -9,10 +9,10 @@ class Post {
   final String uid;
   final String username;
   final String postId;
-  final datePublished;
+  final DateTime datePublished;
   final String postUrl;
   final String profImage;
-  final likes;
+  final List likes;
 
   Post({
     required this.description,
@@ -63,7 +63,7 @@ class Post {
       uid: map['uid'] as String,
       username: map['username'] as String,
       postId: map['postId'] as String,
-      datePublished: map['datePublished'] as String,
+      datePublished: map['datePublished'],
       postUrl: map['postUrl'],
       profImage: map['profImage'],
       likes: map['likes'],

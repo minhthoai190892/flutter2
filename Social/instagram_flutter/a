@@ -1,7 +1,7 @@
-git checkout -b social__instagram_post_screen__Storing-Post-Data-in-Firebase
+git checkout -b social__instagram_post_card
 git add .
-git commit -m "social__instagram_post_screen__Storing-Post-Data-in-Firebase"
-git push -u origin social__instagram_post_screen__Storing-Post-Data-in-Firebase
+git commit -m "social__instagram_post_card"
+git push -u origin social__instagram_post_card
 
 
 chạy bằng chrome
