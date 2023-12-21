@@ -1,7 +1,7 @@
-git checkout -b social__instagram_post_card_Displaying-Post-Data-from-Firebase
+git checkout -b social__instagram_post_card__like_animation
 git add .
-git commit -m "social__instagram_post_card_Displaying-Post-Data-from-Firebase"
-git push -u origin social__instagram_post_card_Displaying-Post-Data-from-Firebase
+git commit -m "social__instagram_post_card__like_animation"
+git push -u origin social__instagram_post_card__like_animation
 
 
 chạy bằng chrome
