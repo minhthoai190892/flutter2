@@ -1,7 +1,7 @@
-git checkout -b social__instagram_post_card
+git checkout -b social__instagram_post_card_Displaying-Post-Data-from-Firebase
 git add .
-git commit -m "social__instagram_post_card"
-git push -u origin social__instagram_post_card
+git commit -m "social__instagram_post_card_Displaying-Post-Data-from-Firebase"
+git push -u origin social__instagram_post_card_Displaying-Post-Data-from-Firebase
 
 
 chạy bằng chrome
@@ -10,7 +10,7 @@ flutter run -d chrome
 
 note
  Cloud Firestore -> start in test mode
-
+ timestamp cẩn có "intl" để chuyển đổi
 
 
 

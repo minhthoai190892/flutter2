@@ -154,8 +154,9 @@ class _AddPostCreenState extends State<AddPostCreen> {
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.3,
-                      child: const TextField(
-                        decoration: InputDecoration(
+                      child: TextField(
+                        controller: _descriptionController,
+                        decoration: const InputDecoration(
                           hintText: 'Write a caption...',
                           border: InputBorder.none,
                         ),

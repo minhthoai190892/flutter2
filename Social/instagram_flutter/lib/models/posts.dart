@@ -54,6 +54,7 @@ class Post {
       'datePublished': datePublished,
       'postUrl': postUrl,
       'profImage': profImage,
+      'likes': likes,
     };
   }
 

@@ -1,16 +1,25 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:instagram_flutter/models/models.dart';
+
 import 'package:instagram_flutter/utils/colors.dart';
+import 'package:intl/intl.dart';
+import 'package:timeago/timeago.dart'  as timeago;
 
-class PostCard extends StatefulWidget {
-  const PostCard({super.key});
+class PostCard extends StatelessWidget {
+  final Map<String, dynamic> snap;
+  const PostCard({
+    Key? key,
+    required this.snap,
+  }) : super(key: key);
 
-  @override
-  State<PostCard> createState() => _PostCardState();
-}
+ 
 
-class _PostCardState extends State<PostCard> {
   @override
   Widget build(BuildContext context) {
+  
+
+
     return Container(
       color: mobileBackgroundColor,
       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -21,21 +30,20 @@ class _PostCardState extends State<PostCard> {
                 .copyWith(right: 0),
             child: Row(
               children: [
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 16,
-                  backgroundImage: NetworkImage(
-                      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fHww'),
+                  backgroundImage: NetworkImage(snap['profImage']),
                 ),
-                const Expanded(
+                Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 8),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'username',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          snap['username'],
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -76,7 +84,7 @@ class _PostCardState extends State<PostCard> {
             height: MediaQuery.of(context).size.height * 0.35,
             width: double.infinity,
             child: Image.network(
-              'https://plus.unsplash.com/premium_photo-1682724602143-a77d75d273b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fHww',
+              snap['postUrl'],
               fit: BoxFit.fill,
             ),
           ),
@@ -112,9 +120,10 @@ class _PostCardState extends State<PostCard> {
           ),
           // Description and number of components
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            // padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              // mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DefaultTextStyle(
@@ -123,23 +132,22 @@ class _PostCardState extends State<PostCard> {
                       .titleSmall!
                       .copyWith(fontWeight: FontWeight.w900),
                   child: Text(
-                    '1,21 likes',
+                    '${snap['likes'].length} likes',
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.only(top: 8),
                   child: RichText(
-                    text: const TextSpan(
-                      style: TextStyle(color: primaryColor),
+                    text: TextSpan(
+                      style: const TextStyle(color: primaryColor),
                       children: [
                         TextSpan(
-                          text: 'username',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          text: snap['username'],
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
-                          text:
-                              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores suscipit molestiae voluptates vel dignissimos porro neque voluptatibus quasi dolor quis.',
+                          text: snap['description'],
                         ),
                       ],
                     ),
@@ -157,8 +165,8 @@ class _PostCardState extends State<PostCard> {
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: const Text(
-                    '22/12/2023',
+                  child:  Text(
+                    DateFormat.yMMMd().format(snap['datePublished'].toDate()),
                     style: TextStyle(fontSize: 16, color: secondaryColor),
                   ),
                 ),
