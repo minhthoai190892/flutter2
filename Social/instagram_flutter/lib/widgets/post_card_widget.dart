@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_flutter/models/models.dart';
 import 'package:instagram_flutter/providers/user_provider.dart';
+import 'package:instagram_flutter/resources/firestore_methods.dart';
 
 import 'package:instagram_flutter/utils/colors.dart';
 import 'package:instagram_flutter/widgets/widgets.dart';
@@ -107,10 +108,13 @@ class _PostCardState extends State<PostCard> {
                   child: LikeAnimationWidget(
                     isAnimating: isAnimating,
                     duration: const Duration(milliseconds: 400),
-                    onEnd: () {
+                    onEnd: () async {
+                      await FirestoreMethods().likePost(widget.snap['postId'],
+                          user.uid, widget.snap['likes']);
                       setState(() {
                         isAnimating = false;
                       });
+                      print(widget.snap['likes'].length);
                     },
                     child: const Icon(
                       Icons.favorite,
@@ -129,11 +133,18 @@ class _PostCardState extends State<PostCard> {
                 isAnimating: widget.snap['likes'].contains(user.uid),
                 smallLike: true,
                 child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.favorite,
-                    color: Colors.red,
-                  ),
+                  onPressed: () async {
+                    await FirestoreMethods().likePost(
+                        widget.snap['postId'], user.uid, widget.snap['likes']);
+                  },
+                  icon: widget.snap['likes'].contains(user.uid)
+                      ? const Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        )
+                      : const Icon(
+                          Icons.favorite_border,
+                        ),
                 ),
               ),
               IconButton(

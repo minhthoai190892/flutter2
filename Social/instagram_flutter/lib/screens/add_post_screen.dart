@@ -171,9 +171,10 @@ class _AddPostCreenState extends State<AddPostCreen> {
                         child: Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                fit: BoxFit.fill,
-                                alignment: Alignment.topCenter,
-                                image: MemoryImage(_file!)),
+                              fit: BoxFit.fill,
+                              alignment: Alignment.topCenter,
+                              image: MemoryImage(_file!),
+                            ),
                           ),
                         ),
                       ),
@@ -181,9 +182,9 @@ class _AddPostCreenState extends State<AddPostCreen> {
                     const Divider(
                       color: Colors.white,
                       thickness: 10,
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           );

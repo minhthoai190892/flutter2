@@ -1,7 +1,7 @@
-git checkout -b social__instagram_post_card__like_animation
+git checkout -b social__instagram_post_card__Updating_Likes
 git add .
-git commit -m "social__instagram_post_card__like_animation"
-git push -u origin social__instagram_post_card__like_animation
+git commit -m "social__instagram_post_card__Updating_Likes"
+git push -u origin social__instagram_post_card__Updating_Likes
 
 
 chạy bằng chrome

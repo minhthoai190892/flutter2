@@ -30,11 +30,28 @@ class FirestoreMethods {
           profImage: profImage,
           likes: []);
       // upload to firebaseStorage
-      _firestore.collection('posts').doc().set(post.toMap());
+      _firestore.collection('posts').doc(postId).set(post.toMap());
       res = 'success';
     } catch (error) {
       res = error.toString();
     }
     return res;
+  }
+
+  Future<void> likePost(String postId, String uid, List likes) async {
+    try {
+      // kiểm tra xem bài đăng có được thích hay không
+      if (likes.contains(uid)) {
+        await _firestore.collection('posts').doc(postId).update({
+          'likes': FieldValue.arrayRemove([uid]),
+        });
+      } else {
+        await _firestore.collection('posts').doc(postId).update({
+          'likes': FieldValue.arrayUnion([uid]),
+        });
+      }
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }
