@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "697595140701",
+    "firebase_url": "https://flutter-prep-6f6b9-default-rtdb.firebaseio.com",
+    "project_id": "flutter-prep-6f6b9",
+    "storage_bucket": "flutter-prep-6f6b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697595140701:android:98dc39273989cf6657cbb4",
+        "android_client_info": {
+          "package_name": "com.example.fb_auth_bloc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkGbq7FB41Tr-WoPPc5mIqaZdYcxML_pM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697595140701:android:d4f0de6dce87649b57cbb4",
+        "android_client_info": {
+          "package_name": "com.example.ulearning_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkGbq7FB41Tr-WoPPc5mIqaZdYcxML_pM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

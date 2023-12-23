@@ -1,0 +1,17 @@
+git checkout -b social__instagram_post_card__Comments-Screen-UI
+git add .
+git commit -m "social__instagram_post_card__Comments-Screen-UI"
+git push -u origin social__instagram_post_card__Comments-Screen-UI
+
+
+chạy bằng chrome
+flutter run -d chrome
+
+
+note
+ Cloud Firestore -> start in test mode
+ timestamp cẩn có "intl" để chuyển đổi
+
+
+
+
