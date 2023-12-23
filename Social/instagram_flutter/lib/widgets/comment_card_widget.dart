@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../models/models.dart';
+import '../providers/user_provider.dart';
+
 class CommentCardWidget extends StatelessWidget {
   const CommentCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),

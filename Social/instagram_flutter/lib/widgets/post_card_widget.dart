@@ -149,7 +149,12 @@ class _PostCardState extends State<PostCard> {
                 ),
               ),
               IconButton(
-                onPressed: () =>Navigator.push(context, MaterialPageRoute(builder: (context) => const CommentScreen(),)),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          CommentScreen(snap: widget.snap['postId'].toString()),
+                    )),
                 icon: const Icon(
                   Icons.comment_outlined,
                 ),

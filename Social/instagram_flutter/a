@@ -1,7 +1,7 @@
-git checkout -b social__instagram_post_card__Comments-Screen-UI
+git checkout -b social__instagram_comment_screen__Storing-Comments-in-Firestore
 git add .
-git commit -m "social__instagram_post_card__Comments-Screen-UI"
-git push -u origin social__instagram_post_card__Comments-Screen-UI
+git commit -m "social__instagram_comment_screen__Storing-Comments-in-Firestore"
+git push -u origin social__instagram_comment_screen__Storing-Comments-in-Firestore
 
 
 chạy bằng chrome
