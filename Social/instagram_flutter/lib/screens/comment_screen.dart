@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +11,7 @@ import '../models/models.dart';
 import '../providers/user_provider.dart';
 
 class CommentScreen extends StatefulWidget {
-  final snap;
+  final String snap;
 
   const CommentScreen({
     Key? key,
@@ -37,7 +38,23 @@ class _CommentScreenState extends State<CommentScreen> {
         title: const Text('Comment Screen'),
         backgroundColor: mobileBackgroundColor,
       ),
-      body: const CommentCardWidget(),
+      body: StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection('posts')
+              .doc(widget.snap['postId'])
+              .collection('comments')
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return ListView.builder(
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) => const CommentCardWidget(),
+            );
+          }),
       bottomNavigationBar: SafeArea(
           child: Container(
         height: kToolbarHeight,
