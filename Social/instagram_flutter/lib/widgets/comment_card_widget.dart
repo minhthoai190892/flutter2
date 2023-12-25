@@ -1,54 +1,63 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-import '../models/models.dart';
-import '../providers/user_provider.dart';
-
-class CommentCardWidget extends StatelessWidget {
-  const CommentCardWidget({super.key});
+class CommentCardWidget extends StatefulWidget {
+  final Map<String, dynamic> snap;
+  const CommentCardWidget({
+    Key? key,
+    required this.snap,
+  }) : super(key: key);
 
   @override
+  State<CommentCardWidget> createState() => _CommentCardWidgetState();
+}
+
+class _CommentCardWidgetState extends State<CommentCardWidget> {
+  @override
   Widget build(BuildContext context) {
-    
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
+    return Card(
+      // width: double.infinity,
+      // padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
       child: Row(
         children: [
-          const CircleAvatar(
-            backgroundImage: NetworkImage(
-              'https://images.unsplash.com/photo-1552058544-f2b08422138a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGVyc29ufGVufDB8fDB8fHww',
-            ),
+          CircleAvatar(
+            backgroundImage: NetworkImage(widget.snap['profilePic']),
             radius: 18,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RichText(
-                  text: const TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'username',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(
-                        text: 'Lorem ipsum dolor sit aetur ?',
-                        style: TextStyle(),
-                      ),
-                    ],
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '${widget.snap['name']}',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(
+                          text: ' ${widget.snap['text']}',
+                          style: const TextStyle(),
+                        ),
+                      ],
+                    ),
+                    maxLines: 8,
                   ),
-                  maxLines: 8,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 4),
-                  child: Text(
-                    '1/1/1111',
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: Text(
+                      DateFormat.yMMMd()
+                          .format(widget.snap['datePublished'].toDate()),
+                      style: const TextStyle(
+                          fontSize: 12, fontWeight: FontWeight.w400),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Container(

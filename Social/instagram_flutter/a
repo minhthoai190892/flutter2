@@ -1,7 +1,7 @@
-git checkout -b social__instagram_comment_screen__Displaying-Comments-error
+git checkout -b social__instagram_comment_screen__deleted_post
 git add .
-git commit -m "social__instagram_comment_screen__Displaying-Comments-error"
-git push -u origin social__instagram_comment_screen__Displaying-Comments-error
+git commit -m "social__instagram_comment_screen__deleted_post"
+git push -u origin social__instagram_comment_screen__deleted_post
 
 
 chạy bằng chrome

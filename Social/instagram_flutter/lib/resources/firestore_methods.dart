@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -64,7 +66,7 @@ class FirestoreMethods {
   }) async {
     try {
       if (text.isNotEmpty) {
-        String commentId = Uuid().v1();
+        String commentId = const Uuid().v1();
 
         await _firestore
             .collection('posts')
@@ -85,6 +87,16 @@ class FirestoreMethods {
       }
     } catch (e) {
       print((e.toString()));
+    }
+  }
+
+  Future<void> deletePost(String postId) async {
+    try {
+      await _firestore.collection('posts').doc(postId).delete();
+      await _firestore.collection('posts').doc(postId).collection('comments').doc().delete();
+      
+    } catch (e) {
+      print(e.toString());
     }
   }
 }

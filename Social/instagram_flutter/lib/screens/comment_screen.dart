@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +12,6 @@ import '../providers/user_provider.dart';
 
 class CommentScreen extends StatefulWidget {
   final String snap;
-
   const CommentScreen({
     Key? key,
     required this.snap,
@@ -39,67 +38,74 @@ class _CommentScreenState extends State<CommentScreen> {
         backgroundColor: mobileBackgroundColor,
       ),
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance
-              .collection('posts')
-              .doc(widget.snap['postId'])
-              .collection('comments')
-              .snapshots(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            return ListView.builder(
-              itemCount: snapshot.data!.docs.length,
-              itemBuilder: (context, index) => const CommentCardWidget(),
+        stream: FirebaseFirestore.instance
+            .collection('posts')
+            .doc(widget.snap)
+            .collection('comments')
+            .orderBy('datePublished', descending: false)
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
             );
-          }),
+          }
+          return ListView.builder(
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (context, index) =>
+                CommentCardWidget(snap: snapshot.data!.docs[index].data()),
+          );
+        },
+      ),
       bottomNavigationBar: SafeArea(
-          child: Container(
-        height: kToolbarHeight,
-        margin:
-            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-        padding: const EdgeInsets.only(left: 16, right: 8),
-        child: Row(
-          children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage(user.photoUrl),
-              radius: 16,
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16, right: 8),
-                child: TextField(
-                  controller: textController,
-                  decoration: InputDecoration(
-                    hintText: 'Comment as ${user.username}',
-                    border: InputBorder.none,
+        child: Container(
+          height: kToolbarHeight,
+          margin:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          padding: const EdgeInsets.only(left: 16, right: 8),
+          child: Row(
+            children: [
+              CircleAvatar(
+                backgroundImage: NetworkImage(user.photoUrl),
+                radius: 16,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, right: 8),
+                  child: TextField(
+                    controller: textController,
+                    decoration: InputDecoration(
+                      hintText: 'Comment as ${user.username}',
+                      border: InputBorder.none,
+                    ),
                   ),
                 ),
               ),
-            ),
-            InkWell(
-              onTap: () async {
-                await FirestoreMethods().postComment(
-                    postId: widget.snap,
-                    text: textController.text,
-                    uid: user.uid,
-                    name: user.username,
-                    profilePic: user.photoUrl);
-                print('object');
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                child: const Text(
-                  'Post',
-                  style: TextStyle(color: blueColor),
+              InkWell(
+                onTap: () async {
+                  await FirestoreMethods().postComment(
+                      postId: widget.snap,
+                      text: textController.text,
+                      uid: user.uid,
+                      name: user.username,
+                      profilePic: user.photoUrl);
+                  setState(() {
+                    textController.text = '';
+                  });
+                },
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                  child: const Text(
+                    'Post',
+                    style: TextStyle(color: blueColor),
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }
