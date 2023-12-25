@@ -1,7 +1,7 @@
-git checkout -b social__instagram_comment_screen__deleted_post
+git checkout -b social__instagram_comment_screen__Showing-Posts-on-Search-Screen
 git add .
-git commit -m "social__instagram_comment_screen__deleted_post"
-git push -u origin social__instagram_comment_screen__deleted_post
+git commit -m "social__instagram_comment_screen__Showing-Posts-on-Search-Screen"
+git push -u origin social__instagram_comment_screen__Showing-Posts-on-Search-Screen
 
 
 chạy bằng chrome
