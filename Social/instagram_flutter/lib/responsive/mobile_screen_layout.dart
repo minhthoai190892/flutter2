@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:instagram_flutter/utils/colors.dart';
-import 'package:instagram_flutter/utils/utils.dart';
+
+import '../utils/utils.dart';
 
 class MobileScreenLayout extends StatefulWidget {
   const MobileScreenLayout({super.key});
@@ -15,7 +15,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   late PageController pageController;
   @override
   void initState() {
-    // TODO: implement initState
+
     pageController = PageController();
     super.initState();
   }
@@ -23,7 +23,6 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   @override
   void dispose() {
     pageController.dispose();
-    // TODO: implement dispose
     super.dispose();
   }
 

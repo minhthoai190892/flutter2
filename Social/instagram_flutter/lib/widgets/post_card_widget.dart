@@ -1,4 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously, avoid_print
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_flutter/models/models.dart';
 import 'package:instagram_flutter/providers/user_provider.dart';
@@ -6,6 +7,7 @@ import 'package:instagram_flutter/resources/firestore_methods.dart';
 import 'package:instagram_flutter/screens/comment_screen.dart';
 
 import 'package:instagram_flutter/utils/colors.dart';
+import 'package:instagram_flutter/utils/util.dart';
 import 'package:instagram_flutter/widgets/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +25,28 @@ class PostCard extends StatefulWidget {
 
 class _PostCardState extends State<PostCard> {
   bool isAnimating = false;
+
+  int commentLength = 0;
+  @override
+  void initState() {
+    getCommentLength();
+    super.initState();
+  }
+
+  void getCommentLength() async {
+    try {
+      QuerySnapshot snap = await FirebaseFirestore.instance
+          .collection('posts')
+          .doc(widget.snap['postId'])
+          .collection('comments')
+          .get();
+      commentLength = snap.docs.length;
+    } catch (e) {
+      showSnackBar(content: e.toString(), context: context);
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
@@ -63,11 +87,14 @@ class _PostCardState extends State<PostCard> {
                           child: ListView(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             shrinkWrap: true,
-                            children: ['Delete', 'a']
+                            children: ['Delete']
                                 .map(
                                   (e) => InkWell(
                                     onTap: () {
-                                      print(e);
+                                      FirestoreMethods().deletePost(
+                                        widget.snap['postId'],
+                                      );
+                                      Navigator.pop(context);
                                     },
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(
@@ -213,9 +240,10 @@ class _PostCardState extends State<PostCard> {
                   onTap: () {},
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: const Text(
-                      'View all 200',
-                      style: TextStyle(fontSize: 16, color: secondaryColor),
+                    child: Text(
+                      'View all $commentLength comments',
+                      style:
+                          const TextStyle(fontSize: 16, color: secondaryColor),
                     ),
                   ),
                 ),
