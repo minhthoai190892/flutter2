@@ -1,7 +1,7 @@
-git checkout -b social__instagram__profile-page
+git checkout -b social__instagram__Displaying-Profile-Data
 git add .
-git commit -m "social__instagram__profile-page"
-git push -u origin social__instagram__profile-page
+git commit -m "social__instagram__Displaying-Profile-Data"
+git push -u origin social__instagram__Displaying-Profile-Data
 
 
 chạy bằng chrome
