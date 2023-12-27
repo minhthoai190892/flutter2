@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:product_shop_ui/screens/product_detail_screen.dart';
 
 class ProductMainScreen extends StatefulWidget {
   const ProductMainScreen({super.key});
@@ -51,7 +52,15 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: IconButton(
-                        onPressed: () {}, icon: const Icon(Icons.wallet)),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ProductDetailScreen(),
+                              ));
+                        },
+                        icon: const Icon(Icons.wallet)),
                   ),
                 ],
               ),
@@ -161,12 +170,7 @@ class _ProductMainScreenState extends State<ProductMainScreen> {
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 12,
                   ),
-                  children: const [
-                    ProductCard(),
-                    ProductCard(),
-                    ProductCard(),
-                    ProductCard(),
-                  ],
+                  children: List.generate(5, (index) => const ProductCard()),
                 ),
               ),
             ],
@@ -184,52 +188,60 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        image: const DecorationImage(
-            image: NetworkImage(
-              'https://plus.unsplash.com/premium_photo-1700984292461-fa2d83c28c6b?q=80&w=1372&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            ),
-            fit: BoxFit.cover),
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ProductDetailScreen(),
+        ),
       ),
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: Container(
-              margin: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.white,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          image: const DecorationImage(
+              image: NetworkImage(
+                'https://plus.unsplash.com/premium_photo-1700984292461-fa2d83c28c6b?q=80&w=1372&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+              ),
+              fit: BoxFit.cover),
+        ),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Container(
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.white,
+                  ),
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                borderRadius: BorderRadius.circular(16),
               ),
             ),
-          ),
-          const Positioned(
-            top: 16,
-            right: 16,
-            child: CircleAvatar(
-              radius: 16,
+            const Positioned(
+              top: 16,
+              right: 16,
+              child: CircleAvatar(
+                radius: 16,
+              ),
             ),
-          ),
-          const Positioned(
-            left: 16,
-            bottom: 16,
-            child: Column(
-              children: [
-                Text(
-                  'Data',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-                Text(
-                  'data',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
+            const Positioned(
+              left: 16,
+              bottom: 16,
+              child: Column(
+                children: [
+                  Text(
+                    'Data',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  Text(
+                    'data',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
