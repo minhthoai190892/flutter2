@@ -1,7 +1,7 @@
-git checkout -b social__instagram__Following-Users
+git checkout -b social__instagram__
 git add .
-git commit -m "social__instagram__Following-Users"
-git push -u origin social__instagram__Following-Users
+git commit -m "social__instagram__"
+git push -u origin social__instagram__
 
 
 chạy bằng chrome

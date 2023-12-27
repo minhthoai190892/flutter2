@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_flutter/resources/firestore_methods.dart';
+import 'package:instagram_flutter/screens/screens.dart';
 import 'package:instagram_flutter/utils/util.dart';
 
 import 'package:instagram_flutter/widgets/follow_button_widget.dart';
@@ -123,9 +124,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ),
                                         ),
                                         child: TextButton(
-                                          onPressed: () {},
+                                          onPressed: () async {
+                                            FirestoreMethods().signOut();
+                                            Navigator.of(context)
+                                                .pushReplacement(
+                                                    MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const LoginScreen(),
+                                            ));
+                                          },
                                           child: const Text(
-                                            'Edit Profile',
+                                            'Log Out',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),

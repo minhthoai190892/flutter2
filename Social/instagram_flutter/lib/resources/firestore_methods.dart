@@ -3,6 +3,7 @@
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:instagram_flutter/models/models.dart';
 import 'package:instagram_flutter/resources/storage_method.dart';
 import 'package:uuid/uuid.dart';
@@ -126,10 +127,12 @@ class FirestoreMethods {
           'following': FieldValue.arrayUnion([followId])
         });
       }
-      
-
     } catch (e) {
       print(e.toString());
     }
+  }
+
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
   }
 }
