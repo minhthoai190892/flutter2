@@ -93,8 +93,41 @@ class FirestoreMethods {
   Future<void> deletePost(String postId) async {
     try {
       await _firestore.collection('posts').doc(postId).delete();
-      await _firestore.collection('posts').doc(postId).collection('comments').doc().delete();
+      await _firestore
+          .collection('posts')
+          .doc(postId)
+          .collection('comments')
+          .doc()
+          .delete();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<void> folloUser(
+      {required String uid, required String followId}) async {
+    try {
+      // get user
+      DocumentSnapshot snap =
+          await _firestore.collection('users').doc(uid).get();
+      List following = (snap.data()! as dynamic)['following'];
+      if (following.contains(followId)) {
+        await _firestore.collection('users').doc(followId).update({
+          'followers': FieldValue.arrayRemove([uid])
+        });
+        await _firestore.collection('users').doc(uid).update({
+          'following': FieldValue.arrayRemove([followId])
+        });
+      } else {
+        await _firestore.collection('users').doc(followId).update({
+          'followers': FieldValue.arrayUnion([uid])
+        });
+        await _firestore.collection('users').doc(uid).update({
+          'following': FieldValue.arrayUnion([followId])
+        });
+      }
       
+
     } catch (e) {
       print(e.toString());
     }

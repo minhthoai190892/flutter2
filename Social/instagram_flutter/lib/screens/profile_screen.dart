@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_flutter/resources/firestore_methods.dart';
 import 'package:instagram_flutter/utils/util.dart';
 
 import 'package:instagram_flutter/widgets/follow_button_widget.dart';
@@ -48,7 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       postLength = postSnap.docs.length;
       userdata = userSnap.data()!;
       followers = userSnap.data()!['followers'].length;
-      followers = userSnap.data()!['following'].length;
+      following = userSnap.data()!['following'].length;
       isFollowing = userSnap
           .data()!['followers']
           .contains(FirebaseAuth.instance.currentUser!.uid);
@@ -126,7 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           child: const Text(
                                             'Edit Profile',
                                             style:
-                                                TextStyle(color: primaryColor),
+                                                TextStyle(color: Colors.white),
                                           ),
                                         ),
                                       )
@@ -145,11 +146,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               ),
                                             ),
                                             child: TextButton(
-                                              onPressed: () {},
+                                              onPressed: () async {
+                                                await FirestoreMethods()
+                                                    .folloUser(
+                                                        uid:
+                                                            FirebaseAuth
+                                                                .instance
+                                                                .currentUser!
+                                                                .uid,
+                                                        followId:
+                                                            userdata['uid']);
+                                                setState(() {
+                                                  isFollowing = false;
+                                                  followers--;
+                                                });
+                                              },
                                               child: const Text(
                                                 'Unfollow',
                                                 style: TextStyle(
-                                                    color: Colors.black),
+                                                    color: Colors.white),
                                               ),
                                             ),
                                           )
@@ -167,7 +182,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               ),
                                             ),
                                             child: TextButton(
-                                              onPressed: () {},
+                                              onPressed: () async {
+                                                await FirestoreMethods()
+                                                    .folloUser(
+                                                        uid:
+                                                            FirebaseAuth
+                                                                .instance
+                                                                .currentUser!
+                                                                .uid,
+                                                        followId:
+                                                            userdata['uid']);
+                                                setState(() {
+                                                  isFollowing = true;
+                                                  followers++;
+                                                });
+                                              },
                                               child: const Text(
                                                 'Follow',
                                                 style: TextStyle(
