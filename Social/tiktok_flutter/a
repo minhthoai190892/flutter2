@@ -1,4 +1,4 @@
-git checkout -b SOCIAL_TIKTOK_set-project
+git checkout -b SOCIAL_TIKTOK_login-page
 git add .
-git commit -m "SOCIAL_TIKTOK_set-project"
-git push -u origin SOCIAL_TIKTOK_set-project
+git commit -m "SOCIAL_TIKTOK_login-page"
+git push -u origin SOCIAL_TIKTOK_login-page

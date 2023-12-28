@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_flutter/constraint.dart';
+import 'package:tiktok_flutter/views/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme:
           ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const LoginScreen(),
     );
   }
 }
