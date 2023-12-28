@@ -1,4 +1,4 @@
-git checkout -b SOCIAL_TIKTOK_signup-page
+git checkout -b SOCIAL_TIKTOK_set-up-auth-controller
 git add .
-git commit -m "SOCIAL_TIKTOK_signup-page"
-git push -u origin SOCIAL_TIKTOK_signup-page
+git commit -m "SOCIAL_TIKTOK_set-up-auth-controller"
+git push -u origin SOCIAL_TIKTOK_set-up-auth-controller
