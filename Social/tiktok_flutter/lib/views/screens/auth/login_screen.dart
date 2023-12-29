@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tiktok_flutter/constraint.dart';
 import 'package:tiktok_flutter/views/screens/auth/signup_screen.dart';
 import 'package:tiktok_flutter/views/views.dart';
 
 class LoginScreen extends StatelessWidget {
-   LoginScreen({super.key});
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
+  LoginScreen({super.key});
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +38,6 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: TextInputFieldWidget(
-               
                   controller: emailController,
                   labelText: 'Email',
                   icon: Icons.email,
@@ -49,7 +49,6 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: TextInputFieldWidget(
-              
                 controller: passwordController,
                 labelText: 'Password',
                 icon: Icons.password,
@@ -60,20 +59,25 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 50,
-              decoration: BoxDecoration(
-                color: buttonColor,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Center(
-                child: Text(
-                  'Login',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: () => authController.loginUser(
+                  email: emailController.text,
+                  password: passwordController.text),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: buttonColor,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Center(
+                  child: Text(
+                    'Login',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -90,9 +94,16 @@ class LoginScreen extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
-                Text(
-                  "Register",
-                  style: TextStyle(fontSize: 20, color: buttonColor),
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpScreen(),
+                      )),
+                  child: Text(
+                    "Register",
+                    style: TextStyle(fontSize: 20, color: buttonColor),
+                  ),
                 ),
               ],
             )

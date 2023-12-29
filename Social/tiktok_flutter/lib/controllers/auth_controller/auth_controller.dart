@@ -13,7 +13,7 @@ class AuthController extends GetxController {
   late Rx<File?> _pickedImage;
   // getter image
   File? get profilePhoto => _pickedImage.value;
-  void pickImage() async {
+  pickImage() async {
     // lấy hình ảnh từ gallery
     final pickedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -21,11 +21,11 @@ class AuthController extends GetxController {
       Get.snackbar('Profile Picture',
           'You have successfully selected a profile picture');
     } else {
-      Get.snackbar('Error Select Picture',
-          'You selected erro a profile picture');
+      Get.snackbar(
+          'Error Select Picture', 'You selected erro a profile picture');
     }
-      // lưu hình ảnh vào biến
-      _pickedImage = Rx<File?>(File(pickedImage!.path));
+    // lưu hình ảnh vào biến
+    _pickedImage = Rx<File?>(File(pickedImage!.path));
   }
 
   // registering the user
@@ -56,6 +56,8 @@ class AuthController extends GetxController {
             .collection('users')
             .doc(cred.user!.uid)
             .set(userModel.toMap());
+        Get.snackbar('Success', 'Create a new account successfully');
+
       } else {
         Get.snackbar('Error Creating Account', 'Please enter all fields');
       }
@@ -79,5 +81,20 @@ class AuthController extends GetxController {
     // tải hình ảnh xuống
     String downloadUrl = await snap.ref.getDownloadURL();
     return downloadUrl;
+  }
+
+  void loginUser({required String email, required String password}) async {
+    try {
+      if (email.isNotEmpty && password.isNotEmpty) {
+        await firebaseAuth.signInWithEmailAndPassword(
+            email: email, password: password);
+        Get.snackbar('Success', 'Login successfully');
+            
+      } else {
+        Get.snackbar('Error Logging in', 'Please enter all fields');
+      }
+    } catch (e) {
+      Get.snackbar('Error Login', e.toString());
+    }
   }
 }

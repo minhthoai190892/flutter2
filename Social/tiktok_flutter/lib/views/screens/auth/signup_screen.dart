@@ -56,6 +56,7 @@ class SignUpScreen extends StatelessWidget {
                       iconSize: 40,
                       onPressed: () {
                         // gọi hàm lấy hình ảnh
+                        
                         authController.pickImage();
                       },
                       icon: const Icon(Icons.add_a_photo),
