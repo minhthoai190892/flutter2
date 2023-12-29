@@ -4,12 +4,13 @@ import 'package:tiktok_flutter/views/screens/auth/login_screen.dart';
 import 'package:tiktok_flutter/views/views.dart';
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
-  @override
-  Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
+   SignUpScreen({super.key});
+ final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final TextEditingController userNameController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+   
 
     return Scaffold(
       body: Container(
@@ -53,7 +54,10 @@ class SignUpScreen extends StatelessWidget {
                     child: IconButton(
                       color: Colors.grey,
                       iconSize: 40,
-                      onPressed: () {},
+                      onPressed: () {
+                        // gọi hàm lấy hình ảnh
+                        authController.pickImage();
+                      },
                       icon: const Icon(Icons.add_a_photo),
                     ),
                   ),
@@ -65,7 +69,6 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: TextInputFieldWidget(
-                    keyboardType: TextInputType.emailAddress,
                     controller: userNameController,
                     labelText: 'User Name',
                     icon: Icons.email,
@@ -77,7 +80,6 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: TextInputFieldWidget(
-                    keyboardType: TextInputType.emailAddress,
                     controller: emailController,
                     labelText: 'Email',
                     icon: Icons.email,
@@ -89,7 +91,6 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: TextInputFieldWidget(
-                  keyboardType: TextInputType.emailAddress,
                   controller: passwordController,
                   labelText: 'Password',
                   icon: Icons.password,
@@ -101,7 +102,11 @@ class SignUpScreen extends StatelessWidget {
                 height: 25,
               ),
               InkWell(
-                onTap: () => print('user login'),
+                onTap: () => authController.registerUser(
+                    username: userNameController.text,
+                    email: emailController.text,
+                    password: passwordController.text,
+                    image: authController.profilePhoto),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: 50,
@@ -134,11 +139,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ),
                   InkWell(
-                    onTap: () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        )),
+                    onTap: () {},
                     child: Text(
                       "Login",
                       style: TextStyle(fontSize: 20, color: buttonColor),

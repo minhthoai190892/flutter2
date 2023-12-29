@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tiktok_flutter/constraint.dart';
 import 'package:tiktok_flutter/controllers/controller.dart';
 import 'package:tiktok_flutter/views/screens/auth/login_screen.dart';
+import 'package:tiktok_flutter/views/screens/auth/signup_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme:
           ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
-      home: const LoginScreen(),
+      home:  SignUpScreen(),
     );
   }
 }
@@ -51,7 +52,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
+  TextEditingController test = TextEditingController();
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -107,6 +108,10 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            const TextField(
+              decoration: InputDecoration(labelText: 'asdwqe'),
+            ),
+            ElevatedButton(onPressed: () {}, child: Text('asdf'))
           ],
         ),
       ),

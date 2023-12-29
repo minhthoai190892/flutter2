@@ -9,19 +9,18 @@ class TextInputFieldWidget extends StatelessWidget {
     required this.icon,
     required this.borderColor,
     this.isObscureText = false, required this.controller,
-    required this.keyboardType,
+
   }) : super(key: key);
  final  TextEditingController controller ;
   final String labelText;
   final IconData icon;
   final Color borderColor;
   final bool isObscureText;
-  final TextInputType keyboardType;
+
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
-    keyboardType: keyboardType,
       decoration: InputDecoration(
         
         labelText: labelText,

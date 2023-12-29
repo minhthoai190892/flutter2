@@ -4,11 +4,11 @@ import 'package:tiktok_flutter/views/screens/auth/signup_screen.dart';
 import 'package:tiktok_flutter/views/views.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
-  @override
-  Widget build(BuildContext context) {
+   LoginScreen({super.key});
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -37,7 +37,7 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: TextInputFieldWidget(
-                  keyboardType: TextInputType.emailAddress,
+               
                   controller: emailController,
                   labelText: 'Email',
                   icon: Icons.email,
@@ -49,7 +49,7 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: TextInputFieldWidget(
-                keyboardType: TextInputType.emailAddress,
+              
                 controller: passwordController,
                 labelText: 'Password',
                 icon: Icons.password,
@@ -60,23 +60,20 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            InkWell(
-              onTap: () => print('user login'),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: buttonColor,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 50,
+              decoration: BoxDecoration(
+                color: buttonColor,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Center(
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -93,16 +90,9 @@ class LoginScreen extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
-                InkWell(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
-                      )),
-                  child: Text(
-                    "Register",
-                    style: TextStyle(fontSize: 20, color: buttonColor),
-                  ),
+                Text(
+                  "Register",
+                  style: TextStyle(fontSize: 20, color: buttonColor),
                 ),
               ],
             )
