@@ -6,11 +6,32 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tiktok_flutter/constraint.dart';
 import 'package:tiktok_flutter/models/models.dart';
+import 'package:tiktok_flutter/views/screens/auth/login_screen.dart';
+import 'package:tiktok_flutter/views/screens/home_screen.dart';
 
 class AuthController extends GetxController {
   // khai báo đường dẫn
   static AuthController instance = Get.find();
   late Rx<File?> _pickedImage;
+  late Rx<User?> _user;
+  @override
+  void onReady() {
+    super.onReady();
+    _user = Rx<User?>(firebaseAuth.currentUser);
+    // liên kết với màng hình và quan sát sự thây đổi của user (đăng nhập hoặc đăng xuất)
+    _user.bindStream(firebaseAuth.authStateChanges());
+    // gọi khi user có sự thay đổi
+    ever(_user, _setInitialScreen);
+  }
+
+  _setInitialScreen(User? user) {
+    if (user == null) {
+      Get.offAll(() => LoginScreen());
+    } else {
+      Get.offAll(() => const HomeScreen());
+    }
+  }
+
   // getter image
   File? get profilePhoto => _pickedImage.value;
   pickImage() async {
@@ -57,7 +78,6 @@ class AuthController extends GetxController {
             .doc(cred.user!.uid)
             .set(userModel.toMap());
         Get.snackbar('Success', 'Create a new account successfully');
-
       } else {
         Get.snackbar('Error Creating Account', 'Please enter all fields');
       }
@@ -89,7 +109,6 @@ class AuthController extends GetxController {
         await firebaseAuth.signInWithEmailAndPassword(
             email: email, password: password);
         Get.snackbar('Success', 'Login successfully');
-            
       } else {
         Get.snackbar('Error Logging in', 'Please enter all fields');
       }

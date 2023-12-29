@@ -1,4 +1,4 @@
-git checkout -b SOCIAL_TIKTOK_login
+git checkout -b SOCIAL_TIKTOK_Persisting-User-State
 git add .
-git commit -m "SOCIAL_TIKTOK_login"
-git push -u origin SOCIAL_TIKTOK_login
+git commit -m "SOCIAL_TIKTOK_Persisting-User-State"
+git push -u origin SOCIAL_TIKTOK_Persisting-User-State
