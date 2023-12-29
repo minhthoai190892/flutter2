@@ -14,3 +14,11 @@ var firebaseFirestore = FirebaseFirestore.instance;
 var firebaseStorage = FirebaseStorage.instance;
 // CONTROLLER
 var authController = AuthController.instance;
+// PAGES
+const pages = [
+  Center(child:Text('Home Screen'),),
+  Center(child:Text('Search Screen'),),
+  Center(child:Text('Add Screen'),),
+  Center(child:Text('MEssage Screen'),),
+  Center(child:Text('Profile Screen'),),
+];

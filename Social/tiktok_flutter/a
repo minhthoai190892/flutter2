@@ -1,4 +1,4 @@
-git checkout -b SOCIAL_TIKTOK_Persisting-User-State
+git checkout -b SOCIAL_TIKTOK_bottomNavigationBar
 git add .
-git commit -m "SOCIAL_TIKTOK_Persisting-User-State"
-git push -u origin SOCIAL_TIKTOK_Persisting-User-State
+git commit -m "SOCIAL_TIKTOK_bottomNavigationBar"
+git push -u origin SOCIAL_TIKTOK_bottomNavigationBar
