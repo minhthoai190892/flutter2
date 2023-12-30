@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +12,10 @@ class AddVideoScreen extends StatelessWidget {
   pickVideo(ImageSource src, BuildContext context) async {
     final video = await ImagePicker().pickVideo(source: src);
     if (video != null) {
-      Get.offAll(() => ConfirmScreen());
+      Get.offAll(() => ConfirmScreen(
+            videoFile: File(video.path),
+            viedeoPath: video.path,
+          ));
     }
   }
 
@@ -21,7 +26,7 @@ class AddVideoScreen extends StatelessWidget {
         return SimpleDialog(
           children: [
             SimpleDialogOption(
-              onPressed: () =>pickVideo(ImageSource.gallery, context),
+              onPressed: () => pickVideo(ImageSource.gallery, context),
               child: const Row(
                 children: [
                   Icon(Icons.image),
@@ -38,7 +43,7 @@ class AddVideoScreen extends StatelessWidget {
               ),
             ),
             SimpleDialogOption(
-              onPressed: () =>pickVideo(ImageSource.camera, context),
+              onPressed: () => pickVideo(ImageSource.camera, context),
               child: const Row(
                 children: [
                   Icon(Icons.camera_alt),
@@ -55,7 +60,7 @@ class AddVideoScreen extends StatelessWidget {
               ),
             ),
             SimpleDialogOption(
-              onPressed: () =>Navigator.pop(context),
+              onPressed: () => Navigator.pop(context),
               child: const Row(
                 children: [
                   Icon(Icons.cancel),
