@@ -1,12 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tiktok_flutter/constraint.dart';
-import 'package:tiktok_flutter/controllers/controller.dart';
-import 'package:tiktok_flutter/views/screens/auth/login_screen.dart';
-import 'package:tiktok_flutter/views/screens/auth/signup_screen.dart';
 import 'package:video_player/video_player.dart';
 
+import 'constraint.dart';
+import 'controllers/controller.dart';
 import 'firebase_options.dart';
 
 void main() async {

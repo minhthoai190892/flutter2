@@ -1,4 +1,4 @@
-git checkout -b SOCIAL_TIKTOK_add-video-page-error
+git checkout -b SOCIAL_TIKTOK_confirm-screen
 git add .
-git commit -m "SOCIAL_TIKTOK_add-video-page-error"
-git push -u origin SOCIAL_TIKTOK_add-video-page-error
+git commit -m "SOCIAL_TIKTOK_confirm-screen"
+git push -u origin SOCIAL_TIKTOK_confirm-screen
