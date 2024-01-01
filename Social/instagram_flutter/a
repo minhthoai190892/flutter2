@@ -1,7 +1,7 @@
-git checkout -b social__instagram_comment_screen__Showing-Posts-on-Search-Screen
+git checkout -b social__instagram__
 git add .
-git commit -m "social__instagram_comment_screen__Showing-Posts-on-Search-Screen"
-git push -u origin social__instagram_comment_screen__Showing-Posts-on-Search-Screen
+git commit -m "social__instagram__"
+git push -u origin social__instagram__
 
 
 chạy bằng chrome

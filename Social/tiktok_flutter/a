@@ -1,0 +1,4 @@
+git checkout -b SOCIAL_TIKTOK_upload-video-1
+git add .
+git commit -m "SOCIAL_TIKTOK_upload-video-1"
+git push -u origin SOCIAL_TIKTOK_upload-video-1

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:product_shop_ui/screens/product_detail_screen.dart';
 import 'package:product_shop_ui/screens/product_main_screen.dart';
 
 void main() {
@@ -15,7 +16,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ProductMainScreen(),
+      home: const ProductDetailScreen(),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_flutter/utils/colors.dart';
+import 'package:instagram_flutter/utils/utils.dart';
 import 'package:instagram_flutter/widgets/widgets.dart';
 
 class FeedScreen extends StatefulWidget {
@@ -16,18 +17,24 @@ class FeedScreen extends StatefulWidget {
 class _FeedScreenState extends State<FeedScreen> {
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: mobileBackgroundColor,
-        title: SvgPicture.asset(
-          'assets/images/ic_instagram.svg',
-          color: primaryColor,
-          height: 32,
-        ),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.message_outlined))
-        ],
-      ),
+      appBar: width > webScreenSize
+          ? null
+          : AppBar(
+              backgroundColor: width > webScreenSize
+                  ? webBackgroundColor
+                  : mobileBackgroundColor,
+              title: SvgPicture.asset(
+                'assets/images/ic_instagram.svg',
+                color: primaryColor,
+                height: 32,
+              ),
+              actions: [
+                IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.message_outlined))
+              ],
+            ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('posts').snapshots(),
         builder: (context, snapshot) {
@@ -38,9 +45,8 @@ class _FeedScreenState extends State<FeedScreen> {
           }
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index) =>  PostCard(
-              snap:snapshot.data!.docs[index].data()
-            ),
+            itemBuilder: (context, index) =>
+                PostCard(snap: snapshot.data!.docs[index].data()),
           );
         },
       ),
