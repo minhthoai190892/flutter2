@@ -14,7 +14,8 @@ class AddVideoScreen extends StatelessWidget {
     if (video != null) {
       Get.offAll(() => ConfirmScreen(
             videoFile: File(video.path),
-            viedeoPath: video.path,
+            videoPath: video.path,
+           
           ));
     }
   }
