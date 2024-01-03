@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "681477217204",
+    "project_id": "zoom-clone-tutorial-44dad",
+    "storage_bucket": "zoom-clone-tutorial-44dad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681477217204:android:0023d37cccdecd59ffb0e1",
+        "android_client_info": {
+          "package_name": "com.example.zoom_clone_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681477217204-k90k5h4do3uiib544mi4q1godddh4234.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcP0YZqkIJBRsDAGrifbGnqqgZ3GTF6YI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681477217204-k90k5h4do3uiib544mi4q1godddh4234.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
