@@ -86,6 +86,8 @@ import 'package:tiktok_flutter/models/models.dart';
 import 'package:video_compress/video_compress.dart';
 
 class UploadVideoController extends GetxController {
+  static UploadVideoController instance = Get.find();
+
   /// nén video
   _compressVideo(String videoPath) async {
     final compressedVideo = await VideoCompress.compressVideo(
@@ -134,7 +136,7 @@ class UploadVideoController extends GetxController {
       int len = allDocs.docs.length;
       String videoUrl = await _uploadVideoToStorage("Video $len", videoPath);
       String thumbnail = await _uploadImageToStorage("Video $len", videoPath);
-  // khởi tạo đối tượng
+      // khởi tạo đối tượng
       VideoModel video = VideoModel(
         username: (userDoc.data()! as Map<String, dynamic>)['name'],
         uid: uid,
@@ -148,7 +150,7 @@ class UploadVideoController extends GetxController {
         profilePhoto: (userDoc.data()! as Map<String, dynamic>)['profilePhoto'],
         thumbnail: thumbnail,
       );
-  // lưu thông tin video
+      // lưu thông tin video
       await firebaseFirestore
           .collection('videos')
           .doc('Video $len')

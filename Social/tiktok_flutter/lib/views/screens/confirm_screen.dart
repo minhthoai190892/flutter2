@@ -98,9 +98,11 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      print('Share');
                       uploadVideoController.uploadVideo(songController.text,
                           captionController.text, widget.videoPath);
+                      // print('Share');
+                      // uploadVideoController.uploadVideo(songController.text,
+                      //     captionController.text, widget.videoPath);
                       Get.offAll(() => const HomeScreen());
                     },
                     child: const Text(

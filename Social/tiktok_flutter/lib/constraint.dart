@@ -5,6 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_flutter/controllers/controller.dart';
 import 'package:tiktok_flutter/views/screens/add_video_screen.dart';
+import 'package:tiktok_flutter/views/screens/video_screen.dart';
 
 const backgroundColor = Colors.black;
 var buttonColor = Colors.red[400];
@@ -15,11 +16,10 @@ var firebaseFirestore = FirebaseFirestore.instance;
 var firebaseStorage = FirebaseStorage.instance;
 // CONTROLLER
 var authController = AuthController.instance;
+var uploadController = UploadVideoController.instance;
 // PAGES
 const pages = [
-  Center(
-    child: Text('Home Screen'),
-  ),
+  VideoScreen(),
   Center(
     child: Text('Search Screen'),
   ),

@@ -1,7 +1,7 @@
-git checkout -b SOCIAL_TIKTOK_upload-video-2
+git checkout -b SOCIAL_TIKTOK_display-video
 git add .
-git commit -m "SOCIAL_TIKTOK_upload-video-2"
-git push -u origin SOCIAL_TIKTOK_upload-video-2
+git commit -m "SOCIAL_TIKTOK_display-video"
+git push -u origin SOCIAL_TIKTOK_display-video
 
 fix compress video
     -https://stackoverflow.com/questions/75070808/build-failed-in-flutter-app-due-to-video-compress-package
