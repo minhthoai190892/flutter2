@@ -1,0 +1,17 @@
+git checkout -b SOCIAL__ZOOM__
+git add .
+git commit -m "SOCIAL__ZOOM__"
+git push -u origin SOCIAL__ZOOM__
+
+
+chạy bằng chrome
+flutter run -d chrome
+
+
+note
+ Cloud Firestore -> start in test mode
+ timestamp cẩn có "intl" để chuyển đổi
+
+
+
+
