@@ -1,7 +1,7 @@
-git checkout -b SOCIAL__ZOOM__
+git checkout -b SOCIAL__ZOOM__Persisting-User-State
 git add .
-git commit -m "SOCIAL__ZOOM__"
-git push -u origin SOCIAL__ZOOM__
+git commit -m "SOCIAL__ZOOM__Persisting-User-State"
+git push -u origin SOCIAL__ZOOM__Persisting-User-State
 
 
 chạy bằng chrome
