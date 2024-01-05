@@ -1,7 +1,7 @@
-git checkout -b SOCIAL__ZOOM__Home-Screen-UI
+git checkout -b SOCIAL__WHATSAPP__login-screen-ui
 git add .
-git commit -m "SOCIAL__ZOOM__Home-Screen-UI"
-git push -u origin SOCIAL__ZOOM__Home-Screen-UI
+git commit -m "SOCIAL__WHATSAPP__login-screen-ui"
+git push -u origin SOCIAL__WHATSAPP__login-screen-ui
 
 
 chạy bằng chrome

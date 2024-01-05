@@ -19,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Start or join a metting',
+              'Start or join a meeting',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
