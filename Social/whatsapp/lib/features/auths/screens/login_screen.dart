@@ -77,7 +77,9 @@ class _LoginScreenState extends State<LoginScreen> {
               width: 90,
               child: CustomButtonWidget(
                 text: 'NEXT',
-                onPressed: () {},
+                onPressed: () {
+                  
+                },
               ),
             )
           ],
