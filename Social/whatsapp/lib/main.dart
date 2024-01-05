@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/features/landing/landing_screen.dart';
+import 'package:whatsapp/router.dart';
 import 'colors.dart';
 import 'firebase_options.dart';
 import 'screens/mobile_layout_screen.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       //   mobileScreenLayout: MobileLayoutScreen(),
       //   webScreenLayout: WebLayoutScreen(),
       // ),
+      onGenerateRoute: (settings) => generateRoute(settings),
       home: const LandingScreen(),
     );
   }

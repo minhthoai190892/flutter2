@@ -1,7 +1,7 @@
-git checkout -b SOCIAL__WHATSAPP__landing-ui
+git checkout -b SOCIAL__WHATSAPP__login-screen-ui
 git add .
-git commit -m "SOCIAL__WHATSAPP__landing-ui"
-git push -u origin SOCIAL__WHATSAPP__landing-ui
+git commit -m "SOCIAL__WHATSAPP__login-screen-ui"
+git push -u origin SOCIAL__WHATSAPP__login-screen-ui
 
 
 chạy bằng chrome
