@@ -1,0 +1,17 @@
+git checkout -b SOCIAL__WHATSAPP__landing-ui
+git add .
+git commit -m "SOCIAL__WHATSAPP__landing-ui"
+git push -u origin SOCIAL__WHATSAPP__landing-ui
+
+
+chạy bằng chrome
+flutter run -d chrome
+
+
+note
+ Cloud Firestore -> start in test mode
+ timestamp cẩn có "intl" để chuyển đổi
+
+
+
+
