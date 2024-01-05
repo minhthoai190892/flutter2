@@ -2,8 +2,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:whatsapp/commons/utils/utils.dart';
 import 'package:whatsapp/features/auths/screens/otp_screen.dart';
+
+final authRepositoryProvider = Provider((ref) => AuthRepository(
+    auth: FirebaseAuth.instance, firestore: FirebaseFirestore.instance));
 
 class AuthRepository {
   final FirebaseAuth auth;
@@ -16,19 +20,19 @@ class AuthRepository {
       {required String phoneNumber, required BuildContext context}) async {
     try {
       await auth.verifyPhoneNumber(
-          phoneNumber: phoneNumber,
-          verificationCompleted: (phoneAuthCredential) async {
-            await auth.signInWithCredential(phoneAuthCredential);
-          },
-          verificationFailed: (error) {
-            throw Exception(error.message);
-          },
-          codeSent: (verificationId, forceResendingToken) {
-            Navigator.pushNamed(context, OTPScreen.routeName,arguments: verificationId);
-          },
-          codeAutoRetrievalTimeout: (verificationId) {
-            
-          },);
+        phoneNumber: phoneNumber,
+        verificationCompleted: (phoneAuthCredential) async {
+          await auth.signInWithCredential(phoneAuthCredential);
+        },
+        verificationFailed: (error) {
+          throw Exception(error.message);
+        },
+        codeSent: (verificationId, forceResendingToken) {
+          Navigator.pushNamed(context, OTPScreen.routeName,
+              arguments: verificationId);
+        },
+        codeAutoRetrievalTimeout: (verificationId) {},
+      );
     } on FirebaseAuthException catch (e) {
       showSnackBar(context: context, content: e.message.toString());
     } catch (e) {

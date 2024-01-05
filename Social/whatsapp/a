@@ -1,7 +1,7 @@
-git checkout -b SOCIAL__WHATSAPP__Phone-Authentication-2
+git checkout -b SOCIAL__WHATSAPP__add-riverpod
 git add .
-git commit -m "SOCIAL__WHATSAPP__Phone-Authentication-2"
-git push -u origin SOCIAL__WHATSAPP__Phone-Authentication-2
+git commit -m "SOCIAL__WHATSAPP__add-riverpod"
+git push -u origin SOCIAL__WHATSAPP__add-riverpod
 
 
 chạy bằng chrome
