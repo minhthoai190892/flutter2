@@ -1,7 +1,7 @@
-git checkout -b SOCIAL__WHATSAPP__add-riverpod
+git checkout -b SOCIAL__WHATSAPP__auth-phone-number-error
 git add .
-git commit -m "SOCIAL__WHATSAPP__add-riverpod"
-git push -u origin SOCIAL__WHATSAPP__add-riverpod
+git commit -m "SOCIAL__WHATSAPP__auth-phone-number-error"
+git push -u origin SOCIAL__WHATSAPP__auth-phone-number-error
 
 
 chạy bằng chrome
