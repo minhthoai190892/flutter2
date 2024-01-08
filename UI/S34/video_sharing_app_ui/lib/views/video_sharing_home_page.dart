@@ -63,6 +63,7 @@ class VideoSharingVideoHomePage extends StatelessWidget {
               SizedBox(
                 height: 100,
                 child: ListView.builder(
+                  itemCount: 10,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => const Padding(
                     padding: EdgeInsets.all(2.0),
@@ -112,7 +113,58 @@ class VideoSharingVideoHomePage extends StatelessWidget {
                             width: 260,
                             margin: const EdgeInsets.only(right: 12),
                             padding: const EdgeInsets.all(12),
-                            decoration: const BoxDecoration(color: Colors.grey),
+                            decoration: BoxDecoration(
+                              color: Colors.blueGrey,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 4, horizontal: 16),
+                                      decoration: BoxDecoration(
+                                          color: Colors.redAccent,
+                                          borderRadius:
+                                              BorderRadius.circular(16)),
+                                      child: const Text(
+                                        'LIVE',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                    const Text(
+                                      '1k2',
+                                      style: TextStyle(color: Colors.grey),
+                                    ),
+                                  ],
+                                ),
+                                const Spacer(),
+                                const Text(
+                                  'FLUTTER\nDEVELOPMENT',
+                                  style: TextStyle(
+                                      fontSize: 24, color: Colors.white),
+                                ),
+                                const Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 24,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text('username'),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text('2m'),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -139,7 +191,37 @@ class VideoSharingVideoHomePage extends StatelessWidget {
                       ),
                       SizedBox(
                         height: size.height / 3.2,
-                        child: const Placeholder(),
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 10,
+                          itemBuilder: (context, index) => Container(
+                            margin: const EdgeInsets.only(right: 16),
+                            width: 300,
+                            decoration: BoxDecoration(
+                              color: Colors.blueAccent,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.2),
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: const Row(
+                                      children: [
+                                        Icon(Icons.access_time_outlined),
+                                        Text('0:24')
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
