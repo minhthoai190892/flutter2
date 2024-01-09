@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_sharing_app_ui/views/video_sharing_home_page.dart';
+import 'package:video_sharing_app_ui/views/video_streaming_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const VideoSharingVideoHomePage(),
+      home: const VideoStreamingPage(),
     );
   }
 }
