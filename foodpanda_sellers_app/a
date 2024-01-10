@@ -1,0 +1,7 @@
+
+
+
+git checkout -b FOODPANDEA_SELLERS_APP-pick-image-from-gallery
+git add .
+git commit -m "FOODPANDEA_SELLERS_APP-pick-image-from-gallery"
+git push -u origin FOODPANDEA_SELLERS_APP-pick-image-from-gallery
