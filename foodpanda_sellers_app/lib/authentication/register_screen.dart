@@ -22,7 +22,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController locationController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   XFile? imageXFile;
-  final ImagePicker picker = ImagePicker();
+  final ImagePicker _picker = ImagePicker();
+  Future<void> _getImage() async {
+    imageXFile = await _picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      imageXFile;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -36,7 +43,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 10,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                _getImage();
+              },
               child: CircleAvatar(
                 radius: size.width * 0.20,
                 backgroundColor: Colors.white,
