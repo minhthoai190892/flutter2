@@ -1,7 +1,7 @@
 
 
 
-git checkout -b FOODPANDEA_SELLERS_APP-tabbar-login-register
+git checkout -b FOODPANDEA_SELLERS_APP-custom-text-field
 git add .
-git commit -m "FOODPANDEA_SELLERS_APP-tabbar-login-register"
-git push -u origin FOODPANDEA_SELLERS_APP-tabbar-login-register
+git commit -m "FOODPANDEA_SELLERS_APP-custom-text-field"
+git push -u origin FOODPANDEA_SELLERS_APP-custom-text-field
