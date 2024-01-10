@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodpanda_sellers_app/authentication/auth_screen.dart';
 import 'package:foodpanda_sellers_app/splash_screen/splash_screen.dart';
 
 Future<void> main() async {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MySplashScreen(),
+      home: const AuthScreen(),
     );
   }
 }
