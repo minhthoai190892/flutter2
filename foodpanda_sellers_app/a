@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_SELLERS_APP-get-location
+git checkout -b FOODPANDEA_SELLERS_APP-connect-to-firebase-and-error-dialog-widget
 git add .
-git commit -m "FOODPANDEA_SELLERS_APP-get-location"
-git push -u origin FOODPANDEA_SELLERS_APP-get-location
+git commit -m "FOODPANDEA_SELLERS_APP-connect-to-firebase-and-error-dialog-widget"
+git push -u origin FOODPANDEA_SELLERS_APP-connect-to-firebase-and-error-dialog-widget
 
 
 
