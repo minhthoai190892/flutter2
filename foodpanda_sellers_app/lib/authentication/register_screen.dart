@@ -1,11 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:foodpanda_sellers_app/widgets/custom_text_field_widget.dart';
 import 'package:foodpanda_sellers_app/widgets/error_dialog_widget.dart';
+import 'package:foodpanda_sellers_app/widgets/loading_dialog_widget.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart' as fStorage;
 
 // import 'package:image_picker/image_picker.dart';
 class RegisterScreen extends StatefulWidget {
@@ -24,6 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String sellerImageUrl = '';
   XFile? imageXFile;
 
   Position? position;
@@ -82,37 +87,52 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Future<void> formValidation() async {
-    if (imageXFile == null) {
-      showDialog(
-        context: context,
-        builder: (context) =>
-            const ErrorDialogWidget(message: 'Please select an image'),
-      );
-    }
-
     if (nameController.text.trim().isNotEmpty &&
         emailController.text.trim().isNotEmpty &&
         phoneController.text.trim().isNotEmpty &&
         locationController.text.trim().isNotEmpty &&
         passwordController.text.trim().isNotEmpty &&
         confirmPasswordController.text.trim().isNotEmpty) {
-      // start upload image to cloud storage
-      if (passwordController.text.trim() ==
-          confirmPasswordController.text.trim()) {
-      } else {
+      String fileName = DateTime.now().millisecondsSinceEpoch.toString();
+      if (imageXFile == null) {
         showDialog(
           context: context,
           builder: (context) =>
-              const ErrorDialogWidget(message: 'Passwords do not match'),
+              const ErrorDialogWidget(message: 'Please select an image'),
+        );
+      } else {
+        // save image to cloud storage
+        fStorage.Reference reference = fStorage.FirebaseStorage.instance
+            .ref()
+            .child('sellers')
+            .child(fileName);
+        // task upload image
+        fStorage.UploadTask uploadTask = reference.putFile(
+            File(imageXFile!.path),
+            fStorage.SettableMetadata(
+              contentType: "image/jpeg",
+            ));
+        fStorage.TaskSnapshot taskSnapshot =
+            await uploadTask.whenComplete(() => {});
+        await taskSnapshot.ref.getDownloadURL().then((url) {
+          sellerImageUrl = url;
+        });
+        
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const LoadingDialogWidget(message: 'Registering Account');
+          },
         );
       }
-    } else {
-      showDialog(
+    }else{
+       showDialog(
         context: context,
         builder: (context) =>
             const ErrorDialogWidget(message: 'Please enter all fields'),
       );
     }
+
   }
 
   @override
@@ -166,13 +186,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     controller: passwordController,
                     hintText: 'Password',
                     iconData: Icons.password,
-                    isObserce: true,
+                    isObserce: false,
                   ),
                   CustomTextFieldWidget(
                     controller: confirmPasswordController,
                     hintText: 'Confirm Password',
                     iconData: Icons.password,
-                    isObserce: true,
+                    isObserce: false,
                   ),
                   CustomTextFieldWidget(
                     controller: phoneController,

@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_SELLERS_APP-Implement-Loading-Dialog-with-Progress-Bar
+git checkout -b FOODPANDEA_SELLERS_APP-Upload-Image-to-Firebase-Cloud-Storage
 git add .
-git commit -m "FOODPANDEA_SELLERS_APP-Implement-Loading-Dialog-with-Progress-Bar"
-git push -u origin FOODPANDEA_SELLERS_APP-Implement-Loading-Dialog-with-Progress-Bar
+git commit -m "FOODPANDEA_SELLERS_APP-Upload-Image-to-Firebase-Cloud-Storage"
+git push -u origin FOODPANDEA_SELLERS_APP-Upload-Image-to-Firebase-Cloud-Storage
 
 
 

@@ -14,6 +14,7 @@ class LoadingDialogWidget extends StatelessWidget {
     return AlertDialog(
       key: key,
       content: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           circularProgress(),
           const SizedBox(
