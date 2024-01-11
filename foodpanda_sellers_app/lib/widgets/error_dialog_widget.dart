@@ -19,7 +19,7 @@ class ErrorDialogWidget extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text('Ok'),
+          child: const Center(child: Text('Ok')),
         ),
       ],
     );

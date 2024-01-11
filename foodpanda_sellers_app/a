@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_SELLERS_APP-connect-to-firebase-and-error-dialog-widget
+git checkout -b FOODPANDEA_SELLERS_APP-form-vilidation
 git add .
-git commit -m "FOODPANDEA_SELLERS_APP-connect-to-firebase-and-error-dialog-widget"
-git push -u origin FOODPANDEA_SELLERS_APP-connect-to-firebase-and-error-dialog-widget
+git commit -m "FOODPANDEA_SELLERS_APP-form-vilidation"
+git push -u origin FOODPANDEA_SELLERS_APP-form-vilidation
 
 
 

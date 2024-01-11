@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:foodpanda_sellers_app/widgets/custom_text_field_widget.dart';
+import 'package:foodpanda_sellers_app/widgets/error_dialog_widget.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
@@ -78,6 +79,40 @@ class _RegisterScreenState extends State<RegisterScreen> {
     String completeAddress =
         '${pMark.subThoroughfare} ${pMark.thoroughfare}, ${pMark.subLocality} ${pMark.locality}, ${pMark.subAdministrativeArea},${pMark.administrativeArea} ${pMark.postalCode}, ${pMark.country}';
     locationController.text = completeAddress;
+  }
+
+  Future<void> formValidation() async {
+    if (imageXFile == null) {
+      showDialog(
+        context: context,
+        builder: (context) =>
+            const ErrorDialogWidget(message: 'Please select an image'),
+      );
+    }
+
+    if (nameController.text.trim().isNotEmpty &&
+        emailController.text.trim().isNotEmpty &&
+        phoneController.text.trim().isNotEmpty &&
+        locationController.text.trim().isNotEmpty &&
+        passwordController.text.trim().isNotEmpty &&
+        confirmPasswordController.text.trim().isNotEmpty) {
+      // start upload image to cloud storage
+      if (passwordController.text.trim() ==
+          confirmPasswordController.text.trim()) {
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) =>
+              const ErrorDialogWidget(message: 'Passwords do not match'),
+        );
+      }
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) =>
+            const ErrorDialogWidget(message: 'Please enter all fields'),
+      );
+    }
   }
 
   @override
@@ -183,7 +218,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 30,
             ),
             ElevatedButton(
-              onPressed: () => print('Signup'),
+              onPressed: () => formValidation(),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
                 padding:
