@@ -15,6 +15,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as fStorage;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../global/global.dart';
+
 // import 'package:image_picker/image_picker.dart';
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -145,7 +147,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   void authenticateSellerAndSignUp() async {
     User? currentUser;
-    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    
     await firebaseAuth
         .createUserWithEmailAndPassword(
       email: emailController.text.trim(),
@@ -191,12 +193,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
       'lng': position!.longitude,
     });
     // save data locally with SharedPreferences
-    SharedPreferences? sharedPreferences =
+    sharedPreferences =
         await SharedPreferences.getInstance();
-    sharedPreferences.setString('uid', currentUser.uid);
-    sharedPreferences.setString('email', currentUser.email!);
-    sharedPreferences.setString('name', nameController.text.trim());
-    sharedPreferences.setString('photoUrl', sellerImageUrl);
+    sharedPreferences!.setString('uid', currentUser.uid);
+    sharedPreferences!.setString('email', currentUser.email!);
+    sharedPreferences!.setString('name', nameController.text.trim());
+    sharedPreferences!.setString('photoUrl', sellerImageUrl);
   }
 
   @override

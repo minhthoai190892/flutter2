@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodpanda_sellers_app/authentication/auth_screen.dart';
+import 'package:foodpanda_sellers_app/global/global.dart';
+import 'package:foodpanda_sellers_app/main_screen/home_screen.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({super.key});
@@ -13,11 +16,19 @@ class MySplashScreen extends StatefulWidget {
 class _MySplashScreenState extends State<MySplashScreen> {
   startTimer() {
     Timer(const Duration(seconds: 8), () {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const AuthScreen(),
-          ));
+      if (firebaseAuth.currentUser != null) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomeScreen(),
+            ));
+      } else {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AuthScreen(),
+            ));
+      }
     });
   }
 
