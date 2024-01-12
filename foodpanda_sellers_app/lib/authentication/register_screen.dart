@@ -13,6 +13,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as fStorage;
+import 'package:shared_preferences/shared_preferences.dart';
 
 // import 'package:image_picker/image_picker.dart';
 class RegisterScreen extends StatefulWidget {
@@ -89,6 +90,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     completeAddress =
         '${pMark.subThoroughfare} ${pMark.thoroughfare}, ${pMark.subLocality} ${pMark.locality}, ${pMark.subAdministrativeArea},${pMark.administrativeArea} ${pMark.postalCode}, ${pMark.country}';
     locationController.text = completeAddress;
+    print('Location: ' + completeAddress);
   }
 
   Future<void> formValidation() async {
@@ -151,6 +153,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
     )
         .then((auth) {
       currentUser = auth.user;
+    }).catchError((error) {
+      Navigator.pop(context);
+      showDialog(
+        context: context,
+        builder: (context) =>
+            ErrorDialogWidget(message: error.message.toString()),
+      );
     });
     // currentUser!.sendEmailVerification();
     if (currentUser != null) {
@@ -168,6 +177,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   ///save data to firestore
   Future saveDataTofireState(User currentUser) async {
+    // save data to firestore
     FirebaseFirestore.instance.collection('sellers').doc(currentUser.uid).set({
       'sellerUID': currentUser.uid,
       'sellerEmail': currentUser.email,
@@ -180,6 +190,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
       'lat': position!.latitude,
       'lng': position!.longitude,
     });
+    // save data locally with SharedPreferences
+    SharedPreferences? sharedPreferences =
+        await SharedPreferences.getInstance();
+    sharedPreferences.setString('uid', currentUser.uid);
+    sharedPreferences.setString('email', currentUser.email!);
+    sharedPreferences.setString('name', nameController.text.trim());
+    sharedPreferences.setString('photoUrl', sellerImageUrl);
   }
 
   @override

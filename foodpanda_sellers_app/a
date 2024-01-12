@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_SELLERS_APP-save-data-to-firestore
+git checkout -b FOODPANDEA_SELLERS_APP-save-data-locally-with-sharedPreferences
 git add .
-git commit -m "FOODPANDEA_SELLERS_APP-save-data-to-firestore"
-git push -u origin FOODPANDEA_SELLERS_APP-save-data-to-firestore
+git commit -m "FOODPANDEA_SELLERS_APP-save-data-locally-with-sharedPreferences"
+git push -u origin FOODPANDEA_SELLERS_APP-save-data-locally-with-sharedPreferences
 
 
 
