@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_SELLERS_APP-Upload-Image-to-Firebase-Cloud-Storage
+git checkout -b FOODPANDEA_SELLERS_APP-save-data-to-firestore
 git add .
-git commit -m "FOODPANDEA_SELLERS_APP-Upload-Image-to-Firebase-Cloud-Storage"
-git push -u origin FOODPANDEA_SELLERS_APP-Upload-Image-to-Firebase-Cloud-Storage
+git commit -m "FOODPANDEA_SELLERS_APP-save-data-to-firestore"
+git push -u origin FOODPANDEA_SELLERS_APP-save-data-to-firestore
 
 
 

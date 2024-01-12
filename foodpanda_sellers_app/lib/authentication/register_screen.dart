@@ -2,7 +2,10 @@
 
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_sellers_app/main_screen/home_screen.dart';
 import 'package:foodpanda_sellers_app/widgets/custom_text_field_widget.dart';
 import 'package:foodpanda_sellers_app/widgets/error_dialog_widget.dart';
 import 'package:foodpanda_sellers_app/widgets/loading_dialog_widget.dart';
@@ -30,6 +33,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String sellerImageUrl = '';
   XFile? imageXFile;
+  String completeAddress = '';
 
   Position? position;
   List<Placemark>? placemarks;
@@ -41,6 +45,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     });
   }
 
+  /// get location
   _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -81,7 +86,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     placemarks =
         await placemarkFromCoordinates(position!.latitude, position!.longitude);
     Placemark pMark = placemarks![0];
-    String completeAddress =
+    completeAddress =
         '${pMark.subThoroughfare} ${pMark.thoroughfare}, ${pMark.subLocality} ${pMark.locality}, ${pMark.subAdministrativeArea},${pMark.administrativeArea} ${pMark.postalCode}, ${pMark.country}';
     locationController.text = completeAddress;
   }
@@ -116,8 +121,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
             await uploadTask.whenComplete(() => {});
         await taskSnapshot.ref.getDownloadURL().then((url) {
           sellerImageUrl = url;
+          // save information to firestore
+          authenticateSellerAndSignUp();
         });
-        
+
         showDialog(
           context: context,
           builder: (context) {
@@ -125,14 +132,54 @@ class _RegisterScreenState extends State<RegisterScreen> {
           },
         );
       }
-    }else{
-       showDialog(
+    } else {
+      showDialog(
         context: context,
         builder: (context) =>
             const ErrorDialogWidget(message: 'Please enter all fields'),
       );
     }
+  }
 
+  void authenticateSellerAndSignUp() async {
+    User? currentUser;
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    await firebaseAuth
+        .createUserWithEmailAndPassword(
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    )
+        .then((auth) {
+      currentUser = auth.user;
+    });
+    // currentUser!.sendEmailVerification();
+    if (currentUser != null) {
+      saveDataTofireState(currentUser!).then((value) {
+        Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomeScreen(),
+          ),
+        );
+      });
+    }
+  }
+
+  ///save data to firestore
+  Future saveDataTofireState(User currentUser) async {
+    FirebaseFirestore.instance.collection('sellers').doc(currentUser.uid).set({
+      'sellerUID': currentUser.uid,
+      'sellerEmail': currentUser.email,
+      'sellerName': nameController.text.trim(),
+      'sellerAvatarurl': sellerImageUrl,
+      'phone': phoneController.text.trim(),
+      'address': completeAddress,
+      'status': 'approved',
+      'earnings': 0.0,
+      'lat': position!.latitude,
+      'lng': position!.longitude,
+    });
   }
 
   @override
