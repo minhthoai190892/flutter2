@@ -147,7 +147,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   void authenticateSellerAndSignUp() async {
     User? currentUser;
-    
+
     await firebaseAuth
         .createUserWithEmailAndPassword(
       email: emailController.text.trim(),
@@ -193,12 +193,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
       'lng': position!.longitude,
     });
     // save data locally with SharedPreferences
-    sharedPreferences =
-        await SharedPreferences.getInstance();
+    sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences!.setString('uid', currentUser.uid);
     sharedPreferences!.setString('email', currentUser.email!);
     sharedPreferences!.setString('name', nameController.text.trim());
     sharedPreferences!.setString('photoUrl', sellerImageUrl);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    phoneController.dispose();
+    locationController.dispose();
   }
 
   @override
