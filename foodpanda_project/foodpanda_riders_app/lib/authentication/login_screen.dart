@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_riders_app/authentication/auth_screen.dart';
 
 import '../global/global.dart';
 import '../main_screen/home_screen.dart';
@@ -60,28 +61,44 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     if (currentUser != null) {
       readDataAndSetDataLocally(currentUser!);
-      Navigator.pop(context);
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        ),
-      );
+    
     }
   }
 
   Future readDataAndSetDataLocally(User currentUser) async {
     await FirebaseFirestore.instance
-        .collection('sellers')
+        .collection('riders')
         .doc(currentUser.uid)
         .get()
         .then((snapshot) {
-      // save locally
-      sharedPreferences!.setString('uid', currentUser.uid);
-      sharedPreferences!.setString('email', snapshot.data()!['sellerEmail']);
-      sharedPreferences!.setString('name', snapshot.data()!['sellerName']);
-      sharedPreferences!
-          .setString('photoUrl', snapshot.data()!['sellerAvatarurl']);
+      if (snapshot.exists) {
+        // save locally
+        sharedPreferences!.setString('uid', currentUser.uid);
+        sharedPreferences!.setString('email', snapshot.data()!['riderEmail']);
+        sharedPreferences!.setString('name', snapshot.data()!['riderName']);
+        sharedPreferences!
+            .setString('photoUrl', snapshot.data()!['riderAvatarurl']);
+              Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomeScreen(),
+          ),
+        );
+      } else {
+        firebaseAuth.signOut();
+          Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const AuthScreen(),
+          ),
+        );
+        showDialog(
+          context: context,
+          builder: (context) => ErrorDialogWidget(message: 'No record exists '),
+        );
+      }
     });
   }
 
