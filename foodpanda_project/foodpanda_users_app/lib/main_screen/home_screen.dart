@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodpanda_users_app/widgets/my_drawer.dart';
 
 import '../authentication/auth_screen.dart';
 import '../global/global.dart';
@@ -15,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -59,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
+      drawer: const MyDrawer(),
     );
   }
 }
