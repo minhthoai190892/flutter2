@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         automaticallyImplyLeading: true,
         centerTitle: true,
         flexibleSpace: Container(
@@ -41,24 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
             fontFamily: 'Lobster',
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              firebaseAuth.signOut().then(
-                    (value) => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AuthScreen(),
-                      ),
-                    ),
-                  );
-            },
-            icon: const Icon(
-              Icons.logout,
-              color: Colors.white,
-            ),
-          )
-        ],
       ),
       drawer: const MyDrawer(),
     );
