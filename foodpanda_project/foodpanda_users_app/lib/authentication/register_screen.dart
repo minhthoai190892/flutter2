@@ -34,7 +34,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String riderImageUrl = '';
+  String userImageUrl = '';
   XFile? imageXFile;
   String completeAddress = '';
 
@@ -113,7 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         // save image to cloud storage
         fStorage.Reference reference = fStorage.FirebaseStorage.instance
             .ref()
-            .child('riders')
+            .child('users')
             .child(fileName);
         // task upload image
         fStorage.UploadTask uploadTask = reference.putFile(
@@ -124,9 +124,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         fStorage.TaskSnapshot taskSnapshot =
             await uploadTask.whenComplete(() => {});
         await taskSnapshot.ref.getDownloadURL().then((url) {
-          riderImageUrl = url;
+          userImageUrl = url;
           // save information to firestore
-          authenticateriderAndSignUp();
+          authenticateuserAndSignUp();
         });
 
         showDialog(
@@ -145,7 +145,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
-  void authenticateriderAndSignUp() async {
+  void authenticateuserAndSignUp() async {
     User? currentUser;
 
     await firebaseAuth
@@ -180,11 +180,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   ///save data to firestore
   Future saveDataTofireState(User currentUser) async {
     // save data to firestore
-    FirebaseFirestore.instance.collection('riders').doc(currentUser.uid).set({
-      'riderUID': currentUser.uid,
-      'riderEmail': currentUser.email,
-      'riderName': nameController.text.trim(),
-      'riderAvatarurl': riderImageUrl,
+    FirebaseFirestore.instance.collection('users').doc(currentUser.uid).set({
+      'userUID': currentUser.uid,
+      'userEmail': currentUser.email,
+      'userName': nameController.text.trim(),
+      'userAvatarurl': userImageUrl,
       'phone': phoneController.text.trim(),
       'address': completeAddress,
       'status': 'approved',
@@ -197,7 +197,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     sharedPreferences!.setString('uid', currentUser.uid);
     sharedPreferences!.setString('email', currentUser.email!);
     sharedPreferences!.setString('name', nameController.text.trim());
-    sharedPreferences!.setString('photoUrl', riderImageUrl);
+    sharedPreferences!.setString('photoUrl', userImageUrl);
   }
 
   @override

@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_USERS_APP-check-rider-record-exists-or-null
+git checkout -b FOODPANDEA_USERS_APP-setup-users
 git add .
-git commit -m "FOODPANDEA_USERS_APP-check-rider-record-exists-or-null"
-git push -u origin FOODPANDEA_USERS_APP-check-rider-record-exists-or-null
+git commit -m "FOODPANDEA_USERS_APP-setup-users"
+git push -u origin FOODPANDEA_USERS_APP-setup-users
 
 
 
