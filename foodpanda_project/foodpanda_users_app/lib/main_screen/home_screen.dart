@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:foodpanda_users_app/widgets/my_drawer.dart';
 
-import '../authentication/auth_screen.dart';
 import '../global/global.dart';
 import '../slider_data/slider_data.dart';
 
