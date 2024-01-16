@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda_sellers_app/authentication/auth_screen.dart';
 import 'package:foodpanda_sellers_app/global/global.dart';
+import 'package:foodpanda_sellers_app/widgets/my_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,7 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        iconTheme: const IconThemeData(color: Colors.white),
+        automaticallyImplyLeading: true,
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -39,25 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
             fontFamily: 'Lobster',
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              firebaseAuth.signOut().then(
-                    (value) => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AuthScreen(),
-                      ),
-                    ),
-                  );
-            },
-            icon: const Icon(
-              Icons.logout,
-              color: Colors.white,
-            ),
-          )
-        ],
       ),
+      drawer: const MyDrawerWidget(),
     );
   }
 }

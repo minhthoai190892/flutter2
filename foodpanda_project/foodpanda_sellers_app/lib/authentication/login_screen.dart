@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
         sharedPreferences!.setString('email', snapshot.data()!['sellerEmail']);
         sharedPreferences!.setString('name', snapshot.data()!['sellerName']);
         sharedPreferences!
-            .setString('photoUrl', snapshot.data()!['sellerAvatarurl']);
+            .setString('photoUrl', snapshot.data()!['sellerAvatarUrl']);
         Navigator.pop(context);
         Navigator.push(
           context,
