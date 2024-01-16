@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_SELLERS_APP-get-image-by-camera-or-gellery
+git checkout -b FOODPANDEA_SELLERS_APP-menus-upload-screens
 git add .
-git commit -m "FOODPANDEA_SELLERS_APP-get-image-by-camera-or-gellery"
-git push -u origin FOODPANDEA_SELLERS_APP-get-image-by-camera-or-gellery
+git commit -m "FOODPANDEA_SELLERS_APP-menus-upload-screens"
+git push -u origin FOODPANDEA_SELLERS_APP-menus-upload-screens
 
 
 

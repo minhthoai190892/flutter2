@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -11,8 +13,10 @@ class MenusUploadScreen extends StatefulWidget {
 class _MenusUploadScreenState extends State<MenusUploadScreen> {
   XFile? imageXFile;
   final ImagePicker _picker = ImagePicker();
+  TextEditingController shortInforController = TextEditingController();
+  TextEditingController titleController = TextEditingController();
 
-  takeImage(BuildContext  mContent) {
+  takeImage(BuildContext mContent) {
     return showDialog(
       context: mContent,
       builder: (context) => SimpleDialog(
@@ -32,10 +36,10 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
           ),
           SimpleDialogOption(
             onPressed: () {
-                captureImageWithCamera(ImageSource.gallery);
+              captureImageWithCamera(ImageSource.gallery);
             },
             child: const Text(
-              'Capture with Camera',
+              'Capture with Gallery',
               style: TextStyle(color: Colors.grey),
             ),
           ),
@@ -66,6 +70,12 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return imageXFile == null
+        ? defaultScreen(context)
+        : menusUploadFormScreen();
+  }
+
+  Scaffold defaultScreen(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 10,
@@ -126,7 +136,7 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
                   takeImage(context);
                 },
                 child: const Text(
-                  'Add New Menu',
+                  'Upload New Menu',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -138,5 +148,137 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
         ),
       ),
     );
+  }
+
+  menusUploadFormScreen() {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 10,
+        iconTheme: const IconThemeData(color: Colors.white),
+        automaticallyImplyLeading: true,
+        centerTitle: true,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.cyan,
+                Colors.amber,
+              ],
+              begin: FractionalOffset(0.0, 0.0),
+              end: FractionalOffset(1.0, 0.0),
+              stops: [0.0, 1.0],
+              tileMode: TileMode.mirror,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.blue,
+        actions: [
+          TextButton(
+            onPressed: () {
+              clearMenuUploadForm();
+            },
+            child: const Text(
+              'Add',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.cyan,
+                fontSize: 18,
+                fontFamily: 'Varela',
+                letterSpacing: 3,
+              ),
+            ),
+          ),
+        ],
+        title: const Text(
+          'Upload New Menu',
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.white,
+            fontFamily: 'Lobster',
+          ),
+        ),
+      ),
+      body: ListView(
+        children: [
+          SizedBox(
+            height: 230,
+            width: MediaQuery.of(context).size.width,
+            child: Center(
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: FileImage(
+                        File(
+                          imageXFile!.path,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.perm_device_information,
+              color: Colors.cyan,
+            ),
+            title: SizedBox(
+              width: 250,
+              child: TextField(
+                style: const TextStyle(color: Colors.black),
+                controller: shortInforController,
+                decoration: const InputDecoration(
+                  hintText: 'Menu Information',
+                  hintStyle: TextStyle(
+                    color: Colors.grey,
+                  ),
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
+          const Divider(
+            color: Colors.amber,
+            thickness: 1,
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.title,
+              color: Colors.cyan,
+            ),
+            title: SizedBox(
+              width: 250,
+              child: TextField(
+                style: const TextStyle(color: Colors.black),
+                controller: titleController,
+                decoration: const InputDecoration(
+                  hintText: 'Menu Title',
+                  hintStyle: TextStyle(
+                    color: Colors.grey,
+                  ),
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
+          const Divider(
+            color: Colors.amber,
+            thickness: 1,
+          ),
+        ],
+      ),
+    );
+  }
+
+  clearMenuUploadForm() {
+    setState(() {
+      shortInforController.clear();
+      titleController.clear();
+      imageXFile = null;
+    });
   }
 }

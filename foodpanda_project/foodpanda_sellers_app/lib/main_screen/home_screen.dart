@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foodpanda_sellers_app/authentication/auth_screen.dart';
 import 'package:foodpanda_sellers_app/global/global.dart';
 import 'package:foodpanda_sellers_app/upload_screens/munus_upload_screens.dart';
 import 'package:foodpanda_sellers_app/widgets/my_drawer.dart';
