@@ -1,5 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:foodpanda_users_app/models/sellers_model.dart';
+import 'package:foodpanda_users_app/widgets/info_design_widget.dart';
 import 'package:foodpanda_users_app/widgets/my_drawer.dart';
 
 import '../global/global.dart';
@@ -91,6 +95,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
               ),
             ),
+          ),
+          StreamBuilder(
+            stream: firebaseFirestore.collection('sellers').snapshots(),
+            builder: (context, snapshot) {
+              return !snapshot.hasData
+                  ? const SliverToBoxAdapter(
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  : SliverStaggeredGrid.countBuilder(
+                      crossAxisCount: 1,
+                      staggeredTileBuilder: (index) =>
+                          const StaggeredTile.fit(1),
+                      itemBuilder: (context, index) {
+                        Sellers model =
+                            Sellers.fromMap(snapshot.data!.docs[index].data());
+                        print('Avata:${model.sellerAvataUrl}');
+                        return InfoDesignWidget(model: model, context: context);
+                      },
+                      itemCount: snapshot.data!.docs.length);
+            },
           ),
         ],
       ),

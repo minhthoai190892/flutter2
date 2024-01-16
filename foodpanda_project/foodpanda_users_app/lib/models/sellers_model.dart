@@ -2,10 +2,10 @@
 import 'dart:convert';
 
 class Sellers {
-  final String sellerUid;
-  final String sellerName;
-  final String sellerAvataUrl;
-  final String sellerEmail;
+  final String? sellerUid;
+  final String? sellerName;
+  final String? sellerAvataUrl;
+  final String? sellerEmail;
   Sellers({
     required this.sellerUid,
     required this.sellerName,
@@ -38,10 +38,10 @@ class Sellers {
 
   factory Sellers.fromMap(Map<String, dynamic> map) {
     return Sellers(
-      sellerUid: map['sellerUid'] as String,
-      sellerName: map['sellerName'] as String,
-      sellerAvataUrl: map['sellerAvataUrl'] as String,
-      sellerEmail: map['sellerEmail'] as String,
+      sellerUid: map['sellerUid'] ,
+      sellerName: map['sellerName'] ,
+      sellerAvataUrl: map['sellerAvatarurl'] ,
+      sellerEmail: map['sellerEmail'] ,
     );
   }
 
