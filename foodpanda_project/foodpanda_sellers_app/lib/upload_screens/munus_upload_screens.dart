@@ -1,7 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:foodpanda_sellers_app/widgets/progress_bar.dart';
 import 'package:image_picker/image_picker.dart';
+
+import '../widgets/error_dialog_widget.dart';
 
 class MenusUploadScreen extends StatefulWidget {
   const MenusUploadScreen({super.key});
@@ -15,7 +18,7 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
   final ImagePicker _picker = ImagePicker();
   TextEditingController shortInforController = TextEditingController();
   TextEditingController titleController = TextEditingController();
-
+  bool uploading = false;
   takeImage(BuildContext mContent) {
     return showDialog(
       context: mContent,
@@ -174,9 +177,7 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
         backgroundColor: Colors.blue,
         actions: [
           TextButton(
-            onPressed: () {
-              clearMenuUploadForm();
-            },
+            onPressed: uploading ? null : () => validateUploadForm(),
             child: const Text(
               'Add',
               style: TextStyle(
@@ -200,6 +201,7 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
       ),
       body: ListView(
         children: [
+          uploading == true ? linearProgress() : const Text(''),
           SizedBox(
             height: 230,
             width: MediaQuery.of(context).size.width,
@@ -280,5 +282,34 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
       titleController.clear();
       imageXFile = null;
     });
+  }
+
+  void validateUploadForm() {
+    setState(() {
+      uploading = true;
+    });
+    if (imageXFile != null) {
+      if (shortInforController.text.isNotEmpty &&
+          titleController.text.isNotEmpty) {
+        setState(() {
+          uploading = true;
+        });
+        // upload image
+
+        // save info to firebase
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) =>
+              const ErrorDialogWidget(message: 'Please enter all fields'),
+        );
+      }
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) =>
+            const ErrorDialogWidget(message: 'Please pick a image for Menu.'),
+      );
+    }
   }
 }
