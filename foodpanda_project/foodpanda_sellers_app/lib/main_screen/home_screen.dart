@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:foodpanda_sellers_app/global/global.dart';
-import 'package:foodpanda_sellers_app/model/menus_model.dart';
-import 'package:foodpanda_sellers_app/upload_screens/munus_upload_screens.dart';
-import 'package:foodpanda_sellers_app/widgets/info_design_widget.dart';
-import 'package:foodpanda_sellers_app/widgets/my_drawer.dart';
+import '../global/global.dart';
+import 'item_screen.dart';
+import '../model/menus_model.dart';
+import '../upload_screens/item_upload_screen.dart';
+import '../upload_screens/munus_upload_screens.dart';
+import '../widgets/info_design_widget.dart';
+import '../widgets/my_drawer.dart';
+
+import '../widgets/text_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -62,11 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: const MyDrawerWidget(),
       body: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(
-            child: ListTile(
-              title: Text('My Menu'),
-            ),
-          ),
+          const TextWidget(text: 'My Menus'),
           StreamBuilder(
             stream: firebaseFirestore
                 .collection('sellers')
@@ -87,6 +87,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           snapshot.data!.docs[index].data(),
                         );
                         return InfoDesignWidget(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ItemScreen(model: model),
+                              )),
                           model: model,
                           context: context,
                         );

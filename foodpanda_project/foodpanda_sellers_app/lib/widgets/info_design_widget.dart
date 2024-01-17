@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:foodpanda_sellers_app/model/menus_model.dart';
 
 class InfoDesignWidget extends StatelessWidget {
@@ -7,13 +8,16 @@ class InfoDesignWidget extends StatelessWidget {
     Key? key,
     required this.model,
     required this.context,
+    required this.onTap,
   }) : super(key: key);
   final Menus? model;
   final BuildContext context;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return InkWell(
+      onTap: onTap,
       splashColor: Colors.amber,
       child: Padding(
         padding: const EdgeInsets.all(16),
