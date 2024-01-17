@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_SELLERS_APP-show-items
+git checkout -b FOODPANDEA_SELLERS_APP-short-by-datetime
 git add .
-git commit -m "FOODPANDEA_SELLERS_APP-show-items"
-git push -u origin FOODPANDEA_SELLERS_APP-show-items
+git commit -m "FOODPANDEA_SELLERS_APP-short-by-datetime"
+git push -u origin FOODPANDEA_SELLERS_APP-short-by-datetime
 
 
 

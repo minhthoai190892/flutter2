@@ -3,7 +3,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../global/global.dart';
 import 'item_screen.dart';
 import '../model/menus_model.dart';
-import '../upload_screens/item_upload_screen.dart';
 import '../upload_screens/munus_upload_screens.dart';
 import '../widgets/info_design_widget.dart';
 import '../widgets/my_drawer.dart';
@@ -72,6 +71,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 .collection('sellers')
                 .doc(sharedPreferences!.getString('uid'))
                 .collection('menus')
+                .orderBy(
+                  'publishedDate',
+                  descending: true,
+                )
                 .snapshots(),
             builder: (context, snapshot) {
               return !snapshot.hasData

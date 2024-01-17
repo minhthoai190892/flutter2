@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda_sellers_app/model/items_model.dart';
 
-import 'package:foodpanda_sellers_app/model/menus_model.dart';
 
 class InfoItemDesignWidget extends StatelessWidget {
   const InfoItemDesignWidget({
@@ -51,6 +50,14 @@ class InfoItemDesignWidget extends StatelessWidget {
               ),
               Text(
                 model.shortInfo,
+                style: const TextStyle(
+                    color: Colors.grey, fontSize: 12, fontFamily: 'TrainOne'),
+              ),
+               const SizedBox(
+                height: 10,
+              ),
+              Text(
+                model.publishedDate.toString(),
                 style: const TextStyle(
                     color: Colors.grey, fontSize: 12, fontFamily: 'TrainOne'),
               ),

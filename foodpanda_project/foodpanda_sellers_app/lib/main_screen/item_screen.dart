@@ -7,7 +7,6 @@ import 'package:foodpanda_sellers_app/upload_screens/item_upload_screen.dart';
 import 'package:foodpanda_sellers_app/widgets/info_item_design_widget.dart';
 
 import '../global/global.dart';
-import '../widgets/info_design_widget.dart';
 import '../widgets/text_widget.dart';
 
 class ItemScreen extends StatefulWidget {
@@ -77,6 +76,10 @@ class _HomeScreenState extends State<ItemScreen> {
                 .collection('menus')
                 .doc(widget.model.menuId)
                 .collection('items')
+                .orderBy(
+                  'publishedDate',
+                  descending: true,
+                )
                 .snapshots(),
             builder: (context, snapshot) {
               return !snapshot.hasData
