@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "917021825444",
+    "project_id": "foodpanda-clone-app-e411d",
+    "storage_bucket": "foodpanda-clone-app-e411d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917021825444:android:0aab1a98e54ea79ad38931",
+        "android_client_info": {
+          "package_name": "com.example.foodpanda_riders_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzCeAcfJ_JypNAEJOIzD5Z19EHEIZKzbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917021825444:android:e2fbc0af8d421ec0d38931",
+        "android_client_info": {
+          "package_name": "com.example.foodpanda_sellers_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzCeAcfJ_JypNAEJOIzD5Z19EHEIZKzbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917021825444:android:aec2cbe3292674c9d38931",
+        "android_client_info": {
+          "package_name": "com.example.foodpanda_users_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzCeAcfJ_JypNAEJOIzD5Z19EHEIZKzbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
