@@ -1,9 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:foodpanda_sellers_app/model/items_model.dart';
 import 'package:foodpanda_sellers_app/model/menus_model.dart';
 import 'package:foodpanda_sellers_app/upload_screens/item_upload_screen.dart';
+import 'package:foodpanda_sellers_app/widgets/info_item_design_widget.dart';
 
 import '../global/global.dart';
+import '../widgets/info_design_widget.dart';
 import '../widgets/text_widget.dart';
 
 class ItemScreen extends StatefulWidget {
@@ -66,6 +70,37 @@ class _HomeScreenState extends State<ItemScreen> {
       body: CustomScrollView(
         slivers: [
           TextWidget(text: "My ${widget.model.menuTitle}'s Items"),
+          StreamBuilder(
+            stream: firebaseFirestore
+                .collection('sellers')
+                .doc(sharedPreferences!.getString('uid'))
+                .collection('menus')
+                .doc(widget.model.menuId)
+                .collection('items')
+                .snapshots(),
+            builder: (context, snapshot) {
+              return !snapshot.hasData
+                  ? const SliverToBoxAdapter(
+                      child: CircularProgressIndicator(),
+                    )
+                  : SliverStaggeredGrid.countBuilder(
+                      crossAxisCount: 1,
+                      staggeredTileBuilder: (index) =>
+                          const StaggeredTile.fit(1),
+                      itemBuilder: (context, index) {
+                        ItemsModel model = ItemsModel.fromMap(
+                          snapshot.data!.docs[index].data(),
+                        );
+                        return InfoItemDesignWidget(
+                          model: model,
+                          context: context,
+                          onTap: () {},
+                        );
+                      },
+                      itemCount: snapshot.data!.docs.length,
+                    );
+            },
+          ),
         ],
       ),
     );

@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_SELLERS_APP-design-item-upload-screen
+git checkout -b FOODPANDEA_SELLERS_APP-show-items
 git add .
-git commit -m "FOODPANDEA_SELLERS_APP-design-item-upload-screen"
-git push -u origin FOODPANDEA_SELLERS_APP-design-item-upload-screen
+git commit -m "FOODPANDEA_SELLERS_APP-show-items"
+git push -u origin FOODPANDEA_SELLERS_APP-show-items
 
 
 

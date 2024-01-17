@@ -1,8 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_sellers_app/model/items_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:foodpanda_sellers_app/global/global.dart';
@@ -26,7 +28,7 @@ class _MenusUploadScreenState extends State<ItemUploadScreen> {
   final ImagePicker _picker = ImagePicker();
   TextEditingController shortInforController = TextEditingController();
   TextEditingController titleController = TextEditingController();
-   TextEditingController descriptionController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   bool uploading = false;
   String uniqueIdName = DateTime.now().millisecondsSinceEpoch.toString();
@@ -338,6 +340,8 @@ class _MenusUploadScreenState extends State<ItemUploadScreen> {
     setState(() {
       shortInforController.clear();
       titleController.clear();
+      descriptionController.clear();
+      priceController.clear();
       imageXFile = null;
     });
   }
@@ -348,14 +352,17 @@ class _MenusUploadScreenState extends State<ItemUploadScreen> {
     });
     if (imageXFile != null) {
       if (shortInforController.text.isNotEmpty &&
-          titleController.text.isNotEmpty) {
+          titleController.text.isNotEmpty &&
+          descriptionController.text.isNotEmpty &&
+          priceController.text.isNotEmpty) {
         setState(() {
           uploading = true;
         });
         // upload image
         String downloadUrl = await uploadImage(File(imageXFile!.path));
         // save info to firebase
-        saveInfo(downloadUrl, shortInforController.text, titleController.text);
+        saveInfo(downloadUrl, shortInforController.text, titleController.text,
+            descriptionController.text, priceController.text);
       } else {
         showDialog(
           context: context,
@@ -373,7 +380,7 @@ class _MenusUploadScreenState extends State<ItemUploadScreen> {
   }
 
   Future<String> uploadImage(File file) async {
-    Reference reference = firebaseStorage.ref().child('menus');
+    Reference reference = firebaseStorage.ref().child('items');
     UploadTask uploadTask = reference.child('$uniqueIdName.jpg').putFile(
         file,
         SettableMetadata(
@@ -384,20 +391,29 @@ class _MenusUploadScreenState extends State<ItemUploadScreen> {
     return downloadUrl;
   }
 
-  void saveInfo(String downloadUrl, String shortInfo, String titleMenu) {
+  void saveInfo(String downloadUrl, String shortInfo, String titleItem,
+      String description, String price) {
+    ItemsModel itemsModel = ItemsModel(
+        itemId: uniqueIdName,
+        menuId: widget.model.menuId,
+        sellerUID: sharedPreferences!.getString('uid')!,
+        sellerName: sharedPreferences!.getString('name')!,
+        shortInfo: shortInfo,
+        longDescription: description,
+        price: int.parse(price),
+        title: titleItem,
+        publishedDate: DateTime.now(),
+        status: 'available',
+        thumbnailUrl: downloadUrl);
     final ref = firebaseFirestore
         .collection('sellers')
         .doc(sharedPreferences!.getString('uid'))
-        .collection('menus');
-    ref.doc(uniqueIdName).set({
-      'menuId': uniqueIdName,
-      'sellersUid': sharedPreferences!.getString('uid'),
-      'menuInfo': shortInfo,
-      'menuTitle': titleMenu,
-      'publishedDate': DateTime.now(),
-      'status': 'available',
-      'thumbnail': downloadUrl,
-    });
+        .collection('menus')
+        .doc(widget.model.menuId)
+        .collection('items');
+    ref.doc(uniqueIdName).set(itemsModel.toMap());
+    final itemRef = firebaseFirestore.collection('items');
+    itemRef.doc(uniqueIdName).set(itemsModel.toMap());
     clearMenuUploadForm();
     setState(() {
       uniqueIdName = '';
