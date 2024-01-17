@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_sellers_app/global/global.dart';
 import 'package:foodpanda_sellers_app/widgets/progress_bar.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -19,6 +21,7 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
   TextEditingController shortInforController = TextEditingController();
   TextEditingController titleController = TextEditingController();
   bool uploading = false;
+  String uniqueIdName = DateTime.now().millisecondsSinceEpoch.toString();
   takeImage(BuildContext mContent) {
     return showDialog(
       context: mContent,
@@ -284,7 +287,7 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
     });
   }
 
-  void validateUploadForm() {
+  void validateUploadForm() async {
     setState(() {
       uploading = true;
     });
@@ -295,8 +298,9 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
           uploading = true;
         });
         // upload image
-
+        String downloadUrl = await uploadImage(File(imageXFile!.path));
         // save info to firebase
+        saveInfo(downloadUrl, shortInforController.text, titleController.text);
       } else {
         showDialog(
           context: context,
@@ -311,5 +315,38 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
             const ErrorDialogWidget(message: 'Please pick a image for Menu.'),
       );
     }
+  }
+
+  Future<String> uploadImage(File file) async {
+    Reference reference = firebaseStorage.ref().child('menus');
+    UploadTask uploadTask = reference.child('$uniqueIdName.jpg').putFile(
+        file,
+        SettableMetadata(
+          contentType: "image/jpeg",
+        ));
+    TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() {});
+    String downloadUrl = await taskSnapshot.ref.getDownloadURL();
+    return downloadUrl;
+  }
+
+  void saveInfo(String downloadUrl, String shortInfo, String titleMenu) {
+    final ref = firebaseFirestore
+        .collection('sellers')
+        .doc(sharedPreferences!.getString('uid'))
+        .collection('menus');
+    ref.doc(uniqueIdName).set({
+      'menuId': uniqueIdName,
+      'sellersUid': sharedPreferences!.getString('uid'),
+      'menuInfo': shortInfo,
+      'menuTitle': titleMenu,
+      'publishedDate': DateTime.now(),
+      'status': 'available',
+      'thumbnail': downloadUrl,
+    });
+    clearMenuUploadForm();
+    setState(() {
+      uniqueIdName = '';
+      uploading = false;
+    });
   }
 }
