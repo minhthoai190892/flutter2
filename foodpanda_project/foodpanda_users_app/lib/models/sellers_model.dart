@@ -1,26 +1,26 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Sellers {
-  final String? sellerUid;
+class SellersModel {
+  final String? sellerUID;
   final String? sellerName;
   final String? sellerAvataUrl;
   final String? sellerEmail;
-  Sellers({
-    required this.sellerUid,
+  SellersModel({
+    required this.sellerUID,
     required this.sellerName,
     required this.sellerAvataUrl,
     required this.sellerEmail,
   });
 
-  Sellers copyWith({
+  SellersModel copyWith({
     String? sellerUid,
     String? sellerName,
     String? sellerAvataUrl,
     String? sellerEmail,
   }) {
-    return Sellers(
-      sellerUid: sellerUid ?? this.sellerUid,
+    return SellersModel(
+      sellerUID: sellerUid ?? this.sellerUID,
       sellerName: sellerName ?? this.sellerName,
       sellerAvataUrl: sellerAvataUrl ?? this.sellerAvataUrl,
       sellerEmail: sellerEmail ?? this.sellerEmail,
@@ -29,37 +29,37 @@ class Sellers {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sellerUid': sellerUid,
+      'sellerUID': sellerUID,
       'sellerName': sellerName,
       'sellerAvataUrl': sellerAvataUrl,
       'sellerEmail': sellerEmail,
     };
   }
 
-  factory Sellers.fromMap(Map<String, dynamic> map) {
-    return Sellers(
-      sellerUid: map['sellerUid'] ,
-      sellerName: map['sellerName'] ,
-      sellerAvataUrl: map['sellerAvatarurl'] ,
-      sellerEmail: map['sellerEmail'] ,
+  factory SellersModel.fromMap(Map<String, dynamic> map) {
+    return SellersModel(
+      sellerUID: map['sellerUID'],
+      sellerName: map['sellerName'],
+      sellerAvataUrl: map['sellerAvatarUrl'],
+      sellerEmail: map['sellerEmail'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Sellers.fromJson(String source) =>
-      Sellers.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory SellersModel.fromJson(String source) =>
+      SellersModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'Sellers(sellerUid: $sellerUid, sellerName: $sellerName, sellerAvataUrl: $sellerAvataUrl, sellerEmail: $sellerEmail)';
+    return 'Sellers(sellerUID: $sellerUID, sellerName: $sellerName, sellerAvataUrl: $sellerAvataUrl, sellerEmail: $sellerEmail)';
   }
 
   @override
-  bool operator ==(covariant Sellers other) {
+  bool operator ==(covariant SellersModel other) {
     if (identical(this, other)) return true;
 
-    return other.sellerUid == sellerUid &&
+    return other.sellerUID == sellerUID &&
         other.sellerName == sellerName &&
         other.sellerAvataUrl == sellerAvataUrl &&
         other.sellerEmail == sellerEmail;
@@ -67,7 +67,7 @@ class Sellers {
 
   @override
   int get hashCode {
-    return sellerUid.hashCode ^
+    return sellerUID.hashCode ^
         sellerName.hashCode ^
         sellerAvataUrl.hashCode ^
         sellerEmail.hashCode;

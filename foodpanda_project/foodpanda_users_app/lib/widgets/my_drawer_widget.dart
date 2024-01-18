@@ -6,8 +6,8 @@ import 'package:foodpanda_users_app/global/global.dart';
 import '../authentication/auth_screen.dart';
 import 'drawer_title_widget.dart';
 
-class MyDrawer extends StatelessWidget {
-  const MyDrawer({super.key});
+class MyDrawerWidget extends StatelessWidget {
+  const MyDrawerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
