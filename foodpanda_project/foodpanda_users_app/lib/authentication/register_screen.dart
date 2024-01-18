@@ -191,6 +191,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       'earnings': 0.0,
       'lat': position!.latitude,
       'lng': position!.longitude,
+      'userCart': ['garbageValue'],
     });
     // save data locally with SharedPreferences
     sharedPreferences = await SharedPreferences.getInstance();
@@ -198,6 +199,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     sharedPreferences!.setString('email', currentUser.email!);
     sharedPreferences!.setString('name', nameController.text.trim());
     sharedPreferences!.setString('photoUrl', userImageUrl);
+    sharedPreferences!.setStringList('userCart', ['garbageValue']);
   }
 
   @override

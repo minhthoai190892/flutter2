@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:foodpanda_users_app/models/items_model.dart';
 import 'package:number_inc_dec/number_inc_dec.dart';
 
+import '../assistant_method/assistant_method.dart';
 import '../widgets/my_app_bar.dart';
 
 class ItemDetailScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class ItemDetailScreen extends StatefulWidget {
 }
 
 class _ItemDetailScreenState extends State<ItemDetailScreen> {
-  final TextEditingController controller = TextEditingController();
+  final TextEditingController counterController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +33,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
             children: [
               Image.network(widget.model.thumbnailUrl),
               NumberInputPrefabbed.roundedButtons(
-                controller: controller,
+                controller: counterController,
                 incDecBgColor: Colors.amber,
                 min: 1,
                 max: 9,
@@ -67,7 +68,13 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
               ),
               InkWell(
                 onTap: () {
-                  // add to cart
+                  int itemCounter = int.parse(counterController.text);
+                  // 1. check if item exist already in cart
+                  // 2. add to cart
+                  addItemToCart(
+                      itemId: widget.model.itemId,
+                      context: context,
+                      itemCounter: itemCounter);
                 },
                 child: Container(
                   width: double.infinity,
