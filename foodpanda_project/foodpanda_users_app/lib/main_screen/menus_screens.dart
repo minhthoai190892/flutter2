@@ -14,7 +14,7 @@ class MenusScreen extends StatefulWidget {
     required this.model,
   }) : super(key: key);
   final SellersModel model;
-  
+
   @override
   State<MenusScreen> createState() => _HomeScreenState();
 }
@@ -116,7 +116,6 @@ class _HomeScreenState extends State<MenusScreen> {
                         );
                         return MenusDesignWidget(
                           model: model,
-                          
                           context: context,
                         );
                       },

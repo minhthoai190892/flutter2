@@ -41,6 +41,33 @@ class _HomeScreenState extends State<ItemsScreen> {
             ),
           ),
         ),
+        actions: [
+          Stack(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.shopping_cart,
+                  color: Colors.cyan,
+                ),
+              ),
+              const Icon(
+                Icons.brightness_1,
+                size: 20,
+                color: Colors.green,
+              ),
+              const Positioned(
+                left: 5,
+                child: Center(
+                  child: Text(
+                    '0',
+                    style: TextStyle(color: Colors.white, fontSize: 12),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
         backgroundColor: Colors.blue,
         title: const Text(
           'iFood',

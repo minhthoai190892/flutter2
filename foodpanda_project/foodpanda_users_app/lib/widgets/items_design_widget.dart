@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:foodpanda_users_app/main_screen/item_detail_screen.dart';
 
 import 'package:foodpanda_users_app/models/items_model.dart';
 
@@ -17,7 +18,12 @@ class ItemsDesignWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: onTap,
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ItemDetailScreen(model: model!),
+        ),
+      ),
       splashColor: Colors.amber,
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -39,9 +45,12 @@ class ItemsDesignWidget extends StatelessWidget {
                 style: const TextStyle(
                     color: Colors.cyan, fontSize: 20, fontFamily: 'TrainOne'),
               ),
-              Image.network(
-                model!.thumbnailUrl,
-                fit: BoxFit.cover,
+              Hero(
+                tag: 'a',
+                child: Image.network(
+                  model!.thumbnailUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
               const SizedBox(
                 height: 10,
