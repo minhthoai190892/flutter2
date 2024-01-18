@@ -42,9 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         backgroundColor: Colors.blue,
-        title: Text(
-          sharedPreferences!.getString('name')!,
-          style: const TextStyle(
+        title: const Text(
+          'iFood',
+          style: TextStyle(
             fontSize: 60,
             color: Colors.white,
             fontFamily: 'Lobster',
@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                       MenusScreen(model: model),
+                                      MenusScreen(model: model),
                                 )),
                             model: model,
                             context: context);

@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:foodpanda_users_app/main_screen/items_screens.dart';
 
 import 'package:foodpanda_users_app/models/menus_model.dart';
-import 'package:foodpanda_users_app/models/sellers_model.dart';
 
 class MenusDesignWidget extends StatelessWidget {
   const MenusDesignWidget({
@@ -18,7 +18,11 @@ class MenusDesignWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: onTap,
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ItemsScreen(model: model),
+          )),
       splashColor: Colors.amber,
       child: Padding(
         padding: const EdgeInsets.all(16),

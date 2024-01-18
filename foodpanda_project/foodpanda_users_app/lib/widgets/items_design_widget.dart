@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:foodpanda_users_app/models/items_model.dart';
-import 'package:foodpanda_users_app/models/sellers_model.dart';
 
 class ItemsDesignWidget extends StatelessWidget {
   const ItemsDesignWidget({
@@ -32,17 +31,17 @@ class ItemsDesignWidget extends StatelessWidget {
                 thickness: 3,
                 color: Colors.grey,
               ),
-              Image.network(
-                model!.thumbnailUrl,
-                fit: BoxFit.cover,
-              ),
               const SizedBox(
                 height: 10,
               ),
               Text(
-                model!.sellerName,
+                model!.title,
                 style: const TextStyle(
                     color: Colors.cyan, fontSize: 20, fontFamily: 'TrainOne'),
+              ),
+              Image.network(
+                model!.thumbnailUrl,
+                fit: BoxFit.cover,
               ),
               const SizedBox(
                 height: 10,

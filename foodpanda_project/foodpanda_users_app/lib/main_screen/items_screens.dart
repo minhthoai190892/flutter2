@@ -1,16 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:foodpanda_users_app/models/items_model.dart';
-import 'package:foodpanda_users_app/widgets/items_design_widget.dart';
+
+import 'package:foodpanda_users_app/models/menus_model.dart';
+
 import '../global/global.dart';
-import '../models/menus_model.dart';
-import '../widgets/sellers_design_widget.dart';
-import '../widgets/my_drawer_widget.dart';
+import '../models/items_model.dart';
+import '../widgets/items_design_widget.dart';
 import '../widgets/text_widget.dart';
 
 class ItemsScreen extends StatefulWidget {
-  const ItemsScreen({super.key});
-
+  const ItemsScreen({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
+  final MenusModel model;
   @override
   State<ItemsScreen> createState() => _HomeScreenState();
 }
@@ -47,15 +51,17 @@ class _HomeScreenState extends State<ItemsScreen> {
           ),
         ),
       ),
-      drawer: const MyDrawerWidget(),
+      // drawer: const MyDrawerWidget(),
       body: CustomScrollView(
         slivers: [
-          const TextWidget(text: 'My Menus'),
+          TextWidget(text: 'Items of ${widget.model.menuTitle}\'s Item'),
           StreamBuilder(
             stream: firebaseFirestore
                 .collection('sellers')
-                .doc(sharedPreferences!.getString('uid'))
+                .doc(widget.model.sellersUid)
                 .collection('menus')
+                .doc(widget.model.menuId)
+                .collection('items')
                 .orderBy(
                   'publishedDate',
                   descending: true,

@@ -2,13 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:foodpanda_users_app/models/sellers_model.dart';
-
 import 'package:foodpanda_users_app/widgets/menus_design_widget.dart';
 
 import '../global/global.dart';
 import '../models/menus_model.dart';
-import '../widgets/my_drawer_widget.dart';
-import '../widgets/sellers_design_widget.dart';
 import '../widgets/text_widget.dart';
 
 class MenusScreen extends StatefulWidget {
@@ -17,6 +14,7 @@ class MenusScreen extends StatefulWidget {
     required this.model,
   }) : super(key: key);
   final SellersModel model;
+  
   @override
   State<MenusScreen> createState() => _HomeScreenState();
 }
@@ -89,7 +87,7 @@ class _HomeScreenState extends State<MenusScreen> {
           ),
         ],
       ),
-      drawer: const MyDrawerWidget(),
+      // drawer: const MyDrawerWidget(),
       body: CustomScrollView(
         slivers: [
           TextWidget(text: '${widget.model.sellerName} Menus'),
@@ -118,7 +116,7 @@ class _HomeScreenState extends State<MenusScreen> {
                         );
                         return MenusDesignWidget(
                           model: model,
-                          onTap: () {},
+                          
                           context: context,
                         );
                       },
