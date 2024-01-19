@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:foodpanda_users_app/models/sellers_model.dart';
 import 'package:foodpanda_users_app/widgets/menus_design_widget.dart';
+import 'package:foodpanda_users_app/widgets/my_app_bar.dart';
 
 import '../global/global.dart';
 import '../models/menus_model.dart';
@@ -23,70 +24,7 @@ class _HomeScreenState extends State<MenusScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
-        automaticallyImplyLeading: true,
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.cyan,
-                Colors.amber,
-              ],
-              begin: FractionalOffset(0.0, 0.0),
-              end: FractionalOffset(1.0, 0.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.mirror,
-            ),
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        title: const Text(
-          'iFood',
-          style: TextStyle(
-            fontSize: 30,
-            color: Colors.white,
-            fontFamily: 'Lobster',
-          ),
-        ),
-        actions: [
-          Stack(
-            children: [
-              IconButton(
-                onPressed: () {
-                  // send user to cart screen
-
-                  //   Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const MenusUploadScreen(),
-                  //   ),
-                  // );
-                },
-                icon: const Icon(
-                  Icons.shopping_cart,
-                  color: Colors.cyan,
-                ),
-              ),
-              const Icon(
-                Icons.brightness_1,
-                size: 20,
-                color: Colors.green,
-              ),
-              const Positioned(
-                left: 5,
-                child: Center(
-                  child: Text(
-                    '0',
-                    style: TextStyle(color: Colors.white, fontSize: 12),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+      appBar: const MyAppBarWidget(),
       // drawer: const MyDrawerWidget(),
       body: CustomScrollView(
         slivers: [

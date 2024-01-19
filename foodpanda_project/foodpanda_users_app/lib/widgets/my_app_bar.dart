@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:foodpanda_users_app/assistant_method/cart_item_counter.dart';
+import 'package:provider/provider.dart';
 
 class MyAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBarWidget({
@@ -41,12 +42,14 @@ class MyAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
               size: 20,
               color: Colors.green,
             ),
-            const Positioned(
+            Positioned(
               left: 5,
               child: Center(
-                child: Text(
-                  '0',
-                  style: TextStyle(color: Colors.white, fontSize: 12),
+                child: Consumer<CartItemCounter>(
+                  builder: (context, value, child) => Text(
+                    value.count.toString(),
+                    style: const TextStyle(color: Colors.white, fontSize: 12),
+                  ),
                 ),
               ),
             ),
@@ -66,6 +69,5 @@ class MyAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-
-  Size get preferredSize =>  const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

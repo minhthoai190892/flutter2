@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_USERS_APP-check-item-exists
+git checkout -b FOODPANDEA_USERS_APP-show-quantity-product-by-provider
 git add .
-git commit -m "FOODPANDEA_USERS_APP-check-item-exists"
-git push -u origin FOODPANDEA_USERS_APP-check-item-exists
+git commit -m "FOODPANDEA_USERS_APP-show-quantity-product-by-provider"
+git push -u origin FOODPANDEA_USERS_APP-show-quantity-product-by-provider
 
 
 
