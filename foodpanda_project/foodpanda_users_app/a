@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_USERS_APP-add-to-cart-method
+git checkout -b FOODPANDEA_USERS_APP-check-item-exists
 git add .
-git commit -m "FOODPANDEA_USERS_APP-add-to-cart-method"
-git push -u origin FOODPANDEA_USERS_APP-add-to-cart-method
+git commit -m "FOODPANDEA_USERS_APP-check-item-exists"
+git push -u origin FOODPANDEA_USERS_APP-check-item-exists
 
 
 

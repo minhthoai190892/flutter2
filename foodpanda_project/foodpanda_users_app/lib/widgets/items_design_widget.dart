@@ -45,12 +45,9 @@ class ItemsDesignWidget extends StatelessWidget {
                 style: const TextStyle(
                     color: Colors.cyan, fontSize: 20, fontFamily: 'TrainOne'),
               ),
-              Hero(
-                tag: 'a',
-                child: Image.network(
-                  model!.thumbnailUrl,
-                  fit: BoxFit.cover,
-                ),
+              Image.network(
+                model!.thumbnailUrl,
+                fit: BoxFit.cover,
               ),
               const SizedBox(
                 height: 10,

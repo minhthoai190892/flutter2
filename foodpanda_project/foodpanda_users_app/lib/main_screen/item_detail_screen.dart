@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:foodpanda_users_app/models/items_model.dart';
 import 'package:number_inc_dec/number_inc_dec.dart';
@@ -70,11 +71,15 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                 onTap: () {
                   int itemCounter = int.parse(counterController.text);
                   // 1. check if item exist already in cart
-                  // 2. add to cart
-                  addItemToCart(
-                      itemId: widget.model.itemId,
-                      context: context,
-                      itemCounter: itemCounter);
+                  List<String> separateItemsIDList = separateItemIDs();
+                  separateItemsIDList.contains(widget.model.itemId)
+                      ? Fluttertoast.showToast(msg: 'Item is already in Cart')
+                      :
+                      // 2. add to cart
+                      addItemToCart(
+                          itemId: widget.model.itemId,
+                          context: context,
+                          itemCounter: itemCounter);
                 },
                 child: Container(
                   width: double.infinity,
