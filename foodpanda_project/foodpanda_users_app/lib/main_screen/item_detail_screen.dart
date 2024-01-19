@@ -23,7 +23,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBarWidget(),
+      appBar: MyAppBarWidget(sellerId: widget.model.sellerUID),
       // drawer: const MyDrawerWidget(),
 
       body: SingleChildScrollView(

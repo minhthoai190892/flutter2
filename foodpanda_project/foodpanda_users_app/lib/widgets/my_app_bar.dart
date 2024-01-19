@@ -1,12 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/assistant_method/cart_item_counter.dart';
 import 'package:provider/provider.dart';
+
+import 'package:foodpanda_users_app/assistant_method/cart_item_counter.dart';
+import 'package:foodpanda_users_app/main_screen/cart_screen.dart';
 
 class MyAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBarWidget({
-    super.key,
-  });
-
+    Key? key,
+    this.sellerId,
+  }) : super(key: key);
+  final String? sellerId;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -31,7 +35,13 @@ class MyAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         Stack(
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>  CartScreen(sellerId: sellerId),
+                    ));
+              },
               icon: const Icon(
                 Icons.shopping_cart,
                 color: Colors.cyan,
