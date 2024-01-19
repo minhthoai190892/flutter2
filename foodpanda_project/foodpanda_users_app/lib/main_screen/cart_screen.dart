@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:foodpanda_users_app/widgets/my_app_bar.dart';
 
+import '../assistant_method/assistant_method.dart';
+
 class CartScreen extends StatefulWidget {
   const CartScreen({
     Key? key,
@@ -14,6 +16,16 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    List<int> a = separateItemQuantities();
+    for (var i = 0; i < a.length; i++) {
+      print(a[i]);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
