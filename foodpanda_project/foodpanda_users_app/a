@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_USERS_APP-Fetch-items-Quantity-Numbers-Separately
+git checkout -b FOODPANDEA_USERS_APP-show-user-cart-item
 git add .
-git commit -m "FOODPANDEA_USERS_APP-Fetch-items-Quantity-Numbers-Separately"
-git push -u origin FOODPANDEA_USERS_APP-Fetch-items-Quantity-Numbers-Separately
+git commit -m "FOODPANDEA_USERS_APP-show-user-cart-item"
+git push -u origin FOODPANDEA_USERS_APP-show-user-cart-item
 
 
 

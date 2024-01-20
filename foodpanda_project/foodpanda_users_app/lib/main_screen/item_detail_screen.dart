@@ -6,7 +6,7 @@ import 'package:foodpanda_users_app/models/items_model.dart';
 import 'package:number_inc_dec/number_inc_dec.dart';
 
 import '../assistant_method/assistant_method.dart';
-import '../widgets/my_app_bar.dart';
+import '../widgets/my_app_bar_widget.dart';
 
 class ItemDetailScreen extends StatefulWidget {
   const ItemDetailScreen({

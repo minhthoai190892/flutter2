@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'package:foodpanda_users_app/models/menus_model.dart';
-import 'package:foodpanda_users_app/widgets/my_app_bar.dart';
+import 'package:foodpanda_users_app/widgets/my_app_bar_widget.dart';
 
 import '../global/global.dart';
 import '../models/items_model.dart';

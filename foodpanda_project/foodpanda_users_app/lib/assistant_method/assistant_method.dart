@@ -43,7 +43,7 @@ separateItemIDs() {
   return separateItemIDList;
 }
 
-separateItemQuantities() {
+List<int> separateItemQuantities() {
   List<int> separateItemQuantityList = [];
   List<String> defaultItemList = [];
   int i = 1;
