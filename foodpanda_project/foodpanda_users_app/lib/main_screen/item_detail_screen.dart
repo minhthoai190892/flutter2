@@ -4,9 +4,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:foodpanda_users_app/models/items_model.dart';
 import 'package:number_inc_dec/number_inc_dec.dart';
+import 'package:provider/provider.dart';
 
 import '../assistant_method/assistant_method.dart';
+import '../assistant_method/cart_item_counter.dart';
 import '../widgets/my_app_bar_widget.dart';
+import 'cart_screen.dart';
 
 class ItemDetailScreen extends StatefulWidget {
   const ItemDetailScreen({
@@ -23,7 +26,69 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBarWidget(sellerId: widget.model.sellerUID),
+      appBar:  AppBar(
+      iconTheme: const IconThemeData(color: Colors.white),
+      automaticallyImplyLeading: true,
+      centerTitle: true,
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.cyan,
+              Colors.amber,
+            ],
+            begin: FractionalOffset(0.0, 0.0),
+            end: FractionalOffset(1.0, 0.0),
+            stops: [0.0, 1.0],
+            tileMode: TileMode.mirror,
+          ),
+        ),
+      ),
+      actions: [
+        Stack(
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>  CartScreen(sellerId: widget.model.sellerUID),
+                    ));
+              },
+              icon: const Icon(
+                Icons.shopping_cart,
+                color: Colors.cyan,
+              ),
+            ),
+            const Icon(
+              Icons.brightness_1,
+              size: 20,
+              color: Colors.green,
+            ),
+            Positioned(
+              left: 5,
+              child: Center(
+                child: Consumer<CartItemCounter>(
+                  builder: (context, value, child) => Text(
+                    value.count.toString(),
+                    style: const TextStyle(color: Colors.white, fontSize: 12),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+      backgroundColor: Colors.blue,
+      title: const Text(
+        'iFood',
+        style: TextStyle(
+          fontSize: 40,
+          color: Colors.white,
+          fontFamily: 'Signatra',
+        ),
+      ),
+    ),
       // drawer: const MyDrawerWidget(),
 
       body: SingleChildScrollView(

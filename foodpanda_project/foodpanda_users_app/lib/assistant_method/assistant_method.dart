@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:foodpanda_users_app/assistant_method/cart_item_counter.dart';
 import 'package:foodpanda_users_app/global/global.dart';
+import 'package:foodpanda_users_app/splash_screen/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 void addItemToCart(
@@ -10,6 +11,7 @@ void addItemToCart(
     required int itemCounter}) {
   List<String> tempList = sharedPreferences!.getStringList('userCart')!;
   tempList.add('$itemId:$itemCounter');
+
   firebaseFirestore
       .collection('users')
       .doc(firebaseAuth.currentUser!.uid)
@@ -53,7 +55,7 @@ List<int> separateItemQuantities() {
   for (i; i < defaultItemList.length; i++) {
     //56557657:7
     String item = defaultItemList[i].toString();
-    print("Test : =>>>"+defaultItemList[i].toString());
+    print("Test : =>>>" + defaultItemList[i].toString());
 
     //0=:
     //1=7
@@ -72,4 +74,17 @@ List<int> separateItemQuantities() {
   print(separateItemQuantityList);
 
   return separateItemQuantityList;
+}
+
+clearCartNow(BuildContext context) {
+  sharedPreferences!.setStringList('userCart', ['garbageValue']);
+  List<String>? emptyList = sharedPreferences!.getStringList('userCart');
+  firebaseFirestore
+      .collection('users')
+      .doc(firebaseAuth.currentUser!.uid)
+      .update({"userCart": emptyList}).then((value) {
+    sharedPreferences!.setStringList('userCart', emptyList!);
+    Provider.of<CartItemCounter>(context,listen: false).displayCartListItemsNumber();
+   
+  });
 }

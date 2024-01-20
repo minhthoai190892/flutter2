@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:foodpanda_users_app/assistant_method/assistant_method.dart';
 import 'package:foodpanda_users_app/main_screen/menus_screens.dart';
 import 'package:foodpanda_users_app/models/sellers_model.dart';
 import 'package:foodpanda_users_app/widgets/sellers_design_widget.dart';
@@ -18,6 +19,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List sliderList = sliders;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    clearCartNow(context);
+  }
 
   @override
   Widget build(BuildContext context) {
