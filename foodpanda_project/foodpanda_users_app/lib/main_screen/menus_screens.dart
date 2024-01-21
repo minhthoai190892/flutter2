@@ -1,22 +1,26 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import '../global/global.dart';
-import 'item_screen.dart';
-import '../model/menus_model.dart';
-import '../upload_screens/munus_upload_screens.dart';
-import '../widgets/info_design_widget.dart';
-import '../widgets/my_drawer.dart';
+import 'package:foodpanda_users_app/models/sellers_model.dart';
+import 'package:foodpanda_users_app/widgets/menus_design_widget.dart';
+import 'package:foodpanda_users_app/widgets/my_app_bar_widget.dart';
 
+import '../global/global.dart';
+import '../models/menus_model.dart';
 import '../widgets/text_widget.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class MenusScreen extends StatefulWidget {
+  const MenusScreen({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
+  final SellersModel model;
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MenusScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<MenusScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,38 +42,25 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
+       
         backgroundColor: Colors.blue,
-        title: Text(
-          sharedPreferences!.getString('name')!,
-          style: const TextStyle(
-            fontSize: 30,
+        title: const Text(
+          'iFood',
+          style: TextStyle(
+            fontSize: 40,
             color: Colors.white,
-            fontFamily: 'Lobster',
+            fontFamily: 'Signatra',
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const MenusUploadScreen(),
-              ),
-            ),
-            icon: const Icon(
-              Icons.post_add,
-              color: Colors.cyan,
-            ),
-          ),
-        ],
       ),
-      drawer: const MyDrawerWidget(),
+      // drawer: const MyDrawerWidget(),
       body: CustomScrollView(
         slivers: [
-          const TextWidget(text: 'My Menus'),
+          TextWidget(text: '${widget.model.sellerName} Menus'),
           StreamBuilder(
             stream: firebaseFirestore
                 .collection('sellers')
-                .doc(sharedPreferences!.getString('uid'))
+                .doc(widget.model.sellerUID)
                 .collection('menus')
                 .orderBy(
                   'publishedDate',
@@ -86,15 +77,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       staggeredTileBuilder: (index) =>
                           const StaggeredTile.fit(1),
                       itemBuilder: (context, index) {
-                        Menus model = Menus.fromMap(
+                        MenusModel model = MenusModel.fromMap(
                           snapshot.data!.docs[index].data(),
                         );
-                        return InfoDesignWidget(
-                          onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ItemScreen(model: model),
-                              )),
+                        return MenusDesignWidget(
                           model: model,
                           context: context,
                         );

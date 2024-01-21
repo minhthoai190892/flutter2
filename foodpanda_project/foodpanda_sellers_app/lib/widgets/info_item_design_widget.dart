@@ -1,16 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:foodpanda_sellers_app/model/items_model.dart';
 
-import 'package:foodpanda_sellers_app/model/menus_model.dart';
 
-class InfoDesignWidget extends StatelessWidget {
-  const InfoDesignWidget({
+class InfoItemDesignWidget extends StatelessWidget {
+  const InfoItemDesignWidget({
     Key? key,
     required this.model,
     required this.context,
     required this.onTap,
   }) : super(key: key);
-  final Menus? model;
+  final ItemsModel model;
   final BuildContext context;
   final VoidCallback onTap;
   @override
@@ -31,8 +31,16 @@ class InfoDesignWidget extends StatelessWidget {
                 thickness: 3,
                 color: Colors.grey,
               ),
+              Text(
+                model.title,
+                style: const TextStyle(
+                    color: Colors.cyan, fontSize: 20, fontFamily: 'TrainOne'),
+              ),
+              // const SizedBox(
+              //   height: 10,
+              // ),
               Image.network(
-                model!.thumbnail,
+                model.thumbnailUrl,
                 fit: BoxFit.cover,
                 // height: 265,
                 // width: size.width,
@@ -41,15 +49,15 @@ class InfoDesignWidget extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                model!.menuTitle,
+                model.shortInfo,
                 style: const TextStyle(
-                    color: Colors.cyan, fontSize: 20, fontFamily: 'TrainOne'),
+                    color: Colors.grey, fontSize: 12, fontFamily: 'TrainOne'),
               ),
-              const SizedBox(
+               const SizedBox(
                 height: 10,
               ),
               Text(
-                model!.menuInfo,
+                model.publishedDate.toString(),
                 style: const TextStyle(
                     color: Colors.grey, fontSize: 12, fontFamily: 'TrainOne'),
               ),

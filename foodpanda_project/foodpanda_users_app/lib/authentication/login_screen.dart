@@ -76,6 +76,9 @@ class _LoginScreenState extends State<LoginScreen> {
         sharedPreferences!.setString('name', snapshot.data()!['userName']);
         sharedPreferences!
             .setString('photoUrl', snapshot.data()!['userAvatarurl']);
+        List<String> userCartList = snapshot.data()!['userCart'].cast<String>();
+        sharedPreferences!.setStringList('userCart', userCartList);
+
         Navigator.pop(context);
         Navigator.push(
           context,

@@ -1,10 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:foodpanda_users_app/assistant_method/assistant_method.dart';
+import 'package:foodpanda_users_app/main_screen/menus_screens.dart';
 import 'package:foodpanda_users_app/models/sellers_model.dart';
-import 'package:foodpanda_users_app/widgets/info_design_widget.dart';
-import 'package:foodpanda_users_app/widgets/my_drawer.dart';
+import 'package:foodpanda_users_app/widgets/sellers_design_widget.dart';
+import 'package:foodpanda_users_app/widgets/my_drawer_widget.dart';
 
 import '../global/global.dart';
 import '../slider_data/slider_data.dart';
@@ -18,6 +19,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List sliderList = sliders;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    clearCartNow(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,16 +49,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         backgroundColor: Colors.blue,
-        title: Text(
-          sharedPreferences!.getString('name')!,
-          style: const TextStyle(
+        title: const Text(
+          'iFood',
+          style: TextStyle(
             fontSize: 60,
             color: Colors.white,
             fontFamily: 'Lobster',
           ),
         ),
       ),
-      drawer: const MyDrawer(),
+      drawer: const MyDrawerWidget(),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -110,10 +117,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       staggeredTileBuilder: (index) =>
                           const StaggeredTile.fit(1),
                       itemBuilder: (context, index) {
-                        Sellers model =
-                            Sellers.fromMap(snapshot.data!.docs[index].data());
-                        print('Avata:${model.sellerAvataUrl}');
-                        return InfoDesignWidget(model: model, context: context);
+                        SellersModel model = SellersModel.fromMap(
+                            snapshot.data!.docs[index].data());
+                        return SellersDesignWidget(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      MenusScreen(model: model),
+                                )),
+                            model: model,
+                            context: context);
                       },
                       itemCount: snapshot.data!.docs.length);
             },
