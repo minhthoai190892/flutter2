@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:foodpanda_users_app/main_screen/save_address_screen.dart';
 
 class AddressScreen extends StatefulWidget {
   const AddressScreen({
@@ -69,6 +70,11 @@ class _AddressScreenState extends State<AddressScreen> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           // add address
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SaveAddressScreen(),
+              ));
         },
         icon: const Icon(
           Icons.add_location,
