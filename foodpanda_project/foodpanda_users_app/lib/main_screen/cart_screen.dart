@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:foodpanda_users_app/assistant_method/total_amount.dart';
 import 'package:foodpanda_users_app/global/global.dart';
 import 'package:foodpanda_users_app/models/items_model.dart';
 import 'package:foodpanda_users_app/widgets/cart_tiem_design_widget.dart';
 
-import 'package:foodpanda_users_app/widgets/my_app_bar_widget.dart';
 import 'package:foodpanda_users_app/widgets/progress_bar_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -26,11 +26,14 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   List<int>? quantityNumber;
+  num totalAmoun = 0;
   final int a = 8;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    totalAmoun = 0;
+    Provider.of<TotalAmount>(context, listen: false).displayTotalAmount(0);
     quantityNumber = separateItemQuantities();
   }
 
@@ -102,7 +105,28 @@ class _CartScreenState extends State<CartScreen> {
       ),
       body: CustomScrollView(
         slivers: [
-          const TextWidget(text: 'Total Amount = 1200'),
+          const TextWidget(text: 'My Cart List'),
+          SliverToBoxAdapter(
+            child: Consumer2<TotalAmount, CartItemCounter>(
+              builder: (context, totalAmountProvider, cartItemCounterProvider,
+                  child) {
+                return Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Center(
+                    child: cartItemCounterProvider.count == 0
+                        ? Container()
+                        : Text(
+                            'Total Price: ${totalAmountProvider.tAmount.toString()}',
+                            style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500),
+                          ),
+                  ),
+                );
+              },
+            ),
+          ),
           StreamBuilder(
             stream: firebaseFirestore
                 .collection('items')
@@ -123,7 +147,23 @@ class _CartScreenState extends State<CartScreen> {
                             (context, index) {
                               ItemsModel model = ItemsModel.fromMap(
                                   snapshot.data!.docs[index].data());
-
+                              if (index == 0) {
+                                totalAmoun = 0;
+                                totalAmoun +=
+                                    model.price * quantityNumber![index];
+                              } else {
+                                totalAmoun +=
+                                    model.price * quantityNumber![index];
+                              }
+                              if (snapshot.data!.docs.length - 1 == index) {
+                                WidgetsBinding.instance
+                                    .addPostFrameCallback((timeStamp) {
+                                  Provider.of<TotalAmount>(context,
+                                          listen: false)
+                                      .displayTotalAmount(
+                                          totalAmoun.toDouble());
+                                });
+                              }
                               return CartItemDesignWidget(
                                   model: model,
                                   quantity: quantityNumber![index],
@@ -150,7 +190,7 @@ class _CartScreenState extends State<CartScreen> {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MySplashScreen(),
+                    builder: (context) => const MySplashScreen(),
                   ));
               Fluttertoast.showToast(msg: 'Cart has been cleared');
             },

@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 
 import '../assistant_method/assistant_method.dart';
 import '../assistant_method/cart_item_counter.dart';
-import '../widgets/my_app_bar_widget.dart';
 import 'cart_screen.dart';
 
 class ItemDetailScreen extends StatefulWidget {

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:foodpanda_users_app/assistant_method/cart_item_counter.dart';
 import 'package:foodpanda_users_app/global/global.dart';
-import 'package:foodpanda_users_app/splash_screen/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 void addItemToCart(
