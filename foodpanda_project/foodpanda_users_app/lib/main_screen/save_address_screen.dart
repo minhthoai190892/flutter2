@@ -1,9 +1,15 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda_users_app/widgets/text_field_widget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:foodpanda_users_app/global/global.dart';
+import 'package:foodpanda_users_app/models/address_model.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../widgets/simple_app_bar_widget.dart';
+import '../widgets/text_field_widget.dart';
 
 class SaveAddressScreen extends StatelessWidget {
   SaveAddressScreen({super.key});
@@ -54,8 +60,7 @@ class SaveAddressScreen extends StatelessWidget {
     // continue accessing the position of the device.
     Position newPosition = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-    print(newPosition.latitude);
-    print(newPosition.longitude);
+
     position = newPosition;
     placemarks =
         await placemarkFromCoordinates(position.latitude, position.longitude);
@@ -63,13 +68,12 @@ class SaveAddressScreen extends StatelessWidget {
     completeAddress =
         '${pMark.subThoroughfare}, ${pMark.thoroughfare},${pMark.subLocality} ${pMark.locality}, ${pMark.subAdministrativeArea}, ${pMark.administrativeArea}  ${pMark.postalCode}, ${pMark.country}';
     _locationController.text = completeAddress;
-    _nameController.text =
+    _flatNumberController.text =
         '${pMark.subThoroughfare}, ${pMark.thoroughfare},${pMark.subLocality}';
     _cityController.text =
         '${pMark.subAdministrativeArea}, ${pMark.administrativeArea} ${pMark.postalCode}';
     _statController.text = '${pMark.country}';
     _completeAddressController.text = completeAddress;
-    print('Location: ${_locationController.text}');
   }
 
   @override
@@ -154,7 +158,31 @@ class SaveAddressScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          if (_formKey.currentState!.validate()) {
+            final model = AddressModel(
+                    name: _nameController.text.trim(),
+                    phoneNumber: _phoneNumberController.text.trim(),
+                    flatNumber: _flatNumberController.text.trim(),
+                    city: _cityController.text.trim(),
+                    state: _statController.text.trim(),
+                    fullAddress: completeAddress,
+                    lat: position.latitude,
+                    long: position.longitude)
+                .toMap();
+            firebaseFirestore
+                .collection('users')
+                .doc(firebaseAuth.currentUser!.uid)
+                .collection('userAddresss')
+                .doc(DateTime.now().microsecondsSinceEpoch.toString())
+                .set(model)
+                .then((value) {
+              _formKey.currentState!.reset();
+              return Fluttertoast.showToast(
+                  msg: 'New Address has been saved successfully');
+            });
+          }
+        },
         label: const Text('Save Now'),
         icon: const Icon(Icons.save),
       ),
