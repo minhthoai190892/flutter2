@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:foodpanda_users_app/assistant_method/total_amount.dart';
 import 'package:foodpanda_users_app/global/global.dart';
+import 'package:foodpanda_users_app/main_screen/address_screen.dart';
 import 'package:foodpanda_users_app/models/items_model.dart';
 import 'package:foodpanda_users_app/widgets/cart_tiem_design_widget.dart';
 
@@ -26,13 +27,13 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   List<int>? quantityNumber;
-  num totalAmoun = 0;
+  num totalAmount = 0;
   final int a = 8;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    totalAmoun = 0;
+    totalAmount = 0;
     Provider.of<TotalAmount>(context, listen: false).displayTotalAmount(0);
     quantityNumber = separateItemQuantities();
   }
@@ -148,11 +149,11 @@ class _CartScreenState extends State<CartScreen> {
                               ItemsModel model = ItemsModel.fromMap(
                                   snapshot.data!.docs[index].data());
                               if (index == 0) {
-                                totalAmoun = 0;
-                                totalAmoun +=
+                                totalAmount = 0;
+                                totalAmount +=
                                     model.price * quantityNumber![index];
                               } else {
-                                totalAmoun +=
+                                totalAmount +=
                                     model.price * quantityNumber![index];
                               }
                               if (snapshot.data!.docs.length - 1 == index) {
@@ -161,7 +162,7 @@ class _CartScreenState extends State<CartScreen> {
                                   Provider.of<TotalAmount>(context,
                                           listen: false)
                                       .displayTotalAmount(
-                                          totalAmoun.toDouble());
+                                          totalAmount.toDouble());
                                 });
                               }
                               return CartItemDesignWidget(
@@ -199,7 +200,14 @@ class _CartScreenState extends State<CartScreen> {
             color: Colors.cyan,
           ),
           FloatingButtonWidget(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>  AddressScreen(totalAmount: totalAmount.toDouble(), sellerId: widget.sellerId!),
+                ),
+              );
+            },
             text: 'Check Out',
             iconData: Icons.navigate_next,
             color: Colors.cyan,

@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_USERS_APP-total-price
+git checkout -b FOODPANDEA_USERS_APP-add-address-location-ui
 git add .
-git commit -m "FOODPANDEA_USERS_APP-total-price"
-git push -u origin FOODPANDEA_USERS_APP-total-price
+git commit -m "FOODPANDEA_USERS_APP-add-address-location-ui"
+git push -u origin FOODPANDEA_USERS_APP-add-address-location-ui
 
 
 
