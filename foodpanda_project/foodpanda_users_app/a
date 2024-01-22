@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_USERS_APP-save-address-screen-ui
+git checkout -b FOODPANDEA_USERS_APP-get-location-user
 git add .
-git commit -m "FOODPANDEA_USERS_APP-save-address-screen-ui"
-git push -u origin FOODPANDEA_USERS_APP-save-address-screen-ui
+git commit -m "FOODPANDEA_USERS_APP-get-location-user"
+git push -u origin FOODPANDEA_USERS_APP-get-location-user
 
 
 
