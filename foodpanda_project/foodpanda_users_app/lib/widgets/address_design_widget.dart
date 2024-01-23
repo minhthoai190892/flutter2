@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:foodpanda_users_app/assistant_method/address_changer.dart';
+import 'package:foodpanda_users_app/main_screen/placed_order_screen.dart';
+import 'package:foodpanda_users_app/maps/maps.dart';
 
 import 'package:foodpanda_users_app/models/address_model.dart';
 import 'package:provider/provider.dart';
@@ -13,14 +15,14 @@ class AddressDesignWidget extends StatefulWidget {
     required this.value,
     required this.addressId,
     required this.totalAmount,
-    required this.selleruID,
+    required this.sellerID,
   }) : super(key: key);
   final AddressModel model;
   final int currentIndex;
   final int value;
   final String addressId;
   final double totalAmount;
-  final String selleruID;
+  final String sellerID;
   @override
   State<AddressDesignWidget> createState() => _AddressDesignWidgetState();
 }
@@ -132,7 +134,11 @@ class _AddressDesignWidgetState extends State<AddressDesignWidget> {
               ],
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                MapsUtils.openMapWithPosition(
+                    widget.model.lat, widget.model.long);
+                // MapsUtils.openMapWithAddress(widget.model.fullAddress);
+              },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black54),
               child: const Text(
                 'Click on Maps',
@@ -141,7 +147,17 @@ class _AddressDesignWidgetState extends State<AddressDesignWidget> {
             ),
             widget.value == Provider.of<AddressChanger>(context).count
                 ? ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PlacedOrderScreen(
+                              addressId: widget.addressId,
+                              totalAmount: widget.totalAmount,
+                              sellerID: widget.sellerID,
+                            ),
+                          ));
+                    },
                     child: const Text('Proceed'),
                   )
                 : Container(),

@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_USERS_APP-read-and-display-information-user
+git checkout -b FOODPANDEA_USERS_APP-place-order-ui
 git add .
-git commit -m "FOODPANDEA_USERS_APP-read-and-display-information-user"
-git push -u origin FOODPANDEA_USERS_APP-read-and-display-information-user
+git commit -m "FOODPANDEA_USERS_APP-place-order-ui"
+git push -u origin FOODPANDEA_USERS_APP-place-order-ui
 
 
 

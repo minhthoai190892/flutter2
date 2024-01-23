@@ -90,8 +90,7 @@ class _AddressScreenState extends State<AddressScreen> {
                               itemCount: snapshot.data!.docs.length,
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
-                                print(
-                                    "addressId: ${snapshot.data!.docs[index].id}");
+                                print("addressId: ${widget.sellerId}");
                                 return AddressDesignWidget(
                                   model: AddressModel.fromMap(
                                       snapshot.data!.docs[index].data()),
@@ -99,7 +98,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                   value: index,
                                   addressId: snapshot.data!.docs[index].id,
                                   totalAmount: widget.totalAmount,
-                                  selleruID: widget.sellerId,
+                                  sellerID: widget.sellerId,
                                 );
                               },
                             );
