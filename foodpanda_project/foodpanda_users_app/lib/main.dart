@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_users_app/assistant_method/address_changer.dart';
 import 'package:foodpanda_users_app/assistant_method/cart_item_counter.dart';
 import 'package:foodpanda_users_app/assistant_method/total_amount.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => CartItemCounter(),),
-        ChangeNotifierProvider(create: (context) => TotalAmount(),)
+        ChangeNotifierProvider(create: (context) => TotalAmount(),),
+        ChangeNotifierProvider(create: (context) => AddressChanger(),),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
