@@ -1,5 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:foodpanda_users_app/assistant_method/assistant_method.dart';
+import 'package:foodpanda_users_app/global/global.dart';
+import 'package:foodpanda_users_app/main_screen/home_screen.dart';
 
 class PlacedOrderScreen extends StatefulWidget {
   const PlacedOrderScreen({
@@ -16,6 +20,61 @@ class PlacedOrderScreen extends StatefulWidget {
 }
 
 class _PlacedOrderScreenState extends State<PlacedOrderScreen> {
+  String orderId = DateTime.now().microsecondsSinceEpoch.toString();
+  addOrderDetails() {
+    writeOrderDetailsForUser({
+      'addressID': widget.addressId,
+      'totalAmount': widget.totalAmount,
+      'orderBy': sharedPreferences!.getString('uid'),
+      'productIDs': sharedPreferences!.getStringList('userCart'),
+      'paymentDetails': 'Cash on Delivery',
+      'orderTime': orderId,
+      'isSuccess': 'isSuccess',
+      'sellerUID': widget.sellerID,
+      'riderUID': '',
+      'status': 'normal',
+      'orderId': orderId,
+    });
+    writeOrderDetailsForSeller({
+      'addressID': widget.addressId,
+      'totalAmount': widget.totalAmount,
+      'orderBy': sharedPreferences!.getString('uid'),
+      'productIDs': sharedPreferences!.getStringList('userCart'),
+      'paymentDetails': 'Cash on Delivery',
+      'orderTime': orderId,
+      'isSuccess': 'isSuccess',
+      'sellerUID': widget.sellerID,
+      'riderUID': '',
+      'status': 'normal',
+      'orderId': orderId,
+    }).whenComplete(() {
+      clearCartNow(context);
+      setState(() {
+        orderId = '';
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeScreen(),
+            ));
+        Fluttertoast.showToast(
+            msg: 'Congratulations, Order has been placed successfully');
+      });
+    });
+  }
+
+  Future writeOrderDetailsForUser(Map<String, dynamic> data) async {
+    await firebaseFirestore
+        .collection('users')
+        .doc(sharedPreferences!.getString('uid'))
+        .collection('orders')
+        .doc(orderId)
+        .set(data);
+  }
+
+  Future writeOrderDetailsForSeller(Map<String, dynamic> data) async {
+    await firebaseFirestore.collection('orders').doc(orderId).set(data);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -42,15 +101,7 @@ class _PlacedOrderScreenState extends State<PlacedOrderScreen> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.cyan),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PlacedOrderScreen(
-                        addressId: widget.addressId,
-                        totalAmount: widget.totalAmount,
-                        sellerID: widget.sellerID,
-                      ),
-                    ));
+                addOrderDetails();
               },
               child: const Text('Place Order'),
             )
