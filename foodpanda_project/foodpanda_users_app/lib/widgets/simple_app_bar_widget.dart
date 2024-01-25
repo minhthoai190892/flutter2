@@ -1,11 +1,12 @@
-
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-class SimpleAppBar extends StatelessWidget  implements PreferredSizeWidget{
+class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
   const SimpleAppBar({
-    super.key,
-  });
-
+    Key? key,
+    this.title,
+  }) : super(key: key);
+  final String? title;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -27,9 +28,9 @@ class SimpleAppBar extends StatelessWidget  implements PreferredSizeWidget{
         ),
       ),
       backgroundColor: Colors.blue,
-      title: const Text(
-        'iFood',
-        style: TextStyle(
+      title: Text(
+        title!,
+        style: const TextStyle(
           fontSize: 60,
           color: Colors.white,
           fontFamily: 'Lobster',
@@ -37,8 +38,8 @@ class SimpleAppBar extends StatelessWidget  implements PreferredSizeWidget{
       ),
     );
   }
-  
+
   @override
   // TODO: implement preferredSize
- Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

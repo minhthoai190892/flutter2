@@ -1,6 +1,5 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:foodpanda_users_app/global/global.dart';
@@ -80,7 +79,7 @@ class SaveAddressScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // _determinePosition();
     return Scaffold(
-      appBar: const SimpleAppBar(),
+      appBar: const SimpleAppBar( title: 'iFood'),
       body: SingleChildScrollView(
         child: Column(
           children: [

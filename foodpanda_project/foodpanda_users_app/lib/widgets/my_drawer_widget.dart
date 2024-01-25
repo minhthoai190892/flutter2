@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:foodpanda_users_app/global/global.dart';
+import 'package:foodpanda_users_app/main_screen/home_screen.dart';
+import 'package:foodpanda_users_app/main_screen/my_order_screen.dart';
+import 'package:foodpanda_users_app/widgets/order_card_widget.dart';
 
 import '../authentication/auth_screen.dart';
 import 'drawer_title_widget.dart';
@@ -12,7 +15,6 @@ class MyDrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      
       child: ListView(
         children: [
           // header drawer
@@ -66,12 +68,24 @@ class MyDrawerWidget extends StatelessWidget {
                 DrawerTitleWidget(
                   title: 'Home',
                   iconData: Icons.home,
-                  onTap: () {},
+                    onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ));
+                  },
                 ),
                 DrawerTitleWidget(
                   title: 'Order',
                   iconData: Icons.reorder,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>  MyOrdersScreen(),
+                        ));
+                  },
                 ),
                 DrawerTitleWidget(
                   title: 'History',

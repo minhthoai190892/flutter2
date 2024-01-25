@@ -141,9 +141,9 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                       :
                       // 2. add to cart
                       addItemToCart(
-                          itemId: widget.model.itemId,
-                          context: context,
-                          itemCounter: itemCounter);
+                           widget.model.itemId,
+                          context,
+                          itemCounter);
                 },
                 child: Container(
                   width: double.infinity,
