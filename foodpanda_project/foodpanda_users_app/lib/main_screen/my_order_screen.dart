@@ -1,5 +1,3 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:foodpanda_users_app/global/global.dart';
@@ -51,14 +49,15 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                             .get(),
                         builder: (c, snap) {
                           return snap.hasData
-                              ? OrderCard(
+                              ? OrderCardWidget(
                                   itemCount: snap.data!.docs.length,
                                   data: snap.data!.docs,
                                   orderID: snapshot.data!.docs[index].id,
                                   seperateQuantitiesList:
                                       separateOrderItemQuantities(
-                                          (snapshot.data!.docs[index].data()! as Map<
-                                              String, dynamic>)['productIDs']),
+                                          (snapshot.data!.docs[index].data()!
+                                                  as Map<String, dynamic>)[
+                                              'productIDs']),
                                 )
                               : Center(
                                   child: circularProgress(),
