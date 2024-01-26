@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda_riders_app/global/global.dart';
+import 'package:foodpanda_riders_app/main_screen/new_orders_screen.dart';
 
 import '../authentication/auth_screen.dart';
 
@@ -44,6 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               if (index == 0) {
                 // New available Orders
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const NewOrdersScreen(),
+                    ));
               }
               if (index == 1) {
                 // Parcels in Progress
