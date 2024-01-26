@@ -1,5 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:foodpanda_riders_app/assistant_method/get_current_user_location.dart';
+import 'package:foodpanda_riders_app/global/global.dart';
+import 'package:foodpanda_riders_app/splash_screen/splash_screen.dart';
 
 import '../models/address_model.dart';
 
@@ -67,7 +70,11 @@ class ShipmentAddressDesignWidget extends StatelessWidget {
           orderStatus == 'ended'
               ? Container()
               : InkWell(
-                  onTap: () => Navigator.pop(context),
+                  onTap: () {
+                    GetCurrentUserLocation.determinePosition();
+
+                    // confirmedParcelShipment(context);
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: 50,
@@ -126,4 +133,25 @@ class ShipmentAddressDesignWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+void confirmedParcelShipment(
+    {required BuildContext context,
+    required String getOrderId,
+    required String sellerId,
+    required String purchaserId}) {
+  firebaseFirestore.collection('orders').doc(getOrderId).update({
+    'riderUID': sharedPreferences!.getString('uid'),
+    'riderName': firebaseAuth.currentUser!.displayName,
+    'status': 'picking',
+    'lat': position!.latitude,
+    'lng': position!.longitude,
+    'address': completeAddress,
+  });
+  // send rider to shipment
+  Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MySplashScreen(),
+      ));
 }
