@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_USERS_APP-order-details
+git checkout -b FOODPANDEA_USERS_APP-order-details-test
 git add .
-git commit -m "FOODPANDEA_USERS_APP-order-details"
-git push -u origin FOODPANDEA_USERS_APP-order-details
+git commit -m "FOODPANDEA_USERS_APP-order-details-test"
+git push -u origin FOODPANDEA_USERS_APP-order-details-test
 
 
 

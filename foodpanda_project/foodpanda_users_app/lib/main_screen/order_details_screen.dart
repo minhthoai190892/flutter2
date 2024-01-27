@@ -93,7 +93,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                 ? ShipmentAddressDesignWidget(
                                     model: AddressModel.fromMap(
                                         snapshotAddress.data!.data()!))
-                                : Center(
+                                : const Center(
                                     child: CircularProgressIndicator(),
                                   );
                           },

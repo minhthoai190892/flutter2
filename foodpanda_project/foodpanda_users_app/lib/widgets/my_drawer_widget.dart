@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:foodpanda_users_app/global/global.dart';
 import 'package:foodpanda_users_app/main_screen/home_screen.dart';
 import 'package:foodpanda_users_app/main_screen/my_order_screen.dart';
-import 'package:foodpanda_users_app/widgets/order_card_widget.dart';
 
 import '../authentication/auth_screen.dart';
 import 'drawer_title_widget.dart';
