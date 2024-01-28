@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:foodpanda_riders_app/assistant_method/get_current_user_location.dart';
 import 'package:foodpanda_riders_app/global/global.dart';
-import 'package:foodpanda_riders_app/main_screen/shipment_screen.dart';
+import 'package:foodpanda_riders_app/main_screen/parcel_picking_screen.dart';
 
 import '../models/address_model.dart';
 
@@ -39,7 +39,7 @@ class ShipmentAddressDesignWidget extends StatelessWidget {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ShipmentScreen(
+          builder: (context) => ParcelPickingScreen(
               purchaserId: purchaserId,
               purchaserAddress: model.fullAddress,
               sellerId: sellerId,

@@ -1,10 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:foodpanda_riders_app/global/global.dart';
+import 'package:foodpanda_riders_app/main_screen/parcel_delivering_screen.dart';
 import 'package:foodpanda_riders_app/maps/map_utils.dart';
 
-class ShipmentScreen extends StatefulWidget {
-  const ShipmentScreen({
+class ParcelPickingScreen extends StatefulWidget {
+  const ParcelPickingScreen({
     Key? key,
     required this.purchaserId,
     required this.purchaserAddress,
@@ -21,10 +22,10 @@ class ShipmentScreen extends StatefulWidget {
   final double purchaserLng;
 
   @override
-  State<ShipmentScreen> createState() => _ShipmentScreenState();
+  State<ParcelPickingScreen> createState() => _ParcelPickingScreenState();
 }
 
-class _ShipmentScreenState extends State<ShipmentScreen> {
+class _ParcelPickingScreenState extends State<ParcelPickingScreen> {
   double? sellerLat, sellerLng;
   getData() async {
     firebaseFirestore
@@ -42,6 +43,27 @@ class _ShipmentScreenState extends State<ShipmentScreen> {
     // TODO: implement initState
     super.initState();
     getData();
+  }
+
+  confirmParcelHasBeenPicked(getOrderId, sellerId, purchaserId,
+      purchaserAddress, purchaserLat, purchaserLng) {
+    firebaseFirestore.collection('orders').doc(getOrderId).update({
+      'status': 'delivering',
+      'address': completeAddress,
+      'lat': position!.latitude,
+      'lng': position!.longitude,
+    });
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ParcelDeliveringScreen(
+              purchaserId: purchaserId,
+              purchaserAddress: purchaserAddress,
+              sellerId: sellerId,
+              getOrderId: getOrderId,
+              purchaserLat: purchaserLat,
+              purchaserLng: purchaserLng),
+        ));
   }
 
   @override
@@ -98,6 +120,9 @@ class _ShipmentScreenState extends State<ShipmentScreen> {
           InkWell(
             onTap: () {
               // confirmed - that riders has picked parcel from seller
+
+              confirmParcelHasBeenPicked(widget.getOrderId , widget.sellerId, widget.purchaserId,
+                  widget.purchaserAddress, widget.purchaserLat, widget.purchaserLng);
             },
             child: Container(
               width: MediaQuery.of(context).size.width,
