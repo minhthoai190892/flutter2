@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:foodpanda_riders_app/assistant_method/get_current_user_location.dart';
 import 'package:foodpanda_riders_app/global/global.dart';
-import 'package:foodpanda_riders_app/splash_screen/splash_screen.dart';
+import 'package:foodpanda_riders_app/main_screen/shipment_screen.dart';
 
 import '../models/address_model.dart';
 
@@ -11,9 +12,43 @@ class ShipmentAddressDesignWidget extends StatelessWidget {
     Key? key,
     required this.model,
     this.orderStatus,
+    this.orderId,
+    this.sellerId,
+    this.orderByUser,
   }) : super(key: key);
   final AddressModel model;
   final String? orderStatus;
+  final String? orderId;
+  final String? sellerId;
+  final String? orderByUser;
+
+  void confirmedParcelShipment(
+      {required BuildContext context,
+      required String getOrderId,
+      required String sellerId,
+      required String purchaserId}) {
+    firebaseFirestore.collection('orders').doc(getOrderId).update({
+      'riderUID': sharedPreferences!.getString('uid'),
+      'riderName': sharedPreferences!.getString('name'),
+      'status': 'picking',
+      'lat': position!.latitude,
+      'lng': position!.longitude,
+      'address': completeAddress,
+    });
+    // send rider to shipment
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ShipmentScreen(
+              purchaserId: purchaserId,
+              purchaserAddress: model.fullAddress,
+              sellerId: sellerId,
+              getOrderId: getOrderId,
+              purchaserLat: model.lat,
+              purchaserLng: model.lng),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -73,7 +108,11 @@ class ShipmentAddressDesignWidget extends StatelessWidget {
                   onTap: () {
                     GetCurrentUserLocation.determinePosition();
 
-                    // confirmedParcelShipment(context);
+                    confirmedParcelShipment(
+                        context: context,
+                        getOrderId: orderId!,
+                        sellerId: sellerId!,
+                        purchaserId: orderByUser!);
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
@@ -133,25 +172,4 @@ class ShipmentAddressDesignWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-void confirmedParcelShipment(
-    {required BuildContext context,
-    required String getOrderId,
-    required String sellerId,
-    required String purchaserId}) {
-  firebaseFirestore.collection('orders').doc(getOrderId).update({
-    'riderUID': sharedPreferences!.getString('uid'),
-    'riderName': firebaseAuth.currentUser!.displayName,
-    'status': 'picking',
-    'lat': position!.latitude,
-    'lng': position!.longitude,
-    'address': completeAddress,
-  });
-  // send rider to shipment
-  Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MySplashScreen(),
-      ));
 }

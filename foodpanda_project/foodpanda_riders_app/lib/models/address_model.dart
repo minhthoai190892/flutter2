@@ -9,7 +9,7 @@ class AddressModel {
   final String state;
   final String fullAddress;
   final double lat;
-  final double long;
+  final double lng;
   AddressModel({
     required this.name,
     required this.phoneNumber,
@@ -18,9 +18,8 @@ class AddressModel {
     required this.state,
     required this.fullAddress,
     required this.lat,
-    required this.long,
+    required this.lng,
   });
-  
 
   AddressModel copyWith({
     String? name,
@@ -40,7 +39,7 @@ class AddressModel {
       state: state ?? this.state,
       fullAddress: fullAddress ?? this.fullAddress,
       lat: lat ?? this.lat,
-      long: long ?? this.long,
+      lng: long ?? lng,
     );
   }
 
@@ -53,7 +52,7 @@ class AddressModel {
       'state': state,
       'fullAddress': fullAddress,
       'lat': lat,
-      'long': long,
+      'long': lng,
     };
   }
 
@@ -66,43 +65,43 @@ class AddressModel {
       state: map['state'] as String,
       fullAddress: map['fullAddress'] as String,
       lat: map['lat'] as double,
-      long: map['long'] as double,
+      lng: map['long'] as double,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory AddressModel.fromJson(String source) => AddressModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory AddressModel.fromJson(String source) =>
+      AddressModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'AddressModel(name: $name, phoneNumber: $phoneNumber, flatNumber: $flatNumber, city: $city, state: $state, fullAddress: $fullAddress, lat: $lat, long: $long)';
+    return 'AddressModel(name: $name, phoneNumber: $phoneNumber, flatNumber: $flatNumber, city: $city, state: $state, fullAddress: $fullAddress, lat: $lat, long: $lng)';
   }
 
   @override
   bool operator ==(covariant AddressModel other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.name == name &&
-      other.phoneNumber == phoneNumber &&
-      other.flatNumber == flatNumber &&
-      other.city == city &&
-      other.state == state &&
-      other.fullAddress == fullAddress &&
-      other.lat == lat &&
-      other.long == long;
+
+    return other.name == name &&
+        other.phoneNumber == phoneNumber &&
+        other.flatNumber == flatNumber &&
+        other.city == city &&
+        other.state == state &&
+        other.fullAddress == fullAddress &&
+        other.lat == lat &&
+        other.lng == lng;
   }
 
   @override
   int get hashCode {
     return name.hashCode ^
-      phoneNumber.hashCode ^
-      flatNumber.hashCode ^
-      city.hashCode ^
-      state.hashCode ^
-      fullAddress.hashCode ^
-      lat.hashCode ^
-      long.hashCode;
+        phoneNumber.hashCode ^
+        flatNumber.hashCode ^
+        city.hashCode ^
+        state.hashCode ^
+        fullAddress.hashCode ^
+        lat.hashCode ^
+        lng.hashCode;
   }
 }

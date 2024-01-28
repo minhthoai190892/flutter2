@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_RIDERS_APP-Confirm-to-Deliver-this-Order
+git checkout -b FOODPANDEA_RIDERS_APP-rider-Parcel-Pickup-with-location
 git add .
-git commit -m "FOODPANDEA_RIDERS_APP-Confirm-to-Deliver-this-Order"
-git push -u origin FOODPANDEA_RIDERS_APP-Confirm-to-Deliver-this-Order
+git commit -m "FOODPANDEA_RIDERS_APP-rider-Parcel-Pickup-with-location"
+git push -u origin FOODPANDEA_RIDERS_APP-rider-Parcel-Pickup-with-location
 
 
 

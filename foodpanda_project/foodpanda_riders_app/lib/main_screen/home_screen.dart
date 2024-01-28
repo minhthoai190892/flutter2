@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda_riders_app/global/global.dart';
 import 'package:foodpanda_riders_app/main_screen/new_orders_screen.dart';
+import 'package:foodpanda_riders_app/main_screen/parcel_in_progress_screen.dart';
 
+import '../assistant_method/get_current_user_location.dart';
 import '../authentication/auth_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -53,6 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
               }
               if (index == 1) {
                 // Parcels in Progress
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ParcelInProgressScreen(),
+                    ));
               }
               if (index == 2) {
                 // Not yet Delivered
@@ -99,6 +106,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       );
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    GetCurrentUserLocation.determinePosition();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

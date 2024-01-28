@@ -21,6 +21,7 @@ class OrderDetailsScreen extends StatefulWidget {
 class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   String ordersStatus = '';
   String ordersByUser = '';
+  String sellerId = '';
   @override
   void initState() {
     super.initState();
@@ -35,6 +36,8 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
         .then((value) {
       ordersStatus = value.data()!['status'].toString();
       ordersByUser = value.data()!['orderBy'].toString();
+      sellerId = value.data()!['sellerUID'].toString();
+     
     });
   }
 
@@ -108,7 +111,11 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                 .get(),
                             builder: (context, snapshotAddress) {
                               return snapshotAddress.hasData
-                                  ? ShipmentAddressDesignWidget(
+                                  ? ShipmentAddressDesignWidget( 
+                                    orderStatus: ordersStatus,
+                                    sellerId: sellerId,
+                                    orderByUser: ordersByUser,
+                                      orderId: widget.orderId,
                                       model: AddressModel.fromMap(
                                           snapshotAddress.data!.data()!),
                                     )
