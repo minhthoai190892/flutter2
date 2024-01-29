@@ -121,8 +121,13 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen> {
             onTap: () {
               // confirmed - that riders has picked parcel from seller
 
-              confirmParcelHasBeenPicked(widget.getOrderId , widget.sellerId, widget.purchaserId,
-                  widget.purchaserAddress, widget.purchaserLat, widget.purchaserLng);
+              confirmParcelHasBeenPicked(
+                  widget.getOrderId,
+                  widget.sellerId,
+                  widget.purchaserId,
+                  widget.purchaserAddress,
+                  widget.purchaserLat,
+                  widget.purchaserLng);
             },
             child: Container(
               width: MediaQuery.of(context).size.width,
