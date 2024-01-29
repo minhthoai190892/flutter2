@@ -152,6 +152,34 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen> {
               ),
             ),
           ),
+          const SizedBox(
+            height: 20,
+          ),
+          InkWell(
+            onTap: () => Navigator.pop(context),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: 50,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.cyan,
+                    Colors.amber,
+                  ],
+                  begin: FractionalOffset(0.0, 0.0),
+                  end: FractionalOffset(1.0, 0.0),
+                  stops: [0.0, 1.0],
+                  tileMode: TileMode.mirror,
+                ),
+              ),
+              child: const Center(
+                child: Text(
+                  'Go Back',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

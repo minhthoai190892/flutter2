@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda_riders_app/global/global.dart';
 import 'package:foodpanda_riders_app/main_screen/new_orders_screen.dart';
+import 'package:foodpanda_riders_app/main_screen/not_yet_delivered_screen.dart';
 import 'package:foodpanda_riders_app/main_screen/parcel_in_progress_screen.dart';
 
 import '../assistant_method/get_current_user_location.dart';
@@ -63,6 +64,11 @@ class _HomeScreenState extends State<HomeScreen> {
               }
               if (index == 2) {
                 // Not yet Delivered
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const NotYetDeliveredScreen(),
+                    ));
               }
               if (index == 3) {
                 // History
@@ -111,6 +117,28 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
     super.initState();
     GetCurrentUserLocation.determinePosition();
+    getPerParcelDeliverAmount();
+    getRiderPreviousEarnings();
+  }
+
+  getRiderPreviousEarnings() {
+    firebaseFirestore
+        .collection('riders')
+        .doc(sharedPreferences!.getString('uid'))
+        .get()
+        .then((value) {
+      previousRiderEarnings = value.data()!['earnings'].toString();
+    });
+  }
+
+  getPerParcelDeliverAmount() {
+    firebaseFirestore
+        .collection('perDeliver')
+        .doc('Qxpfes23ZBlpbTkUtsBU')
+        .get()
+        .then((value) {
+      perParcelDeliveryAmount = value.data()!['amount'].toString();
+    });
   }
 
   @override

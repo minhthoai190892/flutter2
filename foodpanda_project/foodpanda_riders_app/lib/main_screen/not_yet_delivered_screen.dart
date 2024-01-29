@@ -9,14 +9,14 @@ import '../widgets/order_card_widget.dart';
 import '../widgets/progress_bar.dart';
 import '../widgets/simple_app_bar_widget.dart';
 
-class ParcelInProgressScreen extends StatefulWidget {
-  const ParcelInProgressScreen({super.key});
+class NotYetDeliveredScreen extends StatefulWidget {
+  const NotYetDeliveredScreen({super.key});
 
   @override
-  _ParcelInProgressScreenState createState() => _ParcelInProgressScreenState();
+  _NotYetDeliveredScreenState createState() => _NotYetDeliveredScreenState();
 }
 
-class _ParcelInProgressScreenState extends State<ParcelInProgressScreen> {
+class _NotYetDeliveredScreenState extends State<NotYetDeliveredScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,12 +27,13 @@ class _ParcelInProgressScreenState extends State<ParcelInProgressScreen> {
         body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
               .collection("orders")
-              .where("status", isEqualTo: "picking")
+              .where("status", isEqualTo: "delivering")
               .where('riderUID', isEqualTo: sharedPreferences!.getString('uid'))
-              .orderBy("orderTime", descending: true)
+              
               .snapshots(),
           builder: (c, snapshot) {
-            print("sharedPreferences!.getString('uid'): ${sharedPreferences!.getString('uid')}");
+            print(
+                "sharedPreferences!.getString('uid'): ${sharedPreferences!.getString('uid')}");
             return snapshot.hasData
                 ? ListView.builder(
                     itemCount: snapshot.data!.docs.length,
@@ -44,7 +45,7 @@ class _ParcelInProgressScreenState extends State<ParcelInProgressScreen> {
                                 whereIn: separateOrderItemIDs(
                                     (snapshot.data!.docs[index].data()!
                                         as Map<String, dynamic>)["productIDs"]))
-                       
+                          
                             .orderBy("publishedDate", descending: true)
                             .get(),
                         builder: (c, snap) {

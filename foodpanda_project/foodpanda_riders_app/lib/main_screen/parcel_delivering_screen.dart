@@ -7,7 +7,7 @@ import '../global/global.dart';
 import '../maps/map_utils.dart';
 
 class ParcelDeliveringScreen extends StatefulWidget {
-  const ParcelDeliveringScreen({
+  ParcelDeliveringScreen({
     Key? key,
     this.purchaserId,
     this.purchaserAddress,
@@ -20,34 +20,40 @@ class ParcelDeliveringScreen extends StatefulWidget {
   final String? purchaserAddress;
   final double? purchaserLat;
   final double? purchaserLng;
-  final String? sellerId;
+  String? sellerId;
   final String? getOrderId;
   @override
   State<ParcelDeliveringScreen> createState() => _ParcelDeliveringScreenState();
 }
 
 class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
+  String orderTotalAmount = '';
   confirmParcelHasBeenDelivered(getOrderId, sellerId, purchaserId,
       purchaserAddress, purchaserLat, purchaserLng) {
+    String riderNewTotalEarningAmount = (double.parse(previousRiderEarnings) +
+            double.parse(perParcelDeliveryAmount))
+        .toString();
     firebaseFirestore.collection('orders').doc(getOrderId).update({
       'status': 'ended',
       'address': completeAddress,
       'lat': position!.latitude,
       'lng': position!.longitude,
       //pay per parcel delivery amount
-      'earnings': ''
+      'earnings': perParcelDeliveryAmount
     }).then((value) {
       firebaseFirestore
           .collection('riders')
           .doc(sharedPreferences!.getString('uid'))
           .update({
         //total earning of rider
-        'earnings': ''
+        'earnings': riderNewTotalEarningAmount
       });
     }).then((value) {
       firebaseFirestore.collection('sellers').doc(widget.sellerId).update({
         //total earning amount of sellers
-        'earnings': ''
+        'earnings':
+            (double.parse(orderTotalAmount) + double.parse(previousEarnings))
+                .toString()
       });
     }).then((value) {
       firebaseFirestore
@@ -67,6 +73,37 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
         ));
   }
 
+  getOrderTotalAmount() {
+    firebaseFirestore
+        .collection('orders')
+        .doc(widget.getOrderId)
+        .get()
+        .then((value) {
+      orderTotalAmount = value.data()!['totalAmount'].toString();
+      // cap nhat seller id
+      widget.sellerId = value.data()!['sellerUID'].toString();
+    }).then((value) {
+      getSellerData();
+    });
+  }
+
+  getSellerData() {
+    firebaseFirestore
+        .collection('sellers')
+        .doc(widget.sellerId)
+        .get()
+        .then((value) {
+      previousEarnings = value.data()!['earnings'].toString();
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getOrderTotalAmount();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +114,7 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/images/confirm1.png'),
+          Image.asset('assets/images/confirm2.png'),
           const SizedBox(
             height: 5,
           ),
@@ -106,7 +143,7 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
                       height: 12,
                     ),
                     Text(
-                      'Show Cafe/Restaurant Location',
+                      'Show Delivery Drop-off Location',
                       style: TextStyle(
                         fontFamily: 'Signatra',
                         fontSize: 16,
@@ -148,6 +185,34 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
               child: const Center(
                 child: Text(
                   'Order has been Delivered - Confirmed',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ),
+           const SizedBox(
+            height: 20,
+          ),
+          InkWell(
+            onTap: () => Navigator.pop(context),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: 50,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.cyan,
+                    Colors.amber,
+                  ],
+                  begin: FractionalOffset(0.0, 0.0),
+                  end: FractionalOffset(1.0, 0.0),
+                  stops: [0.0, 1.0],
+                  tileMode: TileMode.mirror,
+                ),
+              ),
+              child: const Center(
+                child: Text(
+                  'Go Back',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
