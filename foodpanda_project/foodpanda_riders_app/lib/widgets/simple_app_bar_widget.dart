@@ -31,7 +31,7 @@ class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title!,
         style: const TextStyle(
-          fontSize: 60,
+          fontSize: 20,
           color: Colors.white,
           fontFamily: 'Lobster',
         ),
