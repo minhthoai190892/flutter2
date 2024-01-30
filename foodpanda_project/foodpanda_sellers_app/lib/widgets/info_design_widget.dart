@@ -13,6 +13,7 @@ class InfoDesignWidget extends StatelessWidget {
     required this.onTap,
   }) : super(key: key);
   final Menus? model;
+  
   final BuildContext context;
   final VoidCallback onTap;
   deleteMenu({required String menuId}) {
@@ -21,7 +22,9 @@ class InfoDesignWidget extends StatelessWidget {
         .doc(sharedPreferences!.getString('uid'))
         .collection('menus')
         .doc(menuId)
-        .delete();
+        .delete().then((value) {
+          
+        });
     Fluttertoast.showToast(msg: 'Menu deleted successfully');
   }
 
@@ -76,11 +79,7 @@ class InfoDesignWidget extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              // Text(
-              //   model!.menuInfo,
-              //   style: const TextStyle(
-              //       color: Colors.grey, fontSize: 12, fontFamily: 'TrainOne'),
-              // ),
+     
             ],
           ),
         ),

@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:foodpanda_sellers_app/main_screen/item_detail_screen.dart';
 import 'package:foodpanda_sellers_app/model/items_model.dart';
 import 'package:foodpanda_sellers_app/model/menus_model.dart';
 import 'package:foodpanda_sellers_app/upload_screens/item_upload_screen.dart';
@@ -97,7 +98,14 @@ class _HomeScreenState extends State<ItemScreen> {
                         return InfoItemDesignWidget(
                           model: model,
                           context: context,
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ItemDetailScreen(model: model),
+                                ));
+                          },
                         );
                       },
                       itemCount: snapshot.data!.docs.length,
