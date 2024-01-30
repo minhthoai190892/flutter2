@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:foodpanda_sellers_app/global/global.dart';
 
 import 'package:foodpanda_sellers_app/model/menus_model.dart';
 
@@ -13,6 +15,16 @@ class InfoDesignWidget extends StatelessWidget {
   final Menus? model;
   final BuildContext context;
   final VoidCallback onTap;
+  deleteMenu({required String menuId}) {
+    firebaseFirestore
+        .collection('sellers')
+        .doc(sharedPreferences!.getString('uid'))
+        .collection('menus')
+        .doc(menuId)
+        .delete();
+    Fluttertoast.showToast(msg: 'Menu deleted successfully');
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -40,19 +52,35 @@ class InfoDesignWidget extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Text(
-                model!.menuTitle,
-                style: const TextStyle(
-                    color: Colors.cyan, fontSize: 20, fontFamily: 'TrainOne'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    model!.menuTitle,
+                    style: const TextStyle(
+                        color: Colors.cyan,
+                        fontSize: 20,
+                        fontFamily: 'TrainOne'),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      deleteMenu(menuId: model!.menuId);
+                    },
+                    icon: const Icon(
+                      Icons.delete_sweep,
+                      color: Colors.redAccent,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 10,
               ),
-              Text(
-                model!.menuInfo,
-                style: const TextStyle(
-                    color: Colors.grey, fontSize: 12, fontFamily: 'TrainOne'),
-              ),
+              // Text(
+              //   model!.menuInfo,
+              //   style: const TextStyle(
+              //       color: Colors.grey, fontSize: 12, fontFamily: 'TrainOne'),
+              // ),
             ],
           ),
         ),
