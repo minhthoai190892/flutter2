@@ -22,7 +22,7 @@ class _ParcelInProgressScreenState extends State<ParcelInProgressScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: const SimpleAppBar(
-          title: "New Orders",
+          title: "Parcel In Progress",
         ),
         body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance

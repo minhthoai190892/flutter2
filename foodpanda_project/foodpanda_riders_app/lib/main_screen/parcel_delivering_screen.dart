@@ -1,5 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/foundation.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:foodpanda_riders_app/splash_screen/splash_screen.dart';
 
@@ -99,7 +98,7 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     getOrderTotalAmount();
   }
@@ -108,7 +107,7 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shipment Screen'),
+        title: const Text('Parcel Delivering'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

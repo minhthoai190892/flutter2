@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_riders_app/widgets/simple_app_bar_widget.dart';
 import 'package:intl/intl.dart';
 
 import '../global/global.dart';
@@ -37,7 +38,6 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
       ordersStatus = value.data()!['status'].toString();
       ordersByUser = value.data()!['orderBy'].toString();
       sellerId = value.data()!['sellerUID'].toString();
-     
     });
   }
 
@@ -45,6 +45,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: const SimpleAppBar(
+          title: 'Order Details',
+        ),
         body: SingleChildScrollView(
           child: FutureBuilder(
             future: FirebaseFirestore.instance
@@ -111,10 +114,10 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                 .get(),
                             builder: (context, snapshotAddress) {
                               return snapshotAddress.hasData
-                                  ? ShipmentAddressDesignWidget( 
-                                    orderStatus: ordersStatus,
-                                    sellerId: sellerId,
-                                    orderByUser: ordersByUser,
+                                  ? ShipmentAddressDesignWidget(
+                                      orderStatus: ordersStatus,
+                                      sellerId: sellerId,
+                                      orderByUser: ordersByUser,
                                       orderId: widget.orderId,
                                       model: AddressModel.fromMap(
                                           snapshotAddress.data!.data()!),

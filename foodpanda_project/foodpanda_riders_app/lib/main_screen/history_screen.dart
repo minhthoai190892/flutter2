@@ -9,27 +9,26 @@ import '../widgets/order_card_widget.dart';
 import '../widgets/progress_bar.dart';
 import '../widgets/simple_app_bar_widget.dart';
 
-class NotYetDeliveredScreen extends StatefulWidget {
-  const NotYetDeliveredScreen({super.key});
+class HistoryScreen extends StatefulWidget {
+  const HistoryScreen({super.key});
 
   @override
-  _NotYetDeliveredScreenState createState() => _NotYetDeliveredScreenState();
+  _HistoryScreenState createState() => _HistoryScreenState();
 }
 
-class _NotYetDeliveredScreenState extends State<NotYetDeliveredScreen> {
+class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: const SimpleAppBar(
-          title: "Not Yet Delivered",
+          title: "History",
         ),
         body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
               .collection("orders")
-              .where("status", isEqualTo: "delivering")
+              .where("status", isEqualTo: "ended")
               .where('riderUID', isEqualTo: sharedPreferences!.getString('uid'))
-              
               .snapshots(),
           builder: (c, snapshot) {
             print(
@@ -45,7 +44,6 @@ class _NotYetDeliveredScreenState extends State<NotYetDeliveredScreen> {
                                 whereIn: separateOrderItemIDs(
                                     (snapshot.data!.docs[index].data()!
                                         as Map<String, dynamic>)["productIDs"]))
-                          
                             .orderBy("publishedDate", descending: true)
                             .get(),
                         builder: (c, snap) {

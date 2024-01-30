@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda_riders_app/global/global.dart';
+import 'package:foodpanda_riders_app/main_screen/history_screen.dart';
 import 'package:foodpanda_riders_app/main_screen/new_orders_screen.dart';
 import 'package:foodpanda_riders_app/main_screen/not_yet_delivered_screen.dart';
 import 'package:foodpanda_riders_app/main_screen/parcel_in_progress_screen.dart';
@@ -71,7 +72,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     ));
               }
               if (index == 3) {
+                print(index);
                 // History
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HistoryScreen(),
+                    ));
               }
               if (index == 4) {
                 // Total Earning

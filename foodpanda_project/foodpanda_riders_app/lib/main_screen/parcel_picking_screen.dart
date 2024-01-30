@@ -70,7 +70,7 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shipment Screen'),
+        title: const Text('Parcel Picking'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

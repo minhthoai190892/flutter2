@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_RIDERS_APP-Riders-app---Rider-Confirm-Parcel-has-been-Delivered-to-user-Location---Part-2
+git checkout -b FOODPANDEA_RIDERS_APP-history
 git add .
-git commit -m "FOODPANDEA_RIDERS_APP-Riders-app---Rider-Confirm-Parcel-has-been-Delivered-to-user-Location---Part-2"
-git push -u origin FOODPANDEA_RIDERS_APP-Riders-app---Rider-Confirm-Parcel-has-been-Delivered-to-user-Location---Part-2
+git commit -m "FOODPANDEA_RIDERS_APP-history"
+git push -u origin FOODPANDEA_RIDERS_APP-history
 
 
 
