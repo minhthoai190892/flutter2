@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_USERS_APP-Triển-khai-thanh-ứng-dụng-tìm-kiếm-trên-màn-hình-tìm-kiếm
+git checkout -b FOODPANDEA_USERS_APP-Triển-Hiển-thị-kết-quả-tìm-kiếm
 git add .
-git commit -m "FOODPANDEA_USERS_APP-Triển-khai-thanh-ứng-dụng-tìm-kiếm-trên-màn-hình-tìm-kiếm"
-git push -u origin FOODPANDEA_USERS_APP-Triển-khai-thanh-ứng-dụng-tìm-kiếm-trên-màn-hình-tìm-kiếm
+git commit -m "FOODPANDEA_USERS_APP-Triển-Hiển-thị-kết-quả-tìm-kiếm"
+git push -u origin FOODPANDEA_USERS_APP-Triển-Hiển-thị-kết-quả-tìm-kiếm
 
 
 

@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_users_app/global/global.dart';
+import 'package:foodpanda_users_app/models/sellers_model.dart';
+import 'package:foodpanda_users_app/widgets/sellers_design_widget.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -8,6 +12,8 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  Future<QuerySnapshot>? restaurantsDocumentsList;
+  String sellerNameText = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,13 +37,20 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
         backgroundColor: Colors.blue,
         title: TextField(
-          onChanged: (value) {},
+          onChanged: (value) {
+            setState(() {
+              sellerNameText = value;
+            });
+            initSearchingRestaurant(value);
+          },
           decoration: InputDecoration(
             hintText: 'Search Restaurants',
             hintStyle: const TextStyle(color: Colors.white),
             border: InputBorder.none,
             suffixIcon: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                initSearchingRestaurant(sellerNameText);
+              },
               icon: const Icon(
                 Icons.search,
                 color: Colors.white,
@@ -46,6 +59,34 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
       ),
+      body: FutureBuilder<QuerySnapshot>(
+        future: restaurantsDocumentsList,
+        builder: (context, snapshot) {
+          return snapshot.hasData
+              ? ListView.builder(
+                  itemCount: snapshot.data!.docs.length,
+                  itemBuilder: (context, index) {
+                    SellersModel sellersModel = SellersModel.fromMap(
+                        snapshot.data!.docs[index].data()
+                            as Map<String, dynamic>);
+                    return SellersDesignWidget(
+                      context: context,
+                      model: sellersModel,
+                    );
+                  },
+                )
+              : const Center(
+                  child: Text('No Record Found...'),
+                );
+        },
+      ),
     );
+  }
+
+  void initSearchingRestaurant(String value) async {
+    restaurantsDocumentsList = firebaseFirestore
+        .collection('sellers')
+        .where('sellerName', isGreaterThanOrEqualTo: value)
+        .get();
   }
 }
