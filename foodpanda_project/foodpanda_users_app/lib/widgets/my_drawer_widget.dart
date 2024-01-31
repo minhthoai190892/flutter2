@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:foodpanda_users_app/global/global.dart';
+import 'package:foodpanda_users_app/main_screen/history_screen.dart';
 import 'package:foodpanda_users_app/main_screen/home_screen.dart';
 import 'package:foodpanda_users_app/main_screen/my_order_screen.dart';
 
@@ -89,7 +90,13 @@ class MyDrawerWidget extends StatelessWidget {
                 DrawerTitleWidget(
                   title: 'History',
                   iconData: Icons.access_time,
-                  onTap: () {},
+                  onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>  HistoryScreen(),
+                        ));
+                  },
                 ),
                 DrawerTitleWidget(
                   title: 'Search',

@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_USERS_APP-Thực-hiện-và-hiển-thị-đơn-đặt-hàng-mới-cho-seller
+git checkout -b FOODPANDEA_USERS_APP-history-for-user
 git add .
-git commit -m "FOODPANDEA_USERS_APP-Thực-hiện-và-hiển-thị-đơn-đặt-hàng-mới-cho-seller"
-git push -u origin FOODPANDEA_USERS_APP-Thực-hiện-và-hiển-thị-đơn-đặt-hàng-mới-cho-seller
+git commit -m "FOODPANDEA_USERS_APP-history-for-user"
+git push -u origin FOODPANDEA_USERS_APP-history-for-user
 
 
 
