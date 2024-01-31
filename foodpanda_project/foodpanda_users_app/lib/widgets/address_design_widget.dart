@@ -10,19 +10,19 @@ import 'package:provider/provider.dart';
 class AddressDesignWidget extends StatefulWidget {
   const AddressDesignWidget({
     Key? key,
-    required this.model,
-    required this.currentIndex,
-    required this.value,
-    required this.addressId,
-    required this.totalAmount,
-    required this.sellerID,
+     this.model,
+     this.currentIndex,
+     this.value,
+     this.addressId,
+     this.totalAmount,
+     this.sellerID,
   }) : super(key: key);
-  final AddressModel model;
-  final int currentIndex;
-  final int value;
-  final String addressId;
-  final double totalAmount;
-  final String sellerID;
+  final AddressModel? model;
+  final int? currentIndex;
+  final int? value;
+  final String? addressId;
+  final double? totalAmount;
+  final String? sellerID;
   @override
   State<AddressDesignWidget> createState() => _AddressDesignWidgetState();
 }
@@ -68,7 +68,7 @@ class _AddressDesignWidgetState extends State<AddressDesignWidget> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Text(widget.model.name),
+                              Text(widget.model!.name),
                             ],
                           ),
                           TableRow(
@@ -79,7 +79,7 @@ class _AddressDesignWidgetState extends State<AddressDesignWidget> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Text(widget.model.phoneNumber),
+                              Text(widget.model!.phoneNumber),
                             ],
                           ),
                           TableRow(
@@ -90,7 +90,7 @@ class _AddressDesignWidgetState extends State<AddressDesignWidget> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Text(widget.model.flatNumber),
+                              Text(widget.model!.flatNumber),
                             ],
                           ),
                           TableRow(
@@ -101,7 +101,7 @@ class _AddressDesignWidgetState extends State<AddressDesignWidget> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Text(widget.model.city),
+                              Text(widget.model!.city),
                             ],
                           ),
                           TableRow(
@@ -112,7 +112,7 @@ class _AddressDesignWidgetState extends State<AddressDesignWidget> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Text(widget.model.state),
+                              Text(widget.model!.state),
                             ],
                           ),
                           TableRow(
@@ -123,7 +123,7 @@ class _AddressDesignWidgetState extends State<AddressDesignWidget> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Text(widget.model.fullAddress),
+                              Text(widget.model!.fullAddress),
                             ],
                           ),
                         ],
@@ -136,7 +136,7 @@ class _AddressDesignWidgetState extends State<AddressDesignWidget> {
             ElevatedButton(
               onPressed: () {
                 MapsUtils.openMapWithPosition(
-                    widget.model.lat, widget.model.long);
+                    widget.model!.lat, widget.model!.long);
                 // MapsUtils.openMapWithAddress(widget.model.fullAddress);
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.black54),
@@ -154,7 +154,7 @@ class _AddressDesignWidgetState extends State<AddressDesignWidget> {
                             builder: (context) => PlacedOrderScreen(
                               addressId: widget.addressId,
                               totalAmount: widget.totalAmount,
-                              sellerID: widget.sellerID,
+                              sellerID: widget.sellerID!,
                             ),
                           ));
                     },
