@@ -8,6 +8,7 @@ class EarningsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(previousEarnings);
     return Scaffold(
       appBar: const SimpleAppBar(
         title: 'Earning ',

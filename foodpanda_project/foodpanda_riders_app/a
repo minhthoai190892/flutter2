@@ -1,10 +1,10 @@
 
 
 
-git checkout -b FOODPANDEA_RIDERS_APP-total-rider-amount
+git checkout -b FOODPANDEA_RIDERS_APP-Thực-hiện-và-hiển-thị-lịch-sử-đơn-hàng
 git add .
-git commit -m "FOODPANDEA_RIDERS_APP-total-rider-amount"
-git push -u origin FOODPANDEA_RIDERS_APP-total-rider-amount
+git commit -m "FOODPANDEA_RIDERS_APP-Thực-hiện-và-hiển-thị-lịch-sử-đơn-hàng"
+git push -u origin FOODPANDEA_RIDERS_APP-Thực-hiện-và-hiển-thị-lịch-sử-đơn-hàng
 
 
 
