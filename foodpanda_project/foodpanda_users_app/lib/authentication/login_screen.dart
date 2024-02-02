@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../global/global.dart';
 import '../main_screen/home_screen.dart';
 import '../widgets/custom_text_field_widget.dart';
@@ -70,22 +71,32 @@ class _LoginScreenState extends State<LoginScreen> {
         .get()
         .then((snapshot) {
       if (snapshot.exists) {
-        // save locally
-        sharedPreferences!.setString('uid', currentUser.uid);
-        sharedPreferences!.setString('email', snapshot.data()!['userEmail']);
-        sharedPreferences!.setString('name', snapshot.data()!['userName']);
-        sharedPreferences!
-            .setString('photoUrl', snapshot.data()!['userAvatarurl']);
-        List<String> userCartList = snapshot.data()!['userCart'].cast<String>();
-        sharedPreferences!.setStringList('userCart', userCartList);
+        if (snapshot.data()!['status'] == 'approved') {
+          // save locally
+          sharedPreferences!.setString('uid', currentUser.uid);
+          sharedPreferences!.setString('email', snapshot.data()!['userEmail']);
+          sharedPreferences!.setString('name', snapshot.data()!['userName']);
+          sharedPreferences!
+              .setString('photoUrl', snapshot.data()!['userAvatarurl']);
+          List<String> userCartList =
+              snapshot.data()!['userCart'].cast<String>();
+          sharedPreferences!.setStringList('userCart', userCartList);
 
-        Navigator.pop(context);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const HomeScreen(),
-          ),
-        );
+          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomeScreen(),
+            ),
+          );
+        } else {
+          firebaseAuth.signOut();
+          Navigator.pop(context);
+
+          Fluttertoast.showToast(
+              msg:
+                  'Admin has blocked your account. Mail here: admin1@foodapp.com');
+        }
       } else {
         firebaseAuth.signOut();
         Navigator.pop(context);
