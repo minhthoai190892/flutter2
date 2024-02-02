@@ -2,16 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:foodpanda_sellers_app/widgets/simple_app_bar_widget.dart';
 
-class AllVeriedUsersScreen extends StatefulWidget {
-  const AllVeriedUsersScreen({super.key});
+class AllVeriedSellersScreen extends StatefulWidget {
+  const AllVeriedSellersScreen({super.key});
 
   @override
-  State<AllVeriedUsersScreen> createState() => _AllVeriedUsersScreenState();
+  State<AllVeriedSellersScreen> createState() => _AllVeriedSellersScreenState();
 }
 
-class _AllVeriedUsersScreenState extends State<AllVeriedUsersScreen> {
-  QuerySnapshot? allUsers;
-  displayDialogBoxForBlockingAccount(userDocumentId) => showDialog(
+class _AllVeriedSellersScreenState extends State<AllVeriedSellersScreen> {
+  QuerySnapshot? allsellers;
+  displayDialogBoxForBlockingAccount(sellerDocumentId) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
           title: const Text(
@@ -37,13 +37,13 @@ class _AllVeriedUsersScreenState extends State<AllVeriedUsersScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                Map<String, dynamic> userDataMap = {
+                Map<String, dynamic> sellerDataMap = {
                   'status': 'not approved',
                 };
                 FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(userDocumentId)
-                    .update(userDataMap)
+                    .collection('sellers')
+                    .doc(sellerDocumentId)
+                    .update(sellerDataMap)
                     .then((value) {
                   const snackBar = SnackBar(
                     backgroundColor: Colors.pinkAccent,
@@ -69,12 +69,12 @@ class _AllVeriedUsersScreenState extends State<AllVeriedUsersScreen> {
   void initState() {
     super.initState();
     FirebaseFirestore.instance
-        .collection('users')
+        .collection('sellers')
         .where('status', isEqualTo: 'approved')
         .get()
         .then((value) {
       setState(() {
-        allUsers = value;
+        allsellers = value;
       });
     });
   }
@@ -82,13 +82,13 @@ class _AllVeriedUsersScreenState extends State<AllVeriedUsersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const SimpleAppBar(title: 'All Verified Users Account'),
+      appBar: const SimpleAppBar(title: 'All Verified sellers Account'),
       body: Center(
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.5,
-          child: allUsers != null
+          child: allsellers != null
               ? ListView.builder(
-                  itemCount: allUsers!.docs.length,
+                  itemCount: allsellers!.docs.length,
                   itemBuilder: (context, index) {
                     return Card(
                       elevation: 10,
@@ -103,13 +103,13 @@ class _AllVeriedUsersScreenState extends State<AllVeriedUsersScreen> {
                                 image: DecorationImage(
                                   fit: BoxFit.fill,
                                   image: NetworkImage(
-                                    allUsers!.docs[index].get('userAvatarurl'),
+                                    allsellers!.docs[index].get('sellerAvatarUrl'),
                                   ),
                                 ),
                               ),
                             ),
                             title: Text(
-                              allUsers!.docs[index].get('userName'),
+                              allsellers!.docs[index].get('sellerName'),
                             ),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -122,7 +122,7 @@ class _AllVeriedUsersScreenState extends State<AllVeriedUsersScreen> {
                                   width: 20,
                                 ),
                                 Text(
-                                  allUsers!.docs[index].get('userEmail'),
+                                  allsellers!.docs[index].get('sellerEmail'),
                                   style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
@@ -139,7 +139,7 @@ class _AllVeriedUsersScreenState extends State<AllVeriedUsersScreen> {
                               ),
                               onPressed: () {
                                 displayDialogBoxForBlockingAccount(
-                                    allUsers!.docs[index].id);
+                                    allsellers!.docs[index].id);
                               },
                               icon: const Icon(
                                 Icons.person_pin_sharp,
