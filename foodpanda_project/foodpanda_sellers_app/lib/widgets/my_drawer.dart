@@ -1,5 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:foodpanda_sellers_app/main_screen/earning_screen.dart';
+import 'package:foodpanda_sellers_app/main_screen/history_screen.dart';
+import 'package:foodpanda_sellers_app/main_screen/new_orders_screen.dart';
 
 import '../authentication/auth_screen.dart';
 import '../global/global.dart';
@@ -69,17 +72,35 @@ class MyDrawerWidget extends StatelessWidget {
                 DrawerTitleWidget(
                   title: 'My Earnings',
                   iconData: Icons.monetization_on,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EarningsScreen(),
+                        ));
+                  },
                 ),
                 DrawerTitleWidget(
                   title: 'New Order',
                   iconData: Icons.reorder,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const NewOrdersScreen(),
+                        ));
+                  },
                 ),
                 DrawerTitleWidget(
                   title: 'History - Orders',
                   iconData: Icons.local_shipping,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HistoryScreen(),
+                        ));
+                  },
                 ),
                 DrawerTitleWidget(
                   title: 'Sign Out',
