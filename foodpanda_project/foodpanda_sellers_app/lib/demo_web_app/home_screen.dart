@@ -1,6 +1,9 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_sellers_app/demo_web_app/users/all_verified_users_screen.dart';
+import 'package:foodpanda_sellers_app/global/global.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -77,20 +80,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            // user activate and block accounts button ui
+            // user ALL VERIFIED and All Blocked accounts button ui
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // active
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AllVeriedUsersScreen(),
+                      ),
+                    );
+                  },
                   icon: const Icon(
                     Icons.person_add,
                     color: Colors.white,
                   ),
                   label: Text(
-                    'Activate Users \nAccount'.toUpperCase(),
+                    'ALL VERIFIED Users \nAccount'.toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -109,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.white,
                   ),
                   label: Text(
-                    'Block Users \nAccount'.toUpperCase(),
+                    'All Blocked Users \nAccount'.toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -122,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 20,
             ),
-            // sellers activate and block accounts button ui
+            // sellers ALL VERIFIED and All Blocked accounts button ui
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -136,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.white,
                   ),
                   label: Text(
-                    'Activate Sellers \nAccount'.toUpperCase(),
+                    'ALL VERIFIED Sellers \nAccount'.toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -155,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.white,
                   ),
                   label: Text(
-                    'Block Sellers \nAccount'.toUpperCase(),
+                    'All Blocked Sellers \nAccount'.toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -169,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 20,
             ),
-            // Riders activate and block accounts button ui
+            // Riders ALL VERIFIED and All Blocked accounts button ui
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -183,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.white,
                   ),
                   label: Text(
-                    'Activate Riders \nAccount'.toUpperCase(),
+                    'ALL VERIFIED Riders \nAccount'.toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -202,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.white,
                   ),
                   label: Text(
-                    'Block Riders \nAccount'.toUpperCase(),
+                    'All Blocked Riders \nAccount'.toUpperCase(),
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -214,7 +224,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-              onPressed: () {},
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pop(context);
+              },
               icon: const Icon(
                 Icons.logout,
                 color: Colors.white,
