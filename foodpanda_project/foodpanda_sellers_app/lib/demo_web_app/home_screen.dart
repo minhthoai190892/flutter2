@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_sellers_app/demo_web_app/users/all_block_users_screen.dart';
 import 'package:foodpanda_sellers_app/demo_web_app/users/all_verified_users_screen.dart';
 import 'package:foodpanda_sellers_app/global/global.dart';
 import 'package:intl/intl.dart';
@@ -91,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AllVeriedUsersScreen(),
+                        builder: (context) => const AllVeriedUsersScreen(),
                       ),
                     );
                   },
@@ -113,7 +114,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AllBlockUsersScreen(),
+                      ),
+                    );
+                  },
                   icon: const Icon(
                     Icons.block_flipped,
                     color: Colors.white,
