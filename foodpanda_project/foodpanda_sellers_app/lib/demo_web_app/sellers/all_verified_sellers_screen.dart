@@ -103,7 +103,8 @@ class _AllVeriedSellersScreenState extends State<AllVeriedSellersScreen> {
                                 image: DecorationImage(
                                   fit: BoxFit.fill,
                                   image: NetworkImage(
-                                    allsellers!.docs[index].get('sellerAvatarUrl'),
+                                    allsellers!.docs[index]
+                                        .get('sellerAvatarUrl'),
                                   ),
                                 ),
                               ),
@@ -130,6 +131,47 @@ class _AllVeriedSellersScreenState extends State<AllVeriedSellersScreen> {
                                 ),
                               ],
                             ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                              ),
+                              onPressed: () {
+                                var snackBar = SnackBar(
+                                  backgroundColor: Colors.green,
+                                  duration: const Duration(seconds: 2),
+                                  content: Text(
+                                    'Total Amount \$${allsellers!.docs[index].get('earnings')}',
+                                    style: const TextStyle(
+                                      fontSize: 36,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              },
+                              icon: const Icon(
+                                Icons.person_pin_sharp,
+                                color: Colors.white,
+                              ),
+                              label: Text(
+                                'Total Amount \$${allsellers!.docs[index].get('earnings')}'
+                                    .toUpperCase(),
+                                style: const TextStyle(
+                                    fontSize: 15,
+                                    letterSpacing: 3,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(10.0),

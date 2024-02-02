@@ -9,10 +9,10 @@ git push -u origin FOODPANDEA_SELLERS_APP-delete-items
 
 
 
-git checkout -b FOODPANDEA_ADMIN_WED_PORTAL-active-block-sellers
+git checkout -b FOODPANDEA_ADMIN_WED_PORTAL-show-earnings
 git add .
-git commit -m "FOODPANDEA_ADMIN_WED_PORTAL-active-block-sellers"
-git push -u origin FOODPANDEA_ADMIN_WED_PORTAL-active-block-sellers
+git commit -m "FOODPANDEA_ADMIN_WED_PORTAL-show-earnings"
+git push -u origin FOODPANDEA_ADMIN_WED_PORTAL-show-earnings
 
 
 
