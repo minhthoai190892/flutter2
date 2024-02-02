@@ -11,10 +11,62 @@ class AllVeriedUsersScreen extends StatefulWidget {
 
 class _AllVeriedUsersScreenState extends State<AllVeriedUsersScreen> {
   QuerySnapshot? allUsers;
-
+  displayDialogBoxForBlockingAccount(userDocumentId) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text(
+            'Block Account',
+            style: TextStyle(
+              fontSize: 25,
+              letterSpacing: 2,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: const Text(
+            'Do you want to block this account',
+            style: TextStyle(
+              fontSize: 25,
+              letterSpacing: 2,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('No'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Map<String, dynamic> userDataMap = {
+                  'status': 'not approved',
+                };
+                FirebaseFirestore.instance
+                    .collection('users')
+                    .doc(userDocumentId)
+                    .update(userDataMap)
+                    .then((value) {
+                  const snackBar = SnackBar(
+                    backgroundColor: Colors.pinkAccent,
+                    duration: Duration(seconds: 2),
+                    content: Text(
+                      'Block Successfully',
+                      style: TextStyle(
+                        fontSize: 36,
+                        color: Colors.black,
+                      ),
+                    ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  Navigator.pop(context);
+                });
+              },
+              child: const Text('Yes'),
+            ),
+          ],
+        ),
+      );
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     FirebaseFirestore.instance
         .collection('users')
@@ -85,8 +137,14 @@ class _AllVeriedUsersScreenState extends State<AllVeriedUsersScreen> {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.red,
                               ),
-                              onPressed: () {},
-                              icon: const Icon(Icons.person_pin_sharp,color: Colors.white,),
+                              onPressed: () {
+                                displayDialogBoxForBlockingAccount(
+                                    allUsers!.docs[index].id);
+                              },
+                              icon: const Icon(
+                                Icons.person_pin_sharp,
+                                color: Colors.white,
+                              ),
                               label: Text(
                                 'Block this account'.toUpperCase(),
                                 style: const TextStyle(
