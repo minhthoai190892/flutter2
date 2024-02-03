@@ -7,7 +7,7 @@ import 'app/routes/app_pages.dart';
 
 void main() {
   runApp(ScreenUtilInit(
-    designSize: Size(360, 780),
+    designSize: const Size(360, 780),
     builder: (context, child) => GetMaterialApp(
       debugShowCheckedModeBanner: false,
 

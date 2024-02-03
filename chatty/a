@@ -1,7 +1,7 @@
 
 
-git checkout -b CHATTY_test-Welcom-Ui
+git checkout -b CHATTY_middleware
 git add .
-git commit -m "CHATTY_test-Welcom-Ui"
-git push -u origin CHATTY_test-Welcom-Ui
+git commit -m "CHATTY_middleware"
+git push -u origin CHATTY_middleware
 

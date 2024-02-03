@@ -1,8 +1,14 @@
+import 'package:chatty/app/common/middlewares/middlewares.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/message/bindings/message_binding.dart';
+import '../modules/message/views/message_view.dart';
+import '../modules/sign_in/bindings/sign_in_binding.dart';
+import '../modules/sign_in/views/sign_in_view.dart';
 import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/views/welcome_view.dart';
 
@@ -24,6 +30,18 @@ class AppPages {
       name: _Paths.WELCOME,
       page: () => const WelcomeView(),
       binding: WelcomeBinding(),
+    ),
+    GetPage(
+        name: _Paths.MESSAGE,
+        page: () => const MessageView(),
+        binding: MessageBinding(),
+        middlewares: [
+          RouteAuthMiddleware(priority: 1),
+        ]),
+    GetPage(
+      name: _Paths.SIGN_IN,
+      page: () => const SignInView(),
+      binding: SignInBinding(),
     ),
   ];
 }
