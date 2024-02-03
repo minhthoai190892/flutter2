@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_sellers_app/demo_web_app/riders/all_block_users_screen.dart';
+import 'package:foodpanda_sellers_app/demo_web_app/riders/all_verified_users_screen.dart';
 import 'package:foodpanda_sellers_app/demo_web_app/sellers/all_block_sellers_screen.dart';
 import 'package:foodpanda_sellers_app/demo_web_app/sellers/all_verified_sellers_screen.dart';
 import 'package:foodpanda_sellers_app/demo_web_app/users/all_block_users_screen.dart';
@@ -211,7 +213,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 // active
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  onPressed: () {},
+                  onPressed: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AllVeriedRidersScreen(),
+                      ),
+                    );
+                  },
                   icon: const Icon(
                     Icons.person_add,
                     color: Colors.white,
@@ -230,7 +239,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  onPressed: () {},
+                  onPressed: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AllBlockRidersScreen(),
+                      ),
+                    );
+                  },
                   icon: const Icon(
                     Icons.block_flipped,
                     color: Colors.white,
