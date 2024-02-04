@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../store/user.dart';
+
 /// 检查是否登录
 class RouteAuthMiddleware extends GetMiddleware {
   // priority 数字小优先级高
@@ -16,8 +18,8 @@ class RouteAuthMiddleware extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    // UserStore.to.isLogin || 
-    if (route == Routes.SIGN_IN || route == Routes.WELCOME) {
+    //  
+    if (UserStore.to.isLogin ||route == Routes.SIGN_IN || route == Routes.WELCOME) {
       return null;
     } else {
       Future.delayed(

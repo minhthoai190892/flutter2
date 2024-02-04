@@ -35,6 +35,7 @@ class AppPages {
         name: _Paths.MESSAGE,
         page: () => const MessageView(),
         binding: MessageBinding(),
+        // middlewares kiểm tra người dùng có đăng nhập hay không
         middlewares: [
           RouteAuthMiddleware(priority: 1),
         ]),
