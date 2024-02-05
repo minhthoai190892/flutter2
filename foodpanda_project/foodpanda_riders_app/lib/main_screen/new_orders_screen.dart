@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../assistant_method/assistant_method.dart';
-import '../global/global.dart';
 import '../widgets/order_card_widget.dart';
 import '../widgets/progress_bar.dart';
 import '../widgets/simple_app_bar_widget.dart';

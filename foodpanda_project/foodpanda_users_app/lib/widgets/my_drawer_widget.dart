@@ -2,8 +2,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:foodpanda_users_app/global/global.dart';
+import 'package:foodpanda_users_app/main_screen/address_screen.dart';
+import 'package:foodpanda_users_app/main_screen/history_screen.dart';
 import 'package:foodpanda_users_app/main_screen/home_screen.dart';
 import 'package:foodpanda_users_app/main_screen/my_order_screen.dart';
+import 'package:foodpanda_users_app/main_screen/save_address_screen.dart';
+import 'package:foodpanda_users_app/main_screen/search_screen.dart';
 
 import '../authentication/auth_screen.dart';
 import 'drawer_title_widget.dart';
@@ -67,7 +71,7 @@ class MyDrawerWidget extends StatelessWidget {
                 DrawerTitleWidget(
                   title: 'Home',
                   iconData: Icons.home,
-                    onTap: () {
+                  onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -82,25 +86,43 @@ class MyDrawerWidget extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  MyOrdersScreen(),
+                          builder: (context) => const MyOrdersScreen(),
                         ));
                   },
                 ),
                 DrawerTitleWidget(
                   title: 'History',
                   iconData: Icons.access_time,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HistoryScreen(),
+                        ));
+                  },
                 ),
                 DrawerTitleWidget(
                   title: 'Search',
                   iconData: Icons.search,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SearchScreen(),
+                        ));
+                  },
                 ),
-                DrawerTitleWidget(
-                  title: 'Add New Address',
-                  iconData: Icons.add_location,
-                  onTap: () {},
-                ),
+                // DrawerTitleWidget(
+                //   title: 'Add New Address',
+                //   iconData: Icons.add_location,
+                //   onTap: () {
+                //        Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //           builder: (context) =>  AddressScreen(),
+                //         ));
+                //   },
+                // ),
                 DrawerTitleWidget(
                   title: 'Sign Out',
                   iconData: Icons.exit_to_app,

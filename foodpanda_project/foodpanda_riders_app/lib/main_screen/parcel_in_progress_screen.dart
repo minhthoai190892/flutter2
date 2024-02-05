@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_riders_app/global/global.dart';
 
 import '../assistant_method/assistant_method.dart';
 import '../widgets/order_card_widget.dart';
@@ -21,15 +22,17 @@ class _ParcelInProgressScreenState extends State<ParcelInProgressScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: const SimpleAppBar(
-          title: "New Orders",
+          title: "Parcel In Progress",
         ),
         body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
               .collection("orders")
               .where("status", isEqualTo: "picking")
+              .where('riderUID', isEqualTo: sharedPreferences!.getString('uid'))
               .orderBy("orderTime", descending: true)
               .snapshots(),
           builder: (c, snapshot) {
+            print("sharedPreferences!.getString('uid'): ${sharedPreferences!.getString('uid')}");
             return snapshot.hasData
                 ? ListView.builder(
                     itemCount: snapshot.data!.docs.length,
@@ -41,9 +44,7 @@ class _ParcelInProgressScreenState extends State<ParcelInProgressScreen> {
                                 whereIn: separateOrderItemIDs(
                                     (snapshot.data!.docs[index].data()!
                                         as Map<String, dynamic>)["productIDs"]))
-                            .where("orderBy",
-                                whereIn: (snapshot.data!.docs[index].data()!
-                                    as Map<String, dynamic>)["uid"])
+                       
                             .orderBy("publishedDate", descending: true)
                             .get(),
                         builder: (c, snap) {

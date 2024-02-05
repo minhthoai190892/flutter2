@@ -8,13 +8,13 @@ import 'package:foodpanda_users_app/main_screen/home_screen.dart';
 class PlacedOrderScreen extends StatefulWidget {
   const PlacedOrderScreen({
     Key? key,
-    required this.addressId,
-    required this.totalAmount,
-    required this.sellerID,
+     this.addressId,
+     this.totalAmount,
+     this.sellerID,
   }) : super(key: key);
-  final String addressId;
-  final double totalAmount;
-  final String sellerID;
+  final String? addressId;
+  final double? totalAmount;
+  final String? sellerID;
   @override
   State<PlacedOrderScreen> createState() => _PlacedOrderScreenState();
 }
@@ -24,7 +24,7 @@ class _PlacedOrderScreenState extends State<PlacedOrderScreen> {
   addOrderDetails() {
     writeOrderDetailsForUser({
       'addressID': widget.addressId,
-      'totalAmount': widget.totalAmount,
+      'totalAmount': widget.totalAmount!,
       'orderBy': sharedPreferences!.getString('uid'),
       'productIDs': sharedPreferences!.getStringList('userCart'),
       'paymentDetails': 'Cash on Delivery',
@@ -37,7 +37,7 @@ class _PlacedOrderScreenState extends State<PlacedOrderScreen> {
     });
     writeOrderDetailsForSeller({
       'addressID': widget.addressId,
-      'totalAmount': widget.totalAmount,
+      'totalAmount': widget.totalAmount!,
       'orderBy': sharedPreferences!.getString('uid'),
       'productIDs': sharedPreferences!.getStringList('userCart'),
       'paymentDetails': 'Cash on Delivery',

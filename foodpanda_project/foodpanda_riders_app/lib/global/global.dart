@@ -12,3 +12,7 @@ FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 Position? position;
 String? completeAddress;
 List<Placemark>? placemarks;
+
+String perParcelDeliveryAmount = '';
+String previousEarnings = ''; //it is seller old total earnig
+String previousRiderEarnings = ''; //it is rider old total earnig

@@ -1,0 +1,10 @@
+
+
+
+git checkout -b FOODPANDEA_ADMIN_WED_PORTAL-Admin Login Page Ui
+git add .
+git commit -m "FOODPANDEA_ADMIN_WED_PORTAL-Admin Login Page Ui"
+git push -u origin FOODPANDEA_ADMIN_WED_PORTAL-Admin Login Page Ui
+
+
+
