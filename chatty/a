@@ -1,7 +1,7 @@
 
 
-git checkout -b CHATTY_SharedPreferences-login_page
+git checkout -b CHATTY_SharedPreferences-login_page-2
 git add .
-git commit -m "CHATTY_SharedPreferences-login_page"
-git push -u origin CHATTY_SharedPreferences-login_page
+git commit -m "CHATTY_SharedPreferences-login_page-2"
+git push -u origin CHATTY_SharedPreferences-login_page-2
 

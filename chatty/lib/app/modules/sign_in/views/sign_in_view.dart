@@ -18,7 +18,7 @@ class SignInView extends GetView<SignInController> {
               fontSize: 34.sp),
         ),
       );
-  Widget _buildThirdPartyGoogleLogin({required String loginType}) => Container(
+  Widget _buildThirdPartyGoogleLogin({required String loginType,required String iconType}) => Container(
         width: 295.w,
         height: 44.h,
         margin: EdgeInsets.only(bottom: 15.h),
@@ -46,11 +46,11 @@ class SignInView extends GetView<SignInController> {
           children: [
             Container(
               padding: EdgeInsets.only(left: 40.w, right: 30.w),
-              child: Image.asset('assets/icons/google.png'),
+              child: Image.asset('assets/icons/$iconType.png'),
             ),
             Container(
               child: Text(
-                loginType,
+                'Sign in with $loginType',
                 style: TextStyle(
                   color: AppColor.primaryText,
                   fontWeight: FontWeight.normal,
@@ -73,9 +73,9 @@ class SignInView extends GetView<SignInController> {
         child: Column(
           children: [
             _buildLogo(),
-            _buildThirdPartyGoogleLogin(loginType: 'Sign in with Google'),
-            _buildThirdPartyGoogleLogin(loginType: 'Google Login'),
-            _buildThirdPartyGoogleLogin(loginType: 'Google Login'),
+            _buildThirdPartyGoogleLogin(loginType: 'Sign in with Google',iconType: 'google'),
+            _buildThirdPartyGoogleLogin(loginType: 'Sign in with Google',iconType: 'facebook'),
+            _buildThirdPartyGoogleLogin(loginType: 'Sign in with Apple',iconType: 'app'),
           ],
         ),
       ),
