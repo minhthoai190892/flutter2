@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, unnecessary_overrides
 
+import 'package:chatty/app/common/entities/user.dart';
 import 'package:chatty/app/modules/sign_in/index/index.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -32,6 +33,7 @@ class SignInController extends GetxController {
   /// 2. facebook
   /// 3. apple
   /// 4. phone number
+  /// 5. email
   void handleSignIn({required String type}) async {
     try {
       if (type == 'phone number') {
@@ -44,6 +46,13 @@ class SignInController extends GetxController {
           String email = user.email;
           String id = user.id;
           String photoUrl = user.photoUrl ?? 'assets/icons/google.png';
+          // / entity user
+          LoginRequestEntity loginPanelListRequestEntity = LoginRequestEntity();
+          loginPanelListRequestEntity.avatar = photoUrl;
+          loginPanelListRequestEntity.name = displayName;
+          loginPanelListRequestEntity.email = email;
+          loginPanelListRequestEntity.open_id = id;
+          loginPanelListRequestEntity.online = 2;
         }
       } else if (type == 'facebook') {
         print('.... you are logging in with facebook....');
