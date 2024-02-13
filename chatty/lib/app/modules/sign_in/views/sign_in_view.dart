@@ -30,7 +30,7 @@ class SignInView extends GetView<SignInController> {
     return GestureDetector(
       onTap: () {
         print('loginType $loginType');
-        controller.handleSignIn(type: loginType);
+        controller.handleSignIn(loginType);
       },
       child: Container(
         width: MediaQuery.of(context).size.width,

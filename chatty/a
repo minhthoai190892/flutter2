@@ -1,9 +1,9 @@
 
 
-git checkout -b CHATTY_handle-login-
+git checkout -b CHATTY_handle-login-error
 git add .
-git commit -m "CHATTY_handle-login-"
-git push -u origin CHATTY_handle-login-
+git commit -m "CHATTY_handle-login-error"
+git push -u origin CHATTY_handle-login-error
 
 
 
@@ -15,7 +15,7 @@ git push -u origin CHATTY_handle-login-
 firebase minthoai190892@gmail.com
 
 
-
+C:\Users\minht\.android\debug.keystore
 
 
 
