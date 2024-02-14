@@ -1,4 +1,4 @@
-library welcome;
+library sigin;
 
 export '../bindings/sign_in_binding.dart';
 export '../controllers/sign_in_controller.dart';

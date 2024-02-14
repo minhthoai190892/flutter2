@@ -1,4 +1,4 @@
-library welcome;
+library message;
 
 export '../bindings/message_binding.dart';
 export '../controllers/message_controller.dart';

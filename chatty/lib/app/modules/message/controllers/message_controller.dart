@@ -1,4 +1,5 @@
 import 'package:chatty/app/modules/message/index/index.dart';
+import 'package:chatty/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class MessageController extends GetxController {
@@ -21,4 +22,7 @@ class MessageController extends GetxController {
   }
 
   void increment() => count.value++;
+  Future<void> goProfile() async {
+  await  Get.toNamed(Routes.PROFILE);
+  }
 }
