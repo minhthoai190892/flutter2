@@ -1,9 +1,9 @@
 
 
-git checkout -b CHATTY_PROFILE-
+git checkout -b CHATTY_PROFILE-photo
 git add .
-git commit -m "CHATTY_PROFILE-"
-git push -u origin CHATTY_PROFILE-
+git commit -m "CHATTY_PROFILE-photo"
+git push -u origin CHATTY_PROFILE-photo
 
 
 
