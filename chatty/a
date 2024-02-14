@@ -1,9 +1,9 @@
 
 
-git checkout -b CHATTY_PROFILE-icon-edit
+git checkout -b CHATTY_PROFILE-button-complete-logout
 git add .
-git commit -m "CHATTY_PROFILE-icon-edit"
-git push -u origin CHATTY_PROFILE-icon-edit
+git commit -m "CHATTY_PROFILE-button-complete-logout"
+git push -u origin CHATTY_PROFILE-button-complete-logout
 
 
 

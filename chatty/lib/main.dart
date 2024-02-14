@@ -19,7 +19,7 @@ Future<void> main() async {
         theme: AppTheme.light,
         // initialRoute: AppPages.INITIAL,
 
-        initialRoute: Routes.WELCOME,
+        initialRoute: Routes.PROFILE,
         getPages: AppPages.routes,
       ),
     ),
