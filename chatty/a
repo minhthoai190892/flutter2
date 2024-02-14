@@ -1,9 +1,9 @@
 
 
-git checkout -b CHATTY_handle-login-error
+git checkout -b CHATTY_MESSAGE-design-avatar
 git add .
-git commit -m "CHATTY_handle-login-error"
-git push -u origin CHATTY_handle-login-error
+git commit -m "CHATTY_MESSAGE-design-avatar"
+git push -u origin CHATTY_MESSAGE-design-avatar
 
 
 
@@ -18,7 +18,7 @@ firebase minthoai190892@gmail.com
 C:\Users\minht\.android\debug.keystore
 
 
-
+adb connect 192.168.101.32:
 
 
 

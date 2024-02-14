@@ -105,7 +105,7 @@ class SignInController extends GetxController {
       } else if (type == 'Google') {
         var user = await _googleSignIn.signIn();
         if (user != null) {
-           final _gAuthentication = await user.authentication;
+          final _gAuthentication = await user.authentication;
           final _credential = GoogleAuthProvider.credential(
             idToken: _gAuthentication.idToken,
             accessToken: _gAuthentication.accessToken,
@@ -122,7 +122,6 @@ class SignInController extends GetxController {
           loginPanelListRequestEntity.open_id = id;
           loginPanelListRequestEntity.type = 2;
           asyncPostAllData();
-         
         }
       } else {
         if (kDebugMode) {
@@ -137,6 +136,7 @@ class SignInController extends GetxController {
   }
 
   asyncPostAllData() {
+    print('---> MESSAGE page');
     Get.offAllNamed(Routes.MESSAGE);
   }
 }

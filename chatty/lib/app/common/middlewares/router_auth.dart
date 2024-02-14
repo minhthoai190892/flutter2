@@ -18,13 +18,16 @@ class RouteAuthMiddleware extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    //  
-    if (UserStore.to.isLogin ||route == Routes.SIGN_IN || route == Routes.WELCOME) {
+    //
+    if (UserStore.to.isLogin ||
+        route == Routes.SIGN_IN ||
+        route == Routes.WELCOME||
+        route == Routes.MESSAGE) {
       return null;
     } else {
-      Future.delayed(
-          Duration(seconds: 2), () => Get.snackbar("Tips", "Login expired, please login again!"));
-      return RouteSettings(name:Routes.SIGN_IN);
+      Future.delayed(const Duration(seconds: 2),
+          () => Get.snackbar("Tips", "Login expired, please login again!"));
+      return const RouteSettings(name: Routes.SIGN_IN);
     }
   }
 }
