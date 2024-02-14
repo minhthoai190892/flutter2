@@ -22,6 +22,7 @@ class MessageView extends GetView<MessageController> {
                   GestureDetector(
                     onTap: () {
                       // go to profile
+                      print('go to profile');
                       controller.goProfile();
                     },
                     child: Container(

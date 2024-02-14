@@ -27,7 +27,26 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               ],
             ),
-            child: Image.asset('assets/images/account_header.png'),
+            child: Image.asset(
+              'assets/images/account_header.png',
+              width: size.width / 3.2.w,
+              height: size.width / 3.2.w,
+            ),
+          ),
+          Positioned(
+            bottom: 20.w,
+            right: 0.w,
+            child: Container(
+              width: size.width / 11.w,
+              height: size.width / 11.w,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(size.width / 9.w),
+                ),
+              ),
+              child: Image.asset('assets/icons/edit.png'),
+            ),
           ),
         ],
       );
