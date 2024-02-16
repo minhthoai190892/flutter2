@@ -1,0 +1,34 @@
+
+
+git checkout -b CHATTY_error
+git add .
+git commit -m "CHATTY_error"
+git push -u origin CHATTY_error
+
+
+
+
+
+
+
+
+firebase minthoai190892@gmail.com
+
+
+C:\Users\minht\.android\debug.keystore
+
+
+adb connect 192.168.101.32:
+
+
+laravel
+    # tao project laravel
+    -composer create-project laravel/laravel ten-project
+    # tao key
+    - php artisan key:generate
+    # khoi chay laravel
+    - php artisan serve
+docs install admin laravel backend
+https://laravel-admin.org/docs/en/installation
+config 
+https://www.dbestech.com/tutorials/laravel-admin-panel-config-problems-and-solutions
