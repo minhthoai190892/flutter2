@@ -1,12 +1,14 @@
-import 'package:chatty/app/common/middlewares/middlewares.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../common/middlewares/middlewares.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/message/bindings/message_binding.dart';
 import '../modules/message/views/message_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
 import '../modules/sign_in/bindings/sign_in_binding.dart';
 import '../modules/sign_in/views/sign_in_view.dart';
 import '../modules/welcome/bindings/welcome_binding.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.SIGN_IN,
       page: () => const SignInView(),
       binding: SignInBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }
