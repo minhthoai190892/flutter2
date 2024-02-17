@@ -1,7 +1,7 @@
-git checkout -b flutter_firebase_ecommerce_Placing-an-order-in-flutter-Part-2
+git checkout -b flutter_firebase_ecommerce_Placing-an-order-in-flutter-Part-2-
 git add .
-git commit -m "flutter_firebase_ecommerce_Placing-an-order-in-flutter-Part-2"
-git push -u origin flutter_firebase_ecommerce_Placing-an-order-in-flutter-Part-2
+git commit -m "flutter_firebase_ecommerce_Placing-an-order-in-flutter-Part-2-"
+git push -u origin flutter_firebase_ecommerce_Placing-an-order-in-flutter-Part-2-
 
     
 
