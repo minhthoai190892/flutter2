@@ -102,29 +102,109 @@ class _VideoStreamingPageState extends State<VideoStreamingPage> {
                   Expanded(
                     child: Container(),
                   ),
+                  Row(
+                    children: [
+                      const CircleAvatar(),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Chip(
+                        avatar: const CircleAvatar(
+                          radius: 16,
+                        ),
+                        label: const Text('Dream Donated'),
+                        backgroundColor: Colors.white.withOpacity(0.78),
+                        shape: const StadiumBorder(),
+                        surfaceTintColor: Colors.white.withOpacity(0.78),
+                      ),
+                    ],
+                  ),
                   Expanded(
                     child: ListView.builder(
-                      itemBuilder: (context, index) => const Placeholder(),
+                      itemBuilder: (context, index) => const Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CircleAvatar(),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Flutter',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text(
+                                      '24mm',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'Welcome to the Flutter project',
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Row(
                     children: [
                       Expanded(
                         child: Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.blue,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(32),
                           ),
-                          child: const TextField(),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Message',
+                              hintStyle: TextStyle(
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(
                         width: 10,
                       ),
-                      const CircleAvatar(
+                      CircleAvatar(
                         radius: 24,
+                        backgroundColor: Colors.white.withOpacity(0.2),
+                        child: Center(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.favorite,
+                              color: Colors.redAccent,
+                            ),
+                          ),
+                        ),
                       ),
-                      const CircleAvatar(
+                      CircleAvatar(
                         radius: 24,
+                        backgroundColor: Colors.white.withOpacity(0.2),
+                        child: Center(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.videocam_rounded,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
