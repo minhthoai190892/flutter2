@@ -1,0 +1,4 @@
+git checkout -b E_COMMERCE_FIREBASE-theme-light-dark
+git add .
+git commit -m "E_COMMERCE_FIREBASE-theme-light-dark"
+git push -u origin E_COMMERCE_FIREBASE-theme-light-dark
