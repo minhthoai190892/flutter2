@@ -28,11 +28,11 @@ class TAppThem {
 
   /// Custome dark theme
   static ThemeData darkTheme = ThemeData(
-   useMaterial3: true,
+    useMaterial3: true,
     fontFamily: 'Poppins',
     brightness: Brightness.light,
     primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.black,
     textTheme: TTextTheme.darkTextTheme,
     elevatedButtonTheme: TElevatedButtonThem.darkElevatedButtonThem,
     checkboxTheme: TCheckBoxTheme.darkCheckBoxTheme,

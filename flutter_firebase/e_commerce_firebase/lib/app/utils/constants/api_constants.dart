@@ -1,3 +1,4 @@
 class APIConstants {
-  String tSecretAPIKey = 'cwtlkajsdiqwe897712893asdwqe';
+  /// SecretAPIKey
+ static String tSecretAPIKey = 'cwtlkajsdiqwe897712893asdwqe';
 }

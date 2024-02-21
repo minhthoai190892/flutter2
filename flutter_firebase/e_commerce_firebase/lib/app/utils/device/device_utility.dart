@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class TDeviceUtils {
+  
   static void hideKeyboard({required BuildContext context}) {
     FocusScope.of(context).requestFocus(FocusNode());
   }

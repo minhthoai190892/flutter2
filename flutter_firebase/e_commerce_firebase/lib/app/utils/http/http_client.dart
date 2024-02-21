@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:get/get.dart';
+
 import 'package:http/http.dart' as http;
 
 class THttpHelper {
-  static String _baseUrl =
+  static const String _baseUrl =
       "https://your-api-base-url.com"; //replace with your api base url
   /// heler method to make a GET request
   static Future<Map<String, dynamic>> get({required String endpoint}) async {
