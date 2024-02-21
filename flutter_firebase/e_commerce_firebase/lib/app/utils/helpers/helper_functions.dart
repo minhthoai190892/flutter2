@@ -29,6 +29,10 @@ class THelperFuntions {
       return Colors.teal;
     } else if (value == 'Indigo') {
       return Colors.indigo;
+    } else if (value == 'Yellow') {
+      return Colors.yellow;
+    } else if (value == 'Orange') {
+      return Colors.orange;
     } else {
       return null;
     }
@@ -71,8 +75,11 @@ class THelperFuntions {
     }
   }
 
+  /// thây đổi màu theo mode (dark or light)
   static bool isDarkMode({required BuildContext context}) {
-    return Theme.of(context).brightness == Brightness.dark;
+    bool result = Theme.of(context).brightness == Brightness.dark;
+
+    return result;
   }
 
   static Size screenSize() {

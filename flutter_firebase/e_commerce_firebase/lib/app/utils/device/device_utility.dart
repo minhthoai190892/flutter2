@@ -47,11 +47,15 @@ class TDeviceUtils {
   static double getStatusBarHeight() {
     return MediaQuery.of(Get.context!).padding.top;
   }
-
+  ///The height of the bottom navigation bar.
+  ///
+  ///[kBottomNavigationBarHeight] = 56.0
   static double getBottomNavigationBarHeight() {
     return kBottomNavigationBarHeight;
   }
-
+  ///The height of the toolbar component of the [AppBar]
+  ///
+  ///[kToolbarHeight] = 56.0
   static double getAppBarHeight() {
     return kToolbarHeight;
   }

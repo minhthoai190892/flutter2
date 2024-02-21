@@ -12,8 +12,9 @@ void main() {
       themeMode: ThemeMode.system,
       theme: TAppThem.lightTheme,
       darkTheme: TAppThem.darkTheme,
+      
       title: "Application",
-      initialRoute: Routes.HOME,
+      initialRoute: Routes.ONBOARDING,
       getPages: AppPages.routes,
     ),
   );

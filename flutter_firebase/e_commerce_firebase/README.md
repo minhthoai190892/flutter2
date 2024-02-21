@@ -4,9 +4,21 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
+>Sử dụng các thư viện:
+> - iconsax
+> - http
+> - logger
+> - intl
+> - url_launcher
+> - get
+> - get_storage
+> - flutter_native_splash
+> - lottie
+## OnBoarding Page
+- Sử dụng **PageView** để tạo các trang onboarding
+- Nút **Skik**
+- Sử dụng **SmoothPageIndicator** tạo các ***dot***
+- Nút **Next**
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)

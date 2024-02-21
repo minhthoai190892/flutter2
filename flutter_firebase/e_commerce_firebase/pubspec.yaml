@@ -20,6 +20,8 @@ dependencies:
   get: 4.6.6
   get_storage: ^2.1.1
   flutter_native_splash: ^2.3.11
+  lottie: ^3.1.0
+  smooth_page_indicator: ^1.1.0
 
 
 dev_dependencies:
@@ -31,6 +33,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/on_boarding_images/
     - assets/logos/
     - assets/icons/
     - assets/icons/brands/

@@ -1,7 +1,11 @@
-git checkout -b E_COMMERCE_FIREBASE-create-splash-by-yaml
+git checkout -b E_COMMERCE_FIREBASE-onboarding-page
 git add .
-git commit -m "E_COMMERCE_FIREBASE-create-splash-by-yaml"
-git push -u origin E_COMMERCE_FIREBASE-create-splash-by-yaml
+git commit -m "E_COMMERCE_FIREBASE-onboarding-page"
+git push -u origin E_COMMERCE_FIREBASE-onboarding-page
 
 
 
+create splash
+flutter pub run flutter_native_splash:create --path=splash.yaml
+
+adb connect 192.168.101.32:
