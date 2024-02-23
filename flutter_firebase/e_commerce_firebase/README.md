@@ -19,7 +19,14 @@ A new Flutter project.
 - Nút **Skik**
 - Sử dụng **SmoothPageIndicator** tạo các ***dot***
 - Nút **Next**
-
+## Login Page UI
+- logo
+- title, subtitle
+- form login
+- Remember me & Forget Password
+- button sigin & create new account
+- divider
+- social buttons
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 

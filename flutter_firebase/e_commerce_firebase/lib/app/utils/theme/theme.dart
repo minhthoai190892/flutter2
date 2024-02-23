@@ -24,13 +24,17 @@ class TAppThem {
     bottomSheetTheme: TBottomSheetTheme.lightBottomSheetTheme,
     outlinedButtonTheme: TOutlineButtonThem.lightOutlineButtonTheme,
     inputDecorationTheme: TTextFormFieldTheme.lightInputDecorationTheme,
+// colorScheme: ColorScheme.fromSeed(
+//   seedColor: const Color(0xffbb86fc),
+//   brightness: Brightness.dark,
+// )
   );
 
   /// Custome dark theme
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     fontFamily: 'Poppins',
-    brightness: Brightness.light,
+    brightness: Brightness.dark,
     primaryColor: Colors.blue,
     scaffoldBackgroundColor: Colors.black,
     textTheme: TTextTheme.darkTextTheme,
@@ -40,5 +44,6 @@ class TAppThem {
     bottomSheetTheme: TBottomSheetTheme.darkBottomSheetTheme,
     outlinedButtonTheme: TOutlineButtonThem.darkOutlineButtonTheme,
     inputDecorationTheme: TTextFormFieldTheme.darkInputDecorationTheme,
+  
   );
 }

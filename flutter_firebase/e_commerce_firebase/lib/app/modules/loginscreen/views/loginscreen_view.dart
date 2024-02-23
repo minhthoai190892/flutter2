@@ -1,22 +1,46 @@
+import 'package:e_commerce_firebase/app/common/styles/spacing_styles.dart';
+import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
+import 'package:e_commerce_firebase/app/utils/constants/image_strings.dart';
+import 'package:e_commerce_firebase/app/utils/constants/text_strings.dart';
+import 'package:e_commerce_firebase/app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../common/widgets.login_signup/form_widget.dart';
+import '../../../common/widgets.login_signup/social_button_widget.dart';
+import '../../../utils/constants/sizes.dart';
 import '../controllers/loginscreen_controller.dart';
+import 'widgets/divider_widget.dart';
+import 'widgets/login_header_widget.dart';
 
 class LoginscreenView extends GetView<LoginscreenController> {
   const LoginscreenView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFuntions.isDarkMode(context: context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('LoginscreenView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'LoginscreenView is working',
-          style: TextStyle(fontSize: 20),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: TSpacingStyle.paddingWithAppBarHeight,
+            child: Column(
+              children: [
+                // logo, Title, Subtitle
+                TLoginHeader(dark: dark),
+                //Form
+                const TLoginForm(),
+
+                // divider
+                TLoginDivider(dark: dark),
+                SizedBox(
+                  height: TSizes.spaceBtwSections,
+                ),
+                // Footer
+                const TSocialButton(),
+              ],
+            ),
+          ),
         ),
       ),
     );
