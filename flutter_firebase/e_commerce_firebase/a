@@ -1,7 +1,7 @@
-git checkout -b E_COMMERCE_FIREBASE-login-page-ui
+git checkout -b E_COMMERCE_FIREBASE-sign-up-page-ui
 git add .
-git commit -m "E_COMMERCE_FIREBASE-login-page-ui"
-git push -u origin E_COMMERCE_FIREBASE-login-page-ui
+git commit -m "E_COMMERCE_FIREBASE-sign-up-page-ui"
+git push -u origin E_COMMERCE_FIREBASE-sign-up-page-ui
 
 
 

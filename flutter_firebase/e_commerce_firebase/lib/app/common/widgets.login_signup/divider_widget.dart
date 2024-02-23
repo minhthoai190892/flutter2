@@ -1,18 +1,15 @@
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/text_strings.dart';
+import '../../utils/constants/colors.dart';
 
-class TLoginDivider extends StatelessWidget {
-  const TLoginDivider({
+class TDividerForm extends StatelessWidget {
+  const TDividerForm({
     super.key,
-    required this.dark,
+    required this.dark, required this.dividerText,
   });
 
   final bool dark;
-
+  final String dividerText;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -27,7 +24,7 @@ class TLoginDivider extends StatelessWidget {
           ),
         ),
         Text(
-          TTexts.orSignInWith.capitalize!,
+          dividerText,
           style: Theme.of(context).textTheme.labelMedium,
         ),
         Flexible(

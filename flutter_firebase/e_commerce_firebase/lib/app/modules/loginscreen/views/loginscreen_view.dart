@@ -1,17 +1,14 @@
-import 'package:e_commerce_firebase/app/common/styles/spacing_styles.dart';
-import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
-import 'package:e_commerce_firebase/app/utils/constants/image_strings.dart';
-import 'package:e_commerce_firebase/app/utils/constants/text_strings.dart';
-import 'package:e_commerce_firebase/app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
+import '../../../common/styles/spacing_styles.dart';
 import '../../../common/widgets.login_signup/form_widget.dart';
 import '../../../common/widgets.login_signup/social_button_widget.dart';
 import '../../../utils/constants/sizes.dart';
+import '../../../utils/constants/text_strings.dart';
+import '../../../utils/helpers/helper_functions.dart';
 import '../controllers/loginscreen_controller.dart';
-import 'widgets/divider_widget.dart';
+import '../../../common/widgets.login_signup/divider_widget.dart';
 import 'widgets/login_header_widget.dart';
 
 class LoginscreenView extends GetView<LoginscreenController> {
@@ -32,7 +29,7 @@ class LoginscreenView extends GetView<LoginscreenController> {
                 const TLoginForm(),
 
                 // divider
-                TLoginDivider(dark: dark),
+                TDividerForm(dark: dark,dividerText: TTexts.orSignInWith.capitalize!),
                 SizedBox(
                   height: TSizes.spaceBtwSections,
                 ),

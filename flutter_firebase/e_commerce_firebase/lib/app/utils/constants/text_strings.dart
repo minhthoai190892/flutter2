@@ -33,7 +33,6 @@ class TTexts {
   static String yourAccountCreatedSubTitle =
       "................the Joy of Seamless Online Shopping";
 
-
   //authentication form text
   static const String firstName = "First Name";
   static const String lastName = "Last Name";
@@ -55,4 +54,5 @@ class TTexts {
   static const String resendEmailIn = "Resend email in";
   static const String rememberMe = "Remember me";
 
+  static const String and = " And";
 }

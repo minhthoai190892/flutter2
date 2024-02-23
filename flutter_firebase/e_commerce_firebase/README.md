@@ -27,9 +27,10 @@ A new Flutter project.
 - button sigin & create new account
 - divider
 - social buttons
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Sign up Page UI
+- title, subtitle
+- form signup
+- checkbox privacy policy and terms of use
+- button create new account
+- divider
+- social buttons
