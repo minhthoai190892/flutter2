@@ -31,7 +31,7 @@ class TTexts {
       "Didn't get the email? Check your link/spam or resent it.";
   static String yourAccountCreatedTitle = "Your account successfully created";
   static String yourAccountCreatedSubTitle =
-      "................the Joy of Seamless Online Shopping";
+      "Welcome to your Ultimate Shopping Destination: Your account is created. Unleash the Joy of Seamless Online Shopping";
 
   //authentication form text
   static const String firstName = "First Name";
@@ -55,4 +55,8 @@ class TTexts {
   static const String rememberMe = "Remember me";
 
   static const String and = " And";
+
+  static String emailSupport = 'support@gmail.com';
+
+  static String tContinue = 'Continue';
 }

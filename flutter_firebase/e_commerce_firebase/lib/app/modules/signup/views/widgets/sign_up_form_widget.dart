@@ -1,5 +1,7 @@
 
+import 'package:e_commerce_firebase/app/modules/signup/views/verify_email.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/colors.dart';
@@ -156,7 +158,7 @@ class TSignupForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () =>Get.to(()=>VerifyEmailScreen()),
                 child: const Text(TTexts.createAccount)),
           ),
         ],

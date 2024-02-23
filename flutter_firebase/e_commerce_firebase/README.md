@@ -34,3 +34,13 @@ A new Flutter project.
 - button create new account
 - divider
 - social buttons
+## Verif Email Page UI
+- Lottie
+- title, subtitle
+- continue button
+- resend email TextButton
+## Account Successfully  Page UI
+- Lottie
+- title, subtitle
+- continue button
+
