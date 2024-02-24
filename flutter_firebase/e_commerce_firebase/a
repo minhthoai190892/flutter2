@@ -1,0 +1,11 @@
+git checkout -b E_COMMERCE_FIREBASE-forget-password-reset-password-page-ui
+git add .
+git commit -m "E_COMMERCE_FIREBASE-forget-password-reset-password-page-ui"
+git push -u origin E_COMMERCE_FIREBASE-forget-password-reset-password-page-ui
+
+
+
+create splash
+flutter pub run flutter_native_splash:create --path=splash.yaml
+
+adb connect 192.168.101.32:
