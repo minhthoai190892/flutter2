@@ -44,3 +44,12 @@ A new Flutter project.
 - title, subtitle
 - continue button
 
+## Forget password  Page UI
+- title, subtitle
+- text field
+- submit button
+## Rest Password Page UI
+- Lottie
+- title, subtitle
+- done button
+- Resend email text button

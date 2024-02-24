@@ -59,4 +59,8 @@ class TTexts {
   static String emailSupport = 'support@gmail.com';
 
   static String tContinue = 'Continue';
+
+  static String submit = 'Submit';
+
+  static String done ='Done';
 }

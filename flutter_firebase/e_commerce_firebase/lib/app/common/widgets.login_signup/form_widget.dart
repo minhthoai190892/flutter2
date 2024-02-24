@@ -1,3 +1,4 @@
+import 'package:e_commerce_firebase/app/modules/forgetpassword/views/forgetpassword_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -57,7 +58,7 @@ class TLoginForm extends StatelessWidget {
                 ),
                 // forget password
                 TextButton(
-                  onPressed: () {},
+                  onPressed:() => Get.to(const ForgetpasswordView()),
                   child: const Text(TTexts.forgetPassword),
                 ),
               ],
