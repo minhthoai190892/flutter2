@@ -62,5 +62,13 @@ class TTexts {
 
   static String submit = 'Submit';
 
-  static String done ='Done';
+  static String done = 'Done';
+
+  static String home = 'Home';
+
+  static String store = 'Store';
+
+  static String wishList = 'WishList';
+
+  static String profile = 'Profile';
 }

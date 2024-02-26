@@ -53,3 +53,6 @@ A new Flutter project.
 - title, subtitle
 - done button
 - Resend email text button
+## Naivagation UI
+ - sử dụng **bottomNavigationBar** để tạo navigation
+ - sử dụng controller để thay đổi trạng thái của các navigation
