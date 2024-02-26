@@ -60,3 +60,6 @@ A new Flutter project.
 1. Header
     - Sử dụng **ClipPath** để vẻ đưởng cong. (_TCustomeCurvedEdges_) class
     -  tạo 2 hình tròn
+    - #### App Bar
+        - shopping icon
+        - title, subtitle
