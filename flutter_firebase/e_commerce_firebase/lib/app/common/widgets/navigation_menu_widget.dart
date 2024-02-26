@@ -1,3 +1,4 @@
+import 'package:e_commerce_firebase/app/modules/homescreen/views/homescreen_view.dart';
 import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
 import 'package:e_commerce_firebase/app/utils/constants/text_strings.dart';
 import 'package:e_commerce_firebase/app/utils/helpers/helper_functions.dart';
@@ -25,7 +26,6 @@ class NavigationMenuWidget extends StatelessWidget {
             onDestinationSelected: (value) {
               controller.selectedIndex.value = value;
             },
-            
             destinations: [
               NavigationDestination(
                   icon: const Icon(Iconsax.home), label: TTexts.home),
@@ -47,9 +47,7 @@ class NavigationMenuWidget extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screen = [
-    Container(
-      color: Colors.blue,
-    ),
+    const HomescreenView(),
     Container(
       color: Colors.green,
     ),

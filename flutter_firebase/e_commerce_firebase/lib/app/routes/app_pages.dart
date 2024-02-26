@@ -6,6 +6,8 @@ import '../modules/forgetpassword/bindings/forgetpassword_binding.dart';
 import '../modules/forgetpassword/views/forgetpassword_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/homescreen/bindings/homescreen_binding.dart';
+import '../modules/homescreen/views/homescreen_view.dart';
 import '../modules/loginscreen/bindings/loginscreen_binding.dart';
 import '../modules/loginscreen/views/loginscreen_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
@@ -59,6 +61,11 @@ class AppPages {
       name: _Paths.RESETPASSWORD,
       page: () => const ResetpasswordView(),
       binding: ResetpasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOMESCREEN,
+      page: () => const HomescreenView(),
+      binding: HomescreenBinding(),
     ),
   ];
 }

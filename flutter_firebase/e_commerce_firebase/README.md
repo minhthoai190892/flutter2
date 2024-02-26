@@ -56,3 +56,7 @@ A new Flutter project.
 ## Naivagation UI
  - sử dụng **bottomNavigationBar** để tạo navigation
  - sử dụng controller để thay đổi trạng thái của các navigation
+## Home Screen UI
+1. Header
+    - Sử dụng **ClipPath** để vẻ đưởng cong. (_TCustomeCurvedEdges_) class
+    -  tạo 2 hình tròn
