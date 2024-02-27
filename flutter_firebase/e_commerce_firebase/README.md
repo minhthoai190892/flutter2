@@ -63,7 +63,11 @@ A new Flutter project.
     - #### App Bar
         - shopping icon
         - title, subtitle
-    - #### App Bar
+    - #### Categories
         - search bar
         - categories title
         - listview categories and titles
+2. Body
+    - #### Carousel
+        - Carousel sử dụng thư viện ***(carousel_slider)***
+        - indicators 

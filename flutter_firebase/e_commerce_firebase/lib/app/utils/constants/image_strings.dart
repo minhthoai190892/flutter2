@@ -41,11 +41,14 @@ class TImages {
       'assets/icons/categories/icons8-dummy-50.png';
   static const String schoolUniform =
       'assets/icons/categories/icons8-school-uniform-62.png';
-  static const String shoes =
-      'assets/icons/categories/icons8-shoes-30.png';
- static const String sparklingDiamondeart =
+  static const String shoes = 'assets/icons/categories/icons8-shoes-30.png';
+  static const String sparklingDiamondeart =
       'assets/icons/categories/icons8-sparkling-diamond-50.png';
-       static const String woodenToyCar =
+  static const String woodenToyCar =
       'assets/icons/categories/icons8-wooden-toy-car-64.png';
-      
+// banners
+  static const String banner1 = 'assets/images/banners/clothes.jpg';
+  static const String banner2 = 'assets/images/banners/school-uniform.jpg';
+  static const String banner3 = 'assets/images/banners/shose.jpg';
+ static const List<String> banners = [banner1, banner2, banner3];
 }

@@ -32,7 +32,7 @@ class TDeviceUtils {
         enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
   }
 
-  static double getScreenHeight() {
+  static  double getScreenHeight() {
     return MediaQuery.of(Get.context!).size.height;
   }
 

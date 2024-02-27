@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/constants/sizes.dart';
-
 class TSectionHeading extends StatelessWidget {
   const TSectionHeading({
     super.key,

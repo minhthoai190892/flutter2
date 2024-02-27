@@ -24,17 +24,19 @@ class TPrimaryHeaderContainer extends StatelessWidget {
           child: Stack(
             children: [
               // các hình tròn
-              const Positioned(
+              Positioned(
                 top: -150,
                 right: -250,
                 // hình tròn
-                child: TCircularContainer(backgroundColor: TColors.white),
+                child: TCircularContainer(
+                    backgroundColor: TColors.white.withOpacity(0.1)),
               ),
-              const Positioned(
+              Positioned(
                 top: 100,
                 right: -300,
                 // hình tròn
-                child: TCircularContainer(backgroundColor: TColors.white),
+                child: TCircularContainer(
+                    backgroundColor: TColors.white.withOpacity(0.1)),
               ),
               child
             ],
