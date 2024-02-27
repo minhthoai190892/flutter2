@@ -1,7 +1,7 @@
-git checkout -b E_COMMERCE_FIREBASE-home-screen-header-appbar-page-ui
+git checkout -b E_COMMERCE_FIREBASE-home-screen-header-searchbar-and-listview-categories-page-ui
 git add .
-git commit -m "E_COMMERCE_FIREBASE-home-screen-header-appbar-page-ui"
-git push -u origin E_COMMERCE_FIREBASE-home-screen-header-appbar-page-ui
+git commit -m "E_COMMERCE_FIREBASE-home-screen-header-searchbar-and-listview-categories-page-ui"
+git push -u origin E_COMMERCE_FIREBASE-home-screen-header-searchbar-and-listview-categories-page-ui
 
 
 

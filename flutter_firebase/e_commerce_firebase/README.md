@@ -63,3 +63,7 @@ A new Flutter project.
     - #### App Bar
         - shopping icon
         - title, subtitle
+    - #### App Bar
+        - search bar
+        - categories title
+        - listview categories and titles
