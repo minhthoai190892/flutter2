@@ -1,15 +1,13 @@
-import 'package:e_commerce_firebase/app/routes/app_pages.dart';
-import 'package:e_commerce_firebase/app/utils/constants/image_strings.dart';
-import 'package:e_commerce_firebase/app/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../routes/app_pages.dart';
+import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
+import '../../../utils/helpers/helper_functions.dart';
 import '../controllers/resetpassword_controller.dart';
 
 class ResetpasswordView extends GetView<ResetpasswordController> {

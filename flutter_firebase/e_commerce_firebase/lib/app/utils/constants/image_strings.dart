@@ -25,4 +25,33 @@ class TImages {
       'assets/images/animation/send_verify_email.json';
   static const String verifyIllustration =
       'assets/images/animation/air_ticket.json';
+  // Category icons
+
+  static const String sportIcon =
+      'assets/icons/categories/icons8-bowling-50.png';
+  static const String smartIcon =
+      'assets/icons/categories/icons8-blackberry-50.png';
+  static const String cosmetics =
+      'assets/icons/categories/icons8-cosmetics-50.png';
+  static const String diningChair =
+      'assets/icons/categories/icons8-dining-chair-64.png';
+  static const String dogHeart =
+      'assets/icons/categories/icons8-dog-heart-30.png';
+  static const String tailorDummy =
+      'assets/icons/categories/icons8-dummy-50.png';
+  static const String schoolUniform =
+      'assets/icons/categories/icons8-school-uniform-62.png';
+  static const String shoes = 'assets/icons/categories/icons8-shoes-30.png';
+  static const String sparklingDiamondeart =
+      'assets/icons/categories/icons8-sparkling-diamond-50.png';
+  static const String woodenToyCar =
+      'assets/icons/categories/icons8-wooden-toy-car-64.png';
+// banners
+  static const String banner1 = 'assets/images/banners/clothes.jpg';
+  static const String banner2 = 'assets/images/banners/school-uniform.jpg';
+  static const String banner3 = 'assets/images/banners/shose.jpg';
+ static const List<String> banners = [banner1, banner2, banner3];
+//  Products
+  static const String product1 = 'assets/images/products/img1.png';
+
 }

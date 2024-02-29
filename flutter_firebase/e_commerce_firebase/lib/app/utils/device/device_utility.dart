@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class TDeviceUtils {
-  
+  TDeviceUtils._();
   static void hideKeyboard({required BuildContext context}) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
@@ -32,7 +32,7 @@ class TDeviceUtils {
         enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
   }
 
-  static double getScreenHeight() {
+  static  double getScreenHeight() {
     return MediaQuery.of(Get.context!).size.height;
   }
 
@@ -47,12 +47,14 @@ class TDeviceUtils {
   static double getStatusBarHeight() {
     return MediaQuery.of(Get.context!).padding.top;
   }
+
   ///The height of the bottom navigation bar.
   ///
   ///[kBottomNavigationBarHeight] = 56.0
   static double getBottomNavigationBarHeight() {
     return kBottomNavigationBarHeight;
   }
+
   ///The height of the toolbar component of the [AppBar]
   ///
   ///[kToolbarHeight] = 56.0

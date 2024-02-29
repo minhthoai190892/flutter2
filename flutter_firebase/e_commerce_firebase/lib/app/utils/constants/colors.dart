@@ -11,7 +11,7 @@ class TColors {
   static Color textSecondary = const Color(0xFF6C757d);
   static Color textWhite = Colors.white;
   // background color
-  static Color light = const Color(0xFFf6f6f6);
+  static const Color light = const Color(0xFFf6f6f6);
   static Color dark = const Color(0xFF272727);
   static Color primaryBackground = const Color(0xFFf3f5ff);
   // background container color
@@ -27,7 +27,7 @@ class TColors {
   static Color warning = const Color(0xfff57c00);
   static Color info = const Color(0xff1976d2);
   //border colors
-  static Color borderPrimary = const Color(0xffd9d9d9);
+  static const Color borderPrimary = const Color(0xffd9d9d9);
   static Color borderSecondary = const Color(0xffe6e6e6);
   // neutral shades
   static Color black = const Color(0xff232323);
@@ -36,7 +36,7 @@ class TColors {
   static Color grey = const Color(0xffe0e0e0);
   static Color softGrey = const Color(0xfff4f4f4);
   static Color lightGrey = const Color(0xfff9f9f9);
-  static Color white = const Color(0xffffffff);
+  static const Color white = Color(0xffffffff);
   //Gradient Colors
   static Gradient linerGradient = const LinearGradient(
     colors: [

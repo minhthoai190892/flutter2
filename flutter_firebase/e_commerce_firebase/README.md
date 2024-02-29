@@ -53,3 +53,29 @@ A new Flutter project.
 - title, subtitle
 - done button
 - Resend email text button
+## Naivagation UI
+ - sử dụng **bottomNavigationBar** để tạo navigation
+ - sử dụng controller để thay đổi trạng thái của các navigation
+## Home Screen UI
+1. Header
+    - Sử dụng **ClipPath** để vẻ đưởng cong. (_TCustomeCurvedEdges_) class
+    -  tạo 2 hình tròn
+    - #### App Bar
+        - shopping icon
+        - title, subtitle
+    - #### Categories
+        - search bar
+        - categories title
+        - listview categories and titles
+2. Body
+    - #### Carousel
+        - Carousel sử dụng thư viện ***(carousel_slider)***
+        - indicators 
+    - #### Gridview Product
+        - Gridview.builder
+            - product image
+            - sale
+            - wishlist
+            - tile
+            - brands
+            - price and add button 

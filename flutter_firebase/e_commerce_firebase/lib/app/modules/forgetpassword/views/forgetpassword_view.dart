@@ -1,12 +1,10 @@
-import 'package:e_commerce_firebase/app/modules/resetpassword/views/resetpassword_view.dart';
-import 'package:e_commerce_firebase/app/routes/app_pages.dart';
-import 'package:e_commerce_firebase/app/utils/constants/sizes.dart';
-import 'package:e_commerce_firebase/app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../routes/app_pages.dart';
+import '../../../utils/constants/sizes.dart';
+import '../../../utils/constants/text_strings.dart';
 import '../controllers/forgetpassword_controller.dart';
 
 class ForgetpasswordView extends GetView<ForgetpasswordController> {

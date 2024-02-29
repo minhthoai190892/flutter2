@@ -1,3 +1,4 @@
+import 'package:e_commerce_firebase/app/common/widgets/navigation_menu_widget.dart';
 import 'package:e_commerce_firebase/app/modules/forgetpassword/views/forgetpassword_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -58,7 +59,7 @@ class TLoginForm extends StatelessWidget {
                 ),
                 // forget password
                 TextButton(
-                  onPressed:() => Get.to(const ForgetpasswordView()),
+                  onPressed: () => Get.to(const ForgetpasswordView()),
                   child: const Text(TTexts.forgetPassword),
                 ),
               ],
@@ -70,7 +71,8 @@ class TLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () {}, child: const Text(TTexts.signIn)),
+                  onPressed: () => Get.to(() => const NavigationMenuWidget()),
+                  child: const Text(TTexts.signIn)),
             ),
             SizedBox(
               height: TSizes.spaceBtwItems,
