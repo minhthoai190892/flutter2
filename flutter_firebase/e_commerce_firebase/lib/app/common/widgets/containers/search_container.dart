@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -7,6 +6,7 @@ import '../../../utils/device/device_utility.dart';
 import '../../../utils/helpers/helper_functions.dart';
 
 class TSearchContainer extends StatelessWidget {
+  /// search bar
   const TSearchContainer({
     super.key,
     required this.text,
@@ -24,7 +24,7 @@ class TSearchContainer extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
       child: Container(
         width: TDeviceUtils.getScreenWidth(),
-        padding: EdgeInsets.all(TSizes.md),
+        padding: const EdgeInsets.all(TSizes.md),
         decoration: BoxDecoration(
             color: showBackground
                 ? dark

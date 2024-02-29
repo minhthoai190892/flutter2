@@ -27,7 +27,7 @@ class TColors {
   static Color warning = const Color(0xfff57c00);
   static Color info = const Color(0xff1976d2);
   //border colors
-  static Color borderPrimary = const Color(0xffd9d9d9);
+  static const Color borderPrimary = const Color(0xffd9d9d9);
   static Color borderSecondary = const Color(0xffe6e6e6);
   // neutral shades
   static Color black = const Color(0xff232323);

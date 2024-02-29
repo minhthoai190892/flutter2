@@ -1,18 +1,16 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_commerce_firebase/app/common/widgets/containers/circular_container.dart';
-import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
-import 'package:e_commerce_firebase/app/utils/constants/image_strings.dart';
-import 'package:e_commerce_firebase/app/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../common/layouts/grid_layout.dart';
 import '../../../common/widgets/containers/curved_edges.dart';
 import '../../../common/widgets/containers/primary_header_container.dart';
 import '../../../common/widgets/containers/search_container.dart';
-import '../../../common/widgets/images/t_rounded_image_widget.dart';
+import '../../../common/widgets/product_cart/product_cart_vertical.dart';
 import '../../../common/widgets/texts/section_heading.dart';
+import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
+import '../../../utils/device/device_utility.dart';
 import '../controllers/homescreen_controller.dart';
 import 'widgets/home_appbar_widget.dart';
 import 'widgets/home_categories_widget.dart';
@@ -28,16 +26,16 @@ class HomescreenView extends GetView<HomescreenController> {
         child: Column(
           children: [
             //!TODO: header
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   //!TODO: app bart
-                  const THomeAppBar(),
+                  THomeAppBar(),
                   //!TODO: Search bar
                   SizedBox(
                     height: TSizes.spaceBtwSections,
                   ),
-                  const TSearchContainer(
+                  TSearchContainer(
                     text: 'Search in store',
                     icon: Iconsax.search_normal,
                   ),
@@ -50,7 +48,7 @@ class HomescreenView extends GetView<HomescreenController> {
                     child: Column(
                       children: [
                         //!TODO: heading
-                        const TSectionHeading(
+                        TSectionHeading(
                           title: 'Popular Categories',
                           showActionButton: false,
                         ),
@@ -58,7 +56,7 @@ class HomescreenView extends GetView<HomescreenController> {
                           height: TSizes.defaultSpace,
                         ),
                         //!TODO: Categories
-                        const THomeCategories(),
+                        THomeCategories(),
                       ],
                     ),
                   ),
@@ -67,8 +65,21 @@ class HomescreenView extends GetView<HomescreenController> {
             ),
             //!TODO: Body
             Padding(
-              padding: EdgeInsets.all(TSizes.defaultSpace),
-              child: TPromoSlider(height: height, banners: TImages.banners),
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              child: Column(
+                children: [
+                  //Promo slider (carousel)
+                  TPromoSlider(height: height, banners: TImages.banners),
+                  const SizedBox(
+                    height: TSizes.spaceBtwSections,
+                  ),
+                  // Popular products
+                  TGridLayout(
+                    itemCount: 6,
+                    itemBuilder: (p0, p1) => const TProductCartVertical(),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

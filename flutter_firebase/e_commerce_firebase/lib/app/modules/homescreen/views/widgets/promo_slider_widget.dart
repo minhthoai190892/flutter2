@@ -1,15 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_commerce_firebase/app/modules/homescreen/controllers/homescreen_controller.dart';
-import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
-import 'package:e_commerce_firebase/app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/widgets/containers/circular_container.dart';
 import '../../../../common/widgets/images/t_rounded_image_widget.dart';
-import '../../../../utils/constants/image_strings.dart';
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/sizes.dart';
+import '../../controllers/homescreen_controller.dart';
 
 class TPromoSlider extends StatelessWidget {
+  /// carousel and indicator
   const TPromoSlider({
     super.key,
     required this.height,

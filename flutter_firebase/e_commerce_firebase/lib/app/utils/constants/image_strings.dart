@@ -51,4 +51,7 @@ class TImages {
   static const String banner2 = 'assets/images/banners/school-uniform.jpg';
   static const String banner3 = 'assets/images/banners/shose.jpg';
  static const List<String> banners = [banner1, banner2, banner3];
+//  Products
+  static const String product1 = 'assets/images/products/img1.png';
+
 }

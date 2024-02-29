@@ -4,8 +4,6 @@ import '../modules/authentication/bindings/authentication_binding.dart';
 import '../modules/authentication/views/authentication_view.dart';
 import '../modules/forgetpassword/bindings/forgetpassword_binding.dart';
 import '../modules/forgetpassword/views/forgetpassword_view.dart';
-import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
 import '../modules/homescreen/bindings/homescreen_binding.dart';
 import '../modules/homescreen/views/homescreen_view.dart';
 import '../modules/loginscreen/bindings/loginscreen_binding.dart';
@@ -27,11 +25,7 @@ class AppPages {
   static const INITIAL = Routes.HOME;
 
   static final routes = [
-    GetPage(
-      name: _Paths.HOME,
-      page: () => const HomeView(),
-      binding: HomeBinding(),
-    ),
+  
     GetPage(
       name: _Paths.AUTHENTICATION,
       page: () => const AuthenticationView(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TSectionHeading extends StatelessWidget {
+  /// title of the category section
   const TSectionHeading({
     super.key,
     this.textColor,
