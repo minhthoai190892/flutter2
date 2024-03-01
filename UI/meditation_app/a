@@ -1,0 +1,4 @@
+git checkout -b MEDITATION-startup-login-signup
+git add .
+git commit -m "MEDITATION-startup-login-signup"
+git push -u origin MEDITATION-startup-login-signup
