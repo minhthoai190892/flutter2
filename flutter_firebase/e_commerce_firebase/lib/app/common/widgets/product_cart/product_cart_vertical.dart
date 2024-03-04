@@ -9,6 +9,8 @@ import 'package:iconsax/iconsax.dart';
 
 import '../icons/t_circular_icon.dart';
 import '../texts/product_title.dart';
+import '../texts/t_brand_title_with_verify_icon.dart';
+import 't_product_price.dart';
 import 't_rounded_container.dart';
 
 class TProductCartVertical extends StatelessWidget {
@@ -77,96 +79,52 @@ class TProductCartVertical extends StatelessWidget {
               ),
             ),
             //!TODO: Details
-            Padding(
-              padding: const EdgeInsets.all(TSizes.sm),
+            const Padding(
+              padding: EdgeInsets.all(TSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //!TODO: Title
-                  const ProductTitle(title: 'Nhan', smallSize: true),
-                  const SizedBox(
+                  ProductTitle(title: 'Nhan', smallSize: true),
+                  SizedBox(
                     height: TSizes.spaceBtwItems / 2,
                   ),
-                  Row(
-                    children: [
-                      //!TODO: SubTitle
-                      Text(
-                        'Nhan',
-                        style: Theme.of(context).textTheme.labelMedium,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(
-                        height: TSizes.xs,
-                      ),
-                      Icon(
-                        Iconsax.verify5,
-                        color: TColors.primary,
-                        size: TSizes.iconXs,
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //!TODO: Price
-                      const TProductPrice(price: '3'),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: TColors.dark,
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(TSizes.cardRadiusMd),
-                            bottomRight:
-                                Radius.circular(TSizes.productImageRadius),
-                          ),
-                        ),
-                        child: const SizedBox(
-                          width: TSizes.iconLg * 1.2,
-                          height: TSizes.iconLg * 1.2,
-                          child: Center(
-                            child: Icon(
-                              Iconsax.add,
-                              color: TColors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
+                  //!TODO: Title and Verify icon
+                  TBrandTitleWithVerifyIcon(tile: 'Nhan'),
                 ],
               ),
+            ),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                //!TODO: Price
+                const TProductPrice(price: '3'),
+                //!TODO: add button
+                Container(
+                  decoration: BoxDecoration(
+                    color: TColors.dark,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(TSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(TSizes.productImageRadius),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: TSizes.iconLg * 1.2,
+                    height: TSizes.iconLg * 1.2,
+                    child: Center(
+                      child: Icon(
+                        Iconsax.add,
+                        color: TColors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             )
           ],
         ),
       ),
-    );
-  }
-}
-
-class TProductPrice extends StatelessWidget {
-  const TProductPrice({
-    super.key,
-    this.currencySign = '\$',
-    required this.price,
-    this.maxLines = 1,
-    this.isLage = false,
-    this.lineThrough = false,
-  });
-  final String currencySign, price;
-  final int maxLines;
-  final bool isLage, lineThrough;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      currencySign + price,
-      maxLines: maxLines,
-      overflow: TextOverflow.ellipsis,
-      style: isLage
-          ? Theme.of(context).textTheme.headlineMedium!.apply(
-              decoration: lineThrough ? TextDecoration.lineThrough : null)
-          : Theme.of(context).textTheme.titleLarge!.apply(
-              decoration: lineThrough ? TextDecoration.lineThrough : null),
     );
   }
 }

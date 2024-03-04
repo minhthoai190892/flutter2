@@ -14,6 +14,8 @@ import '../modules/resetpassword/bindings/resetpassword_binding.dart';
 import '../modules/resetpassword/views/resetpassword_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
+import '../modules/store/bindings/store_binding.dart';
+import '../modules/store/views/store_view.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -25,7 +27,6 @@ class AppPages {
   static const INITIAL = Routes.HOME;
 
   static final routes = [
-  
     GetPage(
       name: _Paths.AUTHENTICATION,
       page: () => const AuthenticationView(),
@@ -60,6 +61,11 @@ class AppPages {
       name: _Paths.HOMESCREEN,
       page: () => const HomescreenView(),
       binding: HomescreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.STORE,
+      page: () => const StoreView(),
+      binding: StoreBinding(),
     ),
   ];
 }

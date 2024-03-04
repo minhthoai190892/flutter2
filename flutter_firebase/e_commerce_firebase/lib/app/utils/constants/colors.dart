@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 class TColors {
   TColors._();
 // app basic colors
-  static Color primary = const Color(0xFF4B68FF);
-  static Color secondary = const Color(0xFFFFE24B);
-  static Color accent = const Color(0xFFB0C7FF);
+  static const Color primary = Color(0xFF4B68FF);
+  static const Color secondary = Color(0xFFFFE24B);
+  static const Color accent = Color(0xFFB0C7FF);
   // Text color
-  static Color textPrimary = const Color(0xFF333333);
-  static Color textSecondary = const Color(0xFF6C757d);
-  static Color textWhite = Colors.white;
+  static const Color textPrimary = Color(0xFF333333);
+  static const Color textSecondary = Color(0xFF6C757d);
+  static const Color textWhite = Colors.white;
   // background color
-  static const Color light = const Color(0xFFf6f6f6);
+  static const Color light = Color(0xFFf6f6f6);
   static Color dark = const Color(0xFF272727);
   static Color primaryBackground = const Color(0xFFf3f5ff);
   // background container color
@@ -27,7 +27,7 @@ class TColors {
   static Color warning = const Color(0xfff57c00);
   static Color info = const Color(0xff1976d2);
   //border colors
-  static const Color borderPrimary = const Color(0xffd9d9d9);
+  static const Color borderPrimary = Color(0xffd9d9d9);
   static Color borderSecondary = const Color(0xffe6e6e6);
   // neutral shades
   static Color black = const Color(0xff232323);
