@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 
 class TCircularImage extends StatelessWidget {
@@ -37,6 +36,7 @@ class TCircularImage extends StatelessWidget {
       ),
       child: Image(
         fit: fit,
+   
         image: isNetWorkImage
             ? NetworkImage(image)
             : AssetImage(image) as ImageProvider,

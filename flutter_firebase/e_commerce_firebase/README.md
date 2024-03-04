@@ -88,3 +88,10 @@ A new Flutter project.
         - title and text button (view all)
         - grid view
             - image, title and subtitle
+        - tabBar view
+        - product cart
+            - title
+            - subtitle
+            - top 3 products
+        - title and text button (view all)
+            - product info

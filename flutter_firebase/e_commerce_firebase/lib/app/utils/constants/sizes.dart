@@ -1,4 +1,3 @@
-import 'package:e_commerce_firebase/app/utils/constants/enums.dart';
 
 class TSizes {
   // padding and margin size
