@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lottie/lottie.dart';
+import 'package:meditation_app/screens/home/choice_topic_screen.dart';
 
 import '../../common/commons.dart';
 import '../../common_widget/common_widgets.dart';
@@ -90,7 +90,9 @@ class _SignupScreenState extends State<SignupScreen> {
 
             RoundButton(
               title: TText.getStarted.toUpperCase(),
-              onPressed: () {},
+              onPressed: () {
+                context.push(const ChoiceTopicScreen());
+              },
             ),
             const SizedBox(
               height: 20,
@@ -105,7 +107,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     value: isTrue,
                     onChanged: (value) {
                       setState(() {
-                        isTrue=value!;
+                        isTrue = value!;
                       });
                     },
                   )

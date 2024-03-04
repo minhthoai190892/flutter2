@@ -29,6 +29,14 @@ class _StartUpScreenState extends State<StartUpScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Silent '),
+              Image.asset('assets/images/logo-meditation.png'),
+              const Text(' Moon '),
+            ],
+          ),
           Lottie.asset(TImage.startUp,
               width: double.maxFinite, fit: BoxFit.fitWidth),
           const Spacer(),
@@ -51,7 +59,7 @@ class _StartUpScreenState extends State<StartUpScreen> {
           RoundButton(
             title: TText.signup.toUpperCase(),
             onPressed: () {
-              context.push(SignupScreen());
+              context.push(const SignupScreen());
             },
           ),
           Row(
