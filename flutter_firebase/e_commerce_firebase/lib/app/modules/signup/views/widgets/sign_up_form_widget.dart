@@ -1,4 +1,3 @@
-
 import 'package:e_commerce_firebase/app/modules/signup/views/verify_email.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,7 +30,7 @@ class TSignupForm extends StatelessWidget {
                       prefixIcon: Icon(Iconsax.user)),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: TSizes.spaceBtwInputField,
               ),
               Expanded(
@@ -45,7 +44,7 @@ class TSignupForm extends StatelessWidget {
             ],
           ),
           //User name
-          SizedBox(
+          const SizedBox(
             height: TSizes.spaceBtwInputField,
           ),
           TextFormField(
@@ -55,27 +54,25 @@ class TSignupForm extends StatelessWidget {
                 prefixIcon: Icon(Iconsax.user_edit)),
           ),
           //Email
-          SizedBox(
+          const SizedBox(
             height: TSizes.spaceBtwInputField,
           ),
           TextFormField(
             expands: false,
             decoration: const InputDecoration(
-                labelText: TTexts.email,
-                prefixIcon: Icon(Iconsax.direct)),
+                labelText: TTexts.email, prefixIcon: Icon(Iconsax.direct)),
           ),
           // phone number
-          SizedBox(
+          const SizedBox(
             height: TSizes.spaceBtwInputField,
           ),
           TextFormField(
             expands: false,
             decoration: const InputDecoration(
-                labelText: TTexts.phoneNo,
-                prefixIcon: Icon(Iconsax.call)),
+                labelText: TTexts.phoneNo, prefixIcon: Icon(Iconsax.call)),
           ),
           // password
-          SizedBox(
+          const SizedBox(
             height: TSizes.spaceBtwInputField,
           ),
           TextFormField(
@@ -85,7 +82,7 @@ class TSignupForm extends StatelessWidget {
                 prefixIcon: Icon(Iconsax.password_check),
                 suffixIcon: Icon(Iconsax.eye_slash)),
           ),
-          SizedBox(
+          const SizedBox(
             height: TSizes.spaceBtwSections,
           ),
           // Terms&Condisions checkbox
@@ -99,7 +96,7 @@ class TSignupForm extends StatelessWidget {
                   onChanged: (value) {},
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: TSizes.spaceBtwItems,
               ),
               Text.rich(
@@ -116,13 +113,10 @@ class TSignupForm extends StatelessWidget {
                           .bodyMedium!
                           .copyWith(fontSize: 10)
                           .apply(
-                            color: dark
-                                ? TColors.white
-                                : TColors.primary,
+                            color: dark ? TColors.white : TColors.primary,
                             decoration: TextDecoration.underline,
-                            decorationColor: dark
-                                ? TColors.white
-                                : TColors.primary,
+                            decorationColor:
+                                dark ? TColors.white : TColors.primary,
                           ),
                     ),
                     TextSpan(
@@ -136,13 +130,10 @@ class TSignupForm extends StatelessWidget {
                           .bodyMedium!
                           .copyWith(fontSize: 10)
                           .apply(
-                            color: dark
-                                ? TColors.white
-                                : TColors.primary,
+                            color: dark ? TColors.white : TColors.primary,
                             decoration: TextDecoration.underline,
-                            decorationColor: dark
-                                ? TColors.white
-                                : TColors.primary,
+                            decorationColor:
+                                dark ? TColors.white : TColors.primary,
                           ),
                     ),
                   ],
@@ -150,15 +141,15 @@ class TSignupForm extends StatelessWidget {
               ),
             ],
           ),
-    
+
           //signup button
-          SizedBox(
+          const SizedBox(
             height: TSizes.spaceBtwSections,
           ),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-                onPressed: () =>Get.to(()=>VerifyEmailScreen()),
+                onPressed: () => Get.to(() => const VerifyEmailScreen()),
                 child: const Text(TTexts.createAccount)),
           ),
         ],

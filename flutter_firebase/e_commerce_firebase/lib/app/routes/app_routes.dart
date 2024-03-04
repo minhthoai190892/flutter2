@@ -14,6 +14,7 @@ abstract class Routes {
   static const RESETPASSWORD = _Paths.RESETPASSWORD;
   static const HOMESCREEN = _Paths.HOMESCREEN;
   static const STORE = _Paths.STORE;
+  static const WISHLIST = _Paths.WISHLIST;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const RESETPASSWORD = '/resetpassword';
   static const HOMESCREEN = '/homescreen';
   static const STORE = '/store';
+  static const WISHLIST = '/wishlist';
 }

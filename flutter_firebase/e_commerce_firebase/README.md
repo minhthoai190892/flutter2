@@ -95,3 +95,4 @@ A new Flutter project.
             - top 3 products
         - title and text button (view all)
             - product info
+4. Wishlist

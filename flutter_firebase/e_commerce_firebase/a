@@ -1,7 +1,7 @@
-git checkout -b E_COMMERCE_FIREBASE-store-TabBar-in-Flutter-with-Scrolling-Categories
+git checkout -b E_COMMERCE_FIREBASE-wishlist-Favorite-Product-Screen
 git add .
-git commit -m "E_COMMERCE_FIREBASE-store-TabBar-in-Flutter-with-Scrolling-Categories"
-git push -u origin E_COMMERCE_FIREBASE-store-TabBar-in-Flutter-with-Scrolling-Categories
+git commit -m "E_COMMERCE_FIREBASE-wishlist-Favorite-Product-Screen"
+git push -u origin E_COMMERCE_FIREBASE-wishlist-Favorite-Product-Screen
 
 
 

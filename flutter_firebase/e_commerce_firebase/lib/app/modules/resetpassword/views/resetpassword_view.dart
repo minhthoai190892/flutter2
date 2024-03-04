@@ -16,7 +16,6 @@ class ResetpasswordView extends GetView<ResetpasswordController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-   
         actions: [
           IconButton(
               onPressed: () => Get.offAllNamed(Routes.FORGETPASSWORD),
@@ -24,7 +23,7 @@ class ResetpasswordView extends GetView<ResetpasswordController> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -33,7 +32,7 @@ class ResetpasswordView extends GetView<ResetpasswordController> {
               child: Lottie.asset(TImages.deliveredInEmailIllustration,
                   width: THelperFuntions.screenWidth() * 0.6),
             ),
-            SizedBox(
+            const SizedBox(
               height: TSizes.spaceBtwSections,
             ),
             //!TODO:  title and subtitle
@@ -42,7 +41,7 @@ class ResetpasswordView extends GetView<ResetpasswordController> {
               style: Theme.of(context).textTheme.headlineMedium,
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: TSizes.spaceBtwItems,
             ),
             Text(
@@ -51,14 +50,14 @@ class ResetpasswordView extends GetView<ResetpasswordController> {
               textAlign: TextAlign.center,
             ),
             //!TODO:  submit button
-            SizedBox(
+            const SizedBox(
               height: TSizes.spaceBtwSections,
             ),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(onPressed: () {}, child: Text(TTexts.done)),
             ),
-            SizedBox(
+            const SizedBox(
               height: TSizes.spaceBtwItems,
             ),
             SizedBox(

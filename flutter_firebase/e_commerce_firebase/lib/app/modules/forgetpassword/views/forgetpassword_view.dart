@@ -14,7 +14,7 @@ class ForgetpasswordView extends GetView<ForgetpasswordController> {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,14 +23,14 @@ class ForgetpasswordView extends GetView<ForgetpasswordController> {
               TTexts.forgetPasswordTitle,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            SizedBox(
+            const SizedBox(
               height: TSizes.spaceBtwItems,
             ),
             Text(
               TTexts.forgetPasswordSubTitle,
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            SizedBox(
+            const SizedBox(
               height: TSizes.spaceBtwSections * 2,
             ),
             //!TODO:  text field
@@ -40,7 +40,7 @@ class ForgetpasswordView extends GetView<ForgetpasswordController> {
                   prefixIcon: Icon(Iconsax.direct_right)),
             ),
             //!TODO:  submit button
-            SizedBox(
+            const SizedBox(
               height: TSizes.spaceBtwSections,
             ),
             SizedBox(

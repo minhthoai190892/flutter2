@@ -23,11 +23,11 @@ class TBrandCart extends StatelessWidget {
     return SingleChildScrollView(
       child: GestureDetector(
         onTap: () {
-          print('object');
+        
         },
         child: TRoundedContainer(
           width: double.infinity,
-          padding: EdgeInsets.all(TSizes.sm),
+          padding: const EdgeInsets.all(TSizes.sm),
           showBorder: showBorder,
           backgroundColor: Colors.transparent,
           child: Row(

@@ -38,7 +38,8 @@ class HomescreenView extends GetView<HomescreenController> {
                   TSearchContainer(
                     text: 'Search in store',
                     icon: Iconsax.search_normal,
-                    padding: EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
                   ),
                   //!TODO: Caregories
                   SizedBox(
@@ -76,10 +77,9 @@ class HomescreenView extends GetView<HomescreenController> {
                     height: TSizes.spaceBtwSections,
                   ),
                   TSectionHeading(
-                    title: 'Popular Categories',
-                    showActionButton: true,
-                    onPressed: () => print('das'),
-                  ),
+                      title: 'Popular Categories',
+                      showActionButton: true,
+                      onPressed: () {}),
                   const SizedBox(
                     height: TSizes.defaultSpace,
                   ),

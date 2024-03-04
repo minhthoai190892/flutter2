@@ -16,7 +16,7 @@ class TLoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: TSizes.spaceBtwSections),
+      padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwSections),
       child: Form(
         child: Column(
           children: [
@@ -28,7 +28,7 @@ class TLoginForm extends StatelessWidget {
                   ),
                   labelText: TTexts.email),
             ),
-            SizedBox(
+            const SizedBox(
               height: TSizes.defaultSpace,
             ),
             // Password
@@ -40,7 +40,7 @@ class TLoginForm extends StatelessWidget {
                   labelText: TTexts.password,
                   suffixIcon: Icon(Iconsax.eye_slash)),
             ),
-            SizedBox(
+            const SizedBox(
               height: TSizes.defaultSpace / 2,
             ),
             // remember me & forget password
@@ -64,7 +64,7 @@ class TLoginForm extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: TSizes.defaultSpace,
             ),
             // sign in button
@@ -74,7 +74,7 @@ class TLoginForm extends StatelessWidget {
                   onPressed: () => Get.to(() => const NavigationMenuWidget()),
                   child: const Text(TTexts.signIn)),
             ),
-            SizedBox(
+            const SizedBox(
               height: TSizes.spaceBtwItems,
             ),
             // create Account
