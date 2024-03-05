@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meditation_app/common/color_extension.dart';
+import 'package:meditation_app/screens/home/home_screen.dart';
 import 'package:meditation_app/screens/home/welcome_screen.dart';
 import 'package:meditation_app/screens/login/startup_screen.dart';
 
@@ -26,8 +27,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: TColor.primary),
         useMaterial3: true,
       ),
-      home: const StartUpScreen(),
-      // home: const WelcomeScreen(),
+      // home: const StartUpScreen(),
+      home: const HomeScreen(),
     );
   }
 }

@@ -1,7 +1,7 @@
-git checkout -b MEDITATION-Reminders-Welcome-Screen-UI-Design
+git checkout -b MEDITATION-Home-Screen-UI-Design 
 git add .
-git commit -m "MEDITATION-Reminders-Welcome-Screen-UI-Design"
-git push -u origin MEDITATION-Reminders-Welcome-Screen-UI-Design
+git commit -m "MEDITATION-Home-Screen-UI-Design "
+git push -u origin MEDITATION-Home-Screen-UI-Design 
 
 adb connect 192.168.101.32:
 
