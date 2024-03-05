@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:meditation_app/screens/home/choice_topic_screen.dart';
+import 'package:meditation_app/screens/home/welcome_screen.dart';
 
 import '../../common/commons.dart';
 import '../../common_widget/common_widgets.dart';
@@ -91,7 +92,7 @@ class _SignupScreenState extends State<SignupScreen> {
             RoundButton(
               title: TText.getStarted.toUpperCase(),
               onPressed: () {
-                context.push(const ChoiceTopicScreen());
+                context.push(const WelcomeScreen());
               },
             ),
             const SizedBox(

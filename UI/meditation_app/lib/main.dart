@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meditation_app/common/color_extension.dart';
+import 'package:meditation_app/screens/home/welcome_screen.dart';
 import 'package:meditation_app/screens/login/startup_screen.dart';
 
 void main() {
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const StartUpScreen(),
+      // home: const WelcomeScreen(),
     );
   }
 }

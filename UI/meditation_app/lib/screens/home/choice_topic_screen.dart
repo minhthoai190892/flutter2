@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:meditation_app/common/color_extension.dart';
 import 'package:meditation_app/common/commons.dart';
 import 'package:meditation_app/common_widget/common_widgets.dart';
+import 'package:meditation_app/screens/home/reminder_screen.dart';
 
 class ChoiceTopicScreen extends StatefulWidget {
   const ChoiceTopicScreen({super.key});
@@ -66,56 +67,58 @@ class _ChoiceTopicScreenState extends State<ChoiceTopicScreen> {
                   ? context.width * 0.55
                   : context.width * 0.45;
               var cObj = TImage.dataArr[index] as Map? ?? {};
-              return Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.all(4),
-                height: height,
-                decoration: BoxDecoration(
-                  color: HexColor.formHex(cObj['color']),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Stack(
-                  // alignment: Alignment.topCenter,
-                  children: [
-                    ClipRRect(
-                      
-                      borderRadius: BorderRadius.circular(10),
-                      child: Lottie.asset(
-                        cObj['image'],
-                        width: double.maxFinite,
-                        fit: BoxFit.cover,
-                        height: height,
+              return InkWell(
+                onTap: () => context.push(const ReminderScreen()),
+                child: Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.all(4),
+                  height: height,
+                  decoration: BoxDecoration(
+                    color: HexColor.formHex(cObj['color']),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Stack(
+                    // alignment: Alignment.topCenter,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Lottie.asset(
+                          cObj['image'],
+                          width: double.maxFinite,
+                          fit: BoxFit.cover,
+                          height: height,
+                        ),
                       ),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  cObj['title'],
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700,
-                                    color: HexColor.formHex(
-                                      cObj['text_color'],
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    cObj['title'],
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700,
+                                      color: HexColor.formHex(
+                                        cObj['text_color'],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

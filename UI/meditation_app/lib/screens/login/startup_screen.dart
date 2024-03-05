@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:meditation_app/common/commons.dart';
+import 'package:meditation_app/screens/home/reminder_screen.dart';
 import 'package:meditation_app/screens/login/login_screen.dart';
 import 'package:meditation_app/screens/login/signup_screen.dart';
 
@@ -60,6 +61,7 @@ class _StartUpScreenState extends State<StartUpScreen> {
             title: TText.signup.toUpperCase(),
             onPressed: () {
               context.push(const SignupScreen());
+              // context.push(const ReminderScreen());
             },
           ),
           Row(
