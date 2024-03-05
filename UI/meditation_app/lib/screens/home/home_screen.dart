@@ -351,7 +351,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       var rObj = rArr[index];
-                      return SizedBox(
+                      return Container(
+                        decoration: BoxDecoration(
+                            // border: Border.all(color: Colors.red),
+                            color: Colors.grey.withOpacity(0.1)),
                         width: context.width * 0.35,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
