@@ -18,7 +18,9 @@ class TUserProfile extends StatelessWidget {
   const TUserProfile({
     super.key,
     required this.dark,
+    required this.onPressed,
   });
+  final VoidCallback onPressed;
 
   final bool dark;
 //!TODO: MOdel
@@ -45,7 +47,7 @@ class TUserProfile extends StatelessWidget {
             Theme.of(context).textTheme.bodyMedium!.apply(color: TColors.white),
       ),
       trailing: IconButton(
-          onPressed: () {},
+          onPressed: onPressed,
           icon: const Icon(
             Iconsax.edit,
             color: Colors.white,
