@@ -26,20 +26,20 @@ class VerifyEmailScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(TSizes.defaultSpace),
+            padding: const EdgeInsets.all(TSizes.defaultSpace),
             child: Column(
               children: [
                 //!TODO: image
                 Lottie.asset(TImages.deliveredInEmailIllustration,
                     width: THelperFuntions.screenWidth() * 0.6),
-                SizedBox(height: TSizes.spaceBtwSections),
+                const SizedBox(height: TSizes.spaceBtwSections),
                 //!TODO: titile, subtitle
                 Text(
                   TTexts.confirmEmail,
                   style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: TSizes.spaceBtwItems,
                 ),
                 Text(
@@ -47,7 +47,7 @@ class VerifyEmailScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelLarge,
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: TSizes.spaceBtwItems,
                 ),
                 Text(
@@ -55,21 +55,23 @@ class VerifyEmailScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelLarge,
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: TSizes.spaceBtwSections,
                 ),
                 //!TODO: button
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () => Get.to(() =>  SuccessScreen(
-                          image: TImages.staticSuccessIllustration,
-                          title: TTexts.yourAccountCreatedTitle,
-                          subTitle: TTexts.yourAccountCreatedSubTitle,
-                          onPressed: () => Get.offAllNamed(Routes.LOGINSCREEN),)),
+                      onPressed: () => Get.to(() => SuccessScreen(
+                            image: TImages.staticSuccessIllustration,
+                            title: TTexts.yourAccountCreatedTitle,
+                            subTitle: TTexts.yourAccountCreatedSubTitle,
+                            onPressed: () =>
+                                Get.offAllNamed(Routes.LOGINSCREEN),
+                          )),
                       child: Text(TTexts.tContinue)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: TSizes.spaceBtwItems,
                 ),
                 //!TODO: button

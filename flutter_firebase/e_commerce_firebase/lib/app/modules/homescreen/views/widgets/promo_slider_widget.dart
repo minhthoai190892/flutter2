@@ -39,7 +39,7 @@ class TPromoSlider extends StatelessWidget {
                 controller.updatePageIndicator(index),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: TSizes.spaceBtwItems,
         ),
         Obx(

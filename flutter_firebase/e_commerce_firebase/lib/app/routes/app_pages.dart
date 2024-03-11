@@ -10,10 +10,16 @@ import '../modules/loginscreen/bindings/loginscreen_binding.dart';
 import '../modules/loginscreen/views/loginscreen_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
 import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/personalization/bindings/personalization_binding.dart';
+import '../modules/personalization/views/personalization_view.dart';
 import '../modules/resetpassword/bindings/resetpassword_binding.dart';
 import '../modules/resetpassword/views/resetpassword_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
+import '../modules/store/bindings/store_binding.dart';
+import '../modules/store/views/store_view.dart';
+import '../modules/wishlist/bindings/wishlist_binding.dart';
+import '../modules/wishlist/views/wishlist_view.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -25,7 +31,6 @@ class AppPages {
   static const INITIAL = Routes.HOME;
 
   static final routes = [
-  
     GetPage(
       name: _Paths.AUTHENTICATION,
       page: () => const AuthenticationView(),
@@ -60,6 +65,21 @@ class AppPages {
       name: _Paths.HOMESCREEN,
       page: () => const HomescreenView(),
       binding: HomescreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.STORE,
+      page: () => const StoreView(),
+      binding: StoreBinding(),
+    ),
+    GetPage(
+      name: _Paths.WISHLIST,
+      page: () => const WishlistView(),
+      binding: WishlistBinding(),
+    ),
+    GetPage(
+      name: _Paths.PERSONALIZATION,
+      page: () => const PersonalizationView(),
+      binding: PersonalizationBinding(),
     ),
   ];
 }

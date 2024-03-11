@@ -79,3 +79,21 @@ A new Flutter project.
             - tile
             - brands
             - price and add button 
+3. Store
+    #### Flutter Nested Scroll View
+        - Appbar
+            - title
+            - action button
+        - search bar button
+        - title and text button (view all)
+        - grid view
+            - image, title and subtitle
+        - tabBar view
+        - product cart
+            - title
+            - subtitle
+            - top 3 products
+        - title and text button (view all)
+            - product info
+4. Wishlist
+4. Settings

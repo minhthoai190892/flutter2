@@ -1,7 +1,7 @@
-git checkout -b E_COMMERCE_FIREBASE-home-screen-body-gridview-products
+git checkout -b E_COMMERCE_FIREBASE-Flutter-Account-Settings-Screen-UI-Design
 git add .
-git commit -m "E_COMMERCE_FIREBASE-home-screen-body-gridview-products"
-git push -u origin E_COMMERCE_FIREBASE-home-screen-body-gridview-products
+git commit -m "E_COMMERCE_FIREBASE-Flutter-Account-Settings-Screen-UI-Design"
+git push -u origin E_COMMERCE_FIREBASE-Flutter-Account-Settings-Screen-UI-Design
 
 
 
@@ -9,3 +9,4 @@ create splash
 flutter pub run flutter_native_splash:create --path=splash.yaml
 
 adb connect 192.168.101.32:
+

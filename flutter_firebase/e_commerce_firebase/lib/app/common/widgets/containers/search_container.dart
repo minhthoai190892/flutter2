@@ -13,15 +13,17 @@ class TSearchContainer extends StatelessWidget {
     this.icon,
     this.showBackground = true,
     this.showBorder = true,
+    this.padding,
   });
   final String text;
   final IconData? icon;
   final bool showBackground, showBorder;
+  final EdgeInsetsGeometry? padding;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFuntions.isDarkMode(context: context);
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
+      padding: padding!,
       child: Container(
         width: TDeviceUtils.getScreenWidth(),
         padding: const EdgeInsets.all(TSizes.md),
@@ -39,7 +41,7 @@ class TSearchContainer extends StatelessWidget {
               icon,
               color: dark ? TColors.white : TColors.darkerGrey,
             ),
-            SizedBox(
+            const SizedBox(
               width: TSizes.spaceBtwItems,
             ),
             Text(

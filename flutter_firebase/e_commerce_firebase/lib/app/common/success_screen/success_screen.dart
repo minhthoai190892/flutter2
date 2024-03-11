@@ -27,14 +27,14 @@ class SuccessScreen extends StatelessWidget {
             children: [
               //!TODO: image
               Lottie.asset(image, width: THelperFuntions.screenWidth() * 0.6),
-              SizedBox(height: TSizes.spaceBtwSections),
+              const SizedBox(height: TSizes.spaceBtwSections),
               //!TODO: titile, subtitle
               Text(
                 title,
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
-              SizedBox(
+              const SizedBox(
                 height: TSizes.spaceBtwItems,
               ),
               Text(
@@ -43,7 +43,7 @@ class SuccessScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: TSizes.spaceBtwSections,
               ),
               //!TODO: button

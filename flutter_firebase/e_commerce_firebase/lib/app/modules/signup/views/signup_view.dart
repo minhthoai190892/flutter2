@@ -22,25 +22,25 @@ class SignupView extends GetView<SignupController> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(TSizes.defaultSpace),
+            padding: const EdgeInsets.all(TSizes.defaultSpace),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //!TODO: Title
                 Text(TTexts.signupTitle,
                     style: Theme.of(context).textTheme.headlineMedium),
-                SizedBox(
+                const SizedBox(
                   height: TSizes.spaceBtwSections,
                 ),
                 //!TODO: Form
                 TSignupForm(dark: dark),
                 //!TODO: Divier
-                SizedBox(
+                const SizedBox(
                   height: TSizes.spaceBtwSections,
                 ),
                 TDividerForm(dark: dark, dividerText: TTexts.orSignUpWith),
                 //!TODO: Social
-                SizedBox(
+                const SizedBox(
                   height: TSizes.spaceBtwSections,
                 ),
                 const TSocialButton(),

@@ -29,8 +29,9 @@ class LoginscreenView extends GetView<LoginscreenController> {
                 const TLoginForm(),
 
                 // divider
-                TDividerForm(dark: dark,dividerText: TTexts.orSignInWith.capitalize!),
-                SizedBox(
+                TDividerForm(
+                    dark: dark, dividerText: TTexts.orSignInWith.capitalize!),
+                const SizedBox(
                   height: TSizes.spaceBtwSections,
                 ),
                 // Footer

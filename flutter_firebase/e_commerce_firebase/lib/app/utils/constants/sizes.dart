@@ -1,3 +1,4 @@
+
 class TSizes {
   // padding and margin size
   /// xs = 4.0;
@@ -115,4 +116,5 @@ class TSizes {
   // grid view spacing
   /// gridViewSpacing = 16.0;
   static const double gridViewSpacing = 16.0;
+
 }

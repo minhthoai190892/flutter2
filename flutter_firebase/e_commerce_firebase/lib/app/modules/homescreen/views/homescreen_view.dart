@@ -38,6 +38,8 @@ class HomescreenView extends GetView<HomescreenController> {
                   TSearchContainer(
                     text: 'Search in store',
                     icon: Iconsax.search_normal,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
                   ),
                   //!TODO: Caregories
                   SizedBox(
@@ -63,6 +65,7 @@ class HomescreenView extends GetView<HomescreenController> {
                 ],
               ),
             ),
+
             //!TODO: Body
             Padding(
               padding: const EdgeInsets.all(TSizes.defaultSpace),
@@ -73,9 +76,17 @@ class HomescreenView extends GetView<HomescreenController> {
                   const SizedBox(
                     height: TSizes.spaceBtwSections,
                   ),
+                  TSectionHeading(
+                      title: 'Popular Categories',
+                      showActionButton: true,
+                      onPressed: () {}),
+                  const SizedBox(
+                    height: TSizes.defaultSpace,
+                  ),
                   // Popular products
                   TGridLayout(
                     itemCount: 6,
+                    // !TODO: Thumbnail, wishlist button,discount tag,detail
                     itemBuilder: (p0, p1) => const TProductCartVertical(),
                   ),
                 ],
