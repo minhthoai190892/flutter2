@@ -96,3 +96,4 @@ A new Flutter project.
         - title and text button (view all)
             - product info
 4. Wishlist
+4. Settings

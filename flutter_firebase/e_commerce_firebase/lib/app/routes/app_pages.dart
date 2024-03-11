@@ -10,6 +10,8 @@ import '../modules/loginscreen/bindings/loginscreen_binding.dart';
 import '../modules/loginscreen/views/loginscreen_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
 import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/personalization/bindings/personalization_binding.dart';
+import '../modules/personalization/views/personalization_view.dart';
 import '../modules/resetpassword/bindings/resetpassword_binding.dart';
 import '../modules/resetpassword/views/resetpassword_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
@@ -73,6 +75,11 @@ class AppPages {
       name: _Paths.WISHLIST,
       page: () => const WishlistView(),
       binding: WishlistBinding(),
+    ),
+    GetPage(
+      name: _Paths.PERSONALIZATION,
+      page: () => const PersonalizationView(),
+      binding: PersonalizationBinding(),
     ),
   ];
 }

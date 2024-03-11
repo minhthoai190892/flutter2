@@ -1,4 +1,5 @@
 import 'package:e_commerce_firebase/app/modules/homescreen/views/homescreen_view.dart';
+import 'package:e_commerce_firebase/app/modules/personalization/views/settings/settings.dart';
 import 'package:e_commerce_firebase/app/modules/store/views/store_view.dart';
 import 'package:e_commerce_firebase/app/modules/wishlist/views/wishlist_view.dart';
 import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
@@ -52,8 +53,6 @@ class NavigationController extends GetxController {
     const HomescreenView(),
     const StoreView(),
     const WishlistView(),
-    Container(
-      color: Colors.orange,
-    ),
+    const SettingsScreen(),
   ];
 }

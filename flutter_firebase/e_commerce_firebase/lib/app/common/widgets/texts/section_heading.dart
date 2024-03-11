@@ -2,6 +2,16 @@ import 'package:flutter/material.dart';
 
 class TSectionHeading extends StatelessWidget {
   /// title of the category section
+  ///
+  /// [textColor] màu của chữ
+  ///
+  /// [showActionButton] cho phép hiển thị text button hay không
+  ///
+  /// [title] title
+  ///
+  /// [buttonTitle] tên của title text button
+  ///
+  /// [onPressed]
   const TSectionHeading({
     super.key,
     this.textColor,
