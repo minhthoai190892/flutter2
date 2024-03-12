@@ -4,10 +4,12 @@ import 'package:e_commerce_firebase/app/common/widgets/containers/primary_header
 import 'package:e_commerce_firebase/app/common/widgets/images/t_circular_image.dart';
 import 'package:e_commerce_firebase/app/common/widgets/list_title/settings_menu_title.dart';
 import 'package:e_commerce_firebase/app/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce_firebase/app/modules/personalization/views/profile/profile.dart';
 import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
 import 'package:e_commerce_firebase/app/utils/constants/image_strings.dart';
 import 'package:e_commerce_firebase/app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/list_title/user_profile_title.dart';
@@ -37,7 +39,10 @@ class SettingsScreen extends StatelessWidget {
                 ),
 
                 // !TODO: User profile card
-                TUserProfile(dark: dark),
+                TUserProfile(
+                  dark: dark,
+                  onPressed: () => Get.to(() => const ProfileScreen()),
+                ),
                 const SizedBox(
                   height: TSizes.spaceBtwSections,
                 ),

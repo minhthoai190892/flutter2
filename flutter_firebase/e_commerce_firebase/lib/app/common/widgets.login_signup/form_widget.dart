@@ -1,10 +1,10 @@
 import 'package:e_commerce_firebase/app/common/widgets/navigation_menu_widget.dart';
-import 'package:e_commerce_firebase/app/modules/forgetpassword/views/forgetpassword_view.dart';
+import 'package:e_commerce_firebase/app/modules/authentication/forgetpassword/views/forgetpassword_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../modules/signup/views/signup_view.dart';
+import '../../modules/authentication/signup/views/signup_view.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/constants/text_strings.dart';
 

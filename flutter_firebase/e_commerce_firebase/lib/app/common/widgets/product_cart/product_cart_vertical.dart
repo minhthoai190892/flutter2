@@ -1,10 +1,12 @@
 import 'package:e_commerce_firebase/app/common/styles/shadow_style.dart';
 import 'package:e_commerce_firebase/app/common/widgets/images/t_rounded_image_widget.dart';
+import 'package:e_commerce_firebase/app/modules/shop/product_detail/views/product_detail_view.dart';
 import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
 import 'package:e_commerce_firebase/app/utils/constants/image_strings.dart';
 import 'package:e_commerce_firebase/app/utils/constants/sizes.dart';
 import 'package:e_commerce_firebase/app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../icons/t_circular_icon.dart';
@@ -23,7 +25,9 @@ class TProductCartVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFuntions.isDarkMode(context: context);
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(() => const ProductDetailView());
+      },
       child: Container(
         width: 180,
         // height: 180,
