@@ -1,25 +1,25 @@
 import 'package:get/get.dart';
 
-import '../modules/authentication/bindings/authentication_binding.dart';
-import '../modules/authentication/views/authentication_view.dart';
-import '../modules/forgetpassword/bindings/forgetpassword_binding.dart';
-import '../modules/forgetpassword/views/forgetpassword_view.dart';
-import '../modules/homescreen/bindings/homescreen_binding.dart';
-import '../modules/homescreen/views/homescreen_view.dart';
-import '../modules/loginscreen/bindings/loginscreen_binding.dart';
-import '../modules/loginscreen/views/loginscreen_view.dart';
-import '../modules/onboarding/bindings/onboarding_binding.dart';
-import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/authentication/forgetpassword/bindings/forgetpassword_binding.dart';
+import '../modules/authentication/forgetpassword/views/forgetpassword_view.dart';
+import '../modules/authentication/loginscreen/bindings/loginscreen_binding.dart';
+import '../modules/authentication/loginscreen/views/loginscreen_view.dart';
+import '../modules/authentication/onboarding/bindings/onboarding_binding.dart';
+import '../modules/authentication/onboarding/views/onboarding_view.dart';
+import '../modules/authentication/resetpassword/bindings/resetpassword_binding.dart';
+import '../modules/authentication/resetpassword/views/resetpassword_view.dart';
+import '../modules/authentication/signup/bindings/signup_binding.dart';
+import '../modules/authentication/signup/views/signup_view.dart';
 import '../modules/personalization/bindings/personalization_binding.dart';
 import '../modules/personalization/views/personalization_view.dart';
-import '../modules/resetpassword/bindings/resetpassword_binding.dart';
-import '../modules/resetpassword/views/resetpassword_view.dart';
-import '../modules/signup/bindings/signup_binding.dart';
-import '../modules/signup/views/signup_view.dart';
-import '../modules/store/bindings/store_binding.dart';
-import '../modules/store/views/store_view.dart';
-import '../modules/wishlist/bindings/wishlist_binding.dart';
-import '../modules/wishlist/views/wishlist_view.dart';
+import '../modules/shop/product_detail/bindings/product_detail_binding.dart';
+import '../modules/shop/product_detail/views/product_detail_view.dart';
+import '../modules/shop/homescreen/bindings/homescreen_binding.dart';
+import '../modules/shop/homescreen/views/homescreen_view.dart';
+import '../modules/shop/store/bindings/store_binding.dart';
+import '../modules/shop/store/views/store_view.dart';
+import '../modules/shop/wishlist/bindings/wishlist_binding.dart';
+import '../modules/shop/wishlist/views/wishlist_view.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -31,11 +31,6 @@ class AppPages {
   static const INITIAL = Routes.HOME;
 
   static final routes = [
-    GetPage(
-      name: _Paths.AUTHENTICATION,
-      page: () => const AuthenticationView(),
-      binding: AuthenticationBinding(),
-    ),
     GetPage(
       name: _Paths.ONBOARDING,
       page: () => const OnboardingView(),
@@ -80,6 +75,11 @@ class AppPages {
       name: _Paths.PERSONALIZATION,
       page: () => const PersonalizationView(),
       binding: PersonalizationBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_DETAIL,
+      page: () => const ProductDetailView(),
+      binding: ProductDetailBinding(),
     ),
   ];
 }

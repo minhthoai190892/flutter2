@@ -1,7 +1,7 @@
-import 'package:e_commerce_firebase/app/modules/homescreen/views/homescreen_view.dart';
+import 'package:e_commerce_firebase/app/modules/shop/homescreen/views/homescreen_view.dart';
 import 'package:e_commerce_firebase/app/modules/personalization/views/settings/settings.dart';
-import 'package:e_commerce_firebase/app/modules/store/views/store_view.dart';
-import 'package:e_commerce_firebase/app/modules/wishlist/views/wishlist_view.dart';
+import 'package:e_commerce_firebase/app/modules/shop/store/views/store_view.dart';
+import 'package:e_commerce_firebase/app/modules/shop/wishlist/views/wishlist_view.dart';
 import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
 import 'package:e_commerce_firebase/app/utils/constants/text_strings.dart';
 import 'package:e_commerce_firebase/app/utils/helpers/helper_functions.dart';

@@ -1,7 +1,7 @@
-git checkout -b E_COMMERCE_FIREBASE-Flutter-Profile-Screen-UI-Design 
+git checkout -b E_COMMERCE_FIREBASE-Flutter-Product-Detail-Page-UI
 git add .
-git commit -m "E_COMMERCE_FIREBASE-Flutter-Profile-Screen-UI-Design "
-git push -u origin E_COMMERCE_FIREBASE-Flutter-Profile-Screen-UI-Design 
+git commit -m "E_COMMERCE_FIREBASE-Flutter-Product-Detail-Page-UI"
+git push -u origin E_COMMERCE_FIREBASE-Flutter-Product-Detail-Page-UI
 
 
 

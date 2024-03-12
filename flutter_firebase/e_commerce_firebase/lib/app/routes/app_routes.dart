@@ -6,7 +6,7 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
-  static const AUTHENTICATION = _Paths.AUTHENTICATION;
+
   static const ONBOARDING = _Paths.ONBOARDING;
   static const LOGINSCREEN = _Paths.LOGINSCREEN;
   static const SIGNUP = _Paths.SIGNUP;
@@ -16,6 +16,7 @@ abstract class Routes {
   static const STORE = _Paths.STORE;
   static const WISHLIST = _Paths.WISHLIST;
   static const PERSONALIZATION = _Paths.PERSONALIZATION;
+  static const PRODUCT_DETAIL = _Paths.PRODUCT_DETAIL;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const STORE = '/store';
   static const WISHLIST = '/wishlist';
   static const PERSONALIZATION = '/personalization';
+  static const PRODUCT_DETAIL = '/product-detail';
 }

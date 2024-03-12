@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../modules/homescreen/views/homescreen_view.dart';
+import '../../../modules/shop/homescreen/views/homescreen_view.dart';
 import '../../../utils/constants/colors.dart';
 import 'circular_container.dart';
 
