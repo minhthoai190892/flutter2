@@ -29,7 +29,7 @@ class TCategoryTab extends StatelessWidget {
               TBrandShowcase(dark: dark, images: const [
                 TImages.product1,
                 TImages.product2,
-                TImages.product20,
+                TImages.prod1,
               ]),
               //!TODO: Products
               TSectionHeading(

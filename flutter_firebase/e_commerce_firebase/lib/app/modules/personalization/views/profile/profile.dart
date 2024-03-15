@@ -74,7 +74,11 @@ class ProfileScreen extends StatelessWidget {
               const TSectionHeading(
                 title: 'Personal Information',
               ),
-              TProfileMenu(onPressed: () {}, title: 'User Id', value: '456789'),
+              TProfileMenu(
+                  onPressed: () {},
+                  title: 'User Id',
+                  value: '456789',
+                  icon: Iconsax.copy),
               TProfileMenu(
                   onPressed: () {},
                   title: 'Email',

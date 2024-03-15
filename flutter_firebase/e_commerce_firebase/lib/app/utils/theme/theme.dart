@@ -1,6 +1,7 @@
 import 'package:e_commerce_firebase/app/utils/theme/custom_themes/appbar_theme.dart';
 import 'package:e_commerce_firebase/app/utils/theme/custom_themes/bottom_sheet_theme.dart';
 import 'package:e_commerce_firebase/app/utils/theme/custom_themes/checkbox_theme.dart';
+import 'package:e_commerce_firebase/app/utils/theme/custom_themes/chip_theme.dart';
 import 'package:e_commerce_firebase/app/utils/theme/custom_themes/elevated_button_them.dart';
 import 'package:e_commerce_firebase/app/utils/theme/custom_themes/outline_button_theme.dart';
 import 'package:e_commerce_firebase/app/utils/theme/custom_themes/text_field_theme.dart';
@@ -24,6 +25,7 @@ class TAppThem {
     bottomSheetTheme: TBottomSheetTheme.lightBottomSheetTheme,
     outlinedButtonTheme: TOutlineButtonThem.lightOutlineButtonTheme,
     inputDecorationTheme: TTextFormFieldTheme.lightInputDecorationTheme,
+    chipTheme: TChipThem.lightChipTheme,
 // colorScheme: ColorScheme.fromSeed(
 //   seedColor: const Color(0xffbb86fc),
 //   brightness: Brightness.dark,
@@ -44,6 +46,6 @@ class TAppThem {
     bottomSheetTheme: TBottomSheetTheme.darkBottomSheetTheme,
     outlinedButtonTheme: TOutlineButtonThem.darkOutlineButtonTheme,
     inputDecorationTheme: TTextFormFieldTheme.darkInputDecorationTheme,
-  
+    chipTheme: TChipThem.darkChipTheme,
   );
 }

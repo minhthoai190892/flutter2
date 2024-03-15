@@ -89,6 +89,9 @@ class TProductMetaData extends StatelessWidget {
               height: 32,
               fit: BoxFit.cover,
             ),
+            const SizedBox(
+              width: TSizes.spaceBtwItems,
+            ),
             const TBrandTitleWithVerifyIcon(
               tile: 'Nike',
               brandTextSize: TextSize.medium,
