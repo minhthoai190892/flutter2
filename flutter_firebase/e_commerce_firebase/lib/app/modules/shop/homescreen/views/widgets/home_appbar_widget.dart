@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets/appbar/app_bar_widget.dart';
-import '../../../../../common/widgets/product_cart/cart_menu_icon.dart';
+import '../../../../../common/widgets/products/product_cart/cart_menu_icon.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
 

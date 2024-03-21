@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../images/t_circular_image.dart';
-import '../product_cart/t_rounded_container.dart';
+import '../products/product_cart/t_rounded_container.dart';
 import '../texts/t_brand_title_with_verify_icon.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/enums.dart';

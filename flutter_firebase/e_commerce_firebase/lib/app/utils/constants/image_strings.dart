@@ -57,27 +57,12 @@ class TImages {
   static const String product3 = 'assets/images/products/img3.png';
   static const String product4 = 'assets/images/products/img4.png';
   static const String product5 = 'assets/images/products/img5.png';
-  static const String product6 = 'assets/images/products/img6.png';
-  static const String product7 = 'assets/images/products/img7.png';
-  static const String product8 = 'assets/images/products/img8.png';
-  static const String product9 = 'assets/images/products/img9.png';
-  static const String product10 = 'assets/images/products/img10.png';
-  static const String product11 = 'assets/images/products/img11.png';
-  static const String product13 = 'assets/images/products/img13.png';
-  static const String product14 = 'assets/images/products/img14.png';
-  static const String product15 = 'assets/images/products/img15.png';
-  static const String product16 = 'assets/images/products/img16.png';
-  static const String product17 = 'assets/images/products/img17.png';
-  static const String product18 = 'assets/images/products/img18.png';
-  static const String product19 = 'assets/images/products/img19.png';
-  static const String product20 = 'assets/images/products/img20.png';
-  static const String product21 = 'assets/images/products/img21.png';
-  static const String product22 = 'assets/images/products/img22.png';
-  static const String product23 = 'assets/images/products/img23.png';
-  static const String product24 = 'assets/images/products/img24.png';
-  static const String product25 = 'assets/images/products/img25.png';
-  static const String product26 = 'assets/images/products/img26.png';
-  static const String product27 = 'assets/images/products/img27.png';
+  static const String prod1 = 'assets/images/products/prod-1.jpg';
+  static const String prod2 = 'assets/images/products/prod-2.jpg';
+  static const String prod3 = 'assets/images/products/prod-3.jpg';
+  static const String prod4 = 'assets/images/products/prod-4.jpg';
+  static const String prod5 = 'assets/images/products/prod-5.jpg';
+
 
   static const String user1 ='assets/images/users/avatar.png';
 
