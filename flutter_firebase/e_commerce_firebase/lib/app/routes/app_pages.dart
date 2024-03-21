@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/personalization/address/bindings/address_binding.dart';
+import '../modules/personalization/address/views/address_view.dart';
 import '../modules/authentication/forgetpassword/bindings/forgetpassword_binding.dart';
 import '../modules/authentication/forgetpassword/views/forgetpassword_view.dart';
 import '../modules/authentication/loginscreen/bindings/loginscreen_binding.dart';
@@ -12,12 +14,12 @@ import '../modules/authentication/signup/bindings/signup_binding.dart';
 import '../modules/authentication/signup/views/signup_view.dart';
 import '../modules/personalization/bindings/personalization_binding.dart';
 import '../modules/personalization/views/personalization_view.dart';
-import '../modules/shop/product_reviews/bindings/product_reviews_binding.dart';
-import '../modules/shop/product_reviews/views/product_reviews_view.dart';
 import '../modules/shop/homescreen/bindings/homescreen_binding.dart';
 import '../modules/shop/homescreen/views/homescreen_view.dart';
 import '../modules/shop/product_detail/bindings/product_detail_binding.dart';
 import '../modules/shop/product_detail/views/product_detail_view.dart';
+import '../modules/shop/product_reviews/bindings/product_reviews_binding.dart';
+import '../modules/shop/product_reviews/views/product_reviews_view.dart';
 import '../modules/shop/store/bindings/store_binding.dart';
 import '../modules/shop/store/views/store_view.dart';
 import '../modules/shop/wishlist/bindings/wishlist_binding.dart';
@@ -87,6 +89,11 @@ class AppPages {
       name: _Paths.PRODUCT_REVIEWS,
       page: () => const ProductReviewsView(),
       binding: ProductReviewsBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADDRESS,
+      page: () => const AddressView(),
+      binding: AddressBinding(),
     ),
   ];
 }

@@ -4,6 +4,7 @@ import 'package:e_commerce_firebase/app/common/widgets/containers/primary_header
 import 'package:e_commerce_firebase/app/common/widgets/images/t_circular_image.dart';
 import 'package:e_commerce_firebase/app/common/widgets/list_title/settings_menu_title.dart';
 import 'package:e_commerce_firebase/app/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce_firebase/app/modules/personalization/address/views/address_view.dart';
 import 'package:e_commerce_firebase/app/modules/personalization/views/profile/profile.dart';
 import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
 import 'package:e_commerce_firebase/app/utils/constants/image_strings.dart';
@@ -67,7 +68,7 @@ class SettingsScreen extends StatelessWidget {
                   icon: Iconsax.safe_home,
                   title: 'My Address',
                   subTitle: 'Set shopping delivery address',
-                  onTap: () {},
+                  onTap: () => Get.to(() => const AddressView()),
                 ),
                 TSettingsMenuTitle(
                   icon: Iconsax.shopping_cart,
