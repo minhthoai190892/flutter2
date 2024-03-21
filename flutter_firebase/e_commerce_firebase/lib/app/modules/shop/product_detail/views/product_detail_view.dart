@@ -1,6 +1,7 @@
 import 'package:e_commerce_firebase/app/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce_firebase/app/modules/shop/product_detail/views/widgets/t_button_add_to_cart.dart';
 import 'package:e_commerce_firebase/app/modules/shop/product_detail/views/widgets/t_product_meta_data_widget.dart';
+import 'package:e_commerce_firebase/app/modules/shop/product_reviews/views/product_reviews_view.dart';
 import 'package:e_commerce_firebase/app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,10 +20,6 @@ class ProductDetailView extends GetView<ProductDetailController> {
   Widget build(BuildContext context) {
     final dark = THelperFuntions.isDarkMode(context: context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ProductDetailView'),
-        centerTitle: true,
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -86,7 +83,8 @@ class ProductDetailView extends GetView<ProductDetailController> {
                         onPressed: () {},
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () =>
+                              Get.to(() => const ProductReviewsView()),
                           icon: const Icon(Iconsax.arrow_right_3))
                     ],
                   ),
@@ -99,7 +97,7 @@ class ProductDetailView extends GetView<ProductDetailController> {
           ],
         ),
       ),
-      bottomNavigationBar: TBottomAddToCart(),
+      bottomNavigationBar: const TBottomAddToCart(),
     );
   }
 }

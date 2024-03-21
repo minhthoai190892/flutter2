@@ -1,7 +1,7 @@
-git checkout -b E_COMMERCE_FIREBASE-Product-Detail-Page-UI-Design
+git checkout -b E_COMMERCE_FIREBASE-Flutter-Ratings-and-Reviews-Screen
 git add .
-git commit -m "E_COMMERCE_FIREBASE-Product-Detail-Page-UI-Design"
-git push -u origin E_COMMERCE_FIREBASE-Product-Detail-Page-UI-Design
+git commit -m "E_COMMERCE_FIREBASE-Flutter-Ratings-and-Reviews-Screen"
+git push -u origin E_COMMERCE_FIREBASE-Flutter-Ratings-and-Reviews-Screen
 
 
 
@@ -9,4 +9,7 @@ create splash
 flutter pub run flutter_native_splash:create --path=splash.yaml
 
 adb connect 192.168.101.32:
+
+Flutter-Ratings-and-Reviews-Screen
+
 

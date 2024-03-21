@@ -6,7 +6,7 @@ import '../../../../common/layouts/grid_layout.dart';
 import '../../../../common/widgets/containers/curved_edges.dart';
 import '../../../../common/widgets/containers/primary_header_container.dart';
 import '../../../../common/widgets/containers/search_container.dart';
-import '../../../../common/widgets/product_cart/product_cart_vertical.dart';
+import '../../../../common/widgets/products/product_cart/product_cart_vertical.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';

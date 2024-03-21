@@ -7,7 +7,7 @@ import '../../../../common/widgets/appbar/app_bar_widget.dart';
 import '../../../../common/widgets/appbar/t_tabbar_widget.dart';
 import '../../../../common/widgets/brands/t_brand_cart.dart';
 import '../../../../common/widgets/containers/search_container.dart';
-import '../../../../common/widgets/product_cart/cart_menu_icon.dart';
+import '../../../../common/widgets/products/product_cart/cart_menu_icon.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';

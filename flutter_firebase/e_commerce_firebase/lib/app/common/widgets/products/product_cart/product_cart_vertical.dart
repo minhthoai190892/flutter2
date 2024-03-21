@@ -9,9 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../icons/t_circular_icon.dart';
-import '../texts/product_title.dart';
-import '../texts/t_brand_title_with_verify_icon.dart';
+import '../../icons/t_circular_icon.dart';
+import '../../texts/product_title.dart';
+import '../../texts/t_brand_title_with_verify_icon.dart';
 import 't_product_price.dart';
 import 't_rounded_container.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 't_brand_cart.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
-import '../product_cart/t_rounded_container.dart';
+import '../products/product_cart/t_rounded_container.dart';
 
 class TBrandShowcase extends StatelessWidget {
   const TBrandShowcase({

@@ -1,6 +1,6 @@
 import 'package:e_commerce_firebase/app/common/widgets/chips/t_choice_chip.dart';
-import 'package:e_commerce_firebase/app/common/widgets/product_cart/t_product_price.dart';
-import 'package:e_commerce_firebase/app/common/widgets/product_cart/t_rounded_container.dart';
+import 'package:e_commerce_firebase/app/common/widgets/products/product_cart/t_product_price.dart';
+import 'package:e_commerce_firebase/app/common/widgets/products/product_cart/t_rounded_container.dart';
 import 'package:e_commerce_firebase/app/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce_firebase/app/modules/shop/product_detail/views/widgets/t_product_title_text_widget.dart';
 import 'package:e_commerce_firebase/app/utils/constants/colors.dart';

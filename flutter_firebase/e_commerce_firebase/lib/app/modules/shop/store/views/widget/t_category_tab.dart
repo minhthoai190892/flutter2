@@ -1,5 +1,5 @@
 import 'package:e_commerce_firebase/app/common/layouts/grid_layout.dart';
-import 'package:e_commerce_firebase/app/common/widgets/product_cart/product_cart_vertical.dart';
+import 'package:e_commerce_firebase/app/common/widgets/products/product_cart/product_cart_vertical.dart';
 import 'package:e_commerce_firebase/app/common/widgets/texts/section_heading.dart';
 import 'package:flutter/material.dart';
 
