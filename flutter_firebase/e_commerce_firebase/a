@@ -1,7 +1,7 @@
-git checkout -b E_COMMERCE_FIREBASE-Flutter-Shopping-Cart-Screen
+git checkout -b E_COMMERCE_FIREBASE-checkout
 git add .
-git commit -m "E_COMMERCE_FIREBASE-Flutter-Shopping-Cart-Screen"
-git push -u origin E_COMMERCE_FIREBASE-Flutter-Shopping-Cart-Screen
+git commit -m "E_COMMERCE_FIREBASE-checkout"
+git push -u origin E_COMMERCE_FIREBASE-checkout
 
 
 
@@ -11,5 +11,6 @@ flutter pub run flutter_native_splash:create --path=splash.yaml
 adb connect 192.168.101.32:
 
 Flutter-Ratings-and-Reviews-Screen
+checkout 
 
 

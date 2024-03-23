@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../modules/shop/product_detail/views/widgets/t_product_title_text_widget.dart';
@@ -41,28 +40,20 @@ class TCartItem extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: 'Color',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall,
+                      text: 'Color: ',
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     TextSpan(
-                      text: 'Green',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge,
+                      text: 'Green ',
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     TextSpan(
-                      text: 'Size',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall,
+                      text: 'Size: ',
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     TextSpan(
                       text: 'UK 08',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ],
                 ),
