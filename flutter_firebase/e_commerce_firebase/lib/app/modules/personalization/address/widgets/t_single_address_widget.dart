@@ -2,7 +2,6 @@ import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
 import 'package:e_commerce_firebase/app/utils/constants/sizes.dart';
 import 'package:e_commerce_firebase/app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/products/product_cart/t_rounded_container.dart';

@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 
-import '../modules/personalization/address/bindings/address_binding.dart';
-import '../modules/personalization/address/views/address_view.dart';
 import '../modules/authentication/forgetpassword/bindings/forgetpassword_binding.dart';
 import '../modules/authentication/forgetpassword/views/forgetpassword_view.dart';
 import '../modules/authentication/loginscreen/bindings/loginscreen_binding.dart';
@@ -12,6 +10,10 @@ import '../modules/authentication/resetpassword/bindings/resetpassword_binding.d
 import '../modules/authentication/resetpassword/views/resetpassword_view.dart';
 import '../modules/authentication/signup/bindings/signup_binding.dart';
 import '../modules/authentication/signup/views/signup_view.dart';
+import '../modules/shop/cart/bindings/cart_binding.dart';
+import '../modules/shop/cart/views/cart_view.dart';
+import '../modules/personalization/address/bindings/address_binding.dart';
+import '../modules/personalization/address/views/address_view.dart';
 import '../modules/personalization/bindings/personalization_binding.dart';
 import '../modules/personalization/views/personalization_view.dart';
 import '../modules/shop/homescreen/bindings/homescreen_binding.dart';
@@ -94,6 +96,11 @@ class AppPages {
       name: _Paths.ADDRESS,
       page: () => const AddressView(),
       binding: AddressBinding(),
+    ),
+    GetPage(
+      name: _Paths.CART,
+      page: () => const CartView(),
+      binding: CartBinding(),
     ),
   ];
 }

@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../cart/views/cart_view.dart';
+
 class TBottomAddToCart extends StatelessWidget {
   const TBottomAddToCart({super.key});
 
@@ -54,7 +56,7 @@ class TBottomAddToCart extends StatelessWidget {
             ],
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () => Get.to(() => const CartView()),
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(TSizes.md),
               backgroundColor: TColors.black,
