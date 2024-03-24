@@ -1,7 +1,7 @@
-git checkout -b E_COMMERCE_FIREBASE-checkout
+git checkout -b E_COMMERCE_FIREBASE-Flutter-Checkout-Page
 git add .
-git commit -m "E_COMMERCE_FIREBASE-checkout"
-git push -u origin E_COMMERCE_FIREBASE-checkout
+git commit -m "E_COMMERCE_FIREBASE-Flutter-Checkout-Page"
+git push -u origin E_COMMERCE_FIREBASE-Flutter-Checkout-Page
 
 
 

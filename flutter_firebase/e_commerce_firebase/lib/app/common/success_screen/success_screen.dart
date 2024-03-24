@@ -50,7 +50,7 @@ class SuccessScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.offAllNamed(Routes.LOGINSCREEN),
+                    onPressed: () => Get.offAllNamed(Routes.HOMESCREEN),
                     child: Text(TTexts.tContinue)),
               ),
             ],

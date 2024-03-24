@@ -1,5 +1,9 @@
+import 'package:e_commerce_firebase/app/common/success_screen/success_screen.dart';
 import 'package:e_commerce_firebase/app/common/widgets/products/product_cart/t_rounded_container.dart';
 import 'package:e_commerce_firebase/app/modules/shop/cart/widget/cart_item.dart';
+import 'package:e_commerce_firebase/app/modules/shop/checkout/widgets/billing_address_section.dart';
+import 'package:e_commerce_firebase/app/modules/shop/checkout/widgets/billing_amount_section.dart';
+import 'package:e_commerce_firebase/app/modules/shop/checkout/widgets/billing_payment_section.dart';
 import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
 import 'package:e_commerce_firebase/app/utils/constants/sizes.dart';
 import 'package:e_commerce_firebase/app/utils/helpers/helper_functions.dart';
@@ -7,6 +11,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../../common/widgets/products/cart/t_coupon_code.dart';
+import '../../../../utils/constants/image_strings.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../controllers/checkout_controller.dart';
 
 class CheckoutView extends GetView<CheckoutController> {
@@ -32,42 +39,52 @@ class CheckoutView extends GetView<CheckoutController> {
                 height: TSizes.spaceBtwSections,
               ),
               // ! coupon Textfield
+              TCouponCode(dark: dark),
+              const SizedBox(
+                height: TSizes.spaceBtwSections,
+              ),
+
               TRoundedContainer(
                 showBorder: true,
-                width: double.infinity,
-                backgroundColor: dark ? TColors.white : TColors.dark,
-                padding: const EdgeInsets.only(
-                  top: TSizes.sm,
-                  left: TSizes.md,
-                  right: TSizes.sm,
-                  bottom: TSizes.sm,
-                ),
-                child: Row(
+                backgroundColor: dark ? TColors.black : TColors.white,
+                padding: const EdgeInsets.all(TSizes.md),
+                child: const Column(
                   children: [
-                    Flexible(
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          hintText: 'Have a promo code? Enter here',
-                          hintStyle: TextStyle(
-                            color: Colors.red,
-                            fontSize: 15,
-                          ),
-                          focusedBorder: InputBorder.none,
-                          border: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                        ),
-                      ),
+                    // !Pricing
+                    TBillingAmountSection(),
+                    SizedBox(
+                      height: TSizes.spaceBtwItems,
                     ),
-                    ElevatedButton(onPressed: () {}, child: const Text('Apply'))
+                    //! Divider
+                    Divider(),
+                    SizedBox(
+                      height: TSizes.spaceBtwItems,
+                    ),
+                    //! Payment method
+                    TBillingPaymentSection(),
+                    SizedBox(
+                      height: TSizes.spaceBtwItems,
+                    ),
+                    //! address
+                    TBillingAddressSection(),
                   ],
                 ),
               ),
-              const Text('data'),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(
+          TSizes.defaultSpace,
+        ),
+        child: ElevatedButton(
+            onPressed: () => Get.offAll(SuccessScreen(
+                  image: TImages.staticSuccessIllustration,
+                  title: TTexts.yourAccountCreatedTitle,
+                  subTitle: TTexts.yourAccountCreatedSubTitle,
+                )),
+            child: const Text('Checkout \$25')),
       ),
     );
   }
