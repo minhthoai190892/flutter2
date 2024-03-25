@@ -1,10 +1,10 @@
-git checkout -b E_COMMERCE_FIREBASE-Flutter-All-Products-Page
+git checkout -b E_COMMERCE_FIREBASE-Flutter-Shops/Brands-Screen-using-GridView
 git add .
-git commit -m "E_COMMERCE_FIREBASE-Flutter-All-Products-Page"
-git push -u origin E_COMMERCE_FIREBASE-Flutter-All-Products-Page
+git commit -m "E_COMMERCE_FIREBASE-Flutter-Shops/Brands-Screen-using-GridView"
+git push -u origin E_COMMERCE_FIREBASE-Flutter-Shops/Brands-Screen-using-GridView
 
 
-
+dart fix --apply
 create splash
 flutter pub run flutter_native_splash:create --path=splash.yaml
 

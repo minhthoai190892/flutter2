@@ -1,7 +1,6 @@
 import 'package:e_commerce_firebase/app/common/layouts/grid_layout.dart';
 import 'package:e_commerce_firebase/app/common/widgets/appbar/app_bar_widget.dart';
 import 'package:e_commerce_firebase/app/common/widgets/icons/t_circular_icon.dart';
-import 'package:e_commerce_firebase/app/common/widgets/navigation_menu_widget.dart';
 import 'package:e_commerce_firebase/app/common/widgets/products/product_cart/product_cart_vertical.dart';
 import 'package:e_commerce_firebase/app/modules/shop/homescreen/views/homescreen_view.dart';
 import 'package:e_commerce_firebase/app/utils/constants/sizes.dart';

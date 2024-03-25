@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../routes/app_pages.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/constants/text_strings.dart';
 import '../../utils/helpers/helper_functions.dart';

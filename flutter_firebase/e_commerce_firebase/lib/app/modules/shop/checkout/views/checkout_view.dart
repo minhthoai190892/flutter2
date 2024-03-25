@@ -13,7 +13,6 @@ import 'package:get/get.dart';
 
 import '../../../../common/widgets/products/cart/t_coupon_code.dart';
 import '../../../../utils/constants/image_strings.dart';
-import '../../../../utils/constants/text_strings.dart';
 import '../controllers/checkout_controller.dart';
 
 class CheckoutView extends GetView<CheckoutController> {
@@ -79,7 +78,7 @@ class CheckoutView extends GetView<CheckoutController> {
           TSizes.defaultSpace,
         ),
         child: ElevatedButton(
-            onPressed: () => Get.offAll(SuccessScreen(
+            onPressed: () => Get.offAll(const SuccessScreen(
                   image: TImages.staticSuccessIllustration,
                   title: 'Payment success',
                   subTitle: 'Your item wil be shipped soon',
