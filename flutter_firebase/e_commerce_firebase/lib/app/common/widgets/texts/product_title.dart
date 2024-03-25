@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ProductTitle extends StatelessWidget {
-  /// TITLE 
-  /// 
+class TProductTitle extends StatelessWidget {
+  /// TITLE
+  ///
   /// [title] title
-  /// 
+  ///
   /// [smallSize] true or false
-  /// 
+  ///
   /// [maxLines]
-  /// 
+  ///
   /// [textAlign]
-  const ProductTitle({
+  const TProductTitle({
     super.key,
     required this.title,
     this.smallSize = false,

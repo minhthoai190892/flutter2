@@ -89,7 +89,7 @@ class TProductCartVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //!TODO: Title
-                  ProductTitle(title: 'Nhan', smallSize: true),
+                  TProductTitle(title: 'Nhan', smallSize: true),
                   SizedBox(
                     height: TSizes.spaceBtwItems / 2,
                   ),
