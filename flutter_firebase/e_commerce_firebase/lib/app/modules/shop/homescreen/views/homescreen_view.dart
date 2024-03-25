@@ -1,3 +1,4 @@
+import 'package:e_commerce_firebase/app/modules/shop/all_products/views/all_products_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -79,7 +80,7 @@ class HomescreenView extends GetView<HomescreenController> {
                   TSectionHeading(
                       title: 'Popular Categories',
                       showActionButton: true,
-                      onPressed: () {}),
+                      onPressed: () => Get.to(() => const AllProductsView())),
                   const SizedBox(
                     height: TSizes.defaultSpace,
                   ),

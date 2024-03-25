@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/shop/all_products/bindings/all_products_binding.dart';
+import '../modules/shop/all_products/views/all_products_view.dart';
 import '../modules/authentication/forgetpassword/bindings/forgetpassword_binding.dart';
 import '../modules/authentication/forgetpassword/views/forgetpassword_view.dart';
 import '../modules/authentication/loginscreen/bindings/loginscreen_binding.dart';
@@ -122,6 +124,11 @@ class AppPages {
       name: _Paths.SUB_CATEGORIES,
       page: () => const SubCategoriesView(),
       binding: SubCategoriesBinding(),
+    ),
+    GetPage(
+      name: _Paths.ALL_PRODUCTS,
+      page: () => const AllProductsView(),
+      binding: AllProductsBinding(),
     ),
   ];
 }
