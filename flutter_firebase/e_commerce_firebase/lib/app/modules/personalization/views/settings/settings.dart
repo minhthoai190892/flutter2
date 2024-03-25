@@ -6,6 +6,7 @@ import 'package:e_commerce_firebase/app/common/widgets/list_title/settings_menu_
 import 'package:e_commerce_firebase/app/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce_firebase/app/modules/personalization/address/views/address_view.dart';
 import 'package:e_commerce_firebase/app/modules/personalization/views/profile/profile.dart';
+import 'package:e_commerce_firebase/app/modules/shop/order/views/order_view.dart';
 import 'package:e_commerce_firebase/app/utils/constants/colors.dart';
 import 'package:e_commerce_firebase/app/utils/constants/image_strings.dart';
 import 'package:e_commerce_firebase/app/utils/helpers/helper_functions.dart';
@@ -80,7 +81,7 @@ class SettingsScreen extends StatelessWidget {
                   icon: Iconsax.bag_tick,
                   title: 'My Orders',
                   subTitle: 'In-progress and Completed Orders',
-                  onTap: () {},
+                  onTap: () => Get.to(() => const OrderView()),
                 ),
                 TSettingsMenuTitle(
                   icon: Iconsax.bank,

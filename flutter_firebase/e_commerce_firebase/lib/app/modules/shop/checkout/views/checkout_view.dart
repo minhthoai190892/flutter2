@@ -81,8 +81,8 @@ class CheckoutView extends GetView<CheckoutController> {
         child: ElevatedButton(
             onPressed: () => Get.offAll(SuccessScreen(
                   image: TImages.staticSuccessIllustration,
-                  title: TTexts.yourAccountCreatedTitle,
-                  subTitle: TTexts.yourAccountCreatedSubTitle,
+                  title: 'Payment success',
+                  subTitle: 'Your item wil be shipped soon',
                 )),
             child: const Text('Checkout \$25')),
       ),

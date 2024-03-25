@@ -10,14 +10,16 @@ import '../modules/authentication/resetpassword/bindings/resetpassword_binding.d
 import '../modules/authentication/resetpassword/views/resetpassword_view.dart';
 import '../modules/authentication/signup/bindings/signup_binding.dart';
 import '../modules/authentication/signup/views/signup_view.dart';
-import '../modules/shop/checkout/bindings/checkout_binding.dart';
-import '../modules/shop/checkout/views/checkout_view.dart';
+import '../modules/shop/order/bindings/order_binding.dart';
+import '../modules/shop/order/views/order_view.dart';
 import '../modules/personalization/address/bindings/address_binding.dart';
 import '../modules/personalization/address/views/address_view.dart';
 import '../modules/personalization/bindings/personalization_binding.dart';
 import '../modules/personalization/views/personalization_view.dart';
 import '../modules/shop/cart/bindings/cart_binding.dart';
 import '../modules/shop/cart/views/cart_view.dart';
+import '../modules/shop/checkout/bindings/checkout_binding.dart';
+import '../modules/shop/checkout/views/checkout_view.dart';
 import '../modules/shop/homescreen/bindings/homescreen_binding.dart';
 import '../modules/shop/homescreen/views/homescreen_view.dart';
 import '../modules/shop/product_detail/bindings/product_detail_binding.dart';
@@ -108,6 +110,11 @@ class AppPages {
       name: _Paths.CHECKOUT,
       page: () => const CheckoutView(),
       binding: CheckoutBinding(),
+    ),
+    GetPage(
+      name: _Paths.ORDER,
+      page: () => const OrderView(),
+      binding: OrderBinding(),
     ),
   ];
 }

@@ -1,3 +1,4 @@
+import 'package:e_commerce_firebase/app/common/widgets/navigation_menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -50,7 +51,8 @@ class SuccessScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.offAllNamed(Routes.HOMESCREEN),
+                    onPressed: () =>
+                        Get.offAll(() => const NavigationMenuWidget()),
                     child: Text(TTexts.tContinue)),
               ),
             ],
