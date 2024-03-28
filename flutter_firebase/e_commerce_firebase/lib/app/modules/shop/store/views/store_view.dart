@@ -1,3 +1,4 @@
+import 'package:e_commerce_firebase/app/modules/shop/all_brands/views/all_brands_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -71,7 +72,7 @@ class StoreView extends GetView<StoreController> {
                       //!TODO: Featured Brands
                       TSectionHeading(
                         title: 'Featured Brands',
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => const AllBrandsView()),
                         showActionButton: true,
                       ),
                       const SizedBox(

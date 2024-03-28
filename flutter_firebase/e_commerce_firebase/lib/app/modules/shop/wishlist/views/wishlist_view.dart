@@ -37,7 +37,8 @@ class WishlistView extends GetView<WishlistController> {
           child: Column(
             children: [
               TGridLayout(
-                itemCount: 4,
+                itemCount: 8,
+                // mainAxisExtent: 2,
                 itemBuilder: (p0, p1) => const TProductCartVertical(),
               )
             ],

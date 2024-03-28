@@ -1,15 +1,19 @@
-git checkout -b E_COMMERCE_FIREBASE-Flutter-Addresses-Screen
+git checkout -b E_COMMERCE_FIREBASE-34-How-to-Setup-Firebase-in-Flutter-Firebase-CLI
 git add .
-git commit -m "E_COMMERCE_FIREBASE-Flutter-Addresses-Screen"
-git push -u origin E_COMMERCE_FIREBASE-Flutter-Addresses-Screen
+git commit -m "E_COMMERCE_FIREBASE-34-How-to-Setup-Firebase-in-Flutter-Firebase-CLI"
+git push -u origin E_COMMERCE_FIREBASE-34-How-to-Setup-Firebase-in-Flutter-Firebase-CLI
 
 
-
+dart fix --apply
 create splash
 flutter pub run flutter_native_splash:create --path=splash.yaml
 
 adb connect 192.168.101.32:
 
 Flutter-Ratings-and-Reviews-Screen
+checkout 
+
+C:\Users\minht\.android
+keytool -list -v -keystore "C:\Users\minht\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
 
 

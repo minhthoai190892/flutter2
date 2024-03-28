@@ -9,22 +9,22 @@ import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 
 class TBrandCart extends StatelessWidget {
+  /// single brand cart
   const TBrandCart({
     super.key,
     required this.dark,
-    this.showBorder = true,
+    this.showBorder = true, this.onTap,
   });
 
   final bool dark;
   final bool showBorder;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: GestureDetector(
-        onTap: () {
-        
-        },
+        onTap:onTap,
         child: TRoundedContainer(
           width: double.infinity,
           padding: const EdgeInsets.all(TSizes.sm),
@@ -69,6 +69,4 @@ class TBrandCart extends StatelessWidget {
       ),
     );
   }
-
- 
 }

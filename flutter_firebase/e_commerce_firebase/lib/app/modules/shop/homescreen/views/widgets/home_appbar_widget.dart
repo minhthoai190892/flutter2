@@ -1,5 +1,6 @@
-
+import 'package:e_commerce_firebase/app/modules/shop/cart/views/cart_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../common/widgets/appbar/app_bar_widget.dart';
 import '../../../../../common/widgets/products/product_cart/cart_menu_icon.dart';
@@ -17,7 +18,7 @@ class THomeAppBar extends StatelessWidget {
       action: [
         TCartCounterItem(
           color: TColors.white,
-          onPressed: () {},
+          onPressed: () => Get.to(() => const CartView()),
         ),
       ],
       title: Column(

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../modules/personalization/address/bindings/address_binding.dart';
-import '../modules/personalization/address/views/address_view.dart';
+import '../modules/shop/all_brands/bindings/all_brands_binding.dart';
+import '../modules/shop/all_brands/views/all_brands_view.dart';
 import '../modules/authentication/forgetpassword/bindings/forgetpassword_binding.dart';
 import '../modules/authentication/forgetpassword/views/forgetpassword_view.dart';
 import '../modules/authentication/loginscreen/bindings/loginscreen_binding.dart';
@@ -12,10 +12,20 @@ import '../modules/authentication/resetpassword/bindings/resetpassword_binding.d
 import '../modules/authentication/resetpassword/views/resetpassword_view.dart';
 import '../modules/authentication/signup/bindings/signup_binding.dart';
 import '../modules/authentication/signup/views/signup_view.dart';
+import '../modules/personalization/address/bindings/address_binding.dart';
+import '../modules/personalization/address/views/address_view.dart';
 import '../modules/personalization/bindings/personalization_binding.dart';
 import '../modules/personalization/views/personalization_view.dart';
+import '../modules/shop/all_products/bindings/all_products_binding.dart';
+import '../modules/shop/all_products/views/all_products_view.dart';
+import '../modules/shop/cart/bindings/cart_binding.dart';
+import '../modules/shop/cart/views/cart_view.dart';
+import '../modules/shop/checkout/bindings/checkout_binding.dart';
+import '../modules/shop/checkout/views/checkout_view.dart';
 import '../modules/shop/homescreen/bindings/homescreen_binding.dart';
 import '../modules/shop/homescreen/views/homescreen_view.dart';
+import '../modules/shop/order/bindings/order_binding.dart';
+import '../modules/shop/order/views/order_view.dart';
 import '../modules/shop/product_detail/bindings/product_detail_binding.dart';
 import '../modules/shop/product_detail/views/product_detail_view.dart';
 import '../modules/shop/product_reviews/bindings/product_reviews_binding.dart';
@@ -24,6 +34,8 @@ import '../modules/shop/store/bindings/store_binding.dart';
 import '../modules/shop/store/views/store_view.dart';
 import '../modules/shop/wishlist/bindings/wishlist_binding.dart';
 import '../modules/shop/wishlist/views/wishlist_view.dart';
+import '../modules/sub_categories/bindings/sub_categories_binding.dart';
+import '../modules/sub_categories/views/sub_categories_view.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -94,6 +106,36 @@ class AppPages {
       name: _Paths.ADDRESS,
       page: () => const AddressView(),
       binding: AddressBinding(),
+    ),
+    GetPage(
+      name: _Paths.CART,
+      page: () => const CartView(),
+      binding: CartBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHECKOUT,
+      page: () => const CheckoutView(),
+      binding: CheckoutBinding(),
+    ),
+    GetPage(
+      name: _Paths.ORDER,
+      page: () => const OrderView(),
+      binding: OrderBinding(),
+    ),
+    GetPage(
+      name: _Paths.SUB_CATEGORIES,
+      page: () => const SubCategoriesView(),
+      binding: SubCategoriesBinding(),
+    ),
+    GetPage(
+      name: _Paths.ALL_PRODUCTS,
+      page: () => const AllProductsView(),
+      binding: AllProductsBinding(),
+    ),
+    GetPage(
+      name: _Paths.ALL_BRANDS,
+      page: () => const AllBrandsView(),
+      binding: AllBrandsBinding(),
     ),
   ];
 }

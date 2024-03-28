@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -34,7 +33,7 @@ class TProductImageSlider extends StatelessWidget {
                 ),
               ),
             ),
-    
+
             // Image Slider
             Positioned(
               right: 0,
@@ -54,8 +53,7 @@ class TProductImageSlider extends StatelessWidget {
                               dark ? TColors.darkerGrey : TColors.light,
                           border: Border.all(color: TColors.primary),
                         ),
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(
+                    separatorBuilder: (context, index) => const SizedBox(
                           width: TSizes.spaceBtwItems,
                         ),
                     itemCount: 4),
@@ -63,6 +61,7 @@ class TProductImageSlider extends StatelessWidget {
             ),
             // Appbar icon
             TAppBar(
+              showBackArrow: true,
               action: [
                 TCircularIcon(
                   dark: dark,

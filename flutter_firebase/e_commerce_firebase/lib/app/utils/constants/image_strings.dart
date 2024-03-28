@@ -50,7 +50,7 @@ class TImages {
   static const String banner1 = 'assets/images/banners/clothes.jpg';
   static const String banner2 = 'assets/images/banners/school-uniform.jpg';
   static const String banner3 = 'assets/images/banners/shose.jpg';
- static const List<String> banners = [banner1, banner2, banner3];
+  static const List<String> banners = [banner1, banner2, banner3];
 //  Products
   static const String product1 = 'assets/images/products/img1.png';
   static const String product2 = 'assets/images/products/img2.png';
@@ -63,7 +63,14 @@ class TImages {
   static const String prod4 = 'assets/images/products/prod-4.jpg';
   static const String prod5 = 'assets/images/products/prod-5.jpg';
 
+  static const String user1 = 'assets/images/users/avatar.png';
 
-  static const String user1 ='assets/images/users/avatar.png';
-
+  static const String applePay = 'assets/images/payment/apple-pay.png';
+  static const String creditCard = 'assets/images/payment/credit-card.png';
+  static const String googlePay = 'assets/images/payment/google-pay.png';
+  static const String masterCard = 'assets/images/payment/master-card.png';
+  static const String payStack = 'assets/images/payment/payback.png';
+  static const String paypal = 'assets/images/payment/paypal.png';
+  static const String paytm = 'assets/images/payment/paytm.png';
+  static const String visa = 'assets/images/payment/visa.png';
 }
