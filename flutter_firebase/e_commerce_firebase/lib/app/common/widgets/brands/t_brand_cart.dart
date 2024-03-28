@@ -9,6 +9,7 @@ import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 
 class TBrandCart extends StatelessWidget {
+  /// single brand cart
   const TBrandCart({
     super.key,
     required this.dark,
